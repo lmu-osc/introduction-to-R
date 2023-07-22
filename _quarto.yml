@@ -6,9 +6,9 @@ website:
   title: "r_tut"
   navbar:
     left:
-      - href: index.qmd
+      - href: pages/index.qmd
         text: Home
-      - about.qmd
+      - pages/about.qmd
   sidebar: 
     style: "docked"
     search: true
