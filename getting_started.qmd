@@ -53,3 +53,9 @@ Over time, it will become increasingly hard to organize all your files, working 
 1.  Create a new folder folder for this tutorial, where all your files will go.
 2.  Create a new RStudio project and open it.
 3.  Create a new R Script and open it.
+
+## Packages
+
+### Package for this tutorial
+
+There is a package available for this tutorial, which will provide interactive exercises. Please install:
