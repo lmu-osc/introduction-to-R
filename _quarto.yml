@@ -1,6 +1,5 @@
 project:
   type: website
-  execute-dir: 
 
 website:
   title: "r_tut"
