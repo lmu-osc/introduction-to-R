@@ -12,7 +12,7 @@
 
 #### Script Pane
 
-#### Console
+#### Console {#console}
 
 ```{r}
 "Hello World!"
@@ -40,6 +40,14 @@ Some of the most basic things you can do in `R` is are basic mathematical operat
 
 By the way: Code lines, that are preceded by a `#` are commented out, and will not be evaluated.
 
-## 4 Workflow
+## Workflow
 
-When only coding in our `Console`, we quickly run into the question where to save our code for further evaluation.
+When only coding in our [Console](#Console) we quickly run into the question where to save our code for further evaluation. Therefore, we want to write all our Code that is worth saving into a [Skript](#Skript%20Pane).
+
+Over time, it will become increasingly hard to organize all your files, working directories and workspaces in a reasonable manner. For this, RStudio Projects can be used (highly recommended).
+
+```{r, exercise = TRUE}
+# 1. Create a new folder folder for this tutorial, where all your files will go.
+# 2. Create a new RStudio project and open it. 
+# 3. Create a new R Script and open it. 
+```
