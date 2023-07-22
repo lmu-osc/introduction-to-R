@@ -7,7 +7,6 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
       - getting_started.qmd
   sidebar: 
     style: "docked"

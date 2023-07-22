@@ -22,11 +22,9 @@ Tadaa, we just wrote our first line of code.
 
 ## First Steps
 
-Some of the most basic things you can do in `R` is are basic mathematical operations. In your `Console`
+Some of the most basic things you can do in `R` is are basic mathematical operations. In your [Console](#Console), type the following code lines and press `Enter`.
 
-type the following code lines and press `Enter`.
-
-```{r}
+```{r, eval = FALSE}
 # sum
 1 + 2
 

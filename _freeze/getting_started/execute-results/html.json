@@ -1,0 +1,14 @@
+{
+  "hash": "7119b0d3a848c945d290204191b8d9e8",
+  "result": {
+    "markdown": "## What is R?\n\n## \n\n## Installation\n\n## R\n\n## RStudio\n\n### Structure of the RStudio interface\n\n#### Script Pane\n\n#### Console\n\n\n::: {.cell}\n\n```{.r .cell-code}\n\"Hello World!\"\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"Hello World!\"\n```\n:::\n:::\n\n\nTadaa, we just wrote our first line of code.\n\n## First Steps\n\nSome of the most basic things you can do in `R` is are basic mathematical operations. In your `Console`\n\ntype the following code lines and press `Enter`.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n# sum\n1 + 2\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 3\n```\n:::\n\n```{.r .cell-code}\n# substract\n2 - 4\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] -2\n```\n:::\n\n```{.r .cell-code}\n# multiply\n4 * 4\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 16\n```\n:::\n\n```{.r .cell-code}\n# divide\n3/2\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 1.5\n```\n:::\n:::\n\n\nBy the way: Code lines, that are preceded by a `#` are commented out, and will not be evaluated.\n\n## 4 Workflow\n\nWhen only coding in our `Console`, we quickly run into the question where to save our code for further evaluation.\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
