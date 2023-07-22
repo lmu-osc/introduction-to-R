@@ -1,24 +1,24 @@
 project:
   type: website
-  output-dir: docs
+  execute-dir: 
 
 website:
   title: "r_tut"
   navbar:
     left:
-      - href: pages/index.qmd
+      - href: index.qmd
         text: Home
-      - pages/about.qmd
+      - about.qmd
   sidebar: 
     style: "docked"
     search: true
     contents:
       - section: "Basics"
         contents:
-          - pages/index.qmd
+          - index.qmd
       - section: "Layout"
         contents:
-          - pages/about.qmd
+          - about.qmd
 format:
   html:
     theme: cosmo
