@@ -1,8 +1,8 @@
-## What is R?
+# What is R?
 
 ## 
 
-## Installation
+# Installation
 
 ## R
 
@@ -10,9 +10,9 @@
 
 ### Structure of the RStudio interface
 
-#### Script Pane {#script_pane}
+#### Script Pane
 
-#### Console {#console}
+#### Console
 
 ```{r}
 "Hello World!"
@@ -20,7 +20,9 @@
 
 Tadaa, we just wrote our first line of code.
 
-## First Steps
+### RStudio Cloud
+
+# First Steps
 
 Some of the most basic things you can do in `R` is are basic mathematical operations. In your [console](#console), type the following code lines and press `Enter`.
 
@@ -42,13 +44,15 @@ By the way: Code lines, that are preceded by a `#` are commented out, and will n
 
 ## Workflow
 
-#### Scripts
+### Scripts
 
 When only coding in our [console](#console) we quickly run into the question where to save our code for further evaluation. Therefore, we want to write all our code that is worth saving into a [script](#script_pane).
 
+### RStudio Projects
+
 Over time, it will become increasingly hard to organize all your files, working directories and workspaces in a reasonable manner. For this, RStudio Projects can be used (highly recommended).
 
-#### Exercises
+### Exercises
 
 1.  Create a new folder folder for this tutorial, where all your files will go.
 2.  Create a new RStudio project and open it.
