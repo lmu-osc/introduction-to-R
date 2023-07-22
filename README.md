@@ -1,2 +1,2 @@
-# r_tut
+# r_tutorial
  
