@@ -23,8 +23,9 @@ jobs:
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-- uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages:
-            any::knitr
-            any::rmarkdown
+steps:
+- uses: actions/checkout@v3
+- uses: r-lib/actions/setup-r@v2
+- uses: r-lib/actions/setup-renv@v2
+  with:
+    profile: `"shiny"`
