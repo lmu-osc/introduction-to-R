@@ -1,0 +1,1 @@
+Sitemap: https://nickhaf.github.io/r_tut/sitemap.xml
