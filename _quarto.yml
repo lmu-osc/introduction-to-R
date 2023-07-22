@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "r_tut"
+  title: "R - Open Research Summer School"
   navbar:
     left:
       - href: index.qmd

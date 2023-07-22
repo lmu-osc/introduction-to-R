@@ -1,9 +1,47 @@
-# 1 What is R?
+## What is R?
 
 ## 
 
-# 2 Installation
+## Installation
 
 ## R
 
 ## RStudio
+
+### Structure of the RStudio interface
+
+#### Script Pane
+
+#### Console
+
+```{r}
+"Hello World!"
+```
+
+Tadaa, we just wrote our first line of code.
+
+## First Steps
+
+Some of the most basic things you can do in `R` is are basic mathematical operations. In your `Console`
+
+type the following code lines and press `Enter`.
+
+```{r}
+# sum
+1 + 2
+
+# substract
+2 - 4
+
+# multiply
+4 * 4
+
+# divide
+3/2
+```
+
+By the way: Code lines, that are preceded by a `#` are commented out, and will not be evaluated.
+
+## 4 Workflow
+
+When only coding in our `Console`, we quickly run into the question where to save our code for further evaluation.

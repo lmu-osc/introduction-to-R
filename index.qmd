@@ -2,14 +2,14 @@
 title: "R Workshop"
 ---
 
-# Welcome
+## Welcome
 
 The following tutorial will teach you the basics of R. It is designed to be self paced, so you can work in you own tempo.
 
-## Learning Objectives
+### Learning Objectives
 
--   Learn the basics of programming in R as needed for the rest of the summer school.
+-   Learn the basics of programming in R as needed for the rest of the Open Research Summer School.
 
-## Schedule 
+### Schedule 
 
 ## 
