@@ -8,8 +8,6 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - index.qmd
-        text: Getting Started
       - setup.qmd
       - the_big_picture.qmd
       - packages.qmd
