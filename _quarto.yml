@@ -8,7 +8,11 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - getting_started.qmd
+      - index.qmd
+        text: Getting Started
+      - setup.qmd
+      - the_big_picture.qmd
+      - packages.qmd
   sidebar: 
     style: "docked"
     search: true
@@ -18,7 +22,10 @@ website:
           - index.qmd
       - section: "Getting Started"
         contents:
-          - getting_started.qmd
+          - setup.qmd
+          - the_big_picture.qmd
+          - packages.qmd
+
 format:
   html:
     theme: cosmo
