@@ -1,0 +1,7 @@
+# The big picture
+
+Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project", which follows a typical workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. 
+In later chapters, we will go into a little bit more depth for each topic. If you want to have more in depth information instead of following the whole workflow first, you can also jump to the according chapter and read the theory. But make sure to come back to this chapter for the final exercise. 
+
+
+
