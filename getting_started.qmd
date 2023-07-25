@@ -66,7 +66,7 @@ Over time, it will become increasingly hard to organize all your files, working 
 3.  Create a new R Script by clicking on `File` - `New File` - `R Script`. Save it in you folder.\
     *Tipp: Within your project folder create a folder named `R`, where all your R Scripts will go. You can do the same for `data`, `plots` etc. later on. This will help you to structure your working directory.*
 
-## About this workshop
+## workshop
 
 This workshop will use a tutorial package (you will learn more about packages later) that can be run from within `R` and will provide interactive exercises. For now, please install that tutorial package by typing (and evaluating) the following code into your newly created R Script:
 
