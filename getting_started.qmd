@@ -8,7 +8,7 @@
 
 ## RStudio
 
-### RStudio Cloud
+### Optional: posit Cloud
 
 In case you don't use a notebook where you can install R and RStudio, or you don't want to, you can use the Posit Cloud service. It can be run in you browser, and provides the same functions and interface as if you were working with your own RStudio installation. And it's free as well (at least 25 hours per month, but that should be more than enough for this workshop and propably for the following week).
 
