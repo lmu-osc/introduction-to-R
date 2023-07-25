@@ -68,8 +68,9 @@ Over time, it will become increasingly hard to organize all your files, working 
 
 ## About this workshop
 
-This workshop will use a tutorial package (you will learn more about packages later) that can be run from within `R` and will provide interactive exercises. For now, please install that tutorial package by typing the following code into your newly created R Script:
+This workshop will use a tutorial package (you will learn more about packages later) that can be run from within `R` and will provide interactive exercises. For now, please install that tutorial package by typing (and evaluating) the following code into your newly created R Script:
 
-```{r}
-
+```{r, eval = FALSE}
+install.packages("devtools")
+devtools::install_github("nickhaf/tutoR")
 ```
