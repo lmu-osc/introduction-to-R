@@ -4,4 +4,26 @@ Now that we have completed our set up, let's dive right into programming with `R
 
 ## Packages
 
-[Packages](\packages.qmd) are extensions to the `base R` you get by default. We already installed our first packages in [About this workshop](getting_started.qmd#about-this-workshop).
+[Packages](\packages.qmd) are extensions to the `base R` you get by default. We already installed our first packages in [About this workshop](getting_started.qmd#about-this-workshop). Let's keep doing that and install the following package as well:
+
+```{r install_tidyverse, eval = FALSE}
+install.packages("tidyverse")
+```
+
+Just by installing the packages, we can't use them. We also have to load them into our R session:
+
+```{r load_packages, eval = FALSE}
+library(tutoR)
+library(tidyverse)
+```
+
+The top of your `R Script` should look something like this:
+
+```{r package_setup, eval = FALSE}
+install.packages("devtools")
+devtools::install_github("nickhaf/tutoR")
+install.packages("tidyverse")
+
+library(tutoR)
+library(tidyverse)
+```
