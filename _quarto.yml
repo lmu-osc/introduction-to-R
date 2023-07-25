@@ -5,7 +5,7 @@ website:
   title: "R - Open Research Summer School"
   open-graph: true
   body-footer: | 
-    Icons from [icons8.de](https://icons8.de).
+    Icons from <https://icons8.de>.
   navbar:
     left:
       - href: index.qmd
