@@ -10,6 +10,6 @@ The following tutorial will teach you the basics of R. It is designed to be self
 
 -   Learn the basics of programming in R as needed for the rest of the Open Research Summer School.
 
-### Schedule 
+### Schedule
 
 ## 

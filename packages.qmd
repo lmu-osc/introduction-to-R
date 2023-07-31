@@ -6,7 +6,7 @@ Packages are extensions to the `base R` you get by default. We can compare them 
 
 [^packages-1]: Icons from [icons8.de](https://icons8.de).
 
-![](./pictures/app.png){width="19"}[^packages-1] Then, we have to load them in each session where we want to use them (like tipping on the app icon): `library(packagename)`.
+![](./pictures/app.png){width="19"}[^packages-2] Then, we have to load them in each session where we want to use them (like tipping on the app icon): `library(packagename)`.
 
 [^packages-2]: Icons from [icons8.de](https://icons8.de).
 

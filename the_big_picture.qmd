@@ -30,4 +30,9 @@ library(tidyverse)
 
 ## Load Data
 
-Now it's time to load our first data set.
+[Data is loaded](\load_data.qmd) into R so you can work with it. 
+Let's do just that with an example data set:
+```{r}
+
+```
+
