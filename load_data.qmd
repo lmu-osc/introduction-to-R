@@ -1,1 +1,7 @@
+# Load data
 
+## Data types
+There are many different data types out there, of which many can be loaded into R. Depending on the type, different commands are used within R:
+
+
+## Paths
