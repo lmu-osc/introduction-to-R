@@ -30,11 +30,45 @@ library(tidyverse)
 
 ## Load Data
 
-[Data is loaded](\load_data.qmd) into R so you can work with it. Let's do just that.
-First, you need to download the file "" from 
+[Data is loaded](\load_data.qmd) into R so you can work with it. Let's do just that. First, you need to download the file "london_marathon.csv" from [this link](https://github.com/nickhaf/r_tutorial/tree/getting_started/raw_data) and save it in your project folder (*Tip: Save it in a new subfolder named "raw_data" or somewhat similar.*). The data comes from the [LondonMarathon](https://github.com/nrennie/LondonMarathon) package. Then, you can load it into R:
 
 ```{r}
-
+load(file = "./raw_data/london_marathon.rda")
 ```
 
-The data comes from [LondonMarathon](https://github.com/nrennie/LondonMarathon) package.
+This will load the data into R. You can see it popping up in your `Environment` pane on the upper right. Note we used the `load()` function to load a data set with the ending `.rda`. Here you can find a more thourough discussion about [loading data](\load_data.qmd). It is important you use the correct path, because otherwise R will not find your data file. Here the RStudio project we have created earlier comes in handy. It automatically knows our file lies within our project folder, which is why we can use a **relative path**, that starts at the project path and looks into the folder `raw_data` to open the file. Otherwise, we would have to use an **absolute path** (like "C:/Users/hafiznij/Documents/GitHub/r_tutorial/raw_data/london_marathon.rda" which will only work on my notebook, and only if my project stays in on this path.
+
+## Take a look
+
+Now that we have our data loaded safely into R, we can get an overview with a multitude of commands. One of the most important ones might be `View()`, which will open the data set excel-style in a new window:
+
+```{r}
+View(london_marathon)
+```
+
+Especially for bigger data sets, it might be more feasable to only look at the structure and not the whole data set:
+
+```{r}
+str(london_marathon)
+```
+
+On the left we can see the columns of this data.frame, named `Date`, `Year`, `Applicants` etc ...
+Further on the right we see the first values in each column, for example `1981`, `1982` etc ...
+
+
+## Data wrangling
+Now, lets do something fun with this data. The goal is to plot the starter/finisher ratio ... 
+Some sort of regression using the times or f
+
+### Merging data
+```{r}
+load(file = "./raw_data/winners.rda")
+```
+
+
+
+### Subsetting data
+
+
+
+
