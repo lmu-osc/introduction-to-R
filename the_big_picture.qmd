@@ -66,9 +66,39 @@ load(file = "./raw_data/winners.rda")
 ```
 
 
-
 ### Subsetting data
 
+```{r}
+winners$Minutes_total <- winners$Hours * 60 + winners$Minutes
 
 
+library(ggplot2)
+winners %>%
+  filter(Category %in% c("Men", "Women")) %>%
+ggplot(data = ., aes(x = Year,
+                            y = Minutes_total, 
+                     colour = Nationality, 
+                     shape = Category)) +
+  geom_point()
+
+
+winners %>%
+  filter(Category %in% c("Wheelchair Men", "Wheelchair Women")) %>%
+ggplot(data = ., aes(x = Year,
+                            y = Minutes_total, 
+                     colour = Nationality, 
+                     shape = Category)) +
+  geom_point()
+
+```
+
+
+```{r}
+# Für die Übung:
+install.packages("tidytuesdayR")
+library(tidytuesdayR)
+tuesdata <- tidytuesdayR::tt_load('2022-08-16')
+
+
+```
 
