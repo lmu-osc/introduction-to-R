@@ -57,7 +57,7 @@ Further on the right we see the first values in each column, for example `1981`,
 
 
 ## Data wrangling
-Now, lets do something fun with this data. The goal is to plot the starter/finisher ratio ... 
+Now, lets do something fun with this data. We want to answer the question if people have gotten faster at running marathons over that last 40 years. We will use a 
 Some sort of regression using the times or f
 
 ### Merging data
@@ -65,11 +65,36 @@ Some sort of regression using the times or f
 load(file = "./raw_data/winners.rda")
 ```
 
-
-### Subsetting data
-
+### Clean up data
+Remove NAs, select relevant columns, Build another Time column
 ```{r}
 winners$Minutes_total <- winners$Hours * 60 + winners$Minutes
+
+```
+
+
+### Subsetting data
+Divide by Category (Wheelchar vs. no wheelchair)
+
+### Regression Time vs. year
+
+```{r}
+women <- winners[winners$Category == "Women", ]
+
+
+lm_rs <- lm(Minutes_total ~ Year, women)
+summary(lm_rs)
+
+# 614 min bei Year = 0, für jedes Jahr -0.23 Min weniger:
+# 614 + 2020 * -0.236
+
+
+plot(lm_rs)
+```
+
+
+### Plot the data
+```{r}
 
 
 library(ggplot2)
@@ -94,7 +119,7 @@ ggplot(data = ., aes(x = Year,
 
 
 ```{r}
-# Für die Übung:
+# Für die Übung. 
 install.packages("tidytuesdayR")
 library(tidytuesdayR)
 tuesdata <- tidytuesdayR::tt_load('2022-08-16')
