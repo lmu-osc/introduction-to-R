@@ -4,7 +4,7 @@ Now that we have completed our set up, let's dive right into programming with `R
 
 ## Packages
 
-[Packages](\packages.qmd) are extensions to the `base R` you get by default. We already installed our first packages in [About this workshop](getting_started.qmd#about-this-workshop). Let's keep doing that and install the following package as well:
+[Packages](\packages.qmd) are extensions to the `base R` you get by default. We already installed our first packages in [About this workshop](\getting_started.qmd#about-this-workshop). Let's keep doing that and install the following package as well:
 
 ```{r install_tidyverse, eval = FALSE}
 install.packages("tidyverse")
@@ -95,8 +95,6 @@ plot(lm_rs)
 
 ### Plot the data
 ```{r}
-
-
 library(ggplot2)
 winners %>%
   filter(Category %in% c("Men", "Women")) %>%
@@ -120,7 +118,7 @@ ggplot(data = ., aes(x = Year,
 
 ```{r}
 # Für die Übung. 
-install.packages("tidytuesdayR")
+#install.packages("tidytuesdayR")
 library(tidytuesdayR)
 tuesdata <- tidytuesdayR::tt_load('2022-08-16')
 

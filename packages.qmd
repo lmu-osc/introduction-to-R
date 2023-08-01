@@ -2,7 +2,7 @@
 
 Packages are extensions to the `base R` you get by default. We can compare them somewhat to apps in an appstore:
 
-![](./pictures/playstore.png){width="19"}[^packages-1] First, we have to install the package: `install.packages("packagename")`. - Most of the openly available packages lie on [CRAN](https://cran.r-project.org/) (Comprehensive R Archive Network). But you can also download packages form other sources, for example [GitHub](https://github.com/). This is what you did when downloading the `tutoR` package in [About this workshop](getting_started.qmd#about-this-workshop).
+![](./pictures/playstore.png){width="19"}[^packages-1] First, we have to install the package: `install.packages("packagename")`. - Most of the openly available packages lie on [CRAN](https://cran.r-project.org/) (Comprehensive R Archive Network). But you can also download packages form other sources, for example [GitHub](https://github.com/). This is what you did when downloading the `tutoR` package in [About this workshop](setup.qmd#about-this-workshop).
 
 [^packages-1]: Icons from [icons8.de](https://icons8.de).
 
