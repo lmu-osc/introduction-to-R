@@ -46,7 +46,7 @@ Now that we have our data loaded safely into R, we can get an overview with a mu
 View(london_marathon)
 ```
 
-Especially for bigger data sets, it might be more feasable to only look at the structure and not the whole data set:
+Especially for bigger data sets, it might be more feasible to only look at the structure and not the whole data set:
 
 ```{r}
 str(london_marathon)
@@ -56,15 +56,36 @@ On the left we can see the columns of this data.frame, named `Date`, `Year`, `Ap
 
 ## Data wrangling
 
-Now, lets do something fun with this data. We want to answer the question if people have gotten faster at running marathons over that last 40 years. We will use a Some sort of regression using the times or f
+Now, lets do something fun with this data. We want to answer the question if people have gotten faster at running marathons over that last 40 years. 
+- Use both data sets. 
+
+We will use a ...
 
 ### Merging data
+Sadly, the winners are not saved in this data set, so we have to load that one as well. 
+Exercise: Try to load the second data set called "winners.rda" into R on your own.
 
-```{r}
+```{r, echo = FALSE}
 load(file = "./raw_data/winners.rda")
 ```
 
+Now that we have two data sets loaded into R, we can merge them by using the `merge()` command: 
+
+```{r}
+marathon_final <- merge(x = london_marathon, 
+                        y = winners,
+                        by = "Year",
+                        all = TRUE)
+```
+
+What happens here? We take our two data sets, called `london_marathon` and `winners` and combine them on the column `Year`. We don't want to loose any data that doesn't have match in the other data set, so we set `all = TRUE`, and voila:
+```{r}
+str(marathon_final)
+```
+We have merged the columns of the `winner` data set onto the right the `london_marathon` data.
+
 ### Clean up data
+No we can tidy up our data a bit. 
 
 Remove NAs, select relevant columns, Build another Time column
 
