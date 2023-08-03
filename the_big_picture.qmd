@@ -42,7 +42,7 @@ This will load the data into R. You can see it popping up in your `Environment` 
 
 Now that we have our data loaded safely into R, we can get an overview with a multitude of commands. One of the most important ones might be `View()`, which will open the data set excel-style in a new window:
 
-```{r}
+```{r, eval = FALSE}
 View(london_marathon)
 ```
 
