@@ -12,7 +12,7 @@ install.packages("tidyverse")
 
 Just by installing the packages, we can't use them. We also have to load them into our R session:
 
-```{r load_packages, eval = FALSE}
+```{r load_packages}
 library(tutoR)
 library(tidyverse)
 ```
@@ -96,23 +96,23 @@ plot(lm_rs)
 ### Plot the data
 
 ```{r}
-# library(ggplot2)
-# winners %>%
-#   filter(Category %in% c("Men", "Women")) %>%
-# ggplot(data = ., aes(x = Year,
-#                             y = Minutes_total, 
-#                      colour = Nationality, 
-#                      shape = Category)) +
-#   geom_point()
-# 
-# 
-# winners %>%
-#   filter(Category %in% c("Wheelchair Men", "Wheelchair Women")) %>%
-# ggplot(data = ., aes(x = Year,
-#                             y = Minutes_total, 
-#                      colour = Nationality, 
-#                      shape = Category)) +
-#   geom_point()
+library(ggplot2)
+winners %>%
+  filter(Category %in% c("Men", "Women")) %>%
+ggplot(data = ., aes(x = Year,
+                            y = Minutes_total,
+                     colour = Nationality,
+                     shape = Category)) +
+  geom_point()
+
+
+winners %>%
+  filter(Category %in% c("Wheelchair Men", "Wheelchair Women")) %>%
+ggplot(data = ., aes(x = Year,
+                            y = Minutes_total,
+                     colour = Nationality,
+                     shape = Category)) +
+  geom_point()
 
 ```
 
