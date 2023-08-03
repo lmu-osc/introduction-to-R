@@ -52,28 +52,29 @@ Especially for bigger data sets, it might be more feasable to only look at the s
 str(london_marathon)
 ```
 
-On the left we can see the columns of this data.frame, named `Date`, `Year`, `Applicants` etc ...
-Further on the right we see the first values in each column, for example `1981`, `1982` etc ...
-
+On the left we can see the columns of this data.frame, named `Date`, `Year`, `Applicants` etc ... Further on the right we see the first values in each column, for example `1981`, `1982` etc ...
 
 ## Data wrangling
-Now, lets do something fun with this data. We want to answer the question if people have gotten faster at running marathons over that last 40 years. We will use a 
-Some sort of regression using the times or f
+
+Now, lets do something fun with this data. We want to answer the question if people have gotten faster at running marathons over that last 40 years. We will use a Some sort of regression using the times or f
 
 ### Merging data
+
 ```{r}
 load(file = "./raw_data/winners.rda")
 ```
 
 ### Clean up data
+
 Remove NAs, select relevant columns, Build another Time column
+
 ```{r}
 winners$Minutes_total <- winners$Hours * 60 + winners$Minutes
 
 ```
 
-
 ### Subsetting data
+
 Divide by Category (Wheelchar vs. no wheelchair)
 
 ### Regression Time vs. year
@@ -92,8 +93,8 @@ summary(lm_rs)
 plot(lm_rs)
 ```
 
-
 ### Plot the data
+
 ```{r}
 library(ggplot2)
 winners %>%
@@ -115,7 +116,6 @@ ggplot(data = ., aes(x = Year,
 
 ```
 
-
 ```{r}
 # Für die Übung. 
 #install.packages("tidytuesdayR")
@@ -124,4 +124,3 @@ tuesdata <- tidytuesdayR::tt_load('2022-08-16')
 
 
 ```
-
