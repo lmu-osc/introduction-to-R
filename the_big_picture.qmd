@@ -96,23 +96,23 @@ plot(lm_rs)
 ### Plot the data
 
 ```{r}
-library(ggplot2)
-winners %>%
-  filter(Category %in% c("Men", "Women")) %>%
-ggplot(data = ., aes(x = Year,
-                            y = Minutes_total, 
-                     colour = Nationality, 
-                     shape = Category)) +
-  geom_point()
-
-
-winners %>%
-  filter(Category %in% c("Wheelchair Men", "Wheelchair Women")) %>%
-ggplot(data = ., aes(x = Year,
-                            y = Minutes_total, 
-                     colour = Nationality, 
-                     shape = Category)) +
-  geom_point()
+# library(ggplot2)
+# winners %>%
+#   filter(Category %in% c("Men", "Women")) %>%
+# ggplot(data = ., aes(x = Year,
+#                             y = Minutes_total, 
+#                      colour = Nationality, 
+#                      shape = Category)) +
+#   geom_point()
+# 
+# 
+# winners %>%
+#   filter(Category %in% c("Wheelchair Men", "Wheelchair Women")) %>%
+# ggplot(data = ., aes(x = Year,
+#                             y = Minutes_total, 
+#                      colour = Nationality, 
+#                      shape = Category)) +
+#   geom_point()
 
 ```
 
