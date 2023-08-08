@@ -116,7 +116,7 @@ summary(lm_rs)
 plot(lm_rs)
 ```
 
-### Plot the data
+## Plot the data
 
 ```{r}
 library(ggplot2)
@@ -147,3 +147,7 @@ tuesdata <- tidytuesdayR::tt_load('2022-08-16')
 
 
 ```
+
+
+## Conclusion
+In this tutorial we learned, that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in. 
