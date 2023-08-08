@@ -30,20 +30,21 @@ library(tidyverse)
 
 ## Load Data
 
-[Data is loaded](\load_data.qmd) into R so you can work with it. Let's do just that. First, you need to download the file "london_marathon.csv" from [this link](https://github.com/nickhaf/r_tutorial/tree/getting_started/raw_data) and save it in your project folder (*Tip: Save it in a new subfolder named "raw_data" or somewhat similar.*). The data comes from the [LondonMarathon](https://github.com/nrennie/LondonMarathon) package. Then, you can load it into R:
+[Data is loaded](\load_data.qmd) into R so you can work with it. Let's do just that. First, you need to download the file "winners.rds" from [this link](https://github.com/nickhaf/r_tutorial/tree/getting_started/raw_data) and save it in your project folder (*Tip: Save it in a new subfolder named "raw_data" or somewhat similar.*). The data comes from the [LondonMarathon](https://github.com/nrennie/LondonMarathon) package. 
+Next, take a look at the ending. Different data formats need different functions for loading them into R. The `winners.rds` file has the ending `.rds`. So we use `readRDS` to load it into R. Here you can find a more thourough discussion about [loading different data formats](\load_data.qmd). 
 
 ```{r}
-load(file = "./raw_data/london_marathon.rda")
+winners <- readRDS(file = "./raw_data/winners.rds")
 ```
 
-This will load the data into R. You can see it popping up in your `Environment` pane on the upper right. Note we used the `load()` function to load a data set with the ending `.rda`. Here you can find a more thourough discussion about [loading data](\load_data.qmd). It is important you use the correct path, because otherwise R will not find your data file. Here the RStudio project we have created earlier comes in handy. It automatically knows our file lies within our project folder, which is why we can use a **relative path**, that starts at the project path and looks into the folder `raw_data` to open the file. Otherwise, we would have to use an **absolute path** (like "C:/Users/hafiznij/Documents/GitHub/r_tutorial/raw_data/london_marathon.rda" which will only work on my notebook, and only if my project stays in on this path.
+This will load the data into R and assigning it the name `winners` by using the `<-`. You can see the data popping up in your `Environment` pane on the upper right.  It is important you use the correct path, because otherwise R will not find your data file. Here the RStudio project we have created earlier comes in handy. It automatically knows our file lies within our project folder, which is why we can use a **relative path**, that starts at the project path and looks into the folder `raw_data` to open the file. Otherwise, we would have to use an **absolute path** (like "C:/Users/hafiznij/Documents/GitHub/r_tutorial/raw_data/london_marathon.rda" which will only work on my notebook, and only if my project stays in on this path.
 
 ## Take a look
 
 Now that we have our data loaded safely into R, we can get an [overview](\overview.qmd) with a multitude of commands. One of the most important ones might be `View()`, which will open the data set excel-style in a new window:
 
 ```{r, eval = FALSE}
-View(london_marathon)
+View(winners)
 ```
 
 If we only want to show the first few rows
@@ -51,31 +52,31 @@ If we only want to show the first few rows
 Especially for bigger data sets, it might be more feasible to only look at the structure and not the whole data set:
 
 ```{r}
-str(london_marathon)
+str(winners)
 ```
 
-On the left we can see the columns of this data.frame, named `Date`, `Year`, `Applicants` etc ... On the right we see the first values in each column, for example `1981`, `1982` etc ... in the `Year`-column.
+On the left we can see the columns of this data.frame, named `Category`, `Year`, `Athlete` and `Nationality`. On the right we see the first values in each column, for example `1981`, `1981`, `1982` etc ... in the `Year`-column.
 
 ## Data wrangling
 
 Now, lets do something with this data. We want to answer the question if people have gotten faster at running marathons over that last 40 years. 
-- Use both data sets. 
-
-We will use a ...
 
 ### Merging data
-Sadly, the winners are not saved in this data set, so we have to load that one as well. 
-Exercise: Try to load the second data set called "winners.rda" into R on your own.
+Sadly, the finishing times are not saved in this data set, but in another one named `times.rda`. 
+
+Exercise: Load the second data set called "times.rda" into R on your own.
 
 ```{r, echo = FALSE}
-load(file = "./raw_data/winners.rda")
+load(file = "./raw_data/times.rda")
 ```
+
+Let's take a quick look at that one as well.:
 
 Now that we have two data sets loaded into R, we can merge them by using the `merge()` command: 
 
 ```{r}
-marathon_final <- merge(x = london_marathon, 
-                        y = winners,
+marathon_final <- merge(x = winners, 
+                        y = times,
                         by = "Year",
                         all = TRUE)
 ```
