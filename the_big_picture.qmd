@@ -4,7 +4,7 @@ Now that we have completed our set up, let's dive right into programming with `R
 
 ## Packages
 
-[Packages](\packages.qmd) are extensions to the `base R` you get by default. We already installed our first packages in [About this workshop](\getting_started.qmd#about-this-workshop). Let's keep doing that and install the following package as well:
+[Packages](\packages.qmd) are extensions to the `base R` you get by default. We already installed our first packages in [About this workshop](https://nickhaf.github.io/r_tutorial/setup.html#about-this-workshop). Let's keep doing that and install the following package as well:
 
 ```{r install_tidyverse, eval = FALSE}
 install.packages("tidyverse")
@@ -40,11 +40,13 @@ This will load the data into R. You can see it popping up in your `Environment` 
 
 ## Take a look
 
-Now that we have our data loaded safely into R, we can get an overview with a multitude of commands. One of the most important ones might be `View()`, which will open the data set excel-style in a new window:
+Now that we have our data loaded safely into R, we can get an [overview](\overview.qmd) with a multitude of commands. One of the most important ones might be `View()`, which will open the data set excel-style in a new window:
 
 ```{r, eval = FALSE}
 View(london_marathon)
 ```
+
+If we only want to show the first few rows
 
 Especially for bigger data sets, it might be more feasible to only look at the structure and not the whole data set:
 
@@ -52,11 +54,11 @@ Especially for bigger data sets, it might be more feasible to only look at the s
 str(london_marathon)
 ```
 
-On the left we can see the columns of this data.frame, named `Date`, `Year`, `Applicants` etc ... Further on the right we see the first values in each column, for example `1981`, `1982` etc ...
+On the left we can see the columns of this data.frame, named `Date`, `Year`, `Applicants` etc ... On the right we see the first values in each column, for example `1981`, `1982` etc ... in the `Year`-column.
 
 ## Data wrangling
 
-Now, lets do something fun with this data. We want to answer the question if people have gotten faster at running marathons over that last 40 years. 
+Now, lets do something with this data. We want to answer the question if people have gotten faster at running marathons over that last 40 years. 
 - Use both data sets. 
 
 We will use a ...
