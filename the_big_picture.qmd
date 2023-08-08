@@ -115,7 +115,7 @@ Divide by Category (Wheelchar vs. no wheelchair)
 
 ### Regression Time vs. year
 
-```{r}
+```{r, eval = FALSE}
 women <- winners[winners$Category == "Women", ]
 
 
@@ -129,7 +129,7 @@ summary(lm_rs)
 plot(lm_rs)
 ```
 
-```{r}
+```{r, eval = FALSE}
 winners$Minutes_total <- winners$Hours * 60 + winners$Minutes
 
 ```
@@ -138,7 +138,7 @@ winners$Minutes_total <- winners$Hours * 60 + winners$Minutes
 
 ## Plot the data
 
-```{r}
+```{r, eval = FALSE}
 library(ggplot2)
 winners %>%
   filter(Category %in% c("Men", "Women")) %>%
@@ -159,7 +159,7 @@ ggplot(data = ., aes(x = Year,
 
 ```
 
-```{r}
+```{r, eval = FALSE}
 # Für die Übung. 
 #install.packages("tidytuesdayR")
 library(tidytuesdayR)
