@@ -4,7 +4,7 @@ Now that we have completed our set up, let's dive right into programming with `R
 
 ## Packages
 
-[Packages](\packages.qmd) are extensions to the `base R` you get by default. We already installed our first packages in [About this workshop](https://nickhaf.github.io/r_tutorial/setup.html#about-this-workshop). Let's keep doing that and install the following package as well:
+[Packages](https://nickhaf.github.io/r_tutorial/packages.html) are extensions to the `base R` you get by default. We already installed our first packages in [About this workshop](https://nickhaf.github.io/r_tutorial/setup.html#about-this-workshop). Let's keep doing that and install the following package as well:
 
 ```{r install_tidyverse, eval = FALSE}
 install.packages("tidyverse")
