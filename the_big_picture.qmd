@@ -42,7 +42,7 @@ This will load the data into R and assigning it the name `winners` by using the 
 
 ## Take a look
 
-Now that we have our data loaded safely into R, we can get an [overview](\overview.qmd) with a multitude of commands. One of the most important ones might be `View()`, which will open the data set excel-style in a new window:
+Now that we have our data loaded safely into R, we can get an [overview](\take_a_look.qmd) with a multitude of commands. One of the most important ones might be `View()`, which will open the data set excel-style in a new window:
 
 ```{r, eval = FALSE}
 View(winners)
@@ -111,6 +111,7 @@ str(winners_merged)
 We have merged the columns of the `times` data set onto the right the `winners` data.
 
 ### Subsetting data
+One very important part of working with data in R is the [subsetting](subsettings.qmd) of data. This means we select specific values from a data set.   
 
 Divide by Category (Wheelchar vs. no wheelchair)
 

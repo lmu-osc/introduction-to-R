@@ -1,0 +1,44 @@
+# Data structures
+
+Please take a look at the different [data types](data_types.qmd) that exist in R, if you are not familiar with them, before continuing with this chapter.
+
+There are five main data structures in R which differ on their dimensions (one dimension, two dimensions, n dimensions) and the type of the elements they are containing (same type, different types):[^structures_table]
+
+```{r, echo = FALSE, results = 'asis'}
+dat_structs <- data.frame(" " = c("1d", "2d", "nd"),
+                          Homogeneous = c("atomic vector", "matrix", "array"), 
+                          Heterogeneous = c("list", "data.frame", "")
+)
+
+knitr::kable(dat_structs, "pipe",
+             col.names = c("", "Homogeneous", "Heterogeneous")
+             ) 
+
+```
+
+[^structures_table]: Table from [Advanced R](http://adv-r.had.co.nz/Data-structures.html).
+
+Let's take a closer look at each one of them:
+
+## Vectors
+Atomic vectors (from hereon only called vectors) contain elements of only the same type: 
+
+```{r}
+num_vec <- c(2023, 8, 8)
+
+char_vec <- c("This", "is", "a", "vec", ".")
+
+log_vec <- c(TRUE, FALSE)
+
+```
+
+The `c()` stands for combine, or concatenate, and is the basic function for building a vector out of single elements. 
+
+
+# Exercises
+1. Load the `tutoR` package and start the exercises about `data structures` by typing:
+
+```{r}
+
+```
+

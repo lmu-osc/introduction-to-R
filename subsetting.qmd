@@ -1,0 +1,3 @@
+# Subsetting data
+
+Please take a look at the different [data structures in R](data_types.qmd) if you are not familiar with them, before you start with this chapter. 
