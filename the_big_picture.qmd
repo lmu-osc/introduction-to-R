@@ -9,6 +9,7 @@ Now that we have completed our set up, let's dive right into programming with `R
 ```{r install_tidyverse, eval = FALSE}
 install.packages("tidyverse")
 ```
+
 The `tidyverse` is a collection of packages following a common philosophy, and facilitate many aspects of coding in R, for example data wrangling and plotting. We will use both functions from base R and from the `tidyverse`.
 
 Just by installing the packages, we can't use them. We also have to load them into our R session:
@@ -31,14 +32,13 @@ library(tidyverse)
 
 ## Load Data
 
-[Data is loaded](\load_data.qmd) into R so you can work with it. Let's do just that. First, you need to download the file "winners.rds" from [this link](https://github.com/nickhaf/r_tutorial/tree/getting_started/raw_data) and save it in your project folder (*Tip: Save it in a new subfolder named "raw_data" or somewhat similar.*). The data comes from the [LondonMarathon](https://github.com/nrennie/LondonMarathon) package. 
-Next, take a look at the ending. Different data formats need different functions for loading them into R. The `winners.rds` file has the ending `.rds`. So we use `readRDS` to load it into R. Here you can find a more thourough discussion about [loading different data formats](\load_data.qmd). 
+[Data is loaded](\load_data.qmd) into R so you can work with it. Let's do just that. First, you need to download the file "winners.rds" from [this link](https://github.com/nickhaf/r_tutorial/tree/getting_started/raw_data) and save it in your project folder (*Tip: Save it in a new subfolder named "raw_data" or somewhat similar.*). The data comes from the [LondonMarathon](https://github.com/nrennie/LondonMarathon) package. Next, take a look at the ending. Different data formats need different functions for loading them into R. The `winners.rds` file has the ending `.rds`. So we use `readRDS` to load it into R. Here you can find a more thourough discussion about [loading different data formats](\load_data.qmd).
 
 ```{r}
 winners <- readRDS(file = "./raw_data/winners.rds")
 ```
 
-This will load the data into R and assigning it the name `winners` by using the `<-`. You can see the data popping up in your `Environment` pane on the upper right.  It is important you use the correct path, because otherwise R will not find your data file. Here the RStudio project we have created earlier comes in handy. It automatically knows our file lies within our project folder, which is why we can use a **relative path**, that starts at the project path and looks into the folder `raw_data` to open the file. Otherwise, we would have to use an **absolute path** (like "C:/Users/hafiznij/Documents/GitHub/r_tutorial/raw_data/london_marathon.rda" which will only work on my notebook, and only if my project stays in on this path.
+This will load the data into R and assigning it the name `winners` by using the `<-`. You can see the data popping up in your `Environment` pane on the upper right. It is important you use the correct path, because otherwise R will not find your data file. Here the RStudio project we have created earlier comes in handy. It automatically knows our file lies within our project folder, which is why we can use a **relative path**, that starts at the project path and looks into the folder `raw_data` to open the file. Otherwise, we would have to use an **absolute path** (like "C:/Users/hafiznij/Documents/GitHub/r_tutorial/raw_data/london_marathon.rda" which will only work on my notebook, and only if my project stays in on this path.
 
 ## Take a look
 
@@ -58,23 +58,23 @@ On the left we can see the columns of this data.frame, named `Category`, `Year`,
 
 ## Data wrangling
 
-Now, lets do something with this data. We want to answer the question if people have gotten faster at running marathons over that last 40 years. 
-Sadly, the finishing times are not saved in this data set, but in another one named `times.rda`. So we need a way to combine them both, so we can run our analysis on the data. 
+Now, lets do something with this data. We want to answer the question if people have gotten faster at running marathons over that last 40 years. Sadly, the finishing times are not saved in this data set, but in another one named `times.rda`. So we need a way to combine them both, so we can run our analysis on the data.
 
 **Exercise: Download the second data set called "times.rda" and load it into R on your own.**
+
 ```{r, echo = FALSE}
 times <- readRDS(file = "./raw_data/times.rds")
 ```
 
 ### Deal with missing values
 
-Let's take a quick look at that one as well: 
+Let's take a quick look at that one as well:
 
 ```{r}
 str(times)
 ```
 
-The only column both data sets seem to have in commonn is the `ID` one. This means we have to merge our two data sets on that column, so rows which have the same value in that column will be merged together. However, we have a slight problem: the `ID` column contains missing values (called `NA`). We will not be able to match these rows over both data sets, so we have to remove them. But first, let's take a look at how many those are: 
+The only column both data sets seem to have in commonn is the `ID` one. This means we have to merge our two data sets on that column, so rows which have the same value in that column will be merged together. However, we have a slight problem: the `ID` column contains missing values (called `NA`). We will not be able to match these rows over both data sets, so we have to remove them. But first, let's take a look at how many those are:
 
 ```{r}
 sum(is.na(times$ID))
@@ -82,8 +82,7 @@ sum(is.na(winners$ID))
 
 ```
 
-Don't worry to much about what that code is doing right now, we will take a closer look later on.
-We seem to have five `NA`s in both data sets. This isn't a whole lot, so we will just remove them, but keep in mind dealing with `NA`s is a broad topic for itself with many different possible approaches. 
+Don't worry to much about what that code is doing right now, we will take a closer look later on. We seem to have five `NA`s in both data sets. This isn't a whole lot, so we will just remove them, but keep in mind dealing with `NA`s is a broad topic for itself with many different possible approaches.
 
 ```{r}
 times <- drop_na(data = times, ID)
@@ -94,7 +93,8 @@ winners <- drop_na(data = winners, ID)
 Here, we use a function from the `tidyr` package (which we installed among others when we installed the `tidyverse`) that removes all rows from the data that contain a `NA` in the `ID` column.
 
 ### Merging
-Now we can merge: 
+
+Now we can merge:
 
 ```{r}
 winners_merged <- merge(x = winners, 
@@ -107,6 +107,7 @@ What happens here? We take our two data sets, called `winers` and `times` and co
 ```{r}
 str(winners_merged)
 ```
+
 We have merged the columns of the `times` data set onto the right the `winners` data.
 
 ### Subsetting data
@@ -133,8 +134,6 @@ plot(lm_rs)
 winners$Minutes_total <- winners$Hours * 60 + winners$Minutes
 
 ```
-
-
 
 ## Plot the data
 
@@ -168,6 +167,6 @@ tuesdata <- tidytuesdayR::tt_load('2022-08-16')
 
 ```
 
-
 ## Conclusion
-In this tutorial we learned, that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in. 
+
+In this tutorial we learned, that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in.

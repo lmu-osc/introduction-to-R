@@ -1,0 +1,14 @@
+{
+  "hash": "c3685154144f96b4e7a7b5db2f3aa409",
+  "result": {
+    "markdown": "# Load data\n\n## Data types\n\nThere are many different data types out there, of which many can be loaded into R. Depending on the type, different commands are used within R. Sometimes, we will have to use additional packages to get access to that function, mainly `readxl` and `haven`. \n\n\n::: {.cell-output-display}\n|Data.type                |Import                       |Export                        |\n|:------------------------|:----------------------------|:-----------------------------|\n|R objects (.Rdata, .rda) |````load()````               |````save()````                |\n|single R object (.Rds)   |````readRDS()````            |````saveRDS()````             |\n|text-files (.txt)        |````read.table()````         |````write.table()````         |\n|.csv-files (.csv)        |````read.csv()````           |````write.csv()````           |\n|Excel-files (.xlsx)      |````readxl::read_excel()```` |````writexl::write_xlsx()```` |\n|SPSS-files (.sav)        |````haven::read_sav()````    |````haven::write_sav()````    |\n|SAS-files (.sas)         |````haven::read_sas()````    |````haven::write_sas()````    |\n|Stata-files (.stata)     |````haven::read_dta()````    |````haven::write_dta()````    |\n:::\n\n\n## Paths\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
