@@ -75,4 +75,4 @@ install.packages("devtools")
 devtools::install_github("nickhaf/tutoR")
 ```
 
-For each chapter, there will be a short theory part. Most of the exercises can be run interactively with the `tutoR` package, but some will incourage you to use the RStudio environment, to get more familiar with it.
+For each chapter, there will be a short theory part. Most of the exercises can be run interactively with the `tutoR` package, but some will encourage you to use the RStudio environment, to get more familiar with it.
