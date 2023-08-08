@@ -9,6 +9,7 @@ Now that we have completed our set up, let's dive right into programming with `R
 ```{r install_tidyverse, eval = FALSE}
 install.packages("tidyverse")
 ```
+The `tidyverse` is a collection of packages following a common philosophy, and facilitate many aspects of coding in R, for example data wrangling and plotting. We will use both functions from base R and from the `tidyverse`.
 
 Just by installing the packages, we can't use them. We also have to load them into our R session:
 
@@ -47,55 +48,66 @@ Now that we have our data loaded safely into R, we can get an [overview](\overvi
 View(winners)
 ```
 
-If we only want to show the first few rows
-
 Especially for bigger data sets, it might be more feasible to only look at the structure and not the whole data set:
 
 ```{r}
 str(winners)
 ```
 
-On the left we can see the columns of this data.frame, named `Category`, `Year`, `Athlete` and `Nationality`. On the right we see the first values in each column, for example `1981`, `1981`, `1982` etc ... in the `Year`-column.
+On the left we can see the columns of this data.frame, named `Category`, `Year`, `Athlete`, `Nationality` and `ID`. On the right we see the first values in each column, for example `1981`, `1981`, `1982` etc ... in the `Year`-column.
 
 ## Data wrangling
 
 Now, lets do something with this data. We want to answer the question if people have gotten faster at running marathons over that last 40 years. 
+Sadly, the finishing times are not saved in this data set, but in another one named `times.rda`. So we need a way to combine them both, so we can run our analysis on the data. 
 
-### Merging data
-Sadly, the finishing times are not saved in this data set, but in another one named `times.rda`. 
-
-Exercise: Load the second data set called "times.rda" into R on your own.
-
+**Exercise: Download the second data set called "times.rda" and load it into R on your own.**
 ```{r, echo = FALSE}
-load(file = "./raw_data/times.rda")
+times <- readRDS(file = "./raw_data/times.rds")
 ```
 
-Let's take a quick look at that one as well.:
+### Deal with missing values
 
-Now that we have two data sets loaded into R, we can merge them by using the `merge()` command: 
+Let's take a quick look at that one as well: 
 
 ```{r}
-marathon_final <- merge(x = winners, 
+str(times)
+```
+
+The only column both data sets seem to have in commonn is the `ID` one. This means we have to merge our two data sets on that column, so rows which have the same value in that column will be merged together. However, we have a slight problem: the `ID` column contains missing values (called `NA`). We will not be able to match these rows over both data sets, so we have to remove them. But first, let's take a look at how many those are: 
+
+```{r}
+sum(is.na(times$ID))
+sum(is.na(winners$ID))
+
+```
+
+Don't worry to much about what that code is doing right now, we will take a closer look later on.
+We seem to have five `NA`s in both data sets. This isn't a whole lot, so we will just remove them, but keep in mind dealing with `NA`s is a broad topic for itself with many different possible approaches. 
+
+```{r}
+times <- drop_na(data = times, ID)
+winners <- drop_na(data = winners, ID)
+
+```
+
+Here, we use a function from the `tidyr` package (which we installed among others when we installed the `tidyverse`) that removes all rows from the data that contain a `NA` in the `ID` column.
+
+### Merging
+Now we can merge: 
+
+```{r}
+winners_merged <- merge(x = winners, 
                         y = times,
-                        by = "Year",
-                        all = TRUE)
+                        by = "ID")
 ```
 
-What happens here? We take our two data sets, called `london_marathon` and `winners` and combine them on the column `Year`. We don't want to loose any data that doesn't have match in the other data set, so we set `all = TRUE`, and voila:
-```{r}
-str(marathon_final)
-```
-We have merged the columns of the `winner` data set onto the right the `london_marathon` data.
-
-### Clean up data
-No we can tidy up our data a bit. 
-
-Remove NAs, select relevant columns, Build another Time column
+What happens here? We take our two data sets, called `winers` and `times` and combine them on the column `ID`. Let's take a look at the finished product:
 
 ```{r}
-winners$Minutes_total <- winners$Hours * 60 + winners$Minutes
-
+str(winners_merged)
 ```
+We have merged the columns of the `times` data set onto the right the `winners` data.
 
 ### Subsetting data
 
@@ -116,6 +128,13 @@ summary(lm_rs)
 
 plot(lm_rs)
 ```
+
+```{r}
+winners$Minutes_total <- winners$Hours * 60 + winners$Minutes
+
+```
+
+
 
 ## Plot the data
 
