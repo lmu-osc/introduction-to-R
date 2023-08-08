@@ -1,0 +1,14 @@
+{
+  "hash": "73c2de25a7b783cc70392e497953d6b0",
+  "result": {
+    "markdown": "# Data structures\n\nPlease take a look at the different [data types](data_types.qmd) that exist in R, if you are not familiar with them, before continuing with this chapter.\n\nThere are five main data structures in R which differ on their dimensions (one dimension, two dimensions, n dimensions) and the type of the elements they are containing (same type, different types):[^structures_table]\n\n\n::: {.cell-output-display}\n|   |Homogeneous   |Heterogeneous |\n|:--|:-------------|:-------------|\n|1d |atomic vector |list          |\n|2d |matrix        |data.frame    |\n|nd |array         |              |\n:::\n\n\n[^structures_table]: Table from [Advanced R](http://adv-r.had.co.nz/Data-structures.html).\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

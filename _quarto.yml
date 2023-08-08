@@ -3,14 +3,17 @@ project:
 
 website:
   title: "R - Open Research Summer School"
+  page-navigation: true
   open-graph: true
   navbar:
+    search: true
     left:
       - href: index.qmd
         text: Home
       - setup.qmd
       - the_big_picture.qmd
       - packages.qmd
+      - load_data.qmd
   sidebar: 
     style: "docked"
     search: true
@@ -23,6 +26,7 @@ website:
           - setup.qmd
           - the_big_picture.qmd
           - packages.qmd
+          - load_data.qmd
 
 format:
   html:
