@@ -12,7 +12,7 @@ install.packages("tidyverse")
 
 Just by installing the packages, we can't use them. We also have to load them into our R session:
 
-```{r load_packages, eval = FALSE}
+```{r load_packages}
 library(tutoR)
 library(tidyverse)
 ```
