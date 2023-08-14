@@ -1,0 +1,89 @@
+# Basic operations
+Let's take a quick look at the most important basic operations in R. 
+
+## Basic mathematical operations
+``` {r, eval = FALSE}
+# sum
+1 + 2
+
+# substract
+2 - 4
+
+# multiply
+4 * 4
+
+# divide
+3/2
+```
+
+## Comparisons and Logical operators
+The boolean variables in R are `TRUE` and `FALSE`. 
+Comparison operators return either `TRUE` or `FALSE`: 
+
+```{r}
+1 < 2
+
+# But:
+2 < 1
+
+```
+
+```{r}
+dat_structs <- data.frame("Operator" = c("<", ">", "==", "!=", "<=", ">="),
+                          "Description" = c("less than", "greater than", "equal to", "not equal to", "less or equal", "greater or equal")
+)
+
+knitr::kable(dat_structs, "pipe",
+             col.names = c("Operator", "Description")
+             ) 
+```
+
+## !
+We can invert boolean values by using `!`:
+```{r}
+!TRUE
+
+!(1 > 100)
+```
+
+
+## Assignment operator
+The operator `<-` assigns a value to an object: 
+```{r}
+## Assign the result of 1 + 1 to the object 'result':
+result <- 1 + 1
+
+## Assign the result of the comparison to the object 'log_result':
+log_result <- !(10 > 1)
+```
+
+## Functions
+Everything that does something in R is a function. 
+A function call has the form: `functionname(argument1 = value, argument2 = value, ...)`.
+One basic example for a function is the function that can calculate the square root: 
+```{r}
+sqrt(4)
+```
+We can also assign the name of the function argument to our value. This is clearer, as we don't rely on the order of the function arguments:
+
+```{r}
+rep(4, 10)
+```
+will rep `4` `10` times. 
+If we swap the arguments, the `10` will be repeate `4` times:
+```{r}
+rep(10, 4)
+```
+But if we specify which value belongs to which function argument, the order doesn't matter:
+```{r}
+rep(times = 10, x = 4)
+```
+
+How do we know which arguments a function has?:
+
+## HELP!
+One of the most important functions in R is the help-function `?`:
+```{r}
+?rep
+```
+will open the documentation for the function with the description of its usage, details about the arguments ...

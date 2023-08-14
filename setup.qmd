@@ -49,6 +49,8 @@ Some of the most basic things you can do in `R` are basic mathematical operation
 
 By the way: Code lines, that are preceded by a `#` are commented out, and will not be evaluated.
 
+If you want, you can take a deeper look at the [basic functionality](basics.qmd) in R.
+
 ## Workflow
 
 ### Scripts

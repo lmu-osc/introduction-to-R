@@ -2,7 +2,9 @@
 
 Please take a look at the different [data types](data_types.qmd) that exist in R, if you are not familiar with them, before continuing with this chapter.
 
-There are five main data structures in R which differ on their dimensions (one dimension, two dimensions, n dimensions) and the type of the elements they are containing (same type, different types):[^structures_table]
+There are five main data structures in R which differ on their dimensions (one dimension, two dimensions, n dimensions) and the type of the elements they are containing (same type, different types):[^data_structures-1]
+
+[^data_structures-1]: Table from [Advanced R](http://adv-r.had.co.nz/Data-structures.html).
 
 ```{r, echo = FALSE, results = 'asis'}
 dat_structs <- data.frame(" " = c("1d", "2d", "nd"),
@@ -16,12 +18,11 @@ knitr::kable(dat_structs, "pipe",
 
 ```
 
-[^structures_table]: Table from [Advanced R](http://adv-r.had.co.nz/Data-structures.html).
-
 Let's take a closer look at each one of them:
 
 ## Vector
-Atomic vectors (from hereon only called vectors) contain elements of only the same type: 
+
+Atomic vectors (from hereon only called vectors) contain elements of only the same type:
 
 ```{r}
 num_vec <- c(2023, 8, 8)
@@ -34,10 +35,12 @@ log_vec <- c(TRUE, FALSE)
 log_vec
 ```
 
-The `c()` stands for combine, or concatenate, and is the basic function for building a vector out of single elements. 
+The `c()` stands for combine, or concatenate, and is the basic function for building a vector out of single elements.
 
 ## Matrix
+
 A matrix can, similar to a vector, only contain elements of the same type. But, unlike a vector, it has two dimensions:
+
 ```{r}
 num_matrix <- matrix(c(1, 2, 3, 3, 4, 1), nrow = 2)
 num_matrix
@@ -47,12 +50,15 @@ char_matrix
 ```
 
 ## Array
+
 ```{r}
 
 ```
 
 ## Data frame
-A data frame is, like a matrix, two dimensional, but, unlike a matrix, it can store elements of different types. It is the closest to data tables you might know from excel. One important point: In each column, we can only store data of the same type. 
+
+A data frame is, like a matrix, two dimensional, but, unlike a matrix, it can store elements of different types. It is the closest to data tables you might know from excel. One important point: In each column, we can only store data of the same type.
+
 ```{r}
 persons <- data.frame(name = c("Anna", "Alex", "John", "Jessi"),
                       age = c(19, 17, 18, 18),
@@ -60,16 +66,17 @@ persons <- data.frame(name = c("Anna", "Alex", "John", "Jessi"),
                       big5_extra = c(3.5, 2, 4.5, 4.2)
                       )
 ```
+
 Note that we do nothing else here than combining vectors to a data frame. Each vector will be one column.
 
 ### Tibbles
-A special type of data frames are the so called `tibbles`.
-Tibbles are a modern version of data frames and the standard data frame type of the `tidyverse`, as they have some advantageous characteristics. 
-So don't be confused if you run into them, in general they behave like data frames. 
+
+A special type of data frames are the so called `tibbles`. Tibbles are a modern version of data frames and the standard data frame type of the `tidyverse`, as they have some advantageous characteristics. So don't be confused if you run into them, in general they behave like data frames.
 
 ## List
-A list is a one dimensional object, which can, unlike like a vector, contain elements of different types, but also of different lengths. 
-For example, we can store a vectors of different lengths and data frames in a list, which makes it the most versatile data structure:
+
+A list is a one dimensional object, which can, unlike like a vector, contain elements of different types, but also of different lengths. For example, we can store a vectors of different lengths and data frames in a list, which makes it the most versatile data structure:
+
 ```{r}
 personality_rating <- list(
      big5 = data.frame(name = c("Jessi", "John"),
@@ -79,13 +86,13 @@ personality_rating <- list(
      )
 personality_rating
 ```
-Here, we define the list `personality_rating`, which includes a data frame with the personality rating, and some meta information in the form of a character vector, describing the rating type. 
 
+Here, we define the list `personality_rating`, which includes a data frame with the personality rating, and some meta information in the form of a character vector, describing the rating type.
 
 # Exercises
-1. Load the `tutoR` package and start the exercises about `data structures` by typing:
+
+1.  Load the `tutoR` package and start the exercises about `data structures` by typing:
 
 ```{r, eval = FALSE}
 learnr::run_tutorial(name = "data_structures", package = "tutoR")
 ```
-
