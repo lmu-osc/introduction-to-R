@@ -18,7 +18,7 @@ website:
     style: "docked"
     search: true
     contents:
-          - index.qmd
+      - index.qmd
       - section: "Getting Started"
         contents:
           - setup.qmd
