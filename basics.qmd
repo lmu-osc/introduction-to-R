@@ -2,6 +2,7 @@
 Let's take a quick look at the most important basic operations in R. 
 
 ## Basic mathematical operations
+We can use R as a calculator:
 ``` {r, eval = FALSE}
 # sum
 1 + 2
@@ -14,6 +15,18 @@ Let's take a quick look at the most important basic operations in R.
 
 # divide
 3/2
+```
+
+## Assignment operator
+We can create objects in R by using the assignment operator `<-`, which assigns a value to an object: 
+```{r}
+## Assign the result of 1 + 1 to the object 'result':
+result <- 1 + 1
+result
+
+## Assign the result of the comparison to the object 'log_result':
+log_result <- !(10 > 1)
+log_result
 ```
 
 ## Comparisons and Logical operators
@@ -38,27 +51,30 @@ knitr::kable(dat_structs, "pipe",
              ) 
 ```
 
+Mainly we will use these logical operation to check which elements in a [vector]() satisfy some requirements:
+
+```{r}
+# Build a vector of numbers ranging from 1 to 10
+vec_num <- 1:10
+
+# Check which of these numbers are smaller than 5
+vec_num < 5
+```
+
+This will become important later on, when we want to subset vectors and data frames to extract only those values that satisfy some requirements we defined. 
+
 ## !
 We can invert boolean values by using `!`:
 ```{r}
 !TRUE
 
 !(1 > 100)
-```
 
-
-## Assignment operator
-The operator `<-` assigns a value to an object: 
-```{r}
-## Assign the result of 1 + 1 to the object 'result':
-result <- 1 + 1
-
-## Assign the result of the comparison to the object 'log_result':
-log_result <- !(10 > 1)
+!(1:10 != c(1, 2))
 ```
 
 ## Functions
-Everything that does something in R is a function. 
+Everything that **does** something in R is a function. 
 A function call has the form: `functionname(argument1 = value, argument2 = value, ...)`.
 One basic example for a function is the function that can calculate the square root: 
 ```{r}
@@ -70,7 +86,7 @@ We can also assign the name of the function argument to our value. This is clear
 rep(4, 10)
 ```
 will rep `4` `10` times. 
-If we swap the arguments, the `10` will be repeate `4` times:
+If we swap the arguments, the `10` will be repeat `4` times:
 ```{r}
 rep(10, 4)
 ```
