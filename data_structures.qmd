@@ -91,7 +91,7 @@ Here, we define the list `personality_rating`, which includes a data frame with 
 
 # Exercises
 
-1.  Load the `tutoR` package and start the exercises about `data structures` by typing:
+1.  Load the `tutoR` package and start the exercises about `data structures` by typing the following code into you console:
 
 ```{r, eval = FALSE}
 learnr::run_tutorial(name = "data_structures", package = "tutoR")

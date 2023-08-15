@@ -4,17 +4,8 @@ Let's take a quick look at the most important basic operations in R.
 ## Basic mathematical operations
 We can use R as a calculator:
 ``` {r, eval = FALSE}
-# sum
-1 + 2
-
-# substract
-2 - 4
-
-# multiply
-4 * 4
-
-# divide
-3/2
+(1 + 2) * 3^2
+2 - 3/log(8)
 ```
 
 ## Assignment operator
@@ -41,7 +32,8 @@ Comparison operators return either `TRUE` or `FALSE`:
 
 ```
 
-```{r}
+These are the comparison operators you will typically use:
+```{r, echo = FALSE}
 dat_structs <- data.frame("Operator" = c("<", ">", "==", "!=", "<=", ">="),
                           "Description" = c("less than", "greater than", "equal to", "not equal to", "less or equal", "greater or equal")
 )
@@ -51,7 +43,7 @@ knitr::kable(dat_structs, "pipe",
              ) 
 ```
 
-Mainly we will use these logical operation to check which elements in a [vector]() satisfy some requirements:
+Mainly we will use these logical operation to check which elements in a [vector](https://nickhaf.github.io/r_tutorial/data_structures.html#vector) satisfy some requirements:
 
 ```{r}
 # Build a vector of numbers ranging from 1 to 10
@@ -103,3 +95,11 @@ One of the most important functions in R is the help-function `?`:
 ?rep
 ```
 will open the documentation for the function with the description of its usage, details about the arguments ...
+
+## Exercise
+
+1.  Load the `tutoR` package and start the exercises about the `basic operations` by typing the following code into your console:
+
+```{r, eval = FALSE}
+learnr::run_tutorial(name = "basics", package = "tutoR")
+```
