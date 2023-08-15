@@ -95,6 +95,7 @@ One of the most important functions in R is the help-function `?`:
 ?rep
 ```
 will open the documentation for the function with the description of its usage, details about the arguments ...
+In the next chapter we will take a quick look at R's package infrastructure which makes it easy to add a multitude of additional functionality.
 
 ## Exercise
 
