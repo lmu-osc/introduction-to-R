@@ -78,3 +78,5 @@ devtools::install_github("nickhaf/tutoR")
 ```
 
 For each chapter, there will be a short theory part. Most of the exercises can be run interactively with the `tutoR` package, but some will encourage you to use the RStudio environment, to get more familiar with it.
+
+Feel free to use any resources at you disposal to solve the exercises. That's how you would also do it in real live. Just make sure you understand why your solution works (or why it doesn't).
