@@ -1,7 +1,5 @@
 # Data structures
 
-Please take a look at the different [data types](data_types.qmd) that exist in R, if you are not familiar with them, before continuing with this chapter.
-
 There are five main data structures in R which differ on their dimensions (one dimension, two dimensions, n dimensions) and the type of the elements they are containing (same type, different types):[^data_structures-1]
 
 [^data_structures-1]: Table from [Advanced R](http://adv-r.had.co.nz/Data-structures.html).
@@ -18,7 +16,7 @@ knitr::kable(dat_structs, "pipe",
 
 ```
 
-Let's take a closer look at each one of them:
+Let's take a closer look at the two we will use mostly throughout this workshop:
 
 ## Vector
 
@@ -37,27 +35,26 @@ log_vec
 
 The `c()` stands for combine, or concatenate, and is the basic function for building a vector out of single elements.
 
-## Matrix
-
-A matrix can, similar to a vector, only contain elements of the same type. But, unlike a vector, it has two dimensions:
+### Remarks: Data types
+If we take a look at the structure of the vectors we have just created, we see se a short description of the data type we are dealing with in front of the vector: 
+```{r}
+str(num_vec)
+str(char_vec)
+str(log_vec)
+```
+The first one is `num` (numeric) so it only stores numeric values. The second one is `char` (character), so it only can contain strings. And last but not least we have `logi` (logical) for [boolean values](https://nickhaf.github.io/r_tutorial/basics.html#comparisons-and-logical-operators).
+Why is that important? 
+Well, some functions only make sense for specific data types. For example:
 
 ```{r}
-num_matrix <- matrix(c(1, 2, 3, 3, 4, 1), nrow = 2)
-num_matrix
-
-char_matrix <- matrix(c("a", "b", "c", "d"), nrow = 2)
-char_matrix
+mean(char_vec)
 ```
 
-## Array
-
-```{r}
-
-```
+gives us a warning, because the input has the wrong format. 
 
 ## Data frame
 
-A data frame is, like a matrix, two dimensional, but, unlike a matrix, it can store elements of different types. It is the closest to data tables you might know from excel. One important point: In each column, we can only store data of the same type.
+A data frame is two dimensional and can store elements of different types. It is the closest to data tables we are probably most used to working with. 
 
 ```{r}
 persons <- data.frame(name = c("Anna", "Alex", "John", "Jessi"),
@@ -71,9 +68,19 @@ Note that we do nothing else here than combining vectors to a data frame. Each v
 
 ### Tibbles
 
-A special type of data frames are the so called `tibbles`. Tibbles are a modern version of data frames and the standard data frame type of the `tidyverse`, as they have some advantageous characteristics. So don't be confused if you run into them, in general they behave like data frames.
+A special type of data frames are the so called `tibbles`. Tibbles are a modern version of data frames and the standard data frame type of the `tidyverse`, as they have some advantageous characteristics (e.g., note the prettier printing of the data frame). So don't be confused if you run into them, in general they behave like data frames.
 
-## List
+```{r}
+persons_tibble <- tibble::tibble(
+  name = c("Anna", "Alex", "John", "Jessi"),
+  age = c(19, 17, 18, 18),
+  birth_month = c("Jan", "Sep", "Oct", "Mar"),
+  big5_extra = c(3.5, 2, 4.5, 4.2)
+)
+persons_tibble
+```
+
+## Honorable mention: List
 
 A list is a one dimensional object, which can, unlike like a vector, contain elements of different types, but also of different lengths. For example, we can store a vectors of different lengths and data frames in a list, which makes it the most versatile data structure:
 
@@ -88,6 +95,9 @@ personality_rating
 ```
 
 Here, we define the list `personality_rating`, which includes a data frame with the personality rating, and some meta information in the form of a character vector, describing the rating type.
+We won't use it any more in this workshop, but keep in mind it exists, as it quickly becomes necessary for managing more complex tasks.  
+
+Instead, we are now well equipped to get started with some data manipulation and transformation. 
 
 # Exercises
 
