@@ -25,11 +25,11 @@ website:
           - the_big_picture.qmd
       - section: "Basics"
         contents:
-         - basics.qmd
-         - load_data.qmd
-         - packages.qmd
-         - data_types.qmd
-         - data_structures.qmd
+          - basics.qmd
+          - load_data.qmd
+          - packages.qmd
+          - data_types.qmd
+          - data_structures.qmd
       - section: "Data frames"
          - subsetting.qmd
 format:
