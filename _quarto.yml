@@ -31,7 +31,7 @@ website:
           - data_types.qmd
           - data_structures.qmd
       - section: "Data frames"
-         - subsetting.qmd
+          - subsetting.qmd
 format:
   html:
     theme: cosmo
