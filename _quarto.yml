@@ -31,6 +31,7 @@ website:
           - data_types.qmd
           - data_structures.qmd
       - section: "Data frames"
+        contents:
           - subsetting.qmd
 format:
   html:
