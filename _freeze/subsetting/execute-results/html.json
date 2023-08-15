@@ -1,0 +1,14 @@
+{
+  "hash": "9b0363e38f8281f8c235cbcf25b210a7",
+  "result": {
+    "markdown": "# Subsetting data\n\nPlease take a look at the different [data structures in R](data_types.qmd) if you are not familiar with them, before you start with this chapter.\n\nNow that we know how to store data in different formats, we also need to talk about how we can extract data from our data structures.\n\n## Vectors\n\nExtracting elements from vectors is pretty straight forward: we just put the position of the element we want to extract behind the vector in square brackets:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nvec_char <- c(\"Jess\", \"Jane\", \"Joe\", \"Alex\")\nvec_char[2]\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"Jane\"\n```\n:::\n:::\n\n\nOf course we can also do that for multiple elements:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nvec_char[c(2,3,4)]\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"Jane\" \"Joe\"  \"Alex\"\n```\n:::\n\n```{.r .cell-code}\n## Or, less to write:\nvec_char[2:4]\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"Jane\" \"Joe\"  \"Alex\"\n```\n:::\n:::\n\n\nAnother way would be to provide a logical vector, which defines for each position, if we want to extract the element or not:\n\n\n::: {.cell}\n\n```{.r .cell-code}\nvec_char[c(TRUE, FALSE, TRUE, FALSE)]\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"Jess\" \"Joe\" \n```\n:::\n:::\n\n\nThis will come in handy later on, when we want to extract rows from data frames by different conditions, so let's take a closer look in [Logical comparisons](logical.qmd)\n\n## Data frames\n\nWe will look at two ways to extract rows by conditions from data frames.\n\n### Base R\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
