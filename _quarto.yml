@@ -18,16 +18,21 @@ website:
     style: "docked"
     search: true
     contents:
-      - section: "Basics"
-        contents:
-          - index.qmd
+      - index.qmd
       - section: "Getting Started"
         contents:
           - setup.qmd
           - the_big_picture.qmd
-          - packages.qmd
+      - section: "Basics"
+        contents:
+          - basics.qmd
           - load_data.qmd
-
+          - packages.qmd
+          - data_types.qmd
+          - data_structures.qmd
+      - section: "Data frames"
+        contents:
+          - subsetting.qmd
 format:
   html:
     theme: cosmo

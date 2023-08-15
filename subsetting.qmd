@@ -1,3 +1,37 @@
 # Subsetting data
 
-Please take a look at the different [data structures in R](data_types.qmd) if you are not familiar with them, before you start with this chapter. 
+Please take a look at the different [data structures in R](data_types.qmd) if you are not familiar with them, before you start with this chapter.
+
+Now that we know how to store data in different formats, we also need to talk about how we can extract data from our data structures.
+
+## Vectors
+
+Extracting elements from vectors is pretty straight forward: we just put the position of the element we want to extract behind the vector in square brackets:
+
+```{r}
+vec_char <- c("Jess", "Jane", "Joe", "Alex")
+vec_char[2]
+```
+
+Of course we can also do that for multiple elements:
+
+```{r}
+vec_char[c(2,3,4)]
+## Or, less to write:
+vec_char[2:4]
+```
+
+Another way would be to provide a logical vector, which defines for each position, if we want to extract the element or not:
+
+```{r}
+vec_char[c(TRUE, FALSE, TRUE, FALSE)]
+```
+
+This will come in handy later on, when we want to extract rows from data frames by different conditions, so let's take a closer look in [Logical comparisons](logical.qmd)
+
+## Data frames
+
+We will look at two ways to extract rows by conditions from data frames.
+
+### Base R
+
