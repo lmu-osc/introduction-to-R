@@ -19,7 +19,7 @@ We can compare them somewhat to apps in an appstore:
 Before we can use packages we have to install them once. Most packages are hosted via the Comprehensive R Archive Network (CRAN), to install a package from there, we can use:
 
 ```{r, eval = FALSE}
-#install.packages("aRtsy")
+install.packages("aRtsy")
 ```
 
 But often packages are only (or as well) provided via GitHub. To install a package from there, use:
