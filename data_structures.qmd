@@ -36,25 +36,26 @@ log_vec
 The `c()` stands for combine, or concatenate, and is the basic function for building a vector out of single elements.
 
 ### Remarks: Data types
-If we take a look at the structure of the vectors we have just created, we see se a short description of the data type we are dealing with in front of the vector: 
+
+If we take a look at the structure of the vectors we have just created, we see se a short description of the data type we are dealing with in front of the vector:
+
 ```{r}
 str(num_vec)
 str(char_vec)
 str(log_vec)
 ```
-The first one is `num` (numeric) so it only stores numeric values. The second one is `char` (character), so it only can contain strings. And last but not least we have `logi` (logical) for [boolean values](https://nickhaf.github.io/r_tutorial/basics.html#comparisons-and-logical-operators).
-Why is that important? 
-Well, some functions only make sense for specific data types. For example:
+
+The first one is `num` (numeric) so it only stores numeric values. The second one is `char` (character), so it only can contain strings. And last but not least we have `logi` (logical) for [boolean values](https://nickhaf.github.io/r_tutorial/basics.html#comparisons-and-logical-operators). Why is that important? Well, some functions only make sense for specific data types. For example:
 
 ```{r}
 mean(char_vec)
 ```
 
-gives us a warning, because the input has the wrong format. 
+gives us a warning, because the input has the wrong format.
 
 ## Data frame
 
-A data frame is two dimensional and can store elements of different types. It is the closest to data tables we are probably most used to working with. 
+A data frame is two dimensional and can store elements of different types. It is the closest to data tables we are probably most used to working with.
 
 ```{r}
 persons <- data.frame(name = c("Anna", "Alex", "John", "Jessi"),
@@ -94,10 +95,9 @@ personality_rating <- list(
 personality_rating
 ```
 
-Here, we define the list `personality_rating`, which includes a data frame with the personality rating, and some meta information in the form of a character vector, describing the rating type.
-We won't use it any more in this workshop, but keep in mind it exists, as it quickly becomes necessary for managing more complex tasks.  
+Here, we define the list `personality_rating`, which includes a data frame with the personality rating, and some meta information in the form of a character vector, describing the rating type. We won't use it any more in this workshop, but keep in mind it exists, as it quickly becomes necessary for managing more complex tasks.
 
-Instead, we are now well equipped to get started with some data manipulation and transformation. 
+Instead, we are now well equipped to get started with some data manipulation and transformation.
 
 # Exercises
 

@@ -2,7 +2,7 @@
 
 Please take a look at the different [data structures in R](data_types.qmd) if you are not familiar with them, before you start with this chapter.
 
-Now that we know how to store data in different formats, we also need to talk about how we can extract data from our data structures.
+Now that we know how to store data in different formats, we also need to talk about how we can extract data from our data structures, so we can work with it.
 
 ## Vectors
 
@@ -27,11 +27,122 @@ Another way would be to provide a logical vector, which defines for each positio
 vec_char[c(TRUE, FALSE, TRUE, FALSE)]
 ```
 
-This will come in handy later on, when we want to extract rows from data frames by different conditions, so let's take a closer look in [Logical comparisons](logical.qmd)
+This will come in handy later on, when we want to extract rows from data frames by different conditions. 
+If you feel like you need to, you can refresh on [logical operators](https://nickhaf.github.io/r_tutorial/basics.html#comparisons-and-logical-operators) before continuing. 
 
 ## Data frames
 
 We will look at two ways to extract rows by conditions from data frames.
 
 ### Base R
+```{r}
+# Define an example data frame
+persons <- data.frame(name = c("Anna", "Alex", "John", "Jessi"),
+                      age = c(19, 17, 18, 18),
+                      birth_month = c("Jan", "Sep", "Oct", "Mar"),
+                      big5_extro = c(3.5, 2, 4.5, 4.2)
+                      )
+```
+In `Base R`, extracting rows or columns from a data frame is very similar to extracting values from a vector. 
+We use square brackets `[,]`, but this time with a `,` in the middle. 
+In front of the `,` we write the **rows** we want to extract:
+
+```{r}
+# Extract the first and the fourth row
+persons[c(1, 4), ]
+```
+
+Behind it the **columns**:
+```{r}
+# Extract the second and the fourth column:
+persons[, c(2, 4)]
+
+# Extract the columns by name:
+persons[, c("age", "big5_extra")]
+
+# Or only the column age (and turn it intow a vector right away):
+persons$age
+```
+
+And of course we can combine both calls:
+```{r}
+persons[c(1, 4), c(2, 4)]
+
+persons[c(1, 4), c("age", "big5_extra")]
+
+```
+
+We can also use boolean values:
+```{r}
+persons[c(TRUE, FALSE, FALSE, TRUE), c(TRUE, FALSE, FALSE, TRUE)]
+```
+
+Now the stuff we looked at in [logical operators](https://nickhaf.github.io/r_tutorial/basics.html#comparisons-and-logical-operators) comes in handy! We can now filter rows which match some condition. For example, we might want to look at all persons which are `18` years old:
+
+```{r}
+persons[persons$age == 18, ]
+```
+Take a close look at the comparison before the `,`:
+
+```{r}
+persons$age == 18
+```
+`persons$age` is a vector, so comparing its values to a specified value yields a logical vector with the respective `TRUE` and `FALSE` values. We can insert this logical vector in front of the `,` to extract all rows corresponding to that condition. 
+
+We can also combine multiple logical vectors using `&` ("and") and `|` ("or").
+For example, we might want to look at all persons older than 17 which have an extroversion rating below 4.5:
+
+```{r}
+persons[persons$age > 17 & persons$big5_extra < 4.5, ]
+```
+
+Or at all persons, that are either `18` years old, or have an extroversion rating above `3`:
+
+```{r}
+persons[persons$age == 18 | persons$big5_extra > 3, ]
+```
+
+In the long run, always having to define the data frame multiple time in each row can become a bit annoying and clutters the code. Enter, the `filter()` function:
+
+### Tidyverse
+The `dplyr` package is part of the `tidyverse` and provides a grammar of data manipulation. 
+We can use `filter()` to subset rows from a data frame:
+```{r}
+library(dplyr)
+
+filter(persons, age == 18, big5_extra < 4.5)
+```
+Note how we can just write our conditions without connecting them with `&` (`filter()` does that automatically for us).
+Also, we don't have to put the column names into `""`, because `filter()` knows that this are column names of the `persons` data frame, which makes coding a bit more pleasant.
+
+#### Remarks: the pipe operator
+Hold on! Normally, we wouldn't write `tidyverse` code like that. Instead, we would use the pipe operator `%>%` (*than do*), which makes it easy to connect multiple function calls:
+```{r}
+persons %>%
+  filter(age == 18, big5_extra < 4.5)
+```
+Here, we first input the data frame we want to manipulate. Than we filter, as specified by the pipe operator. 
+Like this, we can easily connect multiple function calls instead of nesting them within multiple brackets, which increases the readability massively:
+
+```{r}
+start_value <- -8
+sqrt(mean(abs((rep(seq(from = start_value, to = 20, by = 0.5), 4)))))
+```
+
+becomes:
+```{r}
+start_value <- -8
+start_value %>%
+  seq(from = ., to = 20, by = 0.5) %>%
+  rep(times = 4) %>%
+  abs %>%
+  mean %>%
+  sqrt
+```
+
+Much nicer to read, right?
+Some notes on this syntax: If we don't have any additonal arguments we want to put into the function, we can just write the function name without any brackets. The pipe operator will give the result of the last function as input into the next function. If we want to clearly state which of the function arguments should receive the input, we can write a `.`, which can be read as *output of the previous function call*. 
+
+
+
 
