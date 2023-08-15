@@ -3,8 +3,12 @@
     "Version": "4.3.1",
     "Repositories": [
       {
+        "Name": "igraph",
+        "URL": "https://igraph.r-universe.dev"
+      },
+      {
         "Name": "CRAN",
-        "URL": "https://packagemanager.posit.co/cran/latest"
+        "URL": "https://cloud.r-project.org"
       }
     ]
   },
@@ -853,6 +857,16 @@
       ],
       "Hash": "18e9c28c1d3ca1560ce30658b22ce104"
     },
+    "mnormt": {
+      "Package": "mnormt",
+      "Version": "2.1.1",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "c83992ef63553d1e4b97162a4a753470"
+    },
     "modelr": {
       "Package": "modelr",
       "Version": "0.1.11",
@@ -976,6 +990,23 @@
         "utils"
       ],
       "Hash": "709d852d33178db54b17c722e5b1e594"
+    },
+    "psych": {
+      "Package": "psych",
+      "Version": "2.3.6",
+      "Source": "Repository",
+      "Repository": "RSPM",
+      "Requirements": [
+        "grDevices",
+        "graphics",
+        "lattice",
+        "methods",
+        "mnormt",
+        "nlme",
+        "parallel",
+        "stats"
+      ],
+      "Hash": "458f21cdb24a71340615df3393e8fab1"
     },
     "purrr": {
       "Package": "purrr",

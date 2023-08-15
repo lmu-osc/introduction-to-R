@@ -26,10 +26,10 @@ website:
       - section: "Basics"
         contents:
           - basics.qmd
-          - load_data.qmd
-          - packages.qmd
           - data_types.qmd
           - data_structures.qmd
+          - packages.qmd
+          - load_data.qmd
       - section: "Data frames"
         contents:
           - subsetting.qmd
