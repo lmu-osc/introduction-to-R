@@ -26,7 +26,6 @@ website:
       - section: "Basics"
         contents:
           - basics.qmd
-          - data_types.qmd
           - data_structures.qmd
           - packages.qmd
           - load_data.qmd
