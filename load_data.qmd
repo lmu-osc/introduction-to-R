@@ -51,6 +51,7 @@ Now take a look at the working directory and the relative path i used for loadin
 
 # Exercises
 
-1.  Load \..., use relative paths.
+1.  For the rest of the workshop, we will use the data frame `winners` from the package [LondonMarathon](https://github.com/nrennie/LondonMarathon). 
+I have already tweaked it a bit to make it easier to work with, so just download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and read it into R if you want to follow this chapter within R (solution in next chapter).
 2.  Advanced: Load the .csv file into R. Did that work as expected? If not, why not?\
     *Hint*: Take a look at the .csv by opening it in a text editor. Look at the documentation of `read.csv()` and take a look at the defaults.

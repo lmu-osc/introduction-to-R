@@ -14,7 +14,7 @@ winners_raw[na_rows, "ID"] <- NA
 winners <- winners_raw %>%
   select(-c("Time", "Hours", "Minutes", "Seconds"))
 
-saveRDS(winners, file = here::here("raw_data", "winners.rds"))
+saveRDS(as.data.frame(winners), file = here::here("raw_data", "winners.rds"))
 
 
 times <- winners_raw %>%

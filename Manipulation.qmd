@@ -1,5 +1,62 @@
-# New variables
+# New columns
+
+Adding new columns to a data frame is pretty straight forward. We just define the column name, and then assign it some input:
+
+```{r}
+persons <- data.frame(name = c("Anna", "Alex", "John", "Jessi"),
+                      age = c(19, 17, 18, 18),
+                      birth_month = c("Jan", "Sep", "Oct", "Mar"),
+                      big5_extro = c(3.5, 2, 4.5, 4.2)
+                      )
+
+persons$big5_neuro <- c(3, 4, 1, 2)
+
+```
+
+Or, using the `tidyverse`:
+
+::: tidy
+```{r, message = FALSE}
+library(dplyr)
+persons <- persons %>%
+  mutate(big5_open = c(3, 4, 3, 4))
+```
+:::
 
 # ifelse
 
+We can also add new values conditionally, for example by using the `ifelse()` function:
+
+```{r}
+persons$big5_neuro_dichotomous <- ifelse(test = persons$big5_neuro >= 5/2,
+                                         yes = "high",
+                                         no = "low")
+persons
+```
+
+::: tidy
+```{r}
+persons <- persons %>%
+  mutate(big5_extra_dichotomous = ifelse(test = persons$big5_neuro >= 5/2,
+                                         yes = "high",
+                                         no = "low")
+  )
+persons
+```
+:::
+
+# Merging
+
+```{r}
+times <- readRDS(file = "./raw_data/times.rds")
+
+head(times)
+```
+
+Hmm, looks like we can connect our data sets using the `ID` column:
+
+## Merging data frames
+
 # missings
+
+Finally, we have to talk about missing values. Missing values are denoted in R by `NA` (or `NaN` in some cases). We have to deal with them

@@ -1,6 +1,6 @@
 # The big picture
 
-Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project", which follows a typical workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little bit more depth for each topic. If you want to have more in depth information instead of following the whole workflow first, you can also skip this chapter and jump to the chapters and exercises you are interested in. But make sure to do the final exercise, to test you R proficiency in the end. 
+Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project", which follows a typical workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little bit more depth for each topic. If you want to have more in depth information instead of following the whole workflow first, you can also skip this chapter and jump to the chapters and exercises you are interested in. But make sure to do the final exercise, to test you R proficiency in the end.
 
 ## Packages
 
@@ -33,6 +33,14 @@ library(tidyverse)
 ## Load Data
 
 [Data is loaded](\load_data.qmd) into R so you can work with it. Let's do just that. First, you need to download the file "winners.rds" from [this link](https://github.com/nickhaf/r_tutorial/tree/getting_started/raw_data) and save it in your project folder (*Tip: Save it in a new subfolder named "raw_data" or somewhat similar.*). The data comes from the [LondonMarathon](https://github.com/nrennie/LondonMarathon) package. Next, take a look at the ending. Different data formats need different functions for loading them into R. The `winners.rds` file has the ending `.rds`. So we use `readRDS` to load it into R. Here you can find a more thourough discussion about [loading different data formats](\load_data.qmd).
+
+# Data set
+For this chapter, we are going to use the data set `babynames`, which we can find on the `tidytuesday` site:
+```{r}
+# install.packages("readr")
+babynames <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-03-22/babynames.csv')
+```
+(Yes, we can read in `.csv` data simply by using an URL if provided.)
 
 ```{r}
 winners <- readRDS(file = "./raw_data/winners.rds")
