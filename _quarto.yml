@@ -30,7 +30,7 @@ website:
           - data_structures.qmd
           - packages.qmd
           - load_data.qmd
-      - section: "Data frames"
+      - section: "Data manipulation and transformation"
         contents:
           - subsetting.qmd
 format:
