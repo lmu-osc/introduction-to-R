@@ -1,0 +1,14 @@
+{
+  "hash": "98447624958dfc643ab38fad25a07af4",
+  "result": {
+    "markdown": "# New columns\nAdding new columns to a data frame is pretty straight forward. We just define the column name, and then assign it some input:\n\n::: {.cell}\n\n```{.r .cell-code}\npersons <- data.frame(name = c(\"Anna\", \"Alex\", \"John\", \"Jessi\"),\n                      age = c(19, 17, 18, 18),\n                      birth_month = c(\"Jan\", \"Sep\", \"Oct\", \"Mar\"),\n                      big5_extro = c(3.5, 2, 4.5, 4.2)\n                      )\n\npersons$big5_neuro <- c(3, 4, 1, 2)\n```\n:::\n\n\nOr, using the `tidyverse`:\n<div class = \"tidy\">\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\npersons <- persons %>%\n  mutate(big5_open = c(3, 4, 3, 4))\n```\n:::\n\n</div>\n\n# ifelse\nWe can also add new values conditionally, for example by using the `ifelse()` function:\n\n::: {.cell}\n\n:::\n\n\n\n# missings\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

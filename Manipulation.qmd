@@ -1,5 +1,30 @@
-# New variables
+# New columns
+Adding new columns to a data frame is pretty straight forward. We just define the column name, and then assign it some input:
+```{r}
+persons <- data.frame(name = c("Anna", "Alex", "John", "Jessi"),
+                      age = c(19, 17, 18, 18),
+                      birth_month = c("Jan", "Sep", "Oct", "Mar"),
+                      big5_extro = c(3.5, 2, 4.5, 4.2)
+                      )
+
+persons$big5_neuro <- c(3, 4, 1, 2)
+
+```
+
+Or, using the `tidyverse`:
+<div class = "tidy">
+```{r, message = FALSE}
+library(tidyverse)
+persons <- persons %>%
+  mutate(big5_open = c(3, 4, 3, 4))
+```
+</div>
 
 # ifelse
+We can also add new values conditionally, for example by using the `ifelse()` function:
+```{r}
+
+```
+
 
 # missings

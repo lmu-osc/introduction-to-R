@@ -61,7 +61,7 @@ A data frame is two dimensional and can store elements of different types. It is
 persons <- data.frame(name = c("Anna", "Alex", "John", "Jessi"),
                       age = c(19, 17, 18, 18),
                       birth_month = c("Jan", "Sep", "Oct", "Mar"),
-                      big5_extra = c(3.5, 2, 4.5, 4.2)
+                      big5_extro = c(3.5, 2, 4.5, 4.2)
                       )
 ```
 
@@ -76,7 +76,7 @@ persons_tibble <- tibble::tibble(
   name = c("Anna", "Alex", "John", "Jessi"),
   age = c(19, 17, 18, 18),
   birth_month = c("Jan", "Sep", "Oct", "Mar"),
-  big5_extra = c(3.5, 2, 4.5, 4.2)
+  big5_extro = c(3.5, 2, 4.5, 4.2)
 )
 persons_tibble
 ```

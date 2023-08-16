@@ -32,6 +32,8 @@ website:
       - section: "Data manipulation and transformation"
         contents:
           - subsetting.qmd
+          - manipulation.qmd
+          
 format:
   html:
     theme: cosmo
