@@ -99,6 +99,23 @@ Here, we define the list `personality_rating`, which includes a data frame with 
 
 Instead, we are now well equipped to get started with some data manipulation and transformation.
 
+# Getting an overview
+To take a look at these data structures, we can use different commands. 
+One of the most important ones might be `View()`, which will open the data set excel-style in a new window:
+
+```{r, eval = FALSE}
+View(persons)
+```
+
+Especially for bigger data sets, it might be more feasible to only look at the structure and not the whole data set:
+
+```{r}
+str(persons)
+```
+
+On the left side we have the column names of this data frame, followed by the [type]() of the column. 
+
+
 # Exercises
 
 1.  Load the `tutoR` package and start the exercises about `data structures` by typing the following code into you console:

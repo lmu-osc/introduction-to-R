@@ -1,3 +1,9 @@
+---
+title: "The big picture"
+execute:
+  eval: false
+---
+
 # The big picture
 
 Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project", which follows a typical workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little bit more depth for each topic. If you want to have more in depth information instead of following the whole workflow first, you can also skip this chapter and jump to the chapters and exercises you are interested in. But make sure to do the final exercise, to test you R proficiency in the end.
@@ -73,22 +79,18 @@ Now, lets do something with this data. We want to answer the question if people 
 
 **Exercise: Download the second data set called "times.rda" and load it into R on your own.**
 
-```{r, echo = FALSE}
-times <- readRDS(file = "./raw_data/times.rds")
-```
 
 ### Deal with missing values
 
 Let's take a quick look at that one as well:
 
 ```{r}
-str(times)
+str(winners)
 ```
 
 The only column both data sets seem to have in commonn is the `ID` one. This means we have to merge our two data sets on that column, so rows which have the same value in that column will be merged together. However, we have a slight problem: the `ID` column contains missing values (called `NA`). We will not be able to match these rows over both data sets, so we have to remove them. But first, let's take a look at how many those are:
 
 ```{r}
-sum(is.na(times$ID))
 sum(is.na(winners$ID))
 
 ```
@@ -96,7 +98,6 @@ sum(is.na(winners$ID))
 Don't worry to much about what that code is doing right now, we will take a closer look later on. We seem to have five `NA`s in both data sets. This isn't a whole lot, so we will just remove them, but keep in mind dealing with `NA`s is a broad topic for itself with many different possible approaches.
 
 ```{r}
-times <- drop_na(data = times, ID)
 winners <- drop_na(data = winners, ID)
 
 ```
