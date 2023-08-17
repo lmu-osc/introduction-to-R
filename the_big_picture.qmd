@@ -35,11 +35,14 @@ library(tidyverse)
 [Data is loaded](\load_data.qmd) into R so you can work with it. Let's do just that. First, you need to download the file "winners.rds" from [this link](https://github.com/nickhaf/r_tutorial/tree/getting_started/raw_data) and save it in your project folder (*Tip: Save it in a new subfolder named "raw_data" or somewhat similar.*). The data comes from the [LondonMarathon](https://github.com/nrennie/LondonMarathon) package. Next, take a look at the ending. Different data formats need different functions for loading them into R. The `winners.rds` file has the ending `.rds`. So we use `readRDS` to load it into R. Here you can find a more thourough discussion about [loading different data formats](\load_data.qmd).
 
 # Data set
+
 For this chapter, we are going to use the data set `babynames`, which we can find on the `tidytuesday` site:
+
 ```{r}
 # install.packages("readr")
-babynames <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-03-22/babynames.csv')
+# babynames <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-03-22/babynames.csv')
 ```
+
 (Yes, we can read in `.csv` data simply by using an URL if provided.)
 
 ```{r}
@@ -50,7 +53,7 @@ This will load the data into R and assigning it the name `winners` by using the 
 
 ## Take a look
 
-Now that we have our data loaded safely into R, we can get an [overview](\take_a_look.qmd) with a multitude of commands. One of the most important ones might be `View()`, which will open the data set excel-style in a new window:
+Now that we have our data loaded safely into R, we can get an overview with a multitude of commands. One of the most important ones might be `View()`, which will open the data set excel-style in a new window:
 
 ```{r, eval = FALSE}
 View(winners)

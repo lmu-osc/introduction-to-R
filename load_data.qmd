@@ -51,18 +51,17 @@ Now take a look at the working directory and the relative path i used for loadin
 
 # Exercises
 
-1.  For the rest of the workshop, we will use the data frame `winners` from the package [LondonMarathon](https://github.com/nrennie/LondonMarathon). I have already tweaked it a bit to make it easier to work with, so just download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and load it into R.
+1.  For the rest of the workshop, we will use the data frame `winners` from the package [LondonMarathon](https://github.com/nrennie/LondonMarathon). I have already tweaked it a bit to make it easier to work with, so just download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and load it into R (write the code for reading in the data into a new script).
 2.  Advanced: Load the `continents.csv` file into R. Did that work as expected? If not, why not? ([Solution](#Solution)) *Hint*: Take a look at the .csv by opening it in a text editor. Look at the documentation of `read.csv()` and take a look at the `sep` argument.
 
+# Solution {#solution}
 
-# Solution
 ```{r}
 #| code-fold: true
 #| code-summary: "Solution for exercise 1"
 
 winners <- readRDS(file = "./raw_data/winners.rds")
 ```
-
 
 ```{r, eval = FALSE}
 #| code-fold: true
@@ -88,4 +87,3 @@ head(continents)
 
 # This looks better! Now we can merge both data sets, so we can actually work with them.
 ```
-
