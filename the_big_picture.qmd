@@ -68,25 +68,30 @@ On the left we can see the columns of this data.frame, named `year`, `sex`, `nam
 
 ## Data wrangling
 
-Now, lets do something with this data. We want to look at the developement of names over the years. 
+Now, lets do something with this data. We want to look at the most common name in every year and make a nice plot out of it.
+Sadly the data is not complete. The n is missing (ok, i split it up for illustrational purposes).
+When starting to work with data it is always a good idea to look at missing values, so let's do that quickly:
 
-## Missings?
+## Missings
 
 
-## Merging?
+## Merging
+Split data name and n by an ID. 
 
 
 ### Subsetting data
 
 One very important part of working with data in R is the [subsetting](subsetting.qmd) of data. This means we select specific values from a data set.
 
-### Regression Time vs. year
-
-```{r, eval = FALSE}
-```
+### Signifiance of one name vs. the other
 
 
 ## Plot the data
+This section is more additional and not really necessary for the other workshops. However, i think it is a great way to show you the beauty of plotting in R, so here it goes (make sure you worked on the other concepts first).
+
+```{r}
+
+```
 
 
 ## Conclusion
