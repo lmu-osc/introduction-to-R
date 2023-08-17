@@ -3,26 +3,32 @@
 Please take a look at the different [data structures in R](data_structures.qmd) if you are not familiar with them, before you start with this chapter.
 
 ## Data set
+
+![](./pictures/marathon.jpg)[^subsetting-1]
+
+[^subsetting-1]: Image by [Miguel A Amutio](https://unsplash.com/de/@amutiomi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/QDv-uBc-poY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
+
 Load the data set, which lies within the folder `raw_data` in my working directory:
+
 ```{r}
 winners <- readRDS(file = "./raw_data/winners.rds")
 ```
 
 Let's take a quick look:
+
 ```{r}
 head(winners)
 ```
-So, this data frame seems to hold the winners of the london marathon, but their finishing times are missing. They are stored in another data set, but we will deal with that later.
-For now we want to look at how we can extract data from our data structures, so we can work with it.
 
+So, this data frame seems to hold the winners of the london marathon, but their finishing times are missing. They are stored in another data set, but we will deal with that later. For now we want to look at how we can extract data from our data structures, so we can work with it.
 
 ## Data frames
 
 We will look at two ways to extract rows and columns from data frames.
 
 ### Base R
-In `Base R`, we use square brackets `[,]`.
-In front of the `,` we write the **rows** we want to extract:
+
+In `Base R`, we use square brackets `[,]`. In front of the `,` we write the **rows** we want to extract:
 
 ```{r}
 # Extract the first and the fourth row
@@ -30,6 +36,7 @@ winners[c(1, 4), ]
 ```
 
 Behind it the **columns**:
+
 ```{r}
 # Extract the second and the fourth column:
 winners[, c(2, 4)]
@@ -42,6 +49,7 @@ winners$Year
 ```
 
 And of course we can combine both calls:
+
 ```{r}
 winners[c(1, 4), c(2, 4)]
 
@@ -50,6 +58,7 @@ winners[c(1, 4), c("Year", "Nationality")]
 ```
 
 We can also use Boolean values (every row/column must get a value here, so we extract the first 100 rows by repeating `TRUE` 100 times, and than add `FALSE` for the remaining rows:
+
 ```{r}
 winners[c(rep(TRUE, 100), rep(FALSE, 65)), c(TRUE, FALSE, FALSE, TRUE, TRUE)]
 ```
@@ -59,26 +68,29 @@ Now the stuff we looked at in [logical operators](https://nickhaf.github.io/r_tu
 ```{r}
 winners[winners$Nationality == "Kenya", ]
 ```
+
 Take a close look at the comparison before the `,`:
 
 ```{r}
 winners$Nationality == "Kenya"
 ```
-`winners$Nationality` is a vector, so comparing its values to a specified value yields a logical vector with the respective `TRUE` and `FALSE` values. We can insert this logical vector in front of the `,` to extract all rows corresponding to that condition. 
+
+`winners$Nationality` is a vector, so comparing its values to a specified value yields a logical vector with the respective `TRUE` and `FALSE` values. We can insert this logical vector in front of the `,` to extract all rows corresponding to that condition.
 
 If we want to extract multiple nationalities at once, we need the `%in%` operator:
+
 ```{r}
 winners[winners$Nationality %in% c("Kenya", "Germany", "Norway"), ]
 ```
 
 By the way, if we want to save our extracted data frame, we can assign it a new name (otherwise it will only get printed into the console, but you cant work further with it):
+
 ```{r}
 winners_nat <- winners[winners$Nationality %in% c("Kenya", "Germany", "Norway"), ]
 winners_nat
 ```
 
-We can also combine multiple logical vectors using `&` ("and") and `|` ("or").
-For example, we might want to look at all Kenyan winners before the year 2000:
+We can also combine multiple logical vectors using `&` ("and") and `|` ("or"). For example, we might want to look at all Kenyan winners before the year 2000:
 
 ```{r}
 winners[winners$Nationality == "Kenya" & winners$Year < 2000, ]
@@ -93,8 +105,8 @@ winners[(winners$Category == "Wheelchair Women" & winners$Nationality == "Austra
 In the long run, always having to define the data frame multiple time in each row can become a bit annoying and clutters the code. Enter, the `filter()` function:
 
 ### Tidyverse
-The `dplyr` package is part of the `tidyverse` and provides a grammar of data manipulation. 
-We can use `filter()` to subset rows from a data frame:
+
+The `dplyr` package is part of the `tidyverse` and provides a grammar of data manipulation. We can use `filter()` to subset rows from a data frame:
 
 ::: tidy
 ```{r, message = FALSE}
@@ -104,8 +116,7 @@ filter(winners, Nationality == "Kenya", Year < 2000)
 ```
 :::
 
-Note how we can just write our conditions without connecting them with `&` (`filter()` does that automatically for us).
-Also, we don't have to put the column names into `""`, because `filter()` knows that this are column names of the `winners` data frame, which makes coding a bit more pleasant.
+Note how we can just write our conditions without connecting them with `&` (`filter()` does that automatically for us). Also, we don't have to put the column names into `""`, because `filter()` knows that this are column names of the `winners` data frame, which makes coding a bit more pleasant.
 
 For extracting columns, we need `select()`:
 
@@ -116,6 +127,7 @@ select(winners, Year, Athlete)
 :::
 
 #### Remarks: the pipe operator
+
 Hold on! Normally, we wouldn't write `tidyverse` code like that. Instead, we would use the pipe operator `%>%` (*than do*), which makes it easy to connect multiple function calls:
 
 ::: tidy
@@ -125,8 +137,8 @@ winners %>%
 ```
 :::
 
-Here, we first input the data frame we want to manipulate. Than we filter, as specified by the pipe operator. 
-Like this, we can easily connect multiple function calls instead of nesting them within multiple brackets, which increases the readability:
+Here, we first input the data frame we want to manipulate. Than we filter, as specified by the pipe operator. Like this, we can easily connect multiple function calls instead of nesting them within multiple brackets, which increases the readability:
+
 ```{r}
 winners[winners$Year > 2000 & winners$Category == "Women", c("Category", "Year")]
 ```
@@ -142,15 +154,13 @@ winners %>%
 ```
 :::
 
-Much nicer to read, right?  
+Much nicer to read, right?
 
-Some notes on this syntax: If we don't have any additional arguments we want to put into the function, we can just write the function name without any brackets. The pipe operator will give the result of the last function as input into the next function. If we want to clearly state which of the function arguments should receive the input, we can write a `.`, which can be read as *output of the previous function call*. 
-
+Some notes on this syntax: If we don't have any additional arguments we want to put into the function, we can just write the function name without any brackets. The pipe operator will give the result of the last function as input into the next function. If we want to clearly state which of the function arguments should receive the input, we can write a `.`, which can be read as *output of the previous function call*.
 
 ## Vectors
 
-Finally, let's take a quick look at how to extract elements from a vector. 
-It's pretty straight forward: we just put the position of the element we want to extract behind the vector in square brackets:
+Finally, let's take a quick look at how to extract elements from a vector. It's pretty straight forward: we just put the position of the element we want to extract behind the vector in square brackets:
 
 ```{r}
 vec_athlete <- winners$Athlete # remember: `$` returns a vector
@@ -173,9 +183,8 @@ vec_athlete[c(rep(TRUE, 100), rep(FALSE, 65))]
 
 ## Exercises
 
-1.  Load the `tutoR` package and start the exercises about `subsetting` by typing the following code into your console:
+1.  Load the `tutoR` package and start the exercise by typing the following code into your console:
 
 ```{r, eval = FALSE}
 learnr::run_tutorial(name = "subsetting", package = "tutoR")
 ```
-
