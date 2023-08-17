@@ -78,7 +78,7 @@ Now, lets do something with this data. We want to look at the developement of na
 
 ### Subsetting data
 
-One very important part of working with data in R is the [subsetting](subsettings.qmd) of data. This means we select specific values from a data set.
+One very important part of working with data in R is the [subsetting](subsetting.qmd) of data. This means we select specific values from a data set.
 
 ### Regression Time vs. year
 
