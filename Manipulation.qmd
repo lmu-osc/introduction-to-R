@@ -1,38 +1,26 @@
+
+
 # Merging
-Suppose we want to look at the winners by continent. In this case, we will have to add a list assigning each Nationality a continent. We can easily find such a list online, for example at [ourworldindata.org](https://ourworldindata.org/grapher/continents-according-to-our-world-in-data).
-I have already [downloaded](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) the `.csv`, so let's try to load it into R:
-
-```{r}
-continents <- read.csv(file = "./raw_data/continents.csv")
-
-head(continents)
-```
-Hmm that looks weird. If we take a look at the file by opening it in a text editor, we can see that the values are seperated by `;`. 
-So let's call the help for `read.csv()`:
-```{r}
-?read.csv
-```
-The `sep` argument specifies that the seperator needs to be a white space (meaning tabs, spaces ... - look at the details).  
-So, we can do the following:
-```{r}
-continents <- read.csv(file = "./raw_data/continents.csv", 
-                       sep = ";")
-
-head(continents)
+Suppose we want to look at the winners by continent (see [last chapter](https://nickhaf.github.io/r_tutorial/subsetting.html) for the data set). In this case, we will have to add a list assigning each Nationality a continent. We can easily find such a list online, for example at [ourworldindata.org](https://ourworldindata.org/grapher/continents-according-to-our-world-in-data).
+I have already [downloaded](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) the `.csv`, and we have already loaded it into R in the exercise of [load data](https://nickhaf.github.io/r_tutorial/load_data.html):
+```{r, message = FALSE}
+winners <- readRDS(file = "./raw_data/winners.rds")
+continents <- read.csv(
+  file = "./raw_data/continents.csv",
+  sep = ";"
+)
 ```
 
-This looks better! Now we can merge both data sets, so we can actually work with them.
-To merge two data frames that include information that belongs together, we need a common column, on which we can merge them. 
+To merge two data frames that include information that belongs together, we need a common column, on which we can combine them. 
 In our case, this is the column containing the country, but they are named differently. No problem, we can define which columns should be taken from which data frame for merging:
 
-
-# Merging data frames
-
 ```{r}
-winners_continents <- merge(x = winners,
-                             y = continents,
-                             by.x = "Nationality", 
-                             by.y = "Entity")
+winners_continents <- merge(
+  x = winners,
+  y = continents,
+  by.x = "Nationality",
+  by.y = "Entity"
+)
 head(winners_continents)
 ```
 Great! Now the information that belongs together is stored together.  
@@ -51,6 +39,8 @@ Or, using the `tidyverse` with the help of `mutate()`:
 
 ::: tidy
 ```{r, message = FALSE}
+library(dplyr)
+
 winners_continents <- winners_continents %>%
   mutate(Minutes_total = winners_continents$Hours * 60 + winners_continents$Minutes * winners_continents$Seconds / 60)
 head(winners_continents)
@@ -61,9 +51,9 @@ Hold on! Both new columns seem to have missing values, which is an important con
 
 # Missing values
 Missing values are denoted in R by `NA` (or `NaN` in some cases).
-The pretty strongly nullify a calculation - if one missing value is found somewhere along the line, the result will also be `NA` (if not specified otherwise):
+They pretty strongly nullify a calculation - if one missing value is found somewhere along the line, the result will also be `NA` (if not specified otherwise):
 ```{r}
-sum(c(4,5,NA))
+sum(c(4, 5, NA))
 ```
 That's why our newly build columns include `NAs`: The column `Hours` already had some, and by adding with `NAs` we just produced new ones. 
 
@@ -81,31 +71,35 @@ There are multiple different ways to deal with missings. For this tutorial, we j
 winners_continents_na <- winners_continents[!is.na(winners_continents$Hours), ]
 ```
 What happens here? 
-Like always when filtering specific rows, we define a logical vector, which has a `TRUE` for all rows that have a missing on `ID` and a `FALSE` for all others (by using the `!` operator, which inverts the boolean values - otherwise we would extract all rows with missing values in the `ID` column):
+Like always when filtering specific rows, we define a logical vector, which has a `TRUE` for all rows that have a missing on `ID` and a `FALSE` for all others (by using the `!` operator, which inverts the boolean values - otherwise we would extract all rows with missing values in the `Hours` column):
 
 ```{r}
-!is.na(winners$ID)
+!is.na(winners_continents$Hours)
 ```
 
 We also assign a new name to the resulting data frame. 
 
 # ifelse
 We can also add new values conditionally, for example by using the `ifelse()` function. 
-For example, we could add a column with the continent of each 
+For example, let's build a composite variable which summarizes whether the category was `Whelchair` or not:
 
 ```{r}
-
-
+winners_continents$Wheelchair <- ifelse(
+  winners_continents$Category %in% c("Wheelchair Men", "Wheelchair Women"),
+  yes = TRUE,
+  no = FALSE
+)
 ```
 
 ::: tidy
 ```{r}
-persons <- persons %>%
-  mutate(big5_extra_dichotomous = ifelse(test = persons$big5_neuro >= 5/2,
-                                         yes = "high",
-                                         no = "low")
-  )
-persons
+winners_continents <- winners_continents %>%
+  mutate(over_3_h = ifelse(
+    winners_continents$Hours < 2,
+    yes = "below",
+    no  = "over"
+  ))
+
+winners_continents
 ```
 :::
-
