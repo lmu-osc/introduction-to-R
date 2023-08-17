@@ -3,6 +3,10 @@ title: "The big picture"
 execute:
   eval: false
 ---
+```{r setup, echo = FALSE, message = FALSE}
+library(readr)
+```
+
 
 # The big picture
 
@@ -21,156 +25,85 @@ The `tidyverse` is a collection of packages following a common philosophy, and f
 Just by installing the packages, we can't use them. We also have to load them into our R session:
 
 ```{r load_packages}
-library(tutoR)
-library(tidyverse)
-```
-
-The top of your `R Script` should look something like this:
-
-```{r package_setup, eval = FALSE}
-install.packages("devtools")
-devtools::install_github("nickhaf/tutoR")
-install.packages("tidyverse")
-
-library(tutoR)
 library(tidyverse)
 ```
 
 ## Load Data
 
-[Data is loaded](\load_data.qmd) into R so you can work with it. Let's do just that. First, you need to download the file "winners.rds" from [this link](https://github.com/nickhaf/r_tutorial/tree/getting_started/raw_data) and save it in your project folder (*Tip: Save it in a new subfolder named "raw_data" or somewhat similar.*). The data comes from the [LondonMarathon](https://github.com/nrennie/LondonMarathon) package. Next, take a look at the ending. Different data formats need different functions for loading them into R. The `winners.rds` file has the ending `.rds`. So we use `readRDS` to load it into R. Here you can find a more thourough discussion about [loading different data formats](\load_data.qmd).
+Data is loaded into R so you can work with it. 
+For this chapter, we are going to use the data set `babynames`, which we can find on the `tidytuesday` site. Because it is a `.csv` file, we have to install the additional package `readr` before we can read it:
 
-# Data set
-
-For this chapter, we are going to use the data set `babynames`, which we can find on the `tidytuesday` site:
-
-```{r}
-# install.packages("readr")
-# babynames <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-03-22/babynames.csv')
+```{r, eval = FALSE}
+install.packages("readr")
+library(readr)
 ```
 
-(Yes, we can read in `.csv` data simply by using an URL if provided.)
-
+No we can load the data: 
 ```{r}
-winners <- readRDS(file = "./raw_data/winners.rds")
+babynames <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-03-22/babynames.csv')
+babynames <- as.data.frame(babynames)
 ```
 
-This will load the data into R and assigning it the name `winners` by using the `<-`. You can see the data popping up in your `Environment` pane on the upper right. It is important you use the correct path, because otherwise R will not find your data file. Here the RStudio project we have created earlier comes in handy. It automatically knows our file lies within our project folder, which is why we can use a **relative path**, that starts at the project path and looks into the folder `raw_data` to open the file. Otherwise, we would have to use an **absolute path** (like "C:/Users/hafiznij/Documents/GitHub/r_tutorial/raw_data/london_marathon.rda" which will only work on my notebook, and only if my project stays in on this path.
+Yes, we can read in `.csv` data simply by using an URL if provided. There are many different data formats and ways to load data, refer to [load data](\load_data.qmd) for more information. 
+
+The above code will load the data into R and assigning it the name `babynames` by using the `<-`. 
+You can see the data popping up in your `Environment` pane on the upper right.
+Don't worry about `as.data.frame()` function. It's not really relevant right now. 
 
 ## Take a look
 
 Now that we have our data loaded safely into R, we can get an overview with a multitude of commands. One of the most important ones might be `View()`, which will open the data set excel-style in a new window:
 
 ```{r, eval = FALSE}
-View(winners)
+View(babynames)
 ```
 
 Especially for bigger data sets, it might be more feasible to only look at the structure and not the whole data set:
 
 ```{r}
-str(winners)
+str(babynames)
 ```
 
-On the left we can see the columns of this data.frame, named `Category`, `Year`, `Athlete`, `Nationality` and `ID`. On the right we see the first values in each column, for example `1981`, `1981`, `1982` etc ... in the `Year`-column.
+On the left we can see the columns of this data.frame, named `year`, `sex`, `names`, `n` and `prop`. On the right we see the first values in each column, for example `1880`, `1980`, `1980` etc ... in the `year`-column.
 
 ## Data wrangling
 
-Now, lets do something with this data. We want to answer the question if people have gotten faster at running marathons over that last 40 years. Sadly, the finishing times are not saved in this data set, but in another one named `times.rda`. So we need a way to combine them both, so we can run our analysis on the data.
+Now, lets do something with this data. We want to look at the most common name in every year and make a nice plot out of it.
+Sadly the data is not complete. The n is missing (ok, i split it up for illustrational purposes).
+When starting to work with data it is always a good idea to look at missing values, so let's do that quickly:
 
-**Exercise: Download the second data set called "times.rda" and load it into R on your own.**
+## Missings
 
 
-### Deal with missing values
+## Merging
+Split data name and n by an ID. 
 
-Let's take a quick look at that one as well:
-
-```{r}
-str(winners)
-```
-
-The only column both data sets seem to have in commonn is the `ID` one. This means we have to merge our two data sets on that column, so rows which have the same value in that column will be merged together. However, we have a slight problem: the `ID` column contains missing values (called `NA`). We will not be able to match these rows over both data sets, so we have to remove them. But first, let's take a look at how many those are:
-
-```{r}
-sum(is.na(winners$ID))
-
-```
-
-Don't worry to much about what that code is doing right now, we will take a closer look later on. We seem to have five `NA`s in both data sets. This isn't a whole lot, so we will just remove them, but keep in mind dealing with `NA`s is a broad topic for itself with many different possible approaches.
-
-```{r}
-winners <- drop_na(data = winners, ID)
-
-```
-
-Here, we use a function from the `tidyr` package (which we installed among others when we installed the `tidyverse`) that removes all rows from the data that contain a `NA` in the `ID` column.
-
-### Merging
-
-Now we can merge:
-
-```{r}
-winners_merged <- merge(x = winners, 
-                        y = times,
-                        by = "ID")
-```
-
-What happens here? We take our two data sets, called `winers` and `times` and combine them on the column `ID`. Let's take a look at the finished product:
-
-```{r}
-str(winners_merged)
-```
-
-We have merged the columns of the `times` data set onto the right the `winners` data.
 
 ### Subsetting data
 
-One very important part of working with data in R is the [subsetting](subsettings.qmd) of data. This means we select specific values from a data set.
+One very important part of working with data in R is the [subsetting](subsetting.qmd) of data. This means we select specific values from a data set.
 
-Divide by Category (Wheelchar vs. no wheelchair)
+### Signifiance of one name vs. the other
 
-### Regression Time vs. year
-
-```{r, eval = FALSE}
-women <- winners[winners$Category == "Women", ]
-
-
-lm_rs <- lm(Minutes_total ~ Year, women)
-summary(lm_rs)
-
-# 614 min bei Year = 0, für jedes Jahr -0.23 Min weniger:
-# 614 + 2020 * -0.236
-
-
-plot(lm_rs)
-```
-
-```{r, eval = FALSE}
-winners$Minutes_total <- winners$Hours * 60 + winners$Minutes
-
-```
 
 ## Plot the data
+This section is more additional and not really necessary for the other workshops. However, i think it is a great way to show you the beauty of plotting in R, so here it goes (make sure you worked on the other concepts first).
 
-```{r, eval = FALSE}
-library(ggplot2)
-winners %>%
-  filter(Category %in% c("Men", "Women")) %>%
-ggplot(data = ., aes(x = Year,
-                            y = Minutes_total,
-                     colour = Nationality,
-                     shape = Category)) +
-  geom_point()
-
-
-winners %>%
-  filter(Category %in% c("Wheelchair Men", "Wheelchair Women")) %>%
-ggplot(data = ., aes(x = Year,
-                            y = Minutes_total,
-                     colour = Nationality,
-                     shape = Category)) +
-  geom_point()
+```{r}
 
 ```
+
+
+## Conclusion
+
+In this tutorial we learned, that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in.
+
+
+Foto von <a href="https://unsplash.com/de/@rocinante_11?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mick Haupt</a> auf <a href="https://unsplash.com/de/fotos/DgugiZUfH9k?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+
+
+## Final Exercise
 
 ```{r, eval = FALSE}
 # Für die Übung. 
@@ -180,7 +113,3 @@ tuesdata <- tidytuesdayR::tt_load('2022-08-16')
 
 
 ```
-
-## Conclusion
-
-In this tutorial we learned, that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in.
