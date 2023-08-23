@@ -1,3 +1,1 @@
-This is Zusatz.
-Plot world map with the winning countries, the more the darker. 
-Same colours for same continents.
+This is Zusatz. Plot world map with the winning countries, the more the darker. Same colours for same continents.

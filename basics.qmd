@@ -49,7 +49,7 @@ knitr::kable(dat_structs, "pipe",
              ) 
 ```
 
-Mainly we will use these logical operation to check which elements in a [vector](https://nickhaf.github.io/r_tutorial/data_structures.html#vector) satisfy some requirements:
+Mainly we will use these logical operation to check which elements in a [vector](data_structures.qmd#vector) satisfy some requirements:
 
 ```{r}
 # Build a vector of numbers ranging from 1 to 10

@@ -1,6 +1,6 @@
 # Merging
 
-Suppose we want to look at the winners by continent (see [last chapter](https://nickhaf.github.io/r_tutorial/subsetting.html) for the data set). In this case, we will have to add a list assigning each Nationality a continent. We can easily find such a list online, for example at [ourworldindata.org](https://ourworldindata.org/grapher/continents-according-to-our-world-in-data). I have already [downloaded](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) the `.csv`, and we have already loaded it into R in the exercise of [load data](https://nickhaf.github.io/r_tutorial/load_data.html):
+Suppose we want to look at the winners by continent (see [last chapter](subsetting.qmd) for the data set). In this case, we will have to add a list assigning each Nationality a continent. We can easily find such a list online, for example at [ourworldindata.org](https://ourworldindata.org/grapher/continents-according-to-our-world-in-data). I have already [downloaded](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) the `.csv`, and we have already loaded it into R in the exercise of [load data](load_data.qmd):
 
 ```{r, message = FALSE}
 winners <- readRDS(file = "./raw_data/winners.rds")
@@ -64,7 +64,7 @@ To check if values are `NA`, we can use `is.na()`:
 is.na(winners_continents$Hours)
 ```
 
-Some `TRUEs`, so there are missing values here. Let's count them (Summing an [logical vector](https://nickhaf.github.io/r_tutorial/basics.html#comparisons-and-logical-operators) counts the number of `TRUE` values.):
+Some `TRUEs`, so there are missing values here. Let's count them (Summing an [logical vector](basics.qmd#comparisons-and-logical-operators) counts the number of `TRUE` values.):
 
 ```{r}
 sum(is.na(winners_continents$Hours))
