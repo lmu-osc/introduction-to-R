@@ -14,7 +14,7 @@ Now that we have completed our set up, let's dive right into programming with `R
 
 ## Packages
 
-[Packages](https://nickhaf.github.io/r_tutorial/packages.html) are extensions to the `base R` you get by default. We already installed our first packages in [About this workshop](https://nickhaf.github.io/r_tutorial/setup.html#about-this-workshop). Let's keep doing that and install the following package as well:
+[Packages](packages.qmd) are extensions to the `base R` you get by default. We already installed our first packages in [About this workshop](setup.qmd#About-this-workshop). Let's keep doing that and install the following package as well:
 
 ```{r install_tidyverse, eval = FALSE}
 install.packages("tidyverse")
@@ -44,7 +44,7 @@ babynames <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytue
 babynames <- as.data.frame(babynames)
 ```
 
-Yes, we can read in `.csv` data simply by using an URL if provided. There are many different data formats and ways to load data, refer to [load data](\load_data.qmd) for more information. 
+Yes, we can read in `.csv` data simply by using an URL if provided. There are many different data formats and ways to load data, refer to [load data](load_data.qmd) for more information. 
 
 The above code will load the data into R and assigning it the name `babynames` by using the `<-`. 
 You can see the data popping up in your `Environment` pane on the upper right.
