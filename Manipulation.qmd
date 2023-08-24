@@ -1,6 +1,52 @@
-# Merging
+# Data wrangling
 
-Suppose we want to look at the winners by continent (see [last chapter](subsetting.qmd) for the data set). In this case, we will have to add a list assigning each Nationality a continent. We can easily find such a list online, for example at [ourworldindata.org](https://ourworldindata.org/grapher/continents-according-to-our-world-in-data). I have already [downloaded](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) the `.csv`, and we have already loaded it into R in the exercise of [load data](load_data.qmd):
+## Overview of the main commands in this section
+```{r, eval = FALSE}
+## merge two data frames by different columns:
+merge(
+  x = winners,
+  y = continents,
+  by.x = "Nationality",
+  by.y = "Entity"
+)
+
+## Add a new column:
+winners_continents$Seconds_total <- winners_continents$Hours * 60^2 +
+                                    winners_continents$Minutes * 60 +
+                                    winners_continents$Seconds
+
+## Show missing values:
+is.na(winners_continents$Hours)
+
+## Remove rows that have a missing in the specified column:
+winners_continents_na <- winners_continents[!is.na(winners_continents$Hours), ]
+
+## Add a new column conditionally to contents of other columns: 
+winners_continents$Wheelchair <- ifelse(
+  winners_continents$Category %in% c("Wheelchair Men", "Wheelchair Women"),
+  yes = TRUE,
+  no = FALSE
+)
+
+```
+
+
+::: tidy
+```{r, message = FALSE, eval = FALSE}
+library(dplyr)
+
+## Add a new column using mutate():
+winners_continents <- winners_continents %>%
+  mutate(Minutes_total = winners_continents$Hours * 60 +
+                         winners_continents$Minutes *
+                         winners_continents$Seconds / 60)
+```
+:::
+
+
+## Merging
+
+Suppose we want to look at the winners by continent (see [last chapter](subsetting.qmd) for the data set). In this case, we will have to add a list assigning each Nationality a continent. We can easily find such a list online, for example at [ourworldindata.org](https://ourworldindata.org/grapher/continents-according-to-our-world-in-data). I have already [downloaded](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) the `.csv`, and we have already loaded it into R in the exercise 2 of [load data](http://localhost:3262/load_data.html#solution):
 
 ```{r, message = FALSE}
 winners <- readRDS(file = "./raw_data/winners.rds")
@@ -25,12 +71,14 @@ head(winners_continents)
 Great! Now the information that belongs together is stored together.\
 If the merging column(s) had the same name in both data sets, we wouldn't have to specify them at all, the function can compare the column names automatically.
 
-# New columns
+## New columns
 
 Adding new columns to a data frame is pretty straight forward. We just define the column name, and then assign it some input. For example, we could be interested in calculating the seconds each person needed to finish, and add that as a new column:
 
 ```{r}
-winners_continents$Seconds_total <- winners_continents$Hours * 60^2 + winners_continents$Minutes * 60 + winners_continents$Seconds
+winners_continents$Seconds_total <- winners_continents$Hours * 60^2 +
+                                    winners_continents$Minutes * 60 +
+                                    winners_continents$Seconds
 head(winners_continents)
 ```
 
@@ -48,7 +96,7 @@ head(winners_continents)
 
 Hold on! Both new columns seem to have missing values, which is an important concept which we haven't talked about yet. So let's do that quickly, and then merge!
 
-# Missing values
+## Missing values
 
 Missing values are denoted in R by `NA` (or `NaN` in some cases). They pretty strongly nullify a calculation - if one missing value is found somewhere along the line, the result will also be `NA` (if not specified otherwise):
 
@@ -84,7 +132,7 @@ What happens here? Like always when filtering specific rows, we define a logical
 
 We also assign a new name to the resulting data frame.
 
-# ifelse
+## ifelse
 
 We can also add new values conditionally, for example by using the `ifelse()` function. For example, let's build a composite variable which summarizes whether the category was `Whelchair` or not:
 

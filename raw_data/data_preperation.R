@@ -1,8 +1,7 @@
 load(here::here("raw_data", "winners_raw.rda"))
 
 ## Introduce some NAs
-set.seed(65)
-na_rows <- sample(1:nrow(winners_raw), 5)
+na_rows <- c(2, 5, 8, 100, 54)
   
 winners_raw[na_rows, "Hours"] <- NA
 
