@@ -1,5 +1,6 @@
 /* css styles */
 <style>
   div.tidy pre { background-color:snow; }
-div.tidy pre.r { background-color:snow; }
+  div.tidy pre.r { background-color:snow; }
+  div.advanced { background-color: lightblue; }
 </style>

@@ -1,5 +1,4 @@
 # Merging
-
 Suppose we want to look at the winners by continent (see [last chapter](subsetting.qmd) for the data set). In this case, we will have to add a list assigning each Nationality a continent. We can easily find such a list online, for example at [ourworldindata.org](https://ourworldindata.org/grapher/continents-according-to-our-world-in-data). I have already [downloaded](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) the `.csv`, and we have already loaded it into R in the exercise of [load data](load_data.qmd):
 
 ```{r, message = FALSE}
