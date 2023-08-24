@@ -10,7 +10,7 @@ library(readr)
 
 # The big picture
 
-Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project", which follows a typical workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little bit more depth for each topic. If you want to have more in depth information instead of following the whole workflow first, you can also skip this chapter and jump to the chapters and exercises you are interested in. But make sure to do the final exercise, to test you R proficiency in the end.
+Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project", which follows a typical workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little more depth for each topic. If you want to have more in depth information instead of following the whole workflow first, you can also skip this chapter and jump to the chapters and exercises you are interested in. But make sure to do the final exercise, to test you R proficiency in the end.
 
 ## Packages
 
@@ -20,7 +20,7 @@ Now that we have completed our set up, let's dive right into programming with `R
 install.packages("tidyverse")
 ```
 
-The `tidyverse` is a collection of packages following a common philosophy, and facilitate many aspects of coding in R, for example data wrangling and plotting. We will use both functions from base R and from the `tidyverse`.
+The `tidyverse` is a collection of packages following a common philosophy, and facilitate many aspects of coding in R, for example data wrangling and plotting. We will use both functions from base R and from the `tidyverse`. However, as i personally find them to be easier to understand in many cases, we will use `tdiyverse` functions a lot in the current chapter, so you can quickly get an overview of what is possible with R. 
 
 Just by installing the packages, we can't use them. We also have to load them into our R session:
 
@@ -30,23 +30,14 @@ library(tidyverse)
 
 ## Load Data
 
-Data is loaded into R so you can work with it. For this chapter, we are going to use the data set `babynames`, which we can find on the `tidytuesday` site. Because it is a `.csv` file, we have to install the additional package `readr` before we can read it:
-
-```{r, eval = FALSE}
-install.packages("readr")
-library(readr)
-```
-
-No we can load the data:
+Data is loaded into R so you can work with it. For this chapter, we are going to use the data set `babynames`, which we can find on the `tidytuesday` site.
+You can find it on [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data).We want to look at the most common name in every year and make a nice plot out of it. 
 
 ```{r}
-babynames <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-03-22/babynames.csv')
-babynames <- as.data.frame(babynames)
+babynames <- readRDS("./raw_data/babynames.RDS")
 ```
 
-Yes, we can read in `.csv` data simply by using an URL if provided. There are many different data formats and ways to load data, refer to [load data](load_data.qmd) for more information.
-
-The above code will load the data into R and assigning it the name `babynames` by using the `<-`. You can see the data popping up in your `Environment` pane on the upper right. Don't worry about `as.data.frame()` function. It's not really relevant right now.
+The above code will load the data into R and assigning it the name `babynames` by using the `<-`. You can see the data popping up in your `Environment` pane on the upper right.
 
 ## Take a look
 
@@ -62,31 +53,140 @@ Especially for bigger data sets, it might be more feasible to only look at the s
 str(babynames)
 ```
 
-On the left we can see the columns of this data.frame, named `year`, `sex`, `names`, `n` and `prop`. On the right we see the first values in each column, for example `1880`, `1980`, `1980` etc ... in the `year`-column.
-
-## Data wrangling
-
-Now, lets do something with this data. We want to look at the most common name in every year and make a nice plot out of it. Sadly the data is not complete. The n is missing (ok, i split it up for illustrational purposes). When starting to work with data it is always a good idea to look at missing values, so let's do that quickly:
-
-## Missings
+On the left we can see the columns of this data.frame, named `year`, `sex`, `names`, `n` and `prop`. On the right we see the first values in each column, for example `NA`, `1980`, `1980` etc ... in the `year`-column.
 
 ## Merging
+Sadly the data is not complete. The n is missing (ok, i split it up for illustrational purposes). So let's load it quickly:
 
-Split data name and n by an ID.
+```{r}
+babynames <- readRDS("./raw_data/babynames.RDS")
+```
 
-### Subsetting data
+And now [merge](manipulation.qmd#Merging) it:
+```{r}
+babynames_merged <- merge(babynames, babynames_n)
+
+head(babynames_merged)
+```
+
+Hold on! The column `years` seems to include missing values (`NA's`, see the cell on the top left). It is always a good idea to deal with them before doing any analyses, so let's do just that:
+
+## Missings
+There are multiple ways to deal with [missing values](http://localhost:5462/manipulation.html#missing-values). For reasons of simplicity, we will just remove any rows that contain `NA's`. We can achieve that very easily using a function from the `tidyverse` (the package collection we installed at the beginning of this chapter): 
+
+::: tidyr
+```{r}
+babynames_merged <- drop_na(babynames_merged)
+```
+:::
+
+
+## Subsetting data
 
 One very important part of working with data in R is the [subsetting](subsetting.qmd) of data. This means we select specific values from a data set.
+Let's suppose we want to only look at the female names in this data set:
 
-### Signifiance of one name vs. the other
+::: tidyr
+```{r}
+babynames_F <- babynames_merged %>%
+  filter(sex == "F")
+```
+:::
+
+## Adding a new column
+Now, we want to plot the percentages of each name, instead of the propability, because it looks a bit more intuitive. 
+So, let's build a new column:       
+```{r}
+babynames_F$percentage <- babynames_F$prop * 100
+```
+
+::: advanced
+## Some additional summary statistics
+Now, the specifics of the next part are not really relevant. However, they can show you how easy it can be to deal with data in R:
+First, let's group our data according to year:
+
+::: tidyr
+```{r}
+babynames_F_grouped <- babynames_F %>%
+  group_by(year)
+```
+::: 
+Any operations we now perform are performed for every group. In our case, we want to find the name with the maximum `prop` in each group:
+
+::: tidyr
+```{r}
+babynames_F_max <- babynames_F_grouped %>%
+  slice(which.max(percentage))
+
+head(babynames_F_max)
+```
+:::
+
+Great! We now have a data frame containing one row for every year. In it, we find the name most common in that year. 
+As already mentioned, the specifics of these functions are not really relevant for this workshop. 
+:::
 
 ## Plot the data
 
+::: advanced
 This section is more additional and not really necessary for the other workshops. However, i think it is a great way to show you the beauty of plotting in R, so here it goes (make sure you worked on the other concepts first).
 
-```{r}
 
+We will use the package `ggplot2` (which is also part of the `tidyverse`) for plotting our data. It should be mentioned that `Base R` also has some powerful plotting functions, however, `ggplot2` makes it very easy to build complex and beautiful plots.
+
+A ggplot is constructed from multiple layers, that can be laid over each other using the `+` operator.  
+
+We start with the function `ggplot()`, where we define our data and the x and y aestetics. 
+
+::: tidyr
+```{r}
+p <- ggplot(
+  data = babynames_F_max,
+  aes(
+    x = year,
+    y = percentage)
+  )
 ```
+We can also define different colours for different groups. For example, if we want the bars to get filled with a colour corresponding to the name they are representing, we can do that: 
+
+```{r}
+p <- ggplot(
+  data = babynames_F_max,
+  aes(
+    x = year,
+    y = percentage,
+    fill = name
+  )
+)
+```
+
+Now that we have defined our aesthetics, we can add a `geom`-layer. This will make use of the data we have defined in `ggplot()` and plot some bars for us:
+
+```{r}
+p <- p +
+  geom_col()
+p
+```
+
+Let's give the axes some more informative names and a title to the plot:
+```{r}
+p <- p +
+  ggtitle("Most common female name in the United States of America by year") +
+  xlab("Birthyear") +
+  ylab("Percentage of children given that name relative to total births")
+```
+
+
+Finally, to style the plot a bit, let's add a predefined theme and a color palette:
+
+```{r}
+p +
+  theme_bw() +
+  scale_fill_brewer(palette = "Set3")
+```
+:::
+
+:::
 
 ## Conclusion
 
@@ -97,10 +197,8 @@ Foto von <a href="https://unsplash.com/de/@rocinante_11?utm_source=unsplash&utm_
 ## Final Exercise
 
 ```{r, eval = FALSE}
-# Für die Übung. 
-#install.packages("tidytuesdayR")
+# Für die Übung.
+# install.packages("tidytuesdayR")
 library(tidytuesdayR)
-tuesdata <- tidytuesdayR::tt_load('2022-08-16')
-
-
+tuesdata <- tidytuesdayR::tt_load("2022-08-16")
 ```

@@ -35,6 +35,10 @@ website:
         contents:
           - subsetting.qmd
           - manipulation.qmd
+      - section: "Advanced: Analysis and visualization"
+        contents:
+          - statistical_analyses.qmd
+          - plotting.qmd
           
 format:
   html:

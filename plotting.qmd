@@ -1,1 +1,10 @@
+This section is for more experienced R users who want to start plotting with `ggplot2`. It is not necessary to follow the rest of the conference. 
+
 This is Zusatz. Plot world map with the winning countries, the more the darker. Same colours for same continents.
+
+
+
+```{r}
+
+```
+
