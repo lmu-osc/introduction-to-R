@@ -29,4 +29,10 @@ Thus advanced explanations and exercises can BE found in folded in chunks like t
 
 :::
 
- The main objective of this workshop is to get you fit in the basics of programming in R as it needed for the rest of the Open Research Summer School. To do that, we will repeat and try out the main concepts multiple times, so you get to work with them as much and as from many different perspectives as possible in the next 3 h. Please [install the necessary software](setup.qmd) **before the workshop**, so we can concentrate on the content during the workshop. Of course, feel free to [ask by opening a new issue](https://github.com/nickhaf/r_tutorial/issues) if you run into problems on the way.
+ The main objective of this workshop is to get you fit in the basics of programming in R as it needed for the rest of the Open Research Summer School. To do that, we will repeat and try out the main concepts multiple times, so you get to work with them as much and as from many different perspectives as possible in the next 3 h. 
+
+::: {.callout-caution}
+
+Please [install the necessary software](setup.qmd) **before the workshop**, so we can concentrate on the content during the workshop. Of course, feel free to [ask by opening a new issue](https://github.com/nickhaf/r_tutorial/issues) if you run into problems on the way.
+
+:::
