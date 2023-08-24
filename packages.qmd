@@ -43,9 +43,8 @@ Now we are free to use it, in this case to generate some artwork:
 #canvas_collatz(colors = colorPalette("lava"))
 ```
 
-
-
 ## Conflicts
+
 ::: advanced
 Of course it can happen that different packages include functions with the same name. For example, look at the warnings we get when installing and then loading the packages `ggplot2` and `psych`:
 
@@ -68,6 +67,7 @@ psych::alpha()
 :::
 
 ## Deliberate package management
+
 ::: advanced
 Finally, a quick note on package management and reproducability of your code. R versions and package versions **will** change over time, in which case also the output of your code might change. Therefore, it is good practice to save the R version and package versions, so your code stays (kind of) reproducable for a longer period of time. The most straight forward thing to do is to just write down your R-version and the package versions at the top of your script. Call the versions you use with:
 
@@ -76,5 +76,4 @@ sessionInfo()
 ```
 
 A more elegant approach to manage your packages is to use a dedicated package like [`renv`](https://rstudio.github.io/renv/articles/renv.html), which will make it a lot easier to manage your package versions. But this is past the scope of this workshop, just keep in mind it might be something rewarding to look at, if you should start to programm more with R. Instead, let's look at how to get data into R in the next chapter, so we can actually get to work with it.
-
 :::
