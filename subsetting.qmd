@@ -6,7 +6,35 @@ source("output_hook.R")
 
 # Subsetting data
 
-Please take a look at the different [data structures in R](data_structures.qmd) if you are not familiar with them, before you start with this chapter.
+## Overview over commands in this section
+```{r, eval = FALSE}
+## Extract rows and columns by position and name:
+winners[c(1, 4), c("Year", "Nationality")]
+
+## Conditional subsetting of rows:
+winners[winners$Nationality == "Kenya" & winners$Year < 2000, ]
+
+```
+
+::: tidy
+```{r}
+library(dplyr)
+
+## conditional subsetting of rows
+filter(winners, Nationality == "Kenya", Year < 2000)
+
+## selecting columns
+select(winners, Year, Athlete)
+
+## pipe operator %>% 
+winners %>%
+  filter(Nationality == "Kenya", Year < 2000)
+  select(Year, Athlete)
+
+```
+:::
+
+Let's take a closer look at these commands and see them in action! 
 
 ## Data set
 
@@ -65,24 +93,23 @@ And of course we can combine both calls:
 winners[c(1, 4), c(2, 4)]
 
 winners[c(1, 4), c("Year", "Nationality")]
-
 ```
 
 We can also use Boolean values (every row/column must get a value here, so we extract the first 100 rows by repeating `TRUE` 100 times, and than add `FALSE` for the remaining rows:
 
-```{r}
+```{r, output.lines=4}
 winners[c(rep(TRUE, 100), rep(FALSE, 65)), c(TRUE, FALSE, FALSE, TRUE, TRUE)]
 ```
 
 Now the stuff we looked at in [logical operators](basics.qmd#comparisons-and-logical-operators) comes in handy! We can filter rows which match some condition. For example, we might want to look at all winners from Kenya:
 
-```{r}
+```{r, output.lines=4}
 winners[winners$Nationality == "Kenya", ]
 ```
 
 Take a close look at the comparison before the `,`:
 
-```{r}
+```{r, output.lines=4}
 winners$Nationality == "Kenya"
 ```
 
@@ -90,26 +117,26 @@ winners$Nationality == "Kenya"
 
 If we want to extract multiple nationalities at once, we need the `%in%` operator:
 
-```{r}
+```{r, output.lines=4}
 winners[winners$Nationality %in% c("Kenya", "Germany", "Norway"), ]
 ```
 
 By the way, if we want to save our extracted data frame, we can assign it a new name (otherwise it will only get printed into the console, but you cant work further with it):
 
-```{r}
+```{r, output.lines=4}
 winners_nat <- winners[winners$Nationality %in% c("Kenya", "Germany", "Norway"), ]
 winners_nat
 ```
 
 We can also combine multiple logical vectors using `&` ("and") and `|` ("or"). For example, we might want to look at all Kenyan winners before the year 2000:
 
-```{r}
+```{r, output.lines=4}
 winners[winners$Nationality == "Kenya" & winners$Year < 2000, ]
 ```
 
 Or at all women winners from Australia in the wheelchair category, and the male winners from the United States in the wheelchair category:
 
-```{r}
+```{r, output.lines=4}
 winners[(winners$Category == "Wheelchair Women" & winners$Nationality == "Australia") | (winners$Category == "Wheelchair Men" & winners$Nationality == "United States"), ]
 ```
 
@@ -120,7 +147,7 @@ In the long run, always having to define the data frame multiple time in each ro
 The `dplyr` package is part of the `tidyverse` and provides a grammar of data manipulation. We can use `filter()` to subset rows from a data frame:
 
 ::: tidy
-```{r, message = FALSE}
+```{r, message = FALSE, output.lines=4}
 library(dplyr)
 
 filter(winners, Nationality == "Kenya", Year < 2000)
@@ -132,7 +159,7 @@ Note how we can just write our conditions without connecting them with `&` (`fil
 For extracting columns, we need `select()`:
 
 ::: tidy
-```{r}
+```{r, output.lines=4}
 select(winners, Year, Athlete)
 ```
 :::
@@ -142,7 +169,7 @@ select(winners, Year, Athlete)
 Hold on! Normally, we wouldn't write `tidyverse` code like that. Instead, we would use the pipe operator `%>%` (*than do*), which makes it easy to connect multiple function calls:
 
 ::: tidy
-```{r}
+```{r, output.lines=4}
 winners %>%
   filter(Nationality == "Kenya", Year < 2000)
 ```
@@ -150,18 +177,17 @@ winners %>%
 
 Here, we first input the data frame we want to manipulate. Than we filter, as specified by the pipe operator. Like this, we can easily connect multiple function calls instead of nesting them within multiple brackets, which increases the readability:
 
-```{r}
+```{r, output.lines=4}
 winners[winners$Year > 2000 & winners$Category == "Women", c("Category", "Year")]
 ```
 
 becomes:
 
 ::: tidy
-```{r}
+```{r, output.lines=4}
 winners %>%
   filter(Year > 2000, Category == "Women") %>%
   select(Category, Year)
-
 ```
 :::
 
@@ -181,7 +207,7 @@ vec_athlete[2]
 Of course we can also do that for multiple elements:
 
 ```{r}
-vec_athlete[c(2,3,4)]
+vec_athlete[c(2, 3, 4)]
 ## Or, less to write:
 vec_athlete[2:4]
 ```
