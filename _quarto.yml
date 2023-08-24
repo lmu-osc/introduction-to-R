@@ -19,6 +19,7 @@ website:
     search: true
     contents:
       - section: "Before the workshop"
+        contents:
           - index.qmd
           - setup.qmd
       - section: "Getting Started"
