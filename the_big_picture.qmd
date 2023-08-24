@@ -1,19 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
-
-```{r setup, echo = FALSE, message = FALSE}
-library(readr)
-```
-
-::: {.callout-caution collapse="true"}
-## Expand To Learn About Collapse
-
-This is an example of a 'folded' caution callout that can be expanded by the user. You can use `collapse="true"` to collapse it by default or `collapse="false"` to make a collapsible callout that is expanded by default.
-:::
-
 # The big picture
 
 Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project" with very basic data, which follows a possible workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little more depth for each topic. If you want to have more in depth information instead of following the whole workflow first, you can also skip this chapter and jump to the chapters and exercises you are interested in. But make sure to do the final exercise, to test you R proficiency in the end.
