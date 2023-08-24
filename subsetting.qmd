@@ -230,7 +230,7 @@ vec_athlete[2:4]
 
 Another way would be to provide a logical vector, which defines for each position if we want to extract the element or not (like we already did for data frames):
 
-```{r}
+```{r, output.lines=4}
 vec_athlete[c(rep(TRUE, 100), rep(FALSE, 65))]
 ```
 
