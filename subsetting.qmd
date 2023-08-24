@@ -63,7 +63,7 @@ We can also use Boolean values (every row/column must get a value here, so we ex
 winners[c(rep(TRUE, 100), rep(FALSE, 65)), c(TRUE, FALSE, FALSE, TRUE, TRUE)]
 ```
 
-Now the stuff we looked at in [logical operators](https://nickhaf.github.io/r_tutorial/basics.html#comparisons-and-logical-operators) comes in handy! We can filter rows which match some condition. For example, we might want to look at all winners from Kenya:
+Now the stuff we looked at in [logical operators](basics.qmd#comparisons-and-logical-operators) comes in handy! We can filter rows which match some condition. For example, we might want to look at all winners from Kenya:
 
 ```{r}
 winners[winners$Nationality == "Kenya", ]

@@ -3,10 +3,10 @@ title: "The big picture"
 execute:
   eval: false
 ---
+
 ```{r setup, echo = FALSE, message = FALSE}
 library(readr)
 ```
-
 
 # The big picture
 
@@ -14,7 +14,7 @@ Now that we have completed our set up, let's dive right into programming with `R
 
 ## Packages
 
-[Packages](packages.qmd) are extensions to the `base R` you get by default. We already installed our first packages in [About this workshop](setup.qmd#About-this-workshop). Let's keep doing that and install the following package as well:
+[Packages](packages.qmd) are extensions to the `base R` you get by default. We already installed our first packages in [About this workshop](setup.qmd#about-this-workshop). Let's keep doing that and install the following package as well:
 
 ```{r install_tidyverse, eval = FALSE}
 install.packages("tidyverse")
@@ -30,25 +30,23 @@ library(tidyverse)
 
 ## Load Data
 
-Data is loaded into R so you can work with it. 
-For this chapter, we are going to use the data set `babynames`, which we can find on the `tidytuesday` site. Because it is a `.csv` file, we have to install the additional package `readr` before we can read it:
+Data is loaded into R so you can work with it. For this chapter, we are going to use the data set `babynames`, which we can find on the `tidytuesday` site. Because it is a `.csv` file, we have to install the additional package `readr` before we can read it:
 
 ```{r, eval = FALSE}
 install.packages("readr")
 library(readr)
 ```
 
-No we can load the data: 
+No we can load the data:
+
 ```{r}
 babynames <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-03-22/babynames.csv')
 babynames <- as.data.frame(babynames)
 ```
 
-Yes, we can read in `.csv` data simply by using an URL if provided. There are many different data formats and ways to load data, refer to [load data](load_data.qmd) for more information. 
+Yes, we can read in `.csv` data simply by using an URL if provided. There are many different data formats and ways to load data, refer to [load data](load_data.qmd) for more information.
 
-The above code will load the data into R and assigning it the name `babynames` by using the `<-`. 
-You can see the data popping up in your `Environment` pane on the upper right.
-Don't worry about `as.data.frame()` function. It's not really relevant right now. 
+The above code will load the data into R and assigning it the name `babynames` by using the `<-`. You can see the data popping up in your `Environment` pane on the upper right. Don't worry about `as.data.frame()` function. It's not really relevant right now.
 
 ## Take a look
 
@@ -68,16 +66,13 @@ On the left we can see the columns of this data.frame, named `year`, `sex`, `nam
 
 ## Data wrangling
 
-Now, lets do something with this data. We want to look at the most common name in every year and make a nice plot out of it.
-Sadly the data is not complete. The n is missing (ok, i split it up for illustrational purposes).
-When starting to work with data it is always a good idea to look at missing values, so let's do that quickly:
+Now, lets do something with this data. We want to look at the most common name in every year and make a nice plot out of it. Sadly the data is not complete. The n is missing (ok, i split it up for illustrational purposes). When starting to work with data it is always a good idea to look at missing values, so let's do that quickly:
 
 ## Missings
 
-
 ## Merging
-Split data name and n by an ID. 
 
+Split data name and n by an ID.
 
 ### Subsetting data
 
@@ -85,23 +80,19 @@ One very important part of working with data in R is the [subsetting](subsetting
 
 ### Signifiance of one name vs. the other
 
-
 ## Plot the data
+
 This section is more additional and not really necessary for the other workshops. However, i think it is a great way to show you the beauty of plotting in R, so here it goes (make sure you worked on the other concepts first).
 
 ```{r}
 
 ```
 
-
 ## Conclusion
 
 In this tutorial we learned, that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in.
 
-
 Foto von <a href="https://unsplash.com/de/@rocinante_11?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mick Haupt</a> auf <a href="https://unsplash.com/de/fotos/DgugiZUfH9k?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  
-
 
 ## Final Exercise
 
