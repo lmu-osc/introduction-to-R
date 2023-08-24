@@ -2,21 +2,18 @@
 title: "Welcome"
 ---
 
-Welcome to this R workshop! 
+Welcome to this R workshop!
 
 # What is R?
-- R is a popular programming language for data manipulation, statistical data analyses and plotting of data. 
-- It is open source, and has a big community, which facilitates the development of additional [software packages](packages.qmd) for multiple different applications, but also makes it easy to get help if you are stuck at a paticular problem. 
-- This is one of the reasons why R is great for doing statistical analyses with it - there are packages for almost every use case. 
-- It has great tools for making beautiful plots. 
-- This is not R specific, but because you can write programs for your specific use cases, it facilitates many workflow related tasks like automation, tracking changes with git, result preperation with markdown/latex and many more. 
 
-There are many reasons to learn R and this workshop will hopefully help you with that. 
+-   R is a popular programming language for data manipulation, statistical data analyses and plotting of data.
+-   It is open source, and has a big community, which facilitates the development of additional [software packages](packages.qmd) for multiple different applications, but also makes it easy to get help if you are stuck at a paticular problem.
+-   This is one of the reasons why R is great for doing statistical analyses with it - there are packages for almost every use case.
+-   It has great tools for making beautiful plots.
+-   This is not R specific, but because you can write programs for your specific use cases, it facilitates many workflow related tasks like automation, tracking changes with git, result preperation with markdown/latex and many more.
+
+There are many reasons to learn R and this workshop will hopefully help you with that.
 
 # About the structure of this workshop
-This workshop will teach you the basics of R. It's modular structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](plotting.qmd)? Want to freshen up your R skills? Go over the [first chapter](the-big-picture.qmd), do the final [exercise] and deepen topics of interest you find on the way. 
-If you are a beginner in working with R, i would recommend to just follow the outline you can find on the left side. 
-So don't worry if you don't finish the whole workshop in time, or the material seems a bit overwhelming. 
-It is designed to provide additional information for self studying and looking up topics of interest. 
-The main objective of this workshop is to get you fit in the basics of programming in R as it needed for the rest of the Open Research Summer School. To do that, we will repeat and try out the main concepts multiple times, so you get to work with them as much and as from many different perspectives as possible in the next 3 h.
-Please [install the necessary software](setup.qmd) **before the workshop**, so we can concentrate on the content during the workshop. Of course, feel free to [ask by opening a new issue](https://github.com/nickhaf/r_tutorial/issues) if you run into problems on the way. 
+
+This workshop will teach you the basics of R. It's modular structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](plotting.qmd)? Want to freshen up your R skills? Go over the [first chapter](the-big-picture.qmd), do the final \[exercise\] and deepen topics of interest you find on the way. If you are a beginner in working with R, i would recommend to just follow the outline you can find on the left side. So don't worry if you don't finish the whole workshop in time, or the material seems a bit overwhelming. It is designed to provide additional information for self studying and looking up topics of interest. The main objective of this workshop is to get you fit in the basics of programming in R as it needed for the rest of the Open Research Summer School. To do that, we will repeat and try out the main concepts multiple times, so you get to work with them as much and as from many different perspectives as possible in the next 3 h. Please [install the necessary software](setup.qmd) **before the workshop**, so we can concentrate on the content during the workshop. Of course, feel free to [ask by opening a new issue](https://github.com/nickhaf/r_tutorial/issues) if you run into problems on the way.

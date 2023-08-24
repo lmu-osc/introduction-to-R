@@ -1,3 +1,9 @@
+
+```{r, echo = FALSE}
+source("output_hook.R")
+``` 
+
+
 # Subsetting data
 
 Please take a look at the different [data structures in R](data_structures.qmd) if you are not familiar with them, before you start with this chapter.
@@ -20,7 +26,7 @@ Let's take a quick look:
 head(winners)
 ```
 
-So, this data frame seems to hold the winners of the london marathon, but their finishing times are missing. They are stored in another data set, but we will deal with that later. For now we want to look at how we can extract data from our data structures, so we can work with it.
+So, this data frame seems to hold the winners of the london marathon. Their finishing times seem to be missing, but we will deal with that later. For now we want to look at how we can extract data from our data structures, so we can work with it.
 
 ## Data frames
 
@@ -28,16 +34,20 @@ We will look at two ways to extract rows and columns from data frames.
 
 ### Base R
 
-In `Base R`, we use square brackets `[,]`. In front of the `,` we write the **rows** we want to extract:
+In `Base R`, we use square brackets `[,]` to extract specific rows and columns.   
 
-```{r}
+#### Rows
+In front of the `,` we write the **rows** we want to extract:
+
+```{r, output.lines=4}
 # Extract the first and the fourth row
 winners[c(1, 4), ]
 ```
 
+#### Columns
 Behind it the **columns**:
 
-```{r}
+```{r, output.lines=4}
 # Extract the second and the fourth column:
 winners[, c(2, 4)]
 
@@ -48,9 +58,10 @@ winners[, c("Year", "Nationality")]
 winners$Year
 ```
 
+#### Rows & Columns
 And of course we can combine both calls:
 
-```{r}
+```{r, output.lines=4}
 winners[c(1, 4), c(2, 4)]
 
 winners[c(1, 4), c("Year", "Nationality")]
