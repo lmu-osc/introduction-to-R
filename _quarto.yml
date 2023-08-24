@@ -18,10 +18,11 @@ website:
     style: "docked"
     search: true
     contents:
-      - index.qmd
+      - section: "Before the workshop"
+          - index.qmd
+          - setup.qmd
       - section: "Getting Started"
         contents:
-          - setup.qmd
           - the_big_picture.qmd
       - section: "Basics"
         contents:
