@@ -2,5 +2,7 @@
 <style>
   div.tidy pre { background-color:snow; }
   div.tidy pre.r { background-color:snow; }
-  div.advanced { background-color: lightblue; }
+  div.advanced { background-color: #d2ddea; }
+  div.advanced pre { background-color:#c0d0d8; }
+  div.advanced pre.r { background-color:#c0d0d8; }
 </style>
