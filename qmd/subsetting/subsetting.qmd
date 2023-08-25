@@ -1,6 +1,7 @@
 ```{r, echo = FALSE}
-source("output_hook.R")
+source(here::here("output_hook.R"))
 ```
+
 
 # Subsetting data
 
@@ -47,7 +48,7 @@ Let's take a closer look at these commands and see them in action!
 Load the data set, which lies within the folder `raw_data` in my working directory:
 
 ```{r}
-winners <- readRDS(file = "./raw_data/winners.rds")
+winners <- readRDS(file = here::here("raw_data", "winners.rds"))
 ```
 
 Let's take a quick look:
@@ -110,7 +111,7 @@ str(winners[c(rep(TRUE, 100), rep(FALSE, 65)), c(TRUE, FALSE, FALSE, TRUE, TRUE)
 
 #### Conditional filtering
 
-Now the stuff we looked at in [logical operators](basics.qmd#comparisons-and-logical-operators) comes in handy! We can filter rows which match some condition. For example, we might want to look at all winners from Kenya:
+Now the stuff we looked at in [logical operators](../basics/basics.qmd#comparisons-and-logical-operators) comes in handy! We can filter rows which match some condition. For example, we might want to look at all winners from Kenya:
 
 ```{r, output.lines=4}
 winners[winners$Nationality == "Kenya", ]

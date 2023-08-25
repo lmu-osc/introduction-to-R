@@ -1,5 +1,5 @@
 ```{r, echo = FALSE}
-source("output_hook.R")
+source(here::here("output_hook.R"))
 ```
 
 # Data wrangling
@@ -49,9 +49,18 @@ winners_continents <- winners_continents %>%
 
 ## Data set
 
-Suppose we want to look at the winners by continent (see [last chapter](subsetting.qmd) for the data set). In this case, we will have to add a list assigning each Nationality a continent. We can easily find such a list online, for example at [ourworldindata.org](https://ourworldindata.org/grapher/continents-according-to-our-world-in-data). I have already [downloaded](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) the `.csv`, and we have already loaded it into R in the exercise 2 of [load data](http://localhost:3262/load_data.html#solution):
+Suppose we want to look at the winners by continent (see [last chapter](../subsetting/subsetting.qmd) for the data set). In this case, we will have to add a list assigning each Nationality a continent. We can easily find such a list online, for example at [ourworldindata.org](https://ourworldindata.org/grapher/continents-according-to-our-world-in-data). I have already [downloaded](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) the `.csv`, and we have already loaded it into R in the exercise 2 of [load data](../load_data/load_data_exercise.qmd):
 
-```{r, message = FALSE}
+```{r, message = FALSE, echo = FALSE}
+winners <- readRDS(file = here::here("raw_data", "winners.rds"))
+continents <- read.csv(
+  file = here::here("raw_data", "continents.csv"),
+  sep = ";"
+)
+```
+
+
+```{r, message = FALSE, eval = FALSE}
 winners <- readRDS(file = "./raw_data/winners.rds")
 continents <- read.csv(
   file = "./raw_data/continents.csv",
@@ -118,7 +127,7 @@ To check if values are `NA`, we can use `is.na()`:
 is.na(winners_continents$Hours)
 ```
 
-Some `TRUEs`, so there are missing values here. Let's count them (Summing an [logical vector](basics.qmd#comparisons-and-logical-operators) counts the number of `TRUE` values.):
+Some `TRUEs`, so there are missing values here. Let's count them (Summing a [logical vector](../basics/basics.qmd#comparisons-and-logical-operators) counts the number of `TRUE` values.):
 
 ```{r}
 sum(is.na(winners_continents$Hours))
@@ -163,5 +172,3 @@ winners_continents <- winners_continents %>%
 winners_continents
 ```
 :::
-
-## Exercises

@@ -37,16 +37,16 @@ website:
             - qmd/data_structures/data_structures.qmd
         - section: "rest"
           contents:
-            - packages.qmd
-            - load_data.qmd
+            - qmd/packages/packages.qmd
+            - qmd/load_data/load_data.qmd
       - section: "Data manipulation and transformation"
         contents:
-          - subsetting.qmd
-          - manipulation.qmd
+          - qmd/subsetting/subsetting.qmd
+          - qmd/manipulation/manipulation.qmd
       - section: "Advanced: Analysis and visualization"
         contents:
-          - statistical_analyses.qmd
-          - plotting.qmd
+          - qmd/statistical_analyses/statistical_analyses.qmd
+          - qmd/plotting/plotting.qmd
           
 format:
   html:

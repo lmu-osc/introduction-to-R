@@ -49,41 +49,7 @@ Luckily, as long as we work with RStudio projects, we don't have to deal with th
 
 Now take a look at the working directory and the relative path i used for loading the `winners.rda`. Notice something? Correct, both paths combined equal the **absolute path** to the file. So by splitting it up, we obtain a more reproducible path, that works independent of where the current working directory is.
 
-# Exercises
-
-1.  For the rest of the workshop, we will use the data frame `winners` from the package [LondonMarathon](https://github.com/nrennie/LondonMarathon). I have already tweaked it a bit to make it easier to work with, so just download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and load it into R (write the code for reading in the data into a new script).
-2.  Advanced: Load the `continents.csv` file into R. Did that work as expected? If not, why not? ([Solution](#Solution)) *Hint*: Take a look at the .csv by opening it in a text editor. Look at the documentation of `read.csv()` and take a look at the `sep` argument.
-
-# Solution {#solution}
-
-```{r}
-#| code-fold: true
-#| code-summary: "Solution for exercise 1"
-
-winners <- readRDS(file = "./raw_data/winners.rds")
-```
-
-```{r, eval = FALSE}
-#| code-fold: true
-#| code-summary: "Solution for exercise 2"
-continents <- read.csv(file = "./raw_data/continents.csv")
-
-head(continents)
- 
-# Hmm that looks weird. If we take a look at the file by opening it in a text editor, we can see that the values are seperated by `;`. 
-# So let's call the help for `read.csv()`:
-
-?read.csv
-
-# The `sep` argument specifies that the seperator needs to be a white space (meaning tabs, spaces ... - look at the details).  
-# So, we can do the following:
-
-continents <- read.csv(
-  file = "./raw_data/continents.csv",
-  sep = ";"
-)
-
-head(continents)
-
-# This looks better! Now we can merge both data sets, so we can actually work with them.
-```
+## The `here` package
+Another great way to deal with the path confusion is to use the `here` package. It can build the paths relative to the directory where your RStudio project is saved in. For example, 
+`".\raw_data\winners.rda"` becomes `here::here("raw_data", "winners.rda")`. 
+This is not increadibly important right now, but I need to mention it because I have to use these path structures sometimes during the tutorial, so don't be confused! It is just another way to build file paths. Look [here](https://here.r-lib.org/) (:D) if you want to learn more about the package. 
