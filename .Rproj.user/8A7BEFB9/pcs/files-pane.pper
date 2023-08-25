@@ -1,9 +1,9 @@
 {
-    "path": "~/GitHub/r_tutorial/qmd/basics",
+    "path": "~/GitHub/r_tutorial",
     "sortOrder": [
         {
             "columnIndex": 2,
-            "ascending": true
+            "ascending": false
         },
         {
             "columnIndex": 4,
