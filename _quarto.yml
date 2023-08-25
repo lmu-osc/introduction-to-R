@@ -24,8 +24,14 @@ website:
           - setup.qmd
       - section: "Getting Started"
         contents:
-          - the_big_picture.qmd
-          - exercise_overview.qmd
+          - section: "Workflow"
+            contents:
+              - qmd/workflow/workflow.qmd
+              - qmd/workflow/workflow_exercise.qmd
+          - section: "Overview"
+            contents: 
+              - the_big_picture.qmd
+              - exercise_overview.qmd
       - section: "Basics"
         contents:
         - section: "Basics"
