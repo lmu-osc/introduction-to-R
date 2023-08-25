@@ -1,0 +1,14 @@
+{
+  "hash": "2fb1865342487d11a50f38727301d9bc",
+  "result": {
+    "markdown": "---\ntitle: \"Packages: Exercises\"\n---\n\n\n## Exercise 1\nFor this exercise, we are going to install all the packages we are going to need for the exercises in the coming chapters. So please install and load the following packages:\n- `tidyverse`\n- `here`\n\n::: {.callout-caution collapse=\"true\"}\n## Solution\nThe top of your script now should look something like this:\n\n::: {.cell}\n\n```{.r .cell-code}\n# install.packages(\"tidyverse\")\n# install.packages(\"here\")\n\nlibrary(tidyverse)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.2     ✔ readr     2.1.4\n✔ forcats   1.0.0     ✔ stringr   1.5.0\n✔ ggplot2   3.4.2     ✔ tibble    3.2.1\n✔ lubridate 1.9.2     ✔ tidyr     1.3.0\n✔ purrr     1.0.1     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors\n```\n:::\n\n```{.r .cell-code}\nlibrary(here)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\nhere() starts at C:/Users/hafiznij/Documents/GitHub/r_tutorial\n```\n:::\n:::\n\n\nI have commented out the `install.packages()` calls after executing them, because I don't want them to be installed every time I run the script, once is enough!\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

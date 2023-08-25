@@ -1,4 +1,4 @@
-# The big picture
+# The Big Picture
 
 Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project" with very basic data, which follows a possible workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little more depth for each topic. If you want to have more in depth information instead of following the whole workflow first, you can also skip this chapter and jump to the chapters and exercises you are interested in. But make sure to do the final exercise, to test you R proficiency in the end.
 
@@ -184,5 +184,3 @@ p +
 In this tutorial we learned, that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in.
 
 Test link to [basics](./basics/basics.qmd)
-
-
