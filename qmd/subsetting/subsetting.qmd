@@ -171,37 +171,6 @@ select(winners, Year, Athlete)
 ```
 :::
 
-#### Remark: The pipe operator
-
-Hold on! Normally, we wouldn't write `tidyverse` code like that. Instead, we would use the pipe operator `%>%` (*than do*), which makes it easy to connect multiple function calls:
-
-::: tidy
-```{r, output.lines=4}
-winners %>%
-  filter(Nationality == "Kenya", Year < 2000)
-```
-:::
-
-Here, we first input the data frame we want to manipulate. Than we filter, as specified by the pipe operator. Like this, we can easily connect multiple function calls instead of nesting them within multiple brackets, which increases the readability:
-
-```{r, output.lines=4}
-winners[winners$Year > 2000 & winners$Category == "Women", c("Category", "Year")]
-```
-
-becomes:
-
-::: tidy
-```{r, output.lines=4}
-winners %>%
-  filter(Year > 2000, Category == "Women") %>%
-  select(Category, Year)
-```
-:::
-
-Much nicer to read, right?
-
-Some notes on this syntax: 1. If we don't have any additional arguments we want to put into the function, we can just write the function name without any brackets. 1. The pipe operator will give the result of the last function as input into the next function. 1. If we want to clearly state which of the function arguments should receive the input, we can write a `.`, which can be read as *output of the previous function call*.
-
 ## Vectors
 
 Finally, let's take a quick look at how to extract elements from a vector, which shouldn't be a problem after already dealing with data frames. It's pretty straight forward: we just put the position of the element we want to extract behind the vector in square brackets. Let's quickly define a vector for illustration:
@@ -229,5 +198,3 @@ Another way would be to provide a logical vector, which defines for each positio
 ```{r, output.lines=4}
 vec_athlete[c(rep(TRUE, 100), rep(FALSE, 65))]
 ```
-
-
