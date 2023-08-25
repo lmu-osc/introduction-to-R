@@ -116,15 +116,9 @@ str(persons)
 On the left side we have the column names of this data frame, followed by the [type]() of the column.
 
 To get an overview of the statistical properties of all columns and their missing values, we can use `summary()`:
+
 ```{r}
 summary(persons)
 ```
-Here we can see the mean, minimum and maximum values and more for the numeric columns. 
 
-# Exercises
-
-1.  Load the `tutoR` package and start the exercises about `data structures` by typing the following code into you console:
-
-```{r, eval = FALSE}
-learnr::run_tutorial(name = "data_structures", package = "tutoR")
-```
+Here we can see the mean, minimum and maximum values and more for the numeric columns.

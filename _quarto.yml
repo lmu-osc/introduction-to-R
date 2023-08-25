@@ -35,6 +35,7 @@ website:
         - section: "Data structures"
           contents:
             - qmd/data_structures/data_structures.qmd
+            - qmd/data_structures/data_structures_exercise.qmd
         - section: "rest"
           contents:
             - qmd/packages/packages.qmd
