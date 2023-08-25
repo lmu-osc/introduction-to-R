@@ -61,7 +61,6 @@ continents <- read.csv(
 
 ## Wide and long format
 
-
 ## Merging
 
 To merge two data frames that include information that belongs together, we need a common column, on which we can combine them. In our case, this is the column containing the country, but they are named differently. This doesn't pose a problem, as we can define which columns should be taken from which data frame for merging:

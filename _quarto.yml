@@ -25,6 +25,7 @@ website:
       - section: "Getting Started"
         contents:
           - the_big_picture.qmd
+          - exercise_overview.qmd
       - section: "Basics"
         contents:
           - basics.qmd
