@@ -65,12 +65,30 @@ persons <- data.frame(name = c("Anna", "Alex", "John", "Jessi"),
                       )
 ```
 
-Note that we do nothing else here than combining vectors to a data frame. Each vector will be one column.
+Note that we do nothing else here than combining vectors to a data frame. Each vector will be one column.  
+
+### Adding new columns
+Adding new columns to a data frame is pretty straight forward. We just define the column name, and then assign it some input. For example, we could add a column with the neuroticsm ratings for each person: 
+```{r}
+persons$big5_neuro <- c(1, 3, 2, 4)
+persons
+```
+
+Or, using the `tidyverse` with the help of `mutate()`:
+
+::: tidy
+```{r, message = FALSE}
+library(dplyr)
+
+persons <- mutate(persons, big5_agree= c(2, 5, 2, 1) )
+```
+:::
+
 
 ### Tibbles
-
 A special type of data frames are the so called `tibbles`. Tibbles are a modern version of data frames and the standard data frame type of the `tidyverse`, as they have some advantageous characteristics (e.g., note the prettier printing of the data frame). So don't be confused if you run into them, in general they behave like data frames.
 
+::: tidy
 ```{r}
 persons_tibble <- tibble::tibble(
   name = c("Anna", "Alex", "John", "Jessi"),
@@ -80,6 +98,7 @@ persons_tibble <- tibble::tibble(
 )
 persons_tibble
 ```
+:::
 
 ## Honorable mention: List
 

@@ -18,11 +18,11 @@ website:
     style: "docked"
     search: true
     contents:
-      - section: "Before the workshop"
+      - section: "0) Before the workshop"
         contents:
           - index.qmd
           - setup.qmd
-      - section: "Getting Started"
+      - section: "1) Getting Started"
         contents:
           - section: "Workflow"
             contents:
@@ -32,11 +32,12 @@ website:
             contents: 
               - the_big_picture.qmd
               - exercise_overview.qmd
-      - section: "Basics"
+      - section: "2) Basics"
         contents:
         - section: "Basics"
           contents:
             - qmd/basics/basics.qmd
+            - qmd/basics/tidyverse.qmd
             - qmd/basics/basics_exercise.qmd
         - section: "Data structures"
           contents:
@@ -51,7 +52,7 @@ website:
             - qmd/load_data/load_data.qmd
             - qmd/load_data/load_data_exercise.qmd
 
-      - section: "Data manipulation and transformation"
+      - section: "3) Data manipulation and transformation"
         contents:
         - section: "Subsetting"
           contents:
@@ -59,8 +60,13 @@ website:
             - qmd/subsetting/subsetting_exercise.qmd
         - section: "Merging"
           contents:
-            - qmd/manipulation/manipulation.qmd
-      - section: "Advanced: Analysis and visualization"
+            - qmd/merging/merging.qmd
+            - qmd/merging/merging_exercise.qmd
+        - section: "Missings"
+          contents:
+            - qmd/missing/missing.qmd
+            - qmd/missing/missing_exercise.qmd
+      - section: "4) Advanced: Analysis and visualization"
         contents:
           - qmd/statistical_analyses/statistical_analyses.qmd
           - qmd/plotting/plotting.qmd
