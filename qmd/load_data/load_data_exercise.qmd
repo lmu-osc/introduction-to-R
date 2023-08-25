@@ -1,12 +1,22 @@
 ## Exercise 1
-1. Download the data set [`characters`](). 
+1. Download the data set [`characters`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data). 
+1. Load it into R, and assign it the name `characters`. 
 
+::: {.callout-tip collapse="true"}
+## Hint
+
+It is a `.rds` file.
+:::
+
+::: {.callout-caution collapse = "true"}
 ```{r}
-winners <- readRDS(file = here::here("raw_data", "winners.rds"))
+characters <- readRDS(file = here::here("raw_data", "characters.rds"))
 ```
+:::
 
 
-## Exercies 2
+## Exercies 2 (advanced)
+::: {.callout-tip collapse = "true"}
 Load the `continents.csv` file into R. Did that work as expected? If not, why not? ([Solution](#Solution)) *Hint*: Take a look at the .csv by opening it in a text editor. Look at the documentation of `read.csv()` and take a look at the `sep` argument.
 
 

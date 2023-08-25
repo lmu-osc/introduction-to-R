@@ -52,3 +52,12 @@ Now take a look at the working directory and the relative path i used for loadin
 ## The `here` package
 
 Another great way to deal with the path confusion is to use the `here` package. It can build the paths relative to the directory where your RStudio project is saved in. For example, `".\raw_data\winners.rda"` becomes `here::here("raw_data", "winners.rda")`. This is not increadibly important right now, but I need to mention it because I have to use these path structures sometimes during the tutorial, so don't be confused! It is just another way to build file paths. Look [here](https://here.r-lib.org/) (:D) if you want to learn more about the package.
+
+## Example
+Now, let's load some data into R. We will use the `winners` data set for the remaining theory parts of this workshop (see [next chapter]() for more information on that data set). 
+
+```{r}
+winners <- readRDS(file = here::here("raw_data", "winners.rds"))
+```
+
+

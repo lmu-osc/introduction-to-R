@@ -59,7 +59,6 @@ continents <- read.csv(
 )
 ```
 
-
 ```{r, message = FALSE, eval = FALSE}
 winners <- readRDS(file = "./raw_data/winners.rds")
 continents <- read.csv(
