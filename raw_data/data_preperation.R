@@ -39,3 +39,10 @@ babynames <- babynames[, -4]
 saveRDS(as.data.frame(babynames), file = here::here("raw_data", "babynames.rds"))
 saveRDS(as.data.frame(babynames_n), file = here::here("raw_data", "babynames_n.rds"))
 
+
+# Characters --------------------------------------------------------------
+
+library(tidytuesdayR)
+tuesdata <- tidytuesdayR::tt_load("2022-08-16")
+
+

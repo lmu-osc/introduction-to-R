@@ -1,0 +1,14 @@
+# Exercises
+
+![](pictures/friends.jpg)[^exercise_overview-1]
+
+[^exercise_overview-1]: Image by [Ilse Orsen](https://unsplash.com/de/@lgtts?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/fwPHQB4kGzA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
+
+Over the course of this workshop, you can work on exercises to train the theoretical knowledge acquired in the chapters. Most of these exercises will use the [`characters` data set](https://openpsychometrics.org/tests/characters/documentation/), which provides psychometric ratings for many different TV characters. A large number of people rated different TV characters on a personality scale developed by the author of the questionnaire.
+
+You will load the data, prepare it for analyses and plot it in the end, if you follow the whole workshop. 
+
+
+
+
+
