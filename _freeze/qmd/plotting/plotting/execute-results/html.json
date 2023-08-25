@@ -1,0 +1,14 @@
+{
+  "hash": "38ff90bd99c2ae59ecd5a33e5a9c1ada",
+  "result": {
+    "markdown": "This section is for more experienced R users who want to start plotting with `ggplot2`. It is not necessary to follow the rest of the conference. \n\nThis is Zusatz. Plot world map with the winning countries, the more the darker. Same colours for same continents.\n\n\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

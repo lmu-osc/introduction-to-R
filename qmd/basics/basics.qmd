@@ -110,13 +110,3 @@ One of the most important functions in R is the help-function `?`:
 ```
 
 will open the documentation for the function with the description of its usage, details about the arguments ... In the next chapter we will take a very quick look at R's data types.
-
-## Exercise
-
-1.  Load the `tutoR` package and start the exercises about the `basic operations` by typing the following code into your console:
-
-```{r, eval = FALSE}
-learnr::run_tutorial(name = "basics", package = "tutoR")
-```
-
-[link](../data_structures/data_structures.qmd)

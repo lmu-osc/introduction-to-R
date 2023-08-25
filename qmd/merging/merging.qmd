@@ -1,0 +1,88 @@
+---
+title: "Merging data"
+---
+
+```{r, echo = FALSE}
+source(here::here("output_hook.R"))
+```
+
+## Data set
+
+Suppose we want to look at the winners by continent (see [last chapter](../subsetting/subsetting.qmd) for the data set). In this case, we will have to add a list assigning each Nationality a continent. We can easily find such a list online, for example at [ourworldindata.org](https://ourworldindata.org/grapher/continents-according-to-our-world-in-data). I have already [downloaded](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) the `.csv`, and we have already loaded it into R in the exercise 2 of [load data](../load_data/load_data_exercise.qmd):
+
+```{r}
+winners <- readRDS(file = here::here("raw_data", "winners.rds"))
+
+continents <- read.csv(
+  file = here::here("raw_data", "continents.csv")
+)
+```
+
+## Wide and long format
+
+## Merging
+
+To merge two data frames that include information that belongs together, we need a common column, on which we can combine them. In our case, this is the column containing the country, but they are named differently. This doesn't pose a problem, as we can define which columns should be taken from which data frame for merging:
+
+```{r}
+winners_continents <- merge(
+  x = winners,
+  y = continents,
+  by.x = "Nationality",
+  by.y = "Entity"
+)
+head(winners_continents)
+```
+
+Great! Now the information that belongs together is stored together.
+
+## New columns
+
+Adding new columns to a data frame is pretty straight forward. We just define the column name, and then assign it some input. For example, we could be interested in calculating the seconds each person needed to finish, and add that as a new column:
+
+```{r}
+winners_continents$Seconds_total <- winners_continents$Hours * 60^2 +
+                                    winners_continents$Minutes * 60 +
+                                    winners_continents$Seconds
+head(winners_continents)
+```
+
+Or, using the `tidyverse` with the help of `mutate()`:
+
+::: tidy
+```{r, message = FALSE}
+library(dplyr)
+
+winners_continents <- winners_continents %>%
+  mutate(Minutes_total = winners_continents$Hours * 60 + winners_continents$Minutes * winners_continents$Seconds / 60)
+head(winners_continents)
+```
+:::
+
+Hold on! Both new columns seem to have missing values, which is an important concept which we haven't talked about yet. So let's do that quickly, and then merge!
+
+## ifelse
+
+We can also add new values conditionally, for example by using the `ifelse()` function. For example, let's build a composite variable which summarizes whether the category was `Whelchair` or not:
+
+```{r, output.lines = 4}
+winners_continents$Wheelchair <- ifelse(
+  winners_continents$Category %in% c("Wheelchair Men", "Wheelchair Women"),
+  yes = TRUE,
+  no = FALSE
+)
+winners_continents
+```
+
+::: tidy
+```{r, output.lines = 4}
+winners_continents <- winners_continents %>%
+  mutate(over_3_h = ifelse(
+    winners_continents$Hours < 2,
+    yes = "below",
+    no  = "over"
+  ))
+
+winners_continents
+```
+:::

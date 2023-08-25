@@ -1,0 +1,10 @@
+---
+title: "Tidyverse"
+---
+
+The `tidyverse` is a collection of packages following a common philosophy, and facilitate many aspects of coding in R, for example data wrangling and plotting. It is not necessary to learn the `tidyverse` syntax, it differs a bit from the standard R syntax. However, I find it easier to understand in many cases, so I will provide the syntax from the respective `tidyverse` package along with the `Base R` syntax in most cases. 
+
+::: tidy
+Tidyverse syntax will be marked like this.
+:::
+
