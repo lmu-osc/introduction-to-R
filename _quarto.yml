@@ -28,10 +28,17 @@ website:
           - exercise_overview.qmd
       - section: "Basics"
         contents:
-          - basics.qmd
-          - data_structures.qmd
-          - packages.qmd
-          - load_data.qmd
+        - section: "Basics"
+          contents:
+            - qmd/basics/basics.qmd
+            - qmd/basics/basics_exercise.qmd
+        - section: "Data structures"
+          contents:
+            - qmd/data_structures/data_structures.qmd
+        - section: "rest"
+          contents:
+            - packages.qmd
+            - load_data.qmd
       - section: "Data manipulation and transformation"
         contents:
           - subsetting.qmd

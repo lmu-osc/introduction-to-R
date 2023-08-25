@@ -183,4 +183,6 @@ p +
 
 In this tutorial we learned, that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in.
 
+Test link to [basics](./basics/basics.qmd)
+
 
