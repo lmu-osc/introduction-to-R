@@ -47,8 +47,13 @@ website:
 
       - section: "Data manipulation and transformation"
         contents:
-          - qmd/subsetting/subsetting.qmd
-          - qmd/manipulation/manipulation.qmd
+        - section: "Subsetting"
+          contents:
+            - qmd/subsetting/subsetting.qmd
+            - qmd/subsetting/subsetting_exercise.qmd
+        - section: "Merging"
+          contents:
+            - qmd/manipulation/manipulation.qmd
       - section: "Advanced: Analysis and visualization"
         contents:
           - qmd/statistical_analyses/statistical_analyses.qmd

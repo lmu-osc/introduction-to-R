@@ -16,12 +16,6 @@ winners <- winners_raw %>%
 saveRDS(as.data.frame(winners), file = here::here("raw_data", "winners.rds"))
 
 
-
-
-
-
-
-
 # Babynames ---------------------------------------------------------------
 
 babynames <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-03-22/babynames.csv')
@@ -45,7 +39,10 @@ saveRDS(as.data.frame(babynames_n), file = here::here("raw_data", "babynames_n.r
 library(tidytuesdayR)
 tuesdata <- tidytuesdayR::tt_load("2022-08-16")
 
+psych_stats <- tuesdata$psych_stats %>%
+  select(char_id, question, personality, avg_rating, rank, rating_sd, number_ratings)
+
 saveRDS(tuesdata$characters, 
         file = here::here("raw_data", "characters.rds")
         )
-write.table(tuesdata$psych_stats, here::here("raw_data", "psych_stats.csv"), sep = ";")
+write.table(psych_stats, here::here("raw_data", "psych_stats.csv"), sep = ";")

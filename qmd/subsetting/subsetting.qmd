@@ -40,23 +40,17 @@ Let's take a closer look at these commands and see them in action!
 
 ## Data set
 
-![](./pictures/marathon.jpg)[^subsetting-1]
+![](../pictures/marathon.jpg)[^subsetting-1]
 
 [^subsetting-1]: Image by [Miguel A Amutio](https://unsplash.com/de/@amutiomi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/QDv-uBc-poY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 
-For the rest of the workshop, we will use the data frame `winners` from the package [LondonMarathon](https://github.com/nrennie/LondonMarathon). I have already tweaked it a bit to make it easier to work with, so just download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and load it into R (write the code for reading in the data into a new script). Load the data set, which lies within the folder `raw_data` in my working directory:
+For the rest of the workshop, we will use the data set `winners` from the package [LondonMarathon](https://github.com/nrennie/LondonMarathon). We have already loaded the data set in the [exercises of the last chapter](../load_data/load_data_exercise.qmd).
 
-```{r}
+```{r, echo = FALSE}
 winners <- readRDS(file = here::here("raw_data", "winners.rds"))
 ```
 
-Let's take a quick look:
-
-```{r}
-head(winners)
-```
-
-So, this data frame seems to hold the winners of the london marathon. Now we want to look at how we can extract data from our data structures, so we can work with it.
+Now we want to look at how we can extract data from our data structures, so we can work with it.
 
 ## Data frames
 
@@ -236,10 +230,4 @@ Another way would be to provide a logical vector, which defines for each positio
 vec_athlete[c(rep(TRUE, 100), rep(FALSE, 65))]
 ```
 
-## Exercises
 
-1.  Load the `tutoR` package and start the exercise by typing the following code into your console:
-
-```{r, eval = FALSE}
-learnr::run_tutorial(name = "subsetting", package = "tutoR")
-```
