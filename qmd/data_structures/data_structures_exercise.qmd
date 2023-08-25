@@ -12,31 +12,32 @@ obj <- list(c(3, 5, 1), "a")
 obj
 ```
 
-1. What kind of data structure is `obj`?
-    - [ ] Data frame
-    - [ ] Vector
-    - [ ] List
-    - [ ] Matrix
-    
+1.  What kind of data structure is `obj`?
+    -   [ ] Data frame
+    -   [ ] Vector
+    -   [ ] List
+    -   [ ] Matrix
+
 ::: {.callout-caution collapse="true"}
 ## Solution
-- [ ] Data frame
-- [ ] Vector
-- [x] List
-- [ ] Matrix
-::: 
 
+-   [ ] Data frame
+-   [ ] Vector
+-   [x] List
+-   [ ] Matrix
+:::
 
-2. And what types of vectors are included?
-   - [ ] Numeric and character.
-   - [ ] Character and logical.
-   - [ ] Only numeric.
-   - [ ] Only character.
-    
+2.  And what types of vectors are included?
+    -   [ ] Numeric and character.
+    -   [ ] Character and logical.
+    -   [ ] Only numeric.
+    -   [ ] Only character.
+
 ::: {.callout-caution collapse="true"}
 ## Solution
-- [x] Numeric and character.
-- [ ] Character and logical.
-- [ ] Only numeric.
-- [ ] Only character.
+
+-   [x] Numeric and character.
+-   [ ] Character and logical.
+-   [ ] Only numeric.
+-   [ ] Only character.
 :::

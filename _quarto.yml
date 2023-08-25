@@ -36,10 +36,15 @@ website:
           contents:
             - qmd/data_structures/data_structures.qmd
             - qmd/data_structures/data_structures_exercise.qmd
-        - section: "rest"
+        - section: "Packages"
           contents:
             - qmd/packages/packages.qmd
+            - qmd/packages/packages_exercise.qmd
+        - section: "Loading data"
+          contents:
             - qmd/load_data/load_data.qmd
+            - qmd/load_data/load_data_exercise.qmd
+
       - section: "Data manipulation and transformation"
         contents:
           - qmd/subsetting/subsetting.qmd

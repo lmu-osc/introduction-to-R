@@ -30,7 +30,7 @@ devtools::install_github("cutterkom/generativeart")
 
 ## Load packages
 
-After installing a package, we have to load it into our R session:
+After installing a package, we have to load it into our R session. Optimally we do this for all packages we are going to use at the top of our script, so dependencies are easy to spot. 
 
 ```{r}
 #library(aRtsy)
@@ -43,17 +43,12 @@ Now we are free to use it, in this case to generate some artwork:
 #canvas_collatz(colors = colorPalette("lava"))
 ```
 
-
-
 ## Function conflicts
 
-
 ::: {.callout-note collapse="true"}
-
 ## Expand to learn about dealing with identical function names from different packages
 
-Of course it can happen that different packages include functions with the same name. 
-For example, look at the warnings we get when installing and then loading the packages `ggplot2` and `psych`:
+Of course it can happen that different packages include functions with the same name. For example, look at the warnings we get when installing and then loading the packages `ggplot2` and `psych`:
 
 ```{r, eval = FALSE}
 install.packages("ggplot2")
@@ -78,8 +73,7 @@ psych::alpha()
 ::: {.callout-note collapse="true"}
 ## Expand to learn about managing package versions
 
-Finally, a quick note on package management and reproducability of your code. 
-R versions and package versions **will** change over time, in which case also the output of your code might change. Therefore, it is good practice to save the R version and package versions, so your code stays (kind of) reproducable for a longer period of time. The most straight forward thing to do is to just write down your R-version and the package versions at the top of your script. Call the versions you use with:
+Finally, a quick note on package management and reproducability of your code. R versions and package versions **will** change over time, in which case also the output of your code might change. Therefore, it is good practice to save the R version and package versions, so your code stays (kind of) reproducable for a longer period of time. The most straight forward thing to do is to just write down your R-version and the package versions at the top of your script. Call the versions you use with:
 
 ```{r}
 sessionInfo()

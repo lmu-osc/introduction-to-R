@@ -45,4 +45,7 @@ saveRDS(as.data.frame(babynames_n), file = here::here("raw_data", "babynames_n.r
 library(tidytuesdayR)
 tuesdata <- tidytuesdayR::tt_load("2022-08-16")
 
+saveRDS(tuesdata$characters, 
+        file = here::here("raw_data", "characters.rds")
+        )
 
