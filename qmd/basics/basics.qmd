@@ -118,3 +118,5 @@ will open the documentation for the function with the description of its usage, 
 ```{r, eval = FALSE}
 learnr::run_tutorial(name = "basics", package = "tutoR")
 ```
+
+[link](../data_structures/data_structures.qmd)
