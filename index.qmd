@@ -18,7 +18,7 @@ There are many reasons to learn R and this workshop will hopefully help you with
 
 This workshop will teach you the basics of R. It's modular structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to scientific programming with R and want to follow the course structure?
 
-::: {.callout-note collapse="true"}
+::: {.callout-note collapse="true" icon="false"}
 ## Unfold if you want to learn more about advanced content
 
 Don't worry if you don't finish the whole workshop in time, or the material seems a bit overwhelming. It is designed to provide additional information for self studying and looking up topics of interest (that may come up during the following week, or in general). Advanced explanations and exercises can be found in folded in chunks like this one.
