@@ -48,4 +48,4 @@ tuesdata <- tidytuesdayR::tt_load("2022-08-16")
 saveRDS(tuesdata$characters, 
         file = here::here("raw_data", "characters.rds")
         )
-
+write.table(tuesdata$psych_stats, here::here("raw_data", "psych_stats.csv"), sep = ";")

@@ -54,17 +54,14 @@ Suppose we want to look at the winners by continent (see [last chapter](../subse
 ```{r, message = FALSE, echo = FALSE}
 winners <- readRDS(file = here::here("raw_data", "winners.rds"))
 continents <- read.csv(
-  file = here::here("raw_data", "continents.csv"),
-  sep = ";"
+  file = here::here("raw_data", "continents.csv")
 )
 ```
 
 ```{r, message = FALSE, eval = FALSE}
 winners <- readRDS(file = "./raw_data/winners.rds")
 continents <- read.csv(
-  file = "./raw_data/continents.csv",
-  sep = ";"
-)
+  file = "./raw_data/continents.csv")
 ```
 
 ## Wide and long format
