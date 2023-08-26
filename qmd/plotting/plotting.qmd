@@ -2,11 +2,6 @@ This section is for more experienced R users who want to start plotting with `gg
 
 This is Zusatz. Plot world map with the winning countries, the more the darker. Same colours for same continents.
 
-
-
-
-
-
 ```{r}
 library(tidyverse)
 winners <- readRDS(file = here::here("raw_data", "winners.rds"))
@@ -36,10 +31,7 @@ ggplot(data = winners_continents,
 
 ```
 
-
-
-
-```{r}
+```{r, eval = FALSE}
 # Too complex?
 
 winners <- readRDS(file = here::here("raw_data", "winners.rds"))
