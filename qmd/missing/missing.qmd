@@ -17,7 +17,9 @@ winners_continents <- merge(
 )
 ```
 
-Missing values are denoted in R by `NA` (or `NaN` in some cases). They pretty strongly nullify a calculation - if one missing value is found somewhere along the line, the result will also be `NA` (if not specified otherwise):
+Now that we now how to extract values from a bigger data set, we can deal with the missing values we encountered when [taking a look](../peeking/peeking.qmd) at our `characters` data set.
+
+Missing values are denoted in R by `NA` (or `NaN` in some cases). They nullify a calculation pretty strongly - if one missing value is found somewhere along the line, the result will also be `NA` (if not specified otherwise):
 
 ```{r}
 4 + 5 + NA
@@ -28,25 +30,32 @@ That's why our newly build columns include `NAs`: The column `Hours` already had
 To check if values are `NA`, we can use `is.na()`:
 
 ```{r, output.lines = 4}
-is.na(winners_continents$Hours)
+is.na(winners$Hours)
 ```
 
 Some `TRUEs`, so there are missing values here. Let's count them (Summing a [logical vector](../basics/basics.qmd#comparisons-and-logical-operators) counts the number of `TRUE` values.):
 
 ```{r}
-sum(is.na(winners_continents$Hours))
+sum(is.na(winners$Hours))
 ```
 
-We seem to have `5` missings in this column. There are multiple different ways to deal with missings. For this tutorial, we just remove cases with missing values on the `Hours` variable:
+We seem to have `5` missings in this column. 
+
+There are multiple different ways to deal with missings. For this tutorial, we just remove cases with missing values on the `Hours` variable, as we want to look at the finishing times, and missing times could pose a problem. 
+
+To remove them, we have to bring together multiple concepts we have already looked at in previous chapters:
 
 ```{r, output.lines = 4}
-winners_continents_na <- winners_continents[!is.na(winners_continents$Hours), ]
+winners_na <- winners[!is.na(winners$Hours), ]
 ```
 
-What happens here? Like always when filtering specific rows, we define a logical vector, which has a `TRUE` for all rows that have a missing on `ID` and a `FALSE` for all others (by using the `!` operator, which inverts the boolean values - otherwise we would extract all rows with missing values in the `Hours` column):
+What happens here? Like always when [filtering specific rows](), we define a [logical vector](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#comparisons-and-logical-operators), which has a `TRUE` for all rows that have a missing on `ID` and a `FALSE` for all others (by using the `!` operator, which inverts the boolean values - otherwise we would extract all rows with missing values in the `Hours` column):
 
 ```{r, output.lines = 4}
-!is.na(winners_continents$Hours)
+!is.na(winners$Hours)
 ```
 
-We also assign a new name to the resulting data frame.
+We also assign the new name `winners_na` to the resulting data frame, so we don't overwrite the original one. 
+
+As already stated, it is not always necessary to remove `NAs` manually from the data set. In other cases it might be feasible to ignore them, and many functions can deal with missing values by themselves. 
+

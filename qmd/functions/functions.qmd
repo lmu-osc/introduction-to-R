@@ -1,1 +1,25 @@
+## ifelse
 
+We can also add new values conditionally, for example by using the `ifelse()` function. For example, let's build a composite variable which summarizes whether the category was `Whelchair` or not:
+
+```{r, output.lines = 4, eval = FALSE}
+winners_continents$Wheelchair <- ifelse(
+  winners_continents$Category %in% c("Wheelchair Men", "Wheelchair Women"),
+  yes = TRUE,
+  no = FALSE
+)
+winners_continents
+```
+
+::: tidy
+```{r, output.lines = 4, eval = FALSE}
+winners_continents <- winners_continents %>%
+  mutate(over_3_h = ifelse(
+    winners_continents$Hours < 2,
+    yes = "below",
+    no  = "over"
+  ))
+
+winners_continents
+```
+:::

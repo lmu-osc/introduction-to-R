@@ -2,8 +2,8 @@
 title: "Missing values: Exercises"
 ---
 
-Now we need to 
-::: {.calout-caution icon="false"}
+Now we need to ::: {.calout-caution icon="false"}
+
 ```{r load characters}
 characters <- readRDS(file = here::here("raw_data", "characters.rds"))
 ```
@@ -14,7 +14,7 @@ psych_stats <- read.csv(
   sep = ";"
 )
 ```
-:::
 
+:::
 
 ## Exercise 1

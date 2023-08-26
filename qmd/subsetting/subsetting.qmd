@@ -1,64 +1,17 @@
+---
+title: "Subsetting"
+---
+
 ```{r, echo = FALSE}
 source(here::here("output_hook.R"))
+winners <- readRDS(here::here("raw_data", "winners.rds"))
 ```
 
-# Subsetting data
-
-## Overview of the main commands in this section
-
-```{r, eval = FALSE}
-## Extract elements from a vector
-vec_athlete[c(2, 3, 4)]
-
-## Extract rows and columns by position and name:
-winners[c(1, 4), c("Year", "Nationality")]
-
-## Conditional subsetting of rows:
-winners[winners$Nationality == "Kenya" & winners$Year < 2000, ]
-
-```
-
-::: tidy
-```{r, eval = FALSE}
-library(dplyr)
-
-## conditional subsetting of rows
-filter(winners, Nationality == "Kenya", Year < 2000)
-
-## selecting columns
-select(winners, Year, Athlete)
-
-## pipe operator %>% 
-winners %>%
-  filter(Nationality == "Kenya", Year < 2000)
-  select(Year, Athlete)
-
-```
-:::
-
-Let's take a closer look at these commands and see them in action!
-
-## Data set
-
-![](../pictures/marathon.jpg)[^subsetting-1]
-
-[^subsetting-1]: Image by [Miguel A Amutio](https://unsplash.com/de/@amutiomi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/QDv-uBc-poY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
-
-For the rest of the workshop, we will use the data set `winners` from the package [LondonMarathon](https://github.com/nrennie/LondonMarathon). We have already loaded the data set in the [exercises of the last chapter](../load_data/load_data_exercise.qmd).
-
-```{r, echo = FALSE}
-winners <- readRDS(file = here::here("raw_data", "winners.rds"))
-```
-
-Now we want to look at how we can extract data from our data structures, so we can work with it.
+Subsetting is extracting smaller sets of data from a bigger set. For example, we can extract specific rows from a data frame, or specific values from a vector. Let's take a look at how that is achieved in R:
 
 ## Data frames
 
-We will look at two ways to extract rows and columns from data frames.
-
-### Base R
-
-In `Base R`, we use square brackets `[,]` to extract specific rows and columns.
+In `R` we use square brackets `[,]` to extract specific rows and columns.
 
 ### Rows
 
@@ -69,7 +22,7 @@ In front of the `,` we write the **rows** we want to extract:
 winners[c(1, 4), ]
 ```
 
-#### Columns
+### Columns
 
 Behind it the **columns**:
 
@@ -84,9 +37,11 @@ winners[, c("Year", "Nationality")]
 winners$Year
 ```
 
-Suggestion: Always use column names instead of position if possible. This way, your code will still work if the column position changes.
+::: callout-tip
+Always use column names instead of position if possible. This way, your code will still work if the column position changes.
+:::
 
-#### Rows & Columns
+### Rows & Columns
 
 And of course we can combine both calls:
 
@@ -102,13 +57,16 @@ We can also use Boolean values (every row/column must get a value here, so we ex
 str(winners[c(rep(TRUE, 100), rep(FALSE, 65)), c(TRUE, FALSE, FALSE, TRUE, TRUE)])
 ```
 
-#### Conditional filtering
+### Conditional filtering
 
 Now the stuff we looked at in [logical operators](../basics/basics.qmd#comparisons-and-logical-operators) comes in handy! We can filter rows which match some condition. For example, we might want to look at all winners from Kenya:
 
 ```{r, output.lines=4}
 winners[winners$Nationality == "Kenya", ]
 ```
+
+::: {.callout-note collapse="true"}
+## Unfold if you want to take a closer look at what is happening here
 
 Take a close look at the comparison before the `,`:
 
@@ -117,6 +75,7 @@ winners$Nationality == "Kenya"
 ```
 
 `winners$Nationality` is a vector, so comparing its values to a specified value yields a logical vector with the respective `TRUE` and `FALSE` values. We can insert this logical vector in front of the `,` to extract all rows corresponding to that condition.
+:::
 
 If we want to extract multiple nationalities at once, we need the `%in%` operator:
 
@@ -145,15 +104,11 @@ winners[(winners$Category == "Wheelchair Women" & winners$Nationality == "Austra
 
 In the long run, always having to define the data frame multiple time in each row can become a bit annoying and clutters the code. Enter, the `filter()` function:
 
-### Tidyverse
-
-The `dplyr` package is part of the `tidyverse` and provides a grammar of data manipulation. We can use `filter()` to subset rows from a data frame:
-
-#### Rows
+#### Rows: Tidyverse
 
 ::: tidy
 ```{r, message = FALSE, output.lines=4}
-library(dplyr)
+library(tidyverse)
 
 filter(winners, Nationality == "Kenya", Year < 2000)
 ```
@@ -161,7 +116,7 @@ filter(winners, Nationality == "Kenya", Year < 2000)
 
 Note how we can just write our conditions without connecting them with `&` (`filter()` does that automatically for us). Also, we don't have to put the column names into `""`, because `filter()` knows that this are column names of the `winners` data frame, which makes coding a bit more pleasant.
 
-#### Columns
+#### Columns: Tidyverse
 
 For extracting columns, we need `select()`:
 

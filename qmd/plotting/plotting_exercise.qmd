@@ -1,0 +1,40 @@
+---
+title: "Plotting: Exercises"
+---
+
+```{r}
+library(tidyverse)
+
+characters <- readRDS(file = here::here("raw_data", "characters.rds"))
+
+psych_stats <- read.csv(
+  file = here::here("raw_data", "psych_stats.csv"),
+  sep = ";"
+)
+
+
+
+characters_stats <- merge(
+  x = characters,
+  y = psych_stats,
+  by.x = "id", 
+  by.y = "char_id"
+)
+
+questions <- unique(characters_stats$question)[1:15]
+
+## Characters subset
+characters_subset <- characters_stats %>% 
+  filter(uni_name == "Breaking Bad", question %in% questions)
+
+
+ggplot(data = characters_subset, 
+       aes(x = mean_rating, 
+           y = question,
+           colour = name)) +
+  #facet_grid(. ~ name) +
+  geom_point()
+
+```
+
+

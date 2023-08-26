@@ -12,8 +12,6 @@ website:
         text: Home
       - setup.qmd
       - the_big_picture.qmd
-      - packages.qmd
-      - load_data.qmd
   sidebar: 
     style: "docked"
     search: true
@@ -58,14 +56,14 @@ website:
           contents: 
             - qmd/peeking/peeking.qmd
             - qmd/peeking/peeking.qmd
-        - section: "Missings"
-          contents:
-            - qmd/missing/missing.qmd
-            - qmd/missing/missing_exercise.qmd
         - section: "Subsetting"
           contents:
             - qmd/subsetting/subsetting.qmd
             - qmd/subsetting/subsetting_exercise.qmd
+        - section: "Missings"
+          contents:
+            - qmd/missing/missing.qmd
+            - qmd/missing/missing_exercise.qmd
         - section: "Merging"
           contents:
             - qmd/merging/merging.qmd
@@ -78,8 +76,13 @@ website:
             - qmd/functions/functions.qmd
       - section: "4) Advanced: Analysis and visualization"
         contents:
-          - qmd/statistical_analyses/statistical_analyses.qmd
-          - qmd/plotting/plotting.qmd
+        - section: "Statistical Analyses"
+          contents:
+            - qmd/statistical_analyses/statistical_analyses.qmd
+        - section: "Plotting"
+          contents:
+            - qmd/plotting/plotting.qmd
+
           
 format:
   html:
