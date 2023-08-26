@@ -12,8 +12,6 @@ website:
         text: Home
       - setup.qmd
       - the_big_picture.qmd
-      - packages.qmd
-      - load_data.qmd
   sidebar: 
     style: "docked"
     search: true
