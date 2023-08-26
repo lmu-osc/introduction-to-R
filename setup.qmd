@@ -1,35 +1,55 @@
-# Setup
+---
+title: "Setup"
+---
 
-## R
+## Installation
 
-## RStudio
+Please go to [this website](https://posit.co/download/rstudio-desktop/) and download and install R and RStudio. While R is is a language and environment for statistical computing and graphics, RStudio is a according integrated development environment for R, facilitating working with it.
 
-### Optional: posit Cloud
-
-In case you don't use a notebook where you can install R and RStudio, or you don't want to, you can use the posit Cloud service. It can be run in you browser, and provides the same functions and interface as if you were working with your own RStudio installation. And it's free as well (at least 25 hours per month, but that should be more than enough for this workshop and probably for the following week).
+::: {.callout-note collapse="true"} \## Open if you don't want to install anything In case you don't use a notebook where you can install R and RStudio, or you don't want to, you can use the posit Cloud service. It can be run in you browser, and provides the same functions and interface as if you were working with your own RStudio installation. And it's free as well (at least 25 hours per month, but that should be more than enough for this workshop and probably for the following week).
 
 1.  Go to [posit Cloud](https://posit.cloud/).
 2.  Click on `GET STARTED`.
 3.  Create an account (it's free) and login.
 4.  On the upper right, click on `New Project`. This will create a new RStudio project, which you can use the same way as described in this tutorial.
 
-### Structure of the RStudio interface
+::: {.callout-warning collapse="true"}
+Keep in mind that the free posit Cloud account only gives you 25 computing ours per month. This should be enough for this week. See [here](https://posit.cloud/plans) for the subscription plans.
+:::
 
-#### Script Pane
+## Structure of the RStudio interface
 
+When opening RStudio it will look something like this:
+
+![](./qmd/pictures/RStudio_window.PNG)
+
+The programm can be split into 4 parts:
+
+![](./qmd/pictures/window_commented.PNG)
+
+### 1) Script pane
+The script pane is used to edit scripts. Scripts are the files you store your code in. You can execute a line of code by pressing `ctrl + enter` (on windows) or `command + return` (on macOS). To execute multiple lines of code at once, mark them before you press the keys.
+Try it yourself: Write
 ```{r}
+# Our first line of code:
 print("Hello World!")
 ```
 
-Tadaa, we just wrote our first line of code.
+into your script and execute your first line of code. It should output "Hello World!" in your console.  
 
-#### Console {#console}
+By the way: Code lines, that are preceded by a `#` are commented out, and will not be evaluated.
 
-You can also work directly in the console, for example to try out things. Type, into your console:
+### 2) Console
+
+You can also work directly in the console, for example to try out things. Type, into your console and then just press `enter`:
 
 ```{r}
 # Sum two values
 10 + 5
 ```
 
-By the way: Code lines, that are preceded by a `#` are commented out, and will not be evaluated.
+### 3) Workspace
+Here you have an overview over the objects currently loaded into your R session, your command history and some more options we won't need for now.
+
+### 4) Plots, Files, Help ...
+Plots you build in your R session get output here. If you call the [help function](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#help) the documentation opens here. The `Files` pane let's you mange the files in your working directory. 
