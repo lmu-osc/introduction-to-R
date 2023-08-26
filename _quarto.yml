@@ -58,14 +58,14 @@ website:
           contents: 
             - qmd/peeking/peeking.qmd
             - qmd/peeking/peeking.qmd
-        - section: "Missings"
-          contents:
-            - qmd/missing/missing.qmd
-            - qmd/missing/missing_exercise.qmd
         - section: "Subsetting"
           contents:
             - qmd/subsetting/subsetting.qmd
             - qmd/subsetting/subsetting_exercise.qmd
+        - section: "Missings"
+          contents:
+            - qmd/missing/missing.qmd
+            - qmd/missing/missing_exercise.qmd
         - section: "Merging"
           contents:
             - qmd/merging/merging.qmd
