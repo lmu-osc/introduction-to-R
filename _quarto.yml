@@ -78,8 +78,13 @@ website:
             - qmd/functions/functions.qmd
       - section: "4) Advanced: Analysis and visualization"
         contents:
-          - qmd/statistical_analyses/statistical_analyses.qmd
-          - qmd/plotting/plotting.qmd
+        - section: "Statistical Analyses"
+          contents:
+            - qmd/statistical_analyses/statistical_analyses.qmd
+        - section: "Plotting"
+          contents:
+            - qmd/plotting/plotting.qmd
+
           
 format:
   html:
