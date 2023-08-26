@@ -3,6 +3,8 @@ title: "Plotting: Exercises"
 ---
 
 ```{r}
+library(tidyverse)
+
 characters <- readRDS(file = here::here("raw_data", "characters.rds"))
 
 psych_stats <- read.csv(
