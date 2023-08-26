@@ -2,14 +2,13 @@
 title: "Merging: Exercise"
 ---
 
-Now we have gotten to know our `characters` data set a bit more. However, the personality ratings are not included yet. 
-For that, we need to load the `psych_stats` data set as well, which contains the ratings for all characters. We have already done that in [Exercise 2 of the Load data chapter](https://nickhaf.github.io/r_tutorial/qmd/load_data/load_data_exercise.html#exercies-2), so here is the code again: 
+Now we have gotten to know our `characters` data set a bit more. However, the personality ratings are not included yet. For that, we need to load the `psych_stats` data set as well, which contains the ratings for all characters. We have already done that in [Exercise 2 of the Load data chapter](https://nickhaf.github.io/r_tutorial/qmd/load_data/load_data_exercise.html#exercies-2), so here is the code again:
 
-```{r load characters, echo = FALSE}
+::: {.calout-caution icon="false"}
+```{r load characters}
 characters <- readRDS(file = here::here("raw_data", "characters.rds"))
 ```
 
-::: {.calout-caution icon="false"}
 ```{r load psych_stats}
 psych_stats <- read.csv(
   file = here::here("raw_data", "psych_stats.csv"),
@@ -18,26 +17,30 @@ psych_stats <- read.csv(
 ```
 :::
 
-Now we want to combine both data frames into one, so all information belonging together can be found in the same data frame. 
+Now we want to combine both data frames into one, so all information belonging together can be found in the same data frame.
 
 ## Exercise 1
+
 Merge the `characters` data frame and the `psych_stats` data frame on a common column.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
-Identify the common columns. Are they named the same in both data frames? Look at the documentation of `?merge` to see, how you can merge data frames that don't have identically named columns. 
+
+Identify the common columns. Are they named the same in both data frames? Look at the documentation of `?merge` to see, how you can merge data frames that don't have identically named columns.
 :::
 
 ::: {.callout-caution collapse="true"}
-
 ## Solution
-First, let`s take a look at both data sets again:
+
+First, let\`s take a look at both data sets again:
+
 ```{r}
 str(characters)
 str(psych_stats)
 ```
 
 It seems like both data frames have a column containing an ID for the character. We can use that column for merging:
+
 ```{r}
 characters_stats <- merge(
   x = characters,
@@ -48,6 +51,6 @@ characters_stats <- merge(
 
 str(characters_stats)
 ```
-Worked like a charm!
 
+Worked like a charm!
 :::

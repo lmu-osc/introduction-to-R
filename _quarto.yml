@@ -54,6 +54,14 @@ website:
 
       - section: "3) Data manipulation and transformation"
         contents:
+        - section: "Getting an overview"
+          contents: 
+            - qmd/peeking/peeking.qmd
+            - qmd/peeking/peeking.qmd
+        - section: "Missings"
+          contents:
+            - qmd/missing/missing.qmd
+            - qmd/missing/missing_exercise.qmd
         - section: "Subsetting"
           contents:
             - qmd/subsetting/subsetting.qmd
@@ -62,10 +70,12 @@ website:
           contents:
             - qmd/merging/merging.qmd
             - qmd/merging/merging_exercise.qmd
-        - section: "Missings"
+        - section: "Loops"
           contents:
-            - qmd/missing/missing.qmd
-            - qmd/missing/missing_exercise.qmd
+            - qmd/loops/loops.qmd
+        - section: "Functions"
+          contents: 
+            - qmd/functions/functions.qmd
       - section: "4) Advanced: Analysis and visualization"
         contents:
           - qmd/statistical_analyses/statistical_analyses.qmd

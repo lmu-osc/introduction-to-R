@@ -1,0 +1,11 @@
+---
+title: "Getting an overview: Exercises"
+---
+
+Let's take a look at the `characters` data set we have loaded in [last chapters exercise](../load_data/load_data_exercise.qmd): 
+
+::: {.callout-caution icon="false"}
+```{r}
+characters <- readRDS(file = here::here("raw_data", "characters.rds"))
+```
+:::
