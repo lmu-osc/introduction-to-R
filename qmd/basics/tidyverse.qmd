@@ -1,22 +1,25 @@
 ---
 title: "Tidyverse"
 ---
-
-The `tidyverse` is a collection of packages following a common philosophy, and facilitate many aspects of coding in R, for example data wrangling and plotting. It is not necessary to learn the `tidyverse` syntax, it differs a bit from the standard R syntax. However, I find it easier to understand in many cases, so I will provide the syntax from the respective `tidyverse` package along with the `Base R` syntax in most cases.
+Throughout this workshop you will come into contact with some functions from the very popular package collection `tidyverse`. 
+The `tidyverse` is composed of multiple packages, all following a common philosophy, and facilitating many aspects of coding in R, for example data wrangling and plotting. It is not really necessary to learn the `tidyverse` syntax in order to understand R and become proficient in it. However, I find it easier to understand in many cases, which probably makes it easier to get started with. 
+Therefore, I will provide the syntax from the respective `tidyverse` package along with the `Base R` syntax in many cases.
+In the end, it is a question of preference what you want to learn. Most code will probably be composed from `base R` functions `tidyverse` functions. 
 
 ::: tidy
-Tidyverse syntax will be marked like this.
+Tidyverse syntax will be marked like this. 
+We will mainly use the `tidyverse` packages `dpylr` and `ggplot2`. 
 :::
 
-
 ## The pipe operator
+
 `tidyverse` code is often written using the pipe operator `%>%` (*than do*), which makes it easy to connect multiple function calls:
 
 ```{r}
 sum(seq(from = 1, to = mean(c(45:100), na.rm = TRUE), by = 0.1))
 ```
 
-Is the same as: 
+Is the same as:
 
 ::: tidy
 ```{r, output.lines=4}
@@ -32,6 +35,7 @@ c(45:100) %>%
 Much nicer to read, right?
 
 Some notes on this syntax: 
-1. If we don't have any additional arguments we want to put into the function, we can just write the function name without any brackets, like we do at the end with `sum`.
-1. The pipe operator will give the result of the last function as input into the next function. That's why we don't have to specify the vector within the `mean()` function. 
-1. If we want to clearly state which of the function arguments should receive the input, we can write a `.`, which can be read as *output of the previous function call*. That's what we do in the `seq()` function. It calculates a sequence from `1` to the mean of `c(45:100)`. 
+
+1. If we don't have any additional arguments we want to put into the function, we can just write the function name without any brackets, like we do at the end with `sum`. 
+1. The pipe operator will give the result of the last function as input into the next function. That's why we don't have to specify the vector within the `mean()` function.
+1. If we want to clearly state which of the function arguments should receive the input, we can write a `.`, which can be read as *output of the previous function call*. That's what we do in the `seq()` function. It calculates a sequence from `1` to the mean of `c(45:100)`.

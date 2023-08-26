@@ -1,4 +1,6 @@
-# Load data
+---
+title: "Loading data"
+---
 
 ## Data types
 
