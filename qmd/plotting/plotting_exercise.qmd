@@ -19,15 +19,18 @@ characters_stats <- merge(
   by.y = "char_id"
 )
 
+questions <- unique(characters_stats$question)[1:15]
+
 ## Characters subset
 characters_subset <- characters_stats %>% 
-  filter(uni_name == "Friends", question %in% c("awkward/charming", "extrovert/introvert", "loveable/punchable", "bad-cook/good-cook"))
+  filter(uni_name == "Breaking Bad", question %in% questions)
 
 
 ggplot(data = characters_subset, 
        aes(x = mean_rating, 
-           y = question)) +
-  facet_grid(. ~ name) +
+           y = question,
+           colour = name)) +
+  #facet_grid(. ~ name) +
   geom_point()
 
 ```
