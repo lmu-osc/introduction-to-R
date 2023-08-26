@@ -1,4 +1,6 @@
 
+library(tidytuesdayR)
+library(tidyverse)
 
 # Winners -----------------------------------------------------------------
 
@@ -36,13 +38,14 @@ saveRDS(as.data.frame(babynames_n), file = here::here("raw_data", "babynames_n.r
 
 # Characters --------------------------------------------------------------
 
-library(tidytuesdayR)
 tuesdata <- tidytuesdayR::tt_load("2022-08-16")
 
-psych_stats <- tuesdata$psych_stats %>%
-  select(char_id, question, personality, avg_rating, rank, rating_sd, number_ratings)
+characters <- as.data.frame(tuesdata$characters)
 
-saveRDS(tuesdata$characters, 
+psych_stats <- tuesdata$psych_stats %>%
+  select(char_id, question, personality, avg_rating, rank, rating_sd, number_ratings) 
+
+saveRDS(characters, 
         file = here::here("raw_data", "characters.rds")
         )
 write.table(psych_stats, here::here("raw_data", "psych_stats.csv"), sep = ";")

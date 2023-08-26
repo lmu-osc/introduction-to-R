@@ -1,5 +1,12 @@
 /* css styles */
-<style>
-  div.tidy pre { background-color:snow; }
-  div.tidy pre.r { background-color:snow; }
-</style>
+.cell-output {
+  background-color: #fcfafa;
+  border-radius: 4px;
+}
+.tidy pre.r{
+  background-color: #ecffc3;
+}
+.tidy .cell-output {
+  background-color: #f0f8de;
+}
+

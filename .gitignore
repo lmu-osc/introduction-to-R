@@ -1,7 +1,8 @@
-.Rproj.user/
+/.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
 /.quarto/
 /_site/
+/_freeze/
 nul
