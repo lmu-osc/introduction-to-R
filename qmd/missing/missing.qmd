@@ -41,13 +41,15 @@ sum(is.na(winners$Hours))
 
 We seem to have `5` missings in this column. 
 
-There are multiple different ways to deal with missings. For this tutorial, we just remove cases with missing values on the `Hours` variable, as we want to look at the finishing times, and missing times could pose a problem:
+There are multiple different ways to deal with missings. For this tutorial, we just remove cases with missing values on the `Hours` variable, as we want to look at the finishing times, and missing times could pose a problem. 
+
+To remove them, we have to bring together multiple concepts we have already looked at in previous chapters:
 
 ```{r, output.lines = 4}
 winners_na <- winners[!is.na(winners$Hours), ]
 ```
 
-What happens here? Like always when filtering specific rows, we define a logical vector, which has a `TRUE` for all rows that have a missing on `ID` and a `FALSE` for all others (by using the `!` operator, which inverts the boolean values - otherwise we would extract all rows with missing values in the `Hours` column):
+What happens here? Like always when [filtering specific rows](), we define a [logical vector](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#comparisons-and-logical-operators), which has a `TRUE` for all rows that have a missing on `ID` and a `FALSE` for all others (by using the `!` operator, which inverts the boolean values - otherwise we would extract all rows with missing values in the `Hours` column):
 
 ```{r, output.lines = 4}
 !is.na(winners$Hours)
