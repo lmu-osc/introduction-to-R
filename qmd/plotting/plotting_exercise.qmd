@@ -1,0 +1,35 @@
+---
+title: "Plotting: Exercises"
+---
+
+```{r}
+characters <- readRDS(file = here::here("raw_data", "characters.rds"))
+
+psych_stats <- read.csv(
+  file = here::here("raw_data", "psych_stats.csv"),
+  sep = ";"
+)
+
+
+
+characters_stats <- merge(
+  x = characters,
+  y = psych_stats,
+  by.x = "id", 
+  by.y = "char_id"
+)
+
+## Characters subset
+characters_subset <- characters_stats %>% 
+  filter(uni_name == "Friends", question %in% c("awkward/charming", "extrovert/introvert", "loveable/punchable", "bad-cook/good-cook"))
+
+
+ggplot(data = characters_subset, 
+       aes(x = mean_rating, 
+           y = question)) +
+  facet_grid(. ~ name) +
+  geom_point()
+
+```
+
+

@@ -42,8 +42,15 @@ tuesdata <- tidytuesdayR::tt_load("2022-08-16")
 
 characters <- as.data.frame(tuesdata$characters)
 
+## It seems like the personalty column assigns the pole of the question. For example, we have someone pretentious with a high score, but also someone unassuming with a similarily high score (even though it is the same question). Ranks can be found two times, one for the one pole, and one for the other. 
+
 psych_stats <- tuesdata$psych_stats %>%
-  select(char_id, question, personality, avg_rating, rank, rating_sd, number_ratings) 
+  ## Recode
+  mutate(question2 = str_extract(question, "^.*(?=(/))")) %>%
+  mutate(mean_rating = ifelse(personality == question2, 
+                              yes = 100 - avg_rating, 
+                              no = avg_rating)) %>%
+  select(char_id, question, mean_rating, rating_sd, number_ratings)
 
 saveRDS(characters, 
         file = here::here("raw_data", "characters.rds")
