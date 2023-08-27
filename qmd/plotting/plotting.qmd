@@ -2,7 +2,6 @@
 title: "Plotting"
 ---
 
-
 ::: {.callout-tip}
 ## Open if you want to learn more about plotting in R (optional)
 This section is for more experienced R users who want to start plotting with `ggplot2`. It is not necessary to follow the rest of the conference.
