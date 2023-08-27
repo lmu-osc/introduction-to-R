@@ -8,14 +8,14 @@ Welcome!\
 This workshop will teach you the basics of R. It's structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](/qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to scientific programming with R and want to follow the course structure?
 
 ::: {.callout-note collapse="true" icon="false"}
-## Unfold if you want to learn more about advanced content
+## Unfold if you want to learn more about optional content
 
-Don't worry if you don't finish the whole workshop in time, or the material seems a bit overwhelming. It is designed to provide additional information for self studying and looking up topics of interest (that may come up during the following week, or in general). Advanced explanations and exercises can be found in folded in sections like this one.
+Don't worry if you don't finish the whole workshop in time, or the material seems a bit overwhelming. It is designed to provide additional information for self studying and looking up topics of interest (that may come up during the following week, or in general). Optional input and exercises can be found in folded in sections like this one.
 :::
 
 The main objective of this workshop is to get you familiar with the basics of programming in R, as it needed for other courses of the Open Research Summer School. To do that, we will repeat and try out the main concepts multiple times, so you get to work with them as much and as from many different perspectives as possible in 3 h.
 
-Each section is divided into a theory part and some exercises. Most of these exercises will use the `characters` data set, more on that in the [next chapter](/qmd/getting_started/exercise_overview.qmd).
+Each section is divided into a theory part and some exercises. Most of these exercises will use the `characters` data set, more on that in the [next chapter](/qmd/getting_started/data_sets.qmd).
 
 ::: callout-warning
 ## Software installation

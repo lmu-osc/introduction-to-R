@@ -3,6 +3,7 @@ title: "Missing values"
 ---
 
 ```{r, echo = FALSE}
+source(here::here("output_hook.R"))
 athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 ```
 
@@ -46,18 +47,18 @@ We also assign the new name `athletes_na` to the resulting data frame, so we don
 
 Removing `NA's` from a data set works pretty similar:
 
-```{r, output.lines = 4}
+```{r}
 athletes_na <- athletes[!(athletes$Weight), ]
-athletes_na
+head(athletes_na)
 ```
 
 ::: tidy
-```{r, output.lines = 4}
+```{r}
 library(tidyverse)
 
 athletes_na <- athletes %>%
   drop_na(Weight)
-athletes_na
+head(athletes_na)
 ```
 :::
 

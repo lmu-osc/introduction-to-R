@@ -3,14 +3,18 @@ title: "Packages: Exercises"
 ---
 
 ## Exercise 1
-For this exercise, we are going to install all the packages we are going to need for the exercises in the coming chapters. So please install and load the following packages:
-- `tidyverse`
+
+For this exercise, we are going to install all the packages we are going to need for the exercises in the coming chapters. So please install and load the following packages: 
+
+- `tidyverse` 
 - `here`
 
 ::: {.callout-caution collapse="true"}
 ## Solution
+
 The top of your script now should look something like this:
-```{r}
+
+```{r, message = FALSE}
 # install.packages("tidyverse")
 # install.packages("here")
 

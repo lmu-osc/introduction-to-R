@@ -7,7 +7,7 @@ source(here::here("output_hook.R"))
 athletes <- readRDS(here::here("raw_data", "athletes.rds"))
 ```
 
-Subsetting is extracting smaller sets of data from a bigger set. For example, we can extract specific rows from a data frame, or specific values from a vector. Let's take a look at how that is achieved in R:
+Subsetting means extracting smaller sets of data from a bigger set. For example, we can extract specific rows from a data frame, or specific values from a vector. Let's take a look at how that is achieved in R:
 
 ## Data frames
 
@@ -92,19 +92,22 @@ athletes_team
 
 We can also combine multiple logical vectors using `&` ("and") and `|` ("or"). For example, we might want to look at all german athletes before the year 2000:
 
-```{r, output.lines=4}
-athletes[athletes$Team == "Germany" & athletes$Year < 2000, ]
+```{r}
+athletes_2 <- athletes[athletes$Team == "Germany" & athletes$Year < 2000, ]
+head(athletes_2)
 ```
 
 Or at all judo athletes weighting over 100 or under 50 kg:
 
-```{r, output.lines=4}
-athletes[(athletes$Sport == "Judo") & (athletes$Weight > 100 | athletes$Weight < 50) , ]
+```{r}
+athletes_3 <- athletes[(athletes$Sport == "Judo") & (athletes$Weight > 100 | athletes$Weight < 50) , ]
+head(athletes_3)
 ```
 
 Hmm, that looks a bit weird. Some rows only contain `NA` values. That's because there are [missing values](../missing/missing.qmd) in the `Weight` column. We will look at that closer in the [missings chapter](../missing/missing.qmd) and ignore that problem for now.
 
-In the long run, always having to define the data frame multiple time in each row can become a bit annoying and clutters the code. Also the missings problem ... Enter, the `filter()` function:
+In the long run, always having to define the data frame multiple time in each row can become a bit annoying and clutters the code. Also the missings problem ...  
+Enter, the `filter()` function:
 
 #### Rows: Tidyverse
 
@@ -117,7 +120,7 @@ athletes %>%
 ```
 :::
 
-Note how we can just write our conditions without connecting them with `&` (`filter()` does that automatically for us). Also, we don't have to put the column names into `""`, because `filter()` knows that this are column names of the `athletes` data frame, which makes coding a bit more pleasant. And finally, missing rows are automatically removed, which makes sense in most cases!
+Note how we can just write our conditions without connecting them with `&` (`filter()` does that automatically for us). Also, we don't have to put the column names into `""`, because `filter()` knows that this are column names of the `athletes` data frame, which makes coding a bit more pleasant. And finally, missing rows are automatically removed, which makes sense in many cases!
 
 #### Columns: Tidyverse
 

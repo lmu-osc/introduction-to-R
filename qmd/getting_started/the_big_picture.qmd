@@ -1,6 +1,6 @@
 # The Big Picture
 
-Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project" with very basic data, which follows a possible workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little more depth for each topic. If you want to have more in depth information instead of following the whole workflow first, you can also skip this chapter and jump to the chapters and exercises you are interested in.
+Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project" with very basic data, which follows a possible workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little more depth for each topic, so don't worry if you don't understand something quite yet, it will be covered again in later chapters. 
 
 ## Packages
 
@@ -10,7 +10,7 @@ Now that we have completed our set up, let's dive right into programming with `R
 install.packages("tidyverse")
 ```
 
-The [`tidyverse`](../basics/tidyverse.qmd) is a collection of packages following a common philosophy, and facilitating many aspects of coding in R. We will use functions from `base R` and from the `tidyverse`. However, as I personally find them a bit more intuitive in many cases, we will use `tdiyverse` functions a lot in the current chapter, so you can quickly get an insight into what is possible with R.
+The [`tidyverse`](../basics/tidyverse.qmd) is a collection of packages following a common philosophy, and facilitating many aspects of coding in R. We will use functions from `base R` and from the `tidyverse`. However, as I personally find them a bit more intuitive in many cases, we will use `tidyverse` functions a lot in the current chapter, so you can quickly get an insight into what is possible with R.
 
 ::: tidy
 ```{r}
@@ -120,7 +120,6 @@ babynames_F <- babynames_F %>%
 
 ```
 
-
 ## Some additional summary statistics
 
 Now, the specifics of the next part are not really relevant. However, they can show you how easy it can be to deal with data in R, so follow along if you want to. First, let's group our data according to year:
@@ -208,4 +207,4 @@ We would have many more options to style this plot further (for example we could
 
 ## Conclusion
 
-In this tutorial we learned, that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in. But first, take a look at the new data set you will be working with throughout the exercises.
+In this tutorial we have learned that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in. But first, take a look at the new data set you will be working with throughout the exercises.
