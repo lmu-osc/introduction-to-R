@@ -3,59 +3,59 @@ title: "Missing values"
 ---
 
 ```{r, echo = FALSE}
-winners <- readRDS(file = here::here("raw_data", "winners.rds"))
-
-continents <- read.csv(
-  file = here::here("raw_data", "continents.csv")
-)
-
-winners_continents <- merge(
-  x = winners,
-  y = continents,
-  by.x = "Nationality",
-  by.y = "Entity"
-)
+athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 ```
 
-Now that we now how to extract values from a bigger data set, we can deal with the missing values we encountered when [taking a look](../peeking/peeking.qmd) at our `characters` data set.
+Remember the weird `NA` rows we encountered when [subsetting by condition]()? We were able to steer around that by using `filter()`, but let's take a closer look at that now.
 
-Missing values are denoted in R by `NA` (or `NaN` in some cases). They nullify a calculation pretty strongly - if one missing value is found somewhere along the line, the result will also be `NA` (if not specified otherwise):
+Missing values are denoted in R by `NA` (or `NaN` in some cases). They nullify a calculation or comparison pretty strongly - if one missing value is found somewhere along the line, the result will also be `NA` (if not specified otherwise):
 
 ```{r}
-4 + 5 + NA
+c(4, NA) > 3
 ```
 
-That's why our newly build columns include `NAs`: The column `Hours` already had some, and by adding with `NAs` we just produced new ones.
+That's why we got some `NA` rows when trying to extract specific rows by weight: these rows had an `NA` in the weight column, and R returned rows with `NA's` as a result.
 
 To check if values are `NA`, we can use `is.na()`:
 
 ```{r, output.lines = 4}
-is.na(winners$Hours)
+is.na(athletes$Weight)
 ```
 
 Some `TRUEs`, so there are missing values here. Let's count them (Summing a [logical vector](../basics/basics.qmd#comparisons-and-logical-operators) counts the number of `TRUE` values.):
 
 ```{r}
-sum(is.na(winners$Hours))
+sum(is.na(athletes$Weight))
 ```
 
-We seem to have `5` missings in this column. 
+We seem to have `r sum(is.na(athletes$Weight))` missings in this column.
 
-There are multiple different ways to deal with missings. For this tutorial, we just remove cases with missing values on the `Hours` variable, as we want to look at the finishing times, and missing times could pose a problem. 
-
-To remove them, we have to bring together multiple concepts we have already looked at in previous chapters:
+There are multiple different ways to deal with missings. For our comparison problem, we can add the new condition that all rows selected shouldn't have an `NA` in the `Weight` column:
 
 ```{r, output.lines = 4}
-winners_na <- winners[!is.na(winners$Hours), ]
+athletes[(athletes$Sport == "Judo") & (athletes$Weight > 100 | athletes$Weight < 50) & !is.na(athletes$Weight), ]
 ```
 
-What happens here? Like always when [filtering specific rows](), we define a [logical vector](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#comparisons-and-logical-operators), which has a `TRUE` for all rows that have a missing on `ID` and a `FALSE` for all others (by using the `!` operator, which inverts the boolean values - otherwise we would extract all rows with missing values in the `Hours` column):
+What happens here? Like always when [filtering specific rows](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#conditional-filtering), we define a [logical vector](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#comparisons-and-logical-operators), which has a `TRUE` for all rows that have a missing on `ID` and a `FALSE` for all others (by using the `!` operator, which inverts the boolean values - otherwise we would extract all rows with missing values in the `Weight` column):
 
 ```{r, output.lines = 4}
-!is.na(winners$Hours)
+!is.na(athletes$Weight)
 ```
 
-We also assign the new name `winners_na` to the resulting data frame, so we don't overwrite the original one. 
+We also assign the new name `athletes_na` to the resulting data frame, so we don't overwrite the original one.
 
-As already stated, it is not always necessary to remove `NAs` manually from the data set. In other cases it might be feasible to ignore them, and many functions can deal with missing values by themselves. 
+Removing `NA's` from a data set works pretty similar:
+```{r, output.lines = 4}
+athletes_na <- athletes[!(athletes$Weight), ]
+athletes_na
+```
 
+::: tidy
+```{r, output.lines = 4}
+athletes_na <- athletes %>%
+  drop_na(Weight)
+athletes_na
+```
+:::
+
+As already stated, it is not always necessary to remove `NAs` manually from the data set. In other cases it might be feasible to ignore them, and many functions can deal with missing values by themselves.

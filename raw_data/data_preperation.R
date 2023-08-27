@@ -5,6 +5,12 @@ library(tidyverse)
 # Athletes -----------------------------------------------------------------
 
 athletes <- read.csv(here::here("raw_data", "athlete_events.csv"))
+region <- read.csv(here::here("raw_data", "noc_regions.csv"))
+
+athletes_region <- merge(athletes, regions) %>%
+  rename("Region" = region) %>%
+  select(-notes)
+  
 
 # ## Introduce some NAs
 # na_rows <- c(2, 5, 8, 100, 54)
@@ -15,16 +21,7 @@ athletes <- read.csv(here::here("raw_data", "athlete_events.csv"))
 # winners <- winners_raw %>%
 #   select(-c("Time"))
 
-saveRDS(as.data.frame(athletes), file = here::here("raw_data", "athletes.rds"))
-
-
-
-# World coordinates -------------------------------------------------------
-world_coordinates <- map_data("world")
-
-write.table(world_coordinates, here::here("raw_data", "world_coordinates.csv"), sep = ";")
-
-
+saveRDS(as.data.frame(athletes_region), file = here::here("raw_data", "athletes.rds"))
 
 # Babynames ---------------------------------------------------------------
 

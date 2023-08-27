@@ -18,3 +18,4 @@ psych_stats <- read.csv(
 :::
 
 ## Exercise 1
+- Subset something from the data that contains missings. use base R

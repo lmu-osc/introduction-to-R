@@ -59,12 +59,14 @@ Another great way to deal with the path confusion is to use the `here` package. 
 
 ## Data set
 
-![](../pictures/marathon.jpg)[^subsetting-1]
+![](../pictures/olympics.jpg)[^1]
 
-[^subsetting-1]: Image by [Miguel A Amutio](https://unsplash.com/de/@amutiomi?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/QDv-uBc-poY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
+[^1]: Image by [Florian Schmetz](https://unsplash.com/de/@floschmaezz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/fbCtFV3FkfE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 
-For the rest of the workshop, we will use the data set `winners` from the package [LondonMarathon](https://github.com/nrennie/LondonMarathon). Let's load it into R: 
+For the rest of the workshop, we will use a data set containing the olympic athletes from 1896 to 2016.  
+
+Let's load it into R:
 
 ```{r, echo = FALSE}
-winners <- readRDS(file = here::here("raw_data", "winners.rds"))
+athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 ```

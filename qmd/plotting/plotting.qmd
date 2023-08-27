@@ -2,90 +2,25 @@
 title: "Plotting"
 ---
 
+Also show a barplot or something!!
+
 This section is for more experienced R users who want to start plotting with `ggplot2`. It is not necessary to follow the rest of the conference.
 
 This is Zusatz. Plot world map with the winning countries, the more the darker. Same colours for same continents.
 
-```{r}
-library(tidyverse)
-winners <- readRDS(file = here::here("raw_data", "winners.rds"))
+Here is our data preparation from the previous chapters:
 
-continents <- read.csv(
-  file = here::here("raw_data", "continents.csv")
-)
-
-
-winners_continents <- merge(
-  x = winners,
-  y = continents,
-  by.x = "Nationality",
-  by.y = "Entity"
-)
-
-winners_continents$Seconds_total <- winners_continents$Hours * 60^2 + winners_continents$Minutes * 60 + winners_continents$Seconds
-
-
-ggplot(data = winners_continents, 
-       aes(x = Year.x, 
-           y = Seconds_total ,
-           colour = Nationality, 
-           group = Category)
-       ) +
-  geom_point()
-
-```
 
 ```{r, eval = FALSE}
-# Too complex?
+library(tidyverse)
 
-winners <- readRDS(file = here::here("raw_data", "winners.rds"))
-
-continents <- read.csv(
-  file = here::here("raw_data", "continents.csv")
-)
-
-
-winners_continents <- merge(
-  x = winners,
-  y = continents,
-  by.x = "Nationality",
-  by.y = "Entity"
-)
-head(winners_continents)
-
-
-## Lets count how often each country has won:
-
-world_coordinates <- map_data("world")
-
-winners_counts <- winners_continents$Nationality %>%
-  table %>%
-  as.data.frame() 
-
-colnames(winners_counts) <- c("region", "freq")
-
-
-winners_counts$region[which(!(winners_counts$region %in% world_coordinates$region))]
-
-
-winners_counts <- winners_counts %>%
-  mutate(region = recode(str_trim(region), 
-                         "United States" = "USA", 
-                         "United Kingdom" = "UK")
-         )
-
-winners_world <- merge(winners_counts, world_coordinates, all.y = TRUE, all.x = FALSE) 
-
-winners_world <- winners_world[order(winners_world$order), ]
-  
-ggplot(data = winners_world, 
-                   mapping = aes(x = long, y = lat, group = group)) + 
+ggplot(data = world_coordinates, 
+       mapping = aes(x = long, y = lat, group = group)) + 
   coord_fixed(1.3) +
-  geom_polygon(aes(fill = freq)) +
+  geom_polygon(aes(fill = n)) +
   scale_fill_distiller(palette ="RdBu", direction = -1) + # or direction=1
-  ggtitle("Winners of the London Marathon") +
+  ggtitle("Olympic medalists by country") +
   theme_void()
 
-
-
 ```
+

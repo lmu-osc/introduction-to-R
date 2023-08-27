@@ -4,34 +4,66 @@ title: "Merging data"
 
 ```{r, echo = FALSE}
 source(here::here("output_hook.R"))
+library(tidyverse)
 ```
 
 ## Data set
-
-Suppose we want to look at the winners by continent (see [last chapter](../subsetting/subsetting.qmd) for the data set). In this case, we will have to add a list assigning each Nationality a continent. We can easily find such a list online, for example at [ourworldindata.org](https://ourworldindata.org/grapher/continents-according-to-our-world-in-data). I have already [downloaded](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) the `.csv`, and we have already loaded it into R in the exercise 2 of [load data](../load_data/load_data_exercise.qmd):
+In the end, we want to plot the medals the countries have won on a world map. To do that, we need a data set containing coordinates of the different countries. Luckily, `ggplot2` (part of the `tidyverse`) provides a very convenient function to get such a data set: 
 
 ```{r}
-winners <- readRDS(file = here::here("raw_data", "winners.rds"))
-
-continents <- read.csv(
-  file = here::here("raw_data", "continents.csv")
-)
+world_coordinates <- ggplot2::map_data("world")
 ```
 
-## Wide and long format
+Also, let's load our `athletes` data set, in case you didn't already:
+
+```{r}
+athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
+```
+
+## Before merging
+Right now, we have multiple rows for each country in both data sets. This will not be possible to merge easily, so we have to reduce our athletes data first. 
+As you know, our goal is to plot the number of gold medals each country has won. So, we need to calculate how many gold medals each country has won over time. 
+Let's do that quickly, using some `tidyverse` functions. It is not especially important you understand and know everything that happens here, but we need it for the next chapters, so here it goes: 
+::: tidy
+```{r}
+medal_counts <- athletes %>%
+  filter(Medal == "Gold") %>%
+  group_by(Region) %>%
+  count(Medal) 
+
+medal_counts
+```
+::: 
+What happens here? We extract all rows containing gold medals, group them by region, so our next operation is performed region wise, and not for the whole data set, and then we count how many gold medals each region got. 
 
 ## Merging
 
-To merge two data frames that include information that belongs together, we need a common column, on which we can combine them. In our case, this is the column containing the country, but they are named differently. This doesn't pose a problem, as we can define which columns should be taken from which data frame for merging:
+To merge two data frames that include information that belongs together, we need a common column, on which we can combine them. In our case, this is the column containing the country. They are both named `region`, but one with an upper case `R`. This doesn't pose a problem, as we can define which columns should be taken from which data frame for merging:
 
 ```{r}
-winners_continents <- merge(
-  x = winners,
-  y = continents,
-  by.x = "Nationality",
-  by.y = "Entity"
+medal_countries <- merge(
+  x = medal_counts,
+  y = world_coordinates,
+  by.x = "Region",
+  by.y = "region",
+  all.x = FALSE,
+  all.y = TRUE
 )
-head(winners_continents)
+head(medal_countries)
 ```
+
+Note that we also used the `all.x` and `all.y` arguments. In this example, we want to take all rows from the second data set, but only those from the first data set, that have a match in the second data set. This is necessary, because we want to plot all countries later on, but only those we have coordinates for, because they won't show up on the map otherwise. 
+
+Using the tidyverse, we first have to rename our region column, as the column names need to be the same over both data sets that are merged. `left_join()` means that we will merge onto the first data set (world_coordinates), like we have done using the `all.x` and `all.y` arguments in the `merge()` function. 
+
+::: tidy 
+```{r}
+medal_countries <- world_coordinates %>%
+  rename("Region" = region) %>%
+  left_join(medal_counts)
+
+medal_countries
+```
+:::
 
 Great! Now the information that belongs together is stored together.
