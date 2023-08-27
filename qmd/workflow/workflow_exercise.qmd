@@ -2,13 +2,17 @@
 title: "Workflow: Exercises"
 ---
 
+The following exercise will set up your working space for the rest of the workshop. All code you write will be saved in the script(s) you create here.  
+
+
 ## Exercise 1
 
-1.  Create a new folder for this tutorial, where all your files will go.
-2.  Create a new RStudio project and open it. 
+1.  Create a new folder for this workshop, where all your files will go.
+2.  Create a new RStudio project and open it.
 
 ::: {.callout-caution collapse="true"}
 ## Solution
+
 Go to `File` - `New Project` - `Existing Directory` and select the path of the folder you created in step `1`.
 :::
 
@@ -16,9 +20,18 @@ Go to `File` - `New Project` - `Existing Directory` and select the path of the f
 
 ::: {.callout-caution collapse="true"}
 ## Solution
+
 Go to `File` - `New File` - `R Script`. Save it in you folder.
 :::
 
 ::: callout-tip
+## Organizing your scripts
+How you organize your scripts is up do you. I recomend to create seperate scripts for every use case. For this workshop, you could create one script for the exercises, and one script for the theory part, in case you want to try out some things by yourself. 
+:::
+
+::: callout-tip
+## Organizing your directory
 Within your project folder create a folder named `R`, where all your R Scripts will go. You can do the same for `data`, `plots` etc. later on. This will help you to structure your working directory.
 :::
+
+Now that you are ready to go, let's get an overview of how working with data in R can look like. 

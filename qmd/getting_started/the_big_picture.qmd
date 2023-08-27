@@ -1,16 +1,22 @@
 # The Big Picture
 
-Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project" with very basic data, which follows a possible workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little more depth for each topic. If you want to have more in depth information instead of following the whole workflow first, you can also skip this chapter and jump to the chapters and exercises you are interested in. But make sure to do the final exercise, to test you R proficiency in the end.
+Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project" with very basic data, which follows a possible workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little more depth for each topic. If you want to have more in depth information instead of following the whole workflow first, you can also skip this chapter and jump to the chapters and exercises you are interested in.
 
 ## Packages
 
-[Packages](packages.qmd) are extensions to the `base R` you get by default. We already installed our first packages in [About this workshop](setup.qmd#about-this-workshop). Let's keep doing that and install the following package as well:
+[Packages](packages.qmd) are extensions to the `base R` you get by default. Let's install a package collection, that makes it easier to work with data in R:
 
 ```{r install_tidyverse, eval = FALSE}
 install.packages("tidyverse")
 ```
 
-The `tidyverse` is a collection of packages following a common philosophy, and facilitate many aspects of coding in R, for example data wrangling and plotting. We will use both functions from base R and from the `tidyverse`. However, as i personally find them to be easier to understand in many cases, we will use `tdiyverse` functions a lot in the current chapter, so you can quickly get an overview of what is possible with R.
+The [`tidyverse`](../basics/tidyverse.qmd) is a collection of packages following a common philosophy, and facilitating many aspects of coding in R. We will use functions from `base R` and from the `tidyverse`. However, as I personally find them a bit more intuitive in many cases, we will use `tdiyverse` functions a lot in the current chapter, so you can quickly get an insight into what is possible with R.
+
+::: tidy
+```{r}
+# tidyverse code will be marked like this.
+```
+:::
 
 Just by installing the packages, we can't use them. We also have to load them into our R session:
 
@@ -20,7 +26,10 @@ library(tidyverse)
 
 ## Load Data
 
-Data is loaded into R so you can work with it. For this chapter, we are going to use the data set `babynames`, which we can find on the `tidytuesday` site. You can find it on [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data).We want to look at the most common name in every year and make a nice plot out of it.
+Data is loaded into R so you can work with it. For this chapter, we are going to use the data set [`babynames`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md), which we can find on the `tidytuesday` site. I have already tweaked the data set a bit, so download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) in case you want to follow along.  
+Our goal is to look at the most common name in every year and make a nice plot out of it.
+
+So, after downloading it and saving it in the folder `raw_data` within my project directory, I can load the data set into R with:
 
 ```{r, echo = FALSE}
 babynames <- readRDS(here::here("raw_data", "babynames.rds"))
@@ -30,14 +39,14 @@ babynames <- readRDS(here::here("raw_data", "babynames.rds"))
 babynames <- readRDS("./raw_data/babynames.rds")
 ```
 
-The above code will load the data into R and assigning it the name `babynames` by using the `<-`. You can see the data popping up in your `Environment` pane on the upper right.
+This will load the data into R and assigning it the name `babynames` by using the `<-`. You can see the data popping up in your `Environment` pane on the upper right. Note that the file path might differ on your device, depending on where you saved your data.
 
 ## Take a look
 
-Now that we have our data loaded safely into R, we can get an overview with a multitude of commands. One of the most important ones might be `View()`, which will open the data set excel-style in a new window:
+Now that we have our data loaded safely into R, we can get an overview with a multitude of commands. One of the most important ones might be `head()`, which will give us the first few rows of the data:
 
-```{r, eval = FALSE}
-View(babynames)
+```{r}
+head(babynames)
 ```
 
 Especially for bigger data sets, it might be more feasible to only look at the structure and not the whole data set:
@@ -46,11 +55,15 @@ Especially for bigger data sets, it might be more feasible to only look at the s
 str(babynames)
 ```
 
-On the left we can see the columns of this data.frame, named `year`, `sex`, `names`, `n` and `prop`. On the right we see the first values in each column, for example `NA`, `1980`, `1980` etc ... in the `year`-column.
+On the left we can see the columns of this data.frame, named `year`, `sex`, `names`, and `ID`. On the right we see the first values in each column, for example `1880`, `1880`, `1880`, `NA` etc ... in the `year`-column. 
+
+So, what we can infer from the data and its online description is that it contains the most common names for boys and girls in the USA for each year since `1880`. 
+
 
 ## Merging
 
-Sadly the data is not complete. The n is missing (ok, i split it up for illustrational purposes). So let's load it quickly:
+Sadly the data is not complete. If we had the number of people named with each name every year, we could find out which name was the most common each year, and make a nice plot out of it. 
+However, the number of people with the respective name each year is missing (ok, i split it up for illustrative purposes). So let's [download](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) it and load it into R quickly:
 
 ```{r, echo = FALSE}
 babynames_n <- readRDS(here::here("raw_data", "babynames_n.rds"))
@@ -60,7 +73,7 @@ babynames_n <- readRDS(here::here("raw_data", "babynames_n.rds"))
 babynames_n <- readRDS("./raw_data/babynames_n.rds")
 ```
 
-And now [merge](manipulation.qmd#Merging) it:
+And now [merge](manipulation.qmd#Merging) it with our other data set by the `ID` column:
 
 ```{r}
 babynames_merged <- merge(babynames, babynames_n)
@@ -68,11 +81,10 @@ babynames_merged <- merge(babynames, babynames_n)
 head(babynames_merged)
 ```
 
-Hold on! The column `years` seems to include missing values (`NA's`, see the cell on the top left). It is always a good idea to deal with them before doing any analyses, so let's do just that:
+Hold on! The column `years` seems to include missing values (`NA's`, see the cell on the top left). It is always a good idea to at least think about the [missing values](../missings/missings.qmd). before doing any analyses, so let's do just that:
 
 ## Missings
-
-There are multiple ways to deal with [missing values](http://localhost:5462/manipulation.html#missing-values). For reasons of simplicity, we will just remove any rows that contain `NA's`. We can achieve that very easily using a function from the `tidyverse` (the package collection we installed at the beginning of this chapter):
+There are multiple ways to deal with [missing values](../missings/missings.qmd). For reasons of simplicity, we will just remove any rows that contain `NA's`. We can achieve that very easily using a function from the `tidyverse` (the package collection we installed at the beginning of this chapter):
 
 ::: tidy
 ```{r}
@@ -93,47 +105,47 @@ babynames_F <- babynames_merged %>%
 
 ## Adding a new column
 
-Now, we want to plot the percentages of each name, instead of the propability, because it looks a bit more intuitive. So, let's build a new column:
+Now, we want to plot the percentages of each name, instead of the probability, because it looks a bit more intuitive. So, let's build a new column named `percentage`, which is just the `prop` column multiplied by `100`:
 
 ```{r}
 babynames_F$percentage <- babynames_F$prop * 100
 ```
 
-::: advanced
+
+## Selecting columns
+Now we can trim down our data set a bit more: 
+
 ## Some additional summary statistics
 
-Now, the specifics of the next part are not really relevant. However, they can show you how easy it can be to deal with data in R: First, let's group our data according to year:
+Now, the specifics of the next part are not really relevant. However, they can show you how easy it can be to deal with data in R, so follow along if you want to.
+First, let's group our data according to year:
 
 ::: tidy
 ```{r}
-babynames_F_grouped <- babynames_F %>%
-  group_by(year)
+babynames_F_grouped <- group_by(babynames_F, year)
 ```
 :::
 
-Any operations we now perform are performed for every group. In our case, we want to find the name with the maximum `prop` in each group:
+Any operations we now perform are performed by year, and not on the whole data set at once. In our case, we want to find the most common name each year, which is the name with the maximum `percentage`:
 
 ::: tidy
 ```{r}
-babynames_F_max <- babynames_F_grouped %>%
-  slice(which.max(percentage))
+babynames_F_max <- slice(babynames_F_grouped, which.max(percentage))
 
 head(babynames_F_max)
 ```
 :::
 
-Great! We now have a data frame containing one row for every year. In it, we find the name most common in that year. As already mentioned, the specifics of these functions are not really relevant for this workshop.
-:::
+The `which.max(percentage)` command finds the maximum percentage per year. `slice()` will extract the respective rows, so we have only the row contatining the most common  name per year in the end. 
+
+As already mentioned, the specifics of these functions are not really relevant for now, but we need them for our final plot:
 
 ## Plot the data
+We will use the package `ggplot2` (which is also part of the `tidyverse`) for [plotting our data](../plotting/plotting.qmd). It should be mentioned that `Base R` also has some powerful plotting functions, however, `ggplot2` makes it very easy to build complex and beautiful plots.
 
-This section is more additional and not really necessary for the other workshops. However, i think it is a great way to show you the beauty of plotting in R, so here it goes (make sure you worked on the other concepts first).
+A `ggplot` is constructed from multiple layers, that can be laid over each other using the `+` operator.
 
-We will use the package `ggplot2` (which is also part of the `tidyverse`) for plotting our data. It should be mentioned that `Base R` also has some powerful plotting functions, however, `ggplot2` makes it very easy to build complex and beautiful plots.
-
-A ggplot is constructed from multiple layers, that can be laid over each other using the `+` operator.
-
-We start with the function `ggplot()`, where we define our data and the x and y aestetics.
+We start with the function `ggplot()`, where we define our data and the x and y axes.
 
 ::: tidy
 ```{r}
@@ -179,16 +191,17 @@ p
 Finally, to style the plot a bit, let's add a predefined theme and a color palette:
 
 ```{r}
-
 p +
-  theme_bw() +
-  scale_fill_brewer(palette = "Set3")
+  theme_bw() + # Theme
+  scale_fill_brewer(palette = "Set3") # Color palette
 
 ```
 :::
 
+We would have many more options to style this plot further (for example we could sort the names in the Legend by order of appearance), but let's keep it at that for now. 
+
 ## Conclusion
 
-In this tutorial we learned, that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in.
+In this tutorial we learned, that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in. 
+But first, take a look at the new data set you will be working with throughout the exercises. 
 
-Test link to [basics](./basics/basics.qmd)

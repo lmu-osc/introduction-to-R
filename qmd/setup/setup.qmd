@@ -4,61 +4,61 @@ title: "Setup"
 
 ## Installation
 
-Please go to [this website](https://posit.co/download/rstudio-desktop/) and download and install R and RStudio. While R is is a language and environment for statistical computing and graphics, RStudio is a according integrated development environment for R, facilitating working with it.
+Please go to [this website](https://posit.co/download/rstudio-desktop/) and download and install R and RStudio. While R is is a language and environment for statistical computing and graphics, RStudio is the most used integrated development environment for R, facilitating working with it.
 
-::: {.callout-note collapse="true"} 
+::: {.callout-tip collapse="true"}
+## Open if you want to use R in your browser instead of installing it
 
-## Open if you don't want to install anything 
+In case you don't use a notebook where you can install R and RStudio, or you don't want to, you can use the posit Cloud service. It can be run in you browser, and provides the same functions and interface as if you were working with your own RStudio installation. And it's free as well!
 
-In case you don't use a notebook where you can install R and RStudio, or you don't want to, you can use the posit Cloud service. It can be run in you browser, and provides the same functions and interface as if you were working with your own RStudio installation. And it's free as well (at least 25 hours per month, but that should be more than enough for this workshop and probably for the following week).
-
-1.  Go to [posit Cloud](https://posit.cloud/).
-2.  Click on `GET STARTED`.
-3.  Create an account (it's free) and login.
-4.  On the upper right, click on `New Project`. This will create a new RStudio project, which you can use the same way as described in this tutorial.
+1.  Go to [posit Cloud](https://posit.cloud/plans/free).
+1.  Click on `Sign Up` to create an account (it's free) and login.
+1.  On the upper right, click on `New Project`. This will create a new RStudio project, which you can follow this workshop with the same way as if you had installed R on your notebook. 
 
 ::: {.callout-warning collapse="true"}
-Keep in mind that the free posit Cloud account only gives you 25 computing ours per month. This should be enough for this week. See [here](https://posit.cloud/plans) for the subscription plans.
+Keep in mind that the free posit Cloud account only gives you 25 computing hours per month, but this should be more than enough for this week. See [here](https://posit.cloud/plans) for the subscription plans.
 :::
-
 :::
 
 ## Structure of the RStudio interface
 
-When opening RStudio it will look something like this:
+When you open RStudio it will look something like this:
 
-![](./qmd/pictures/RStudio_window.PNG)
+![](../pictures/RStudio_window.PNG)
 
 The window can be split into 4 parts:
 
-![](./qmd/pictures/window_commented.PNG)
+![](../pictures/window_commented.PNG)
 
 ### 1) Script pane
 
-The script pane is used to edit scripts. Scripts are the files you store your code in. You can execute a line of code by pressing `ctrl + enter` (on windows) or `command + return` (on macOS). To execute multiple lines of code at once, mark them before you press the keys. Try it yourself: Write
+The script pane is used to edit scripts. Scripts are the files you store your code in.  
+You can execute a line of code by pressing `ctrl + enter` (on windows) or `command + return` (on macOS). To execute multiple lines of code at once, mark them before you press the keys. Try it yourself! Write:
 
 ```{r}
 # Our first line of code:
 print("Hello World!")
 ```
 
-into your script and execute your first line of code. It should output "Hello World!" in your console.
+into your script and execute it. It should output "Hello World!" in your console.
 
 By the way: Code lines, that are preceded by a `#` are commented out, and will not be evaluated.
 
 ### 2) Console
 
-You can also work directly in the console, for example to try out things. Type, into your console and then just press `enter`:
+You can also work directly in the console. Type, into your console and then just press `enter`:
 
 ```{r}
 # Sum two values
 10 + 5
 ```
 
+Just beware that the code you write here will not be saved, so it is more usefull for trying out things or for code, you don't need to save in a script. 
+
 ### 3) Workspace
 
-Here you have an overview over the objects currently loaded into your R session, your command history and some more options we won't need for now.
+In the `Environment tab` you get an overview over the objects currently loaded into your R session. You can also look at your command history and some more things we don't need for now.
 
 ### 4) Plots, Files, Help ...
 
-Plots you build in your R session get output here. If you call the [help function](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#help) the documentation opens here. The `Files` pane let's you mange the files in your working directory.
+[Plots](../plotting/plotting.qmd) you build in your R session get output in the `Plot tab`. If you call the [help function](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#help) the documentation opens in the `Help tab`. The `Files tab` let's you mange the files in your working directory.
