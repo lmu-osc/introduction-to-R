@@ -6,33 +6,17 @@ Also show a barplot or something!!
 
 This section is for more experienced R users who want to start plotting with `ggplot2`. It is not necessary to follow the rest of the conference.
 
-Here is our data preparation from the previous chapters:
-
-```{r, eval = FALSE}
-library(tidyverse)
-
-world_coordinates <- ggplot2::map_data("world")
-athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
-
-medal_counts <- athletes %>%
-  filter(Medal == "Gold") %>%
-  filter(Region == "Argentina")
-  group_by(Region) %>%
-  count(Medal) 
-
-medal_countries <- world_coordinates %>%
-  rename("Region" = region) %>%
-  left_join(medal_counts)
-
-```
-
-
-
 Now, let's take a closer look at how `ggplot2` works. 
 We already had a quick glimpse at it: Plots are build from different layers to create complex outputs. There are endless possibilities for different plot types, [look] here(https://r-graph-gallery.com/) for some inspiration and code. 
 
 First, let's plot a relatively simple plot to get you familiar with how `ggplot2` works. After that, we will the preparation we have done in the last chapters to use and plot the number of gold medals each country has won over the years on a world map, which gets slightly more complex.
 
+Let's load our data:
+```{r}
+library(tidyverse)
+
+athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
+```
 
 
 ## First plot
@@ -110,7 +94,7 @@ Or we could label the bars with the country:
   geom_text(aes(label = Region), hjust = -0.3, angle = 90, size = 2.5)
 ```
 
-Or use different colours and a different theme:
+Or use different colors and a different theme:
 
 ```{r}
 p <- p +
@@ -123,12 +107,37 @@ p <- p +
 p  
 ```
 
+Finally, change the title and axis labels:
+```{r}
+p +
+  ggtitle("Country with the most Olympic gold medal winners by sport") +
+  xlab("Sport") +
+  ylab("Number of gold medal winners")
+```
+
 :::
 
 Pretty cool! Now we know that the UK is the all time Olympic Tug-Of-War champion! Also note that we are looking at the number of people from each country winning a gold medal, so team sports are counted multiple times. 
 
 ## Second plot
 Let's take a look at another, slightly different plot, just to see what can be easily achieved with `ggplot2` (and we have prepared the data to do that, so we don't want to wast the work).
+
+Here is our data preparation from the previous chapters:
+
+```{r}
+world_coordinates <- ggplot2::map_data("world")
+
+medal_counts <- athletes %>%
+  filter(Medal == "Gold") %>%
+  group_by(Region) %>%
+  count(Medal) 
+
+medal_countries <- world_coordinates %>%
+  rename("Region" = region) %>%
+  left_join(medal_counts)
+
+```
+
 
 ```{r}
 
