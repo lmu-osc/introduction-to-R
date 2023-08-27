@@ -102,7 +102,7 @@ Or at all judo athletes weighting over 100 or under 50 kg:
 athletes[(athletes$Sport == "Judo") & (athletes$Weight > 100 | athletes$Weight < 50) , ]
 ```
 
-Hmm, that looks a bit weird. Some rows only contain `NA` values. That's because there are [missing values](../missings/missings.qmd) in the `Weight` column. We will look at that closer in the [missings chapter](../missings/missings.qmd) and ignore that problem for now.
+Hmm, that looks a bit weird. Some rows only contain `NA` values. That's because there are [missing values](../missing/missing.qmd) in the `Weight` column. We will look at that closer in the [missings chapter](../missing/missing.qmd) and ignore that problem for now.
 
 In the long run, always having to define the data frame multiple time in each row can become a bit annoying and clutters the code. Also the missings problem ... Enter, the `filter()` function:
 

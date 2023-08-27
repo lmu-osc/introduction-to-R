@@ -79,11 +79,11 @@ babynames_merged <- merge(babynames, babynames_n)
 head(babynames_merged)
 ```
 
-Hold on! The column `years` seems to include missing values (`NA's`, see the cell on the top left). It is always a good idea to at least think about the [missing values](../missings/missings.qmd). before doing any analyses, so let's do just that:
+Hold on! The column `years` seems to include missing values (`NA's`, see the cell on the top left). It is always a good idea to at least think about the [missing values](../missing/missing.qmd). before doing any analyses, so let's do just that:
 
 ## Missings
 
-There are multiple ways to deal with [missing values](../missings/missings.qmd). For reasons of simplicity, we will just remove any rows that contain `NA's`. We can achieve that very easily using a function from the `tidyverse` (the package collection we installed at the beginning of this chapter):
+There are multiple ways to deal with [missing values](../missing/missing.qmd). For reasons of simplicity, we will just remove any rows that contain `NA's`. We can achieve that very easily using a function from the `tidyverse` (the package collection we installed at the beginning of this chapter):
 
 ::: tidy
 ```{r}

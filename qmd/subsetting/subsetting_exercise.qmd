@@ -73,23 +73,24 @@ Kind of a trick question: because we select all characters that are from the Har
 
 ## Exercise 3
 
-1.  Extract all characters from "Game of Thrones" that have a notability over `75`, using `Base R`.
+1.  Which character(s) from "Game of Thrones" has a notability rating over `90`? Use `Base R`.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-You need to define a logical vector which contains `TRUE` values for all "Game of Thrones" characters that have a notability over `75`.
+You need to define a logical vector which contains `TRUE` values for all "Game of Thrones" characters that have a notability over `90`.
 :::
 
 ::: {.callout-caution collapse="true"}
 ## Solution
 
 ```{r}
-characters[characters$uni_name == "Game of Thrones" & characters$notability > 75, ]
+characters[characters$uni_name == "Game of Thrones" & characters$notability > 90, ]
 ```
 :::
+That's only Tyrion Lannister.
 
-2.  Extract all characters that are either from "How I Met Your Mother" or "Breaking Bad", using the `tidyverse`.
+2.  Which characters from "How I Met Your Mother" or "Breaking Bad" are included in the data? Use the `tidyverse`.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
