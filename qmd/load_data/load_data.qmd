@@ -57,15 +57,7 @@ Another great way to deal with the path confusion is to use the `here` package. 
 
 ## Example
 
-## Data set
-
-![](../pictures/olympics.jpg)[^1]
-
-[^1]: Image by [Florian Schmetz](https://unsplash.com/de/@floschmaezz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/fbCtFV3FkfE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
-
-For the rest of the workshop, we will use a data set containing the olympic athletes from 1896 to 2016.  
-
-Let's load it into R:
+Let's load our Olympic athletes data set into R:
 
 ```{r, echo = FALSE}
 athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
