@@ -77,7 +77,7 @@ website:
         - section: "Loops"
           contents:
             - qmd/loops/loops.qmd
-      - section: "4) Advanced: Visualization"
+      - section: "4) Optional: Visualization"
         contents:
         - section: "Plotting"
           contents:
