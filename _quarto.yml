@@ -55,7 +55,7 @@ website:
         - section: "Getting an overview"
           contents: 
             - qmd/peeking/peeking.qmd
-            - qmd/peeking/peeking.qmd
+            - qmd/peeking/peeking_exercise.qmd
         - section: "Subsetting"
           contents:
             - qmd/subsetting/subsetting.qmd
@@ -71,20 +71,18 @@ website:
           contents:
             - qmd/merging/merging.qmd
             - qmd/merging/merging_exercise.qmd
-        - section: "Loops"
-          contents:
-            - qmd/loops/loops.qmd
         - section: "Functions"
           contents: 
             - qmd/functions/functions.qmd
-      - section: "4) Advanced: Analysis and visualization"
-        contents:
-        - section: "Statistical Analyses"
+        - section: "Loops"
           contents:
-            - qmd/statistical_analyses/statistical_analyses.qmd
+            - qmd/loops/loops.qmd
+      - section: "4) Advanced: Visualization"
+        contents:
         - section: "Plotting"
           contents:
             - qmd/plotting/plotting.qmd
+            - qmd/plotting/plotting_exercise.qmd
 
           
 format:
