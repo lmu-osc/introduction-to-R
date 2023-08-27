@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "R - Open Research Summer School"
+  title: "Open Research Summer School"
   page-navigation: true
   open-graph: true
   navbar:
@@ -19,7 +19,7 @@ website:
       - section: "0) Before the workshop"
         contents:
           - index.qmd
-          - setup.qmd
+          - qmd/setup/setup.qmd
       - section: "1) Getting Started"
         contents:
           - section: "Workflow"
@@ -28,8 +28,8 @@ website:
               - qmd/workflow/workflow_exercise.qmd
           - section: "Overview"
             contents: 
-              - the_big_picture.qmd
-              - exercise_overview.qmd
+              - qmd/getting_started/the_big_picture.qmd
+              - qmd/getting_started/exercise_overview.qmd
       - section: "2) Basics"
         contents:
         - section: "Basics"

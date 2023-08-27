@@ -22,7 +22,11 @@ library(tidyverse)
 
 Data is loaded into R so you can work with it. For this chapter, we are going to use the data set `babynames`, which we can find on the `tidytuesday` site. You can find it on [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data).We want to look at the most common name in every year and make a nice plot out of it.
 
-```{r}
+```{r, echo = FALSE}
+babynames <- readRDS(here::here("raw_data", "babynames.rds"))
+```
+
+```{r, eval = FALSE}
 babynames <- readRDS("./raw_data/babynames.rds")
 ```
 
@@ -48,7 +52,11 @@ On the left we can see the columns of this data.frame, named `year`, `sex`, `nam
 
 Sadly the data is not complete. The n is missing (ok, i split it up for illustrational purposes). So let's load it quickly:
 
-```{r}
+```{r, echo = FALSE}
+babynames_n <- readRDS(here::here("raw_data", "babynames_n.rds"))
+```
+
+```{r , eval = FALSE}
 babynames_n <- readRDS("./raw_data/babynames_n.rds")
 ```
 

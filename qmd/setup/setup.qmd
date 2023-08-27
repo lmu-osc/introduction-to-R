@@ -29,7 +29,7 @@ When opening RStudio it will look something like this:
 
 ![](./qmd/pictures/RStudio_window.PNG)
 
-The programm can be split into 4 parts:
+The window can be split into 4 parts:
 
 ![](./qmd/pictures/window_commented.PNG)
 
