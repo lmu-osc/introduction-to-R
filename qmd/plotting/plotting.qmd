@@ -2,8 +2,9 @@
 title: "Plotting"
 ---
 
-Also show a barplot or something!!
 
+::: {.callout-tip}
+## Open if you want to learn more about plotting in R (optional)
 This section is for more experienced R users who want to start plotting with `ggplot2`. It is not necessary to follow the rest of the conference.
 
 Now, let's take a closer look at how `ggplot2` works. 
@@ -151,3 +152,5 @@ ggplot(data = medal_countries,
 ```
 
 Note that the medals for team sports are counted multiple times, as our data contained the gold medal wins by person, and not by discipline. 
+
+:::
