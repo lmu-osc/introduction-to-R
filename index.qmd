@@ -2,30 +2,30 @@
 title: "Welcome"
 ---
 
-Welcome!
-
-This workshop will teach you the basics of R. It's modular structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](../qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to scientific programming with R and want to follow the course structure?
+## About this workshop
+Welcome!  
+This workshop will teach you the basics of R. It's structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](/qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to scientific programming with R and want to follow the course structure?
 
 ::: {.callout-note collapse="true" icon="false"}
 ## Unfold if you want to learn more about advanced content
 
-Don't worry if you don't finish the whole workshop in time, or the material seems a bit overwhelming. It is designed to provide additional information for self studying and looking up topics of interest (that may come up during the following week, or in general). Advanced explanations and exercises can be found in folded in chunks like this one.
+Don't worry if you don't finish the whole workshop in time, or the material seems a bit overwhelming. It is designed to provide additional information for self studying and looking up topics of interest (that may come up during the following week, or in general). Advanced explanations and exercises can be found in folded in sections like this one.
 :::
 
 The main objective of this workshop is to get you familiar with the basics of programming in R, as it needed for other courses of the Open Research Summer School. To do that, we will repeat and try out the main concepts multiple times, so you get to work with them as much and as from many different perspectives as possible in 3 h.
 
-Each section is divided into a theory part and some exercises. Most of these exercises will use the \`characters\` data set, more on that in the [next chapter](.qmd/setup/setup_exercises.qmd).
+Each section is divided into a theory part and some exercises. Most of these exercises will use the `characters` data set, more on that in the [next chapter](/qmd/getting_started/exercise_overview.qmd).
 
-::: callout-caution
-Please [install the necessary software](.qmd/setup/setup_exercises.qmd) **before the workshop**. Of course, feel free to [ask by opening a new issue](https://github.com/nickhaf/r_tutorial/issues) if you run into problems on the way.
+::: callout-warning
+## Software installation
+Please [install the necessary software](qmd/setup/setup.qmd) **before the workshop**. Of course, feel free to [ask questions by opening a new issue](https://github.com/nickhaf/r_tutorial/issues) if you run into problems on the way.
 :::
 
-# What is R?
-
+## Why R?
 -   R is a popular programming language for data manipulation, statistical data analyses and plotting of data.
--   It is open source, and has a big community, which facilitates the development of additional [software packages]((.qmd/packages/packages.qmd)) for multiple different applications, but also makes it easy to get help if you are stuck at a particular problem.
--   This is one of the reasons why R is great for doing statistical analyses with it - there are packages for almost every use case.
+-   It is open source, and has a big community, which facilitates the development of additional [software packages](/qmd/packages/packages.qmd) for multiple different applications, but also makes it easy to get help if you are stuck at a particular problem.
+-   This is one of the reasons why R is great for doing statistical analyses - there are packages for almost every use case.
 -   It has great tools for making beautiful plots.
 -   This is not R specific, but because you can write programs for your specific use cases, it facilitates many workflow related tasks like automation, tracking changes with git, result preparation with markdown/latex and many more.
 
-There are many reasons to learn R and this workshop will hopefully help you with that.
+There are many more reasons to learn R, as it is a very flexible tool for almost every aspect of scientific work, so let's dive right into it! 
