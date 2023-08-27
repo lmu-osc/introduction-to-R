@@ -6,21 +6,123 @@ Also show a barplot or something!!
 
 This section is for more experienced R users who want to start plotting with `ggplot2`. It is not necessary to follow the rest of the conference.
 
-This is Zusatz. Plot world map with the winning countries, the more the darker. Same colours for same continents.
-
 Here is our data preparation from the previous chapters:
-
 
 ```{r, eval = FALSE}
 library(tidyverse)
 
-ggplot(data = world_coordinates, 
+world_coordinates <- ggplot2::map_data("world")
+athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
+
+medal_counts <- athletes %>%
+  filter(Medal == "Gold") %>%
+  group_by(Region) %>%
+  count(Medal) 
+
+medal_countries <- world_coordinates %>%
+  rename("Region" = region) %>%
+  left_join(medal_counts)
+
+```
+
+
+
+Now, let's take a closer look at how `ggplot2` works. 
+We already had a quick glimpse at it: Plots are build from different layers to create complex outputs. There are endless possibilities for different plot types, [look] here(https://r-graph-gallery.com/) for some inspiration and code. 
+
+First, let's plot a relatively simple plot to get you familiar with how `ggplot2` works. After that, we will the preparation we have done in the last chapters to use and plot the number of gold medals each country has won over the years on a world map, which gets slightly more complex.
+
+
+
+## First plot
+For this plot, we want to find the country which won the most medals for each sport. The preperation is pretty similar to what we have done [before]().
+
+::: tidy
+```{r}
+best_by_sport <- athletes %>%
+  ## Get all gold medalists
+  filter(Medal == "Gold") %>%
+  ## Group them by sport and region
+  group_by(Sport, Region) %>%
+  ## count the number of medals each country has per sport category
+  count(Medal) %>%
+  ## Now only group by sport, so we can extract the maximum medal row by sport, and not by sport and country
+  group_by(Sport) %>%
+  ## Extract the country with the most medals
+  slice(which.max(n)) 
+```
+
+
+### `ggplot()`
+In general, a `ggplot` starts with the `ggplot()` function. In it we define the data we want to use, and some aesthetics. The `ggplot()` function then draws our (currently still empty) plotting erea, with the defined axes (see next section).
+
+### `aes()`
+Aesthetics set parameters **dependent on the data**. In most cases, we will define our x and y axis here. We can also group data together by groups found in a column. If we want the data to have a different color, form, filling etc. depending on values in a column, we can define that here as well.
+
+```{r}
+p <- ggplot(
+  data = best_by_sport,
+  aes(
+    x = Sport,
+    y = n,
+    fill = Region
+  )
+)
+
+p
+```
+
+In this case, the sport is plotted on the x axis and the number of gold medals (`n`) on the y axis. Bar filling will vary depending on the region. 
+
+### geom_()
+The geoms do the actual plotting. For example, if we want a scatterplot:
+```{r}
+p <- p +
+  geom_col()
+```
+
+
+### General plotting options
+We can tweak most aspects of the appearance of a plot. For example, we might want to turn the x axis labels by 90 degrees to actually make them readable:
+```{r}
+p <- p +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+p
+```
+
+Or we could label the bars with the country: 
+```{r}
+ p <- p +
+  geom_text(aes(label = Region), hjust = -0.3, angle = 90, size = 2.5)
+```
+
+Or use different colours and a different theme:
+
+```{r}
+p <- p +
+  theme_classic() +
+  ## And turn the axis labels again, because the new theme has overwritten our theme
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ## Specify which colors are used for the filling
+  scale_fill_manual(values = viridisLite::viridis(19))
+
+p  
+```
+
+:::
+
+Pretty cool! Now we know that the UK is the all time Olympic Tug-Of-War champion!
+
+
+```{r}
+
+ggplot(data = medal_countries, 
        mapping = aes(x = long, y = lat, group = group)) + 
   coord_fixed(1.3) +
   geom_polygon(aes(fill = n)) +
   scale_fill_distiller(palette ="RdBu", direction = -1) + # or direction=1
   ggtitle("Olympic medalists by country") +
   theme_void()
-
 ```
 
