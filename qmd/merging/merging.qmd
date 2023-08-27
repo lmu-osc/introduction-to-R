@@ -9,10 +9,10 @@ library(tidyverse)
 
 ## Data set
 
-In the end, we want to plot the medals the countries have won on a world map. To do that, we need a data set containing coordinates of the different countries. Luckily, `ggplot2` (part of the `tidyverse`) provides a very convenient function to get such a data set:
+In the end, we want to plot the medals the countries have won on a world map. To do that, we need a data set containing coordinates of the different countries. Luckily, `ggplot2` (part of the `tidyverse`) provides a fitting data set. Let's [download](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) it and load it into R:
 
 ```{r}
-world_coordinates <- ggplot2::map_data("world")
+world_coordinates <- readRDS(file = here::here("raw_data", "world_coordinates.rds"))
 ```
 
 Also, let's load our `athletes` data set, in case you didn't already:

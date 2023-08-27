@@ -23,6 +23,15 @@ athletes_region <- merge(athletes, regions) %>%
 
 saveRDS(as.data.frame(athletes_region), file = here::here("raw_data", "athletes.rds"))
 
+
+
+# Coordinates -------------------------------------------------------------
+
+world_coordinates <- ggplot2::map_data("world")
+
+saveRDS(as.data.frame(world_coordinates), file = here::here("raw_data", "world_coordinates.rds"))
+
+
 # Babynames ---------------------------------------------------------------
 
 babynames <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-03-22/babynames.csv')

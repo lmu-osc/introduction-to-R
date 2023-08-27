@@ -125,7 +125,7 @@ Let's take a look at another, slightly different plot, just to see what can be e
 Here is our data preparation from the previous chapters:
 
 ```{r}
-world_coordinates <- ggplot2::map_data("world")
+world_coordinates <- readRDS(file = here::here("raw_data", "world_coordinates.rds"))
 
 medal_counts <- athletes %>%
   filter(Medal == "Gold") %>%
