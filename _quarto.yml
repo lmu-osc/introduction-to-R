@@ -29,7 +29,7 @@ website:
           - section: "Overview"
             contents: 
               - qmd/getting_started/the_big_picture.qmd
-              - qmd/getting_started/exercise_overview.qmd
+              - qmd/getting_started/data_sets.qmd
       - section: "2) Basics"
         contents:
         - section: "Basics"

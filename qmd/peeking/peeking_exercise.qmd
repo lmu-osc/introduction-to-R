@@ -1,8 +1,8 @@
 ---
-title: "Getting an overview: Exercises"
+title: "Overview: Exercises"
 ---
 
-Let's take a look at the `characters` data set we have loaded in [last chapters exercise](../load_data/load_data_exercise.qmd): 
+Let's take a look at the `characters` data set we have loaded in [last chapters exercise](../load_data/load_data_exercise.qmd):
 
 ::: {.callout-caution icon="false"}
 ```{r}
