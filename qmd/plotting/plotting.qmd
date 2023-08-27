@@ -2,7 +2,7 @@
 title: "Plotting"
 ---
 
-::: {.callout-tip}
+::: {.callout-note, collapse="true"}
 ## Open if you want to learn more about plotting in R (optional)
 This section is for more experienced R users who want to start plotting with `ggplot2`. It is not necessary to follow the rest of the conference.
 
@@ -77,7 +77,7 @@ Looking pretty boring, right? Let's give each country another color by defining 
 #| fig-width: 11
 
 p <- p +
-  geom_col(aes(fill = Region, x = reorder(Sport, n)))
+  geom_col(aes(fill = Region, x = reorder(Sport, Region)))
 p
 ```
 Correct! We can define the aesthetics also within the `geom_()` functions. In this case they will only be used for that specific function, and not for the whole plot (which would be the case if we had defined the `fill` aesthetic in the `ggplot()` function).
