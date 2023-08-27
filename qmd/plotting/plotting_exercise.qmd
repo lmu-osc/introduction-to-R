@@ -1,6 +1,7 @@
 ---
 title: "Plotting: Exercises"
 ---
+Keep in mind we haven't really checked the questions etc, so there would be a lot more work done on such a data set before you could really extract something from it. 
 
 ```{r}
 library(tidyverse)
@@ -36,5 +37,3 @@ ggplot(data = characters_subset,
   geom_point()
 
 ```
-
-

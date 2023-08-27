@@ -112,7 +112,14 @@ babynames_F$percentage <- babynames_F$prop * 100
 
 ## Selecting columns
 
-Now we can trim down our data set a bit more:
+Now we can trim down our data set a bit more and select only the columns we are actually going to need:
+
+```{r}
+babynames_F <- babynames_F %>%
+  select(year, name, percentage)
+
+```
+
 
 ## Some additional summary statistics
 
@@ -192,7 +199,7 @@ Finally, to style the plot a bit, let's add a predefined theme and a color palet
 ```{r}
 p +
   theme_bw() + # Theme
-  scale_fill_brewer(palette = "Set3") # Color palette
+  scale_fill_brewer(palette = "Spectral") # Color palette
 
 ```
 :::

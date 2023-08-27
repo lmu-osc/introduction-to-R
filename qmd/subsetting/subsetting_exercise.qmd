@@ -1,15 +1,18 @@
 ---
 title: "Subsetting data: Exercises"
 ---
+
 We want to work more with the `characters` data set we have loaded in the [last chapter](../load_data/load_data_exercise.qmd):
 
 ```{r}
 characters <- readRDS(file = here::here("raw_data", "characters.rds"))
+psych_stats <- readRDS(file = here::here("raw_data", "characters.rds"))
 ```
 
-Because subsetting data is such a basic skill, it will come up multiple times during this workshop. Here are some first exercises to get you started. 
+Because subsetting data is such a basic skill, it will come up multiple times during this workshop. Here are some first exercises to get you started.
 
 ## Exercise 1
+
 Correct the following code, so only the first 10 rows and the last three columns are extracted:
 
 ```{r correct_subsetting, eval=FALSE}
@@ -18,25 +21,28 @@ characters[4:6, 10]
 
 ::: {.callout-tip collapse="true"}
 ## Hint
-We have to target the rows we want to extract **before** the `,`, the columns after. 
+
+We have to target the rows we want to extract **before** the `,`, the columns after.
 :::
 
 ::: {.callout-caution collapse="true" icon="false"}
 ## Solution
+
 ```{r}
 characters[1:10, 4:6]
 ```
-
 :::
 
 ## Exercise 2
-1. Why does the following code not work? Correct it in your own script. 
+
+1.  Why does the following code not work? Correct it in your own script.
+
 ```{r, eval = FALSE}
 characters[uni_name == "Friends", ]
 ```
 
 ::: {.callout-tip collapse="true"}
-You need to extract the column from the data frame with `$` before you can compare it to the string. 
+You need to extract the column from the data frame with `$` before you can compare it to the string.
 :::
 
 ::: {.callout-caution collapse="true"}
@@ -46,56 +52,56 @@ characters[characters$uni_name == "Friends", ]
 ```
 :::
 
-2. Which characters will this code extract: `characters[(characters$uni_name == "Harry Potter" | characters$uni_name != "Harry Potter") & !(characters$notability > 90), ]`?
-    - [ ] All Harry Potter characters with a notability over `90`.
-    - [ ] All characters that are not from the Harry Potter universe and have a notability under 90.
-    - [ ] All characters with a notability over `90`.
-    - [ ] All characters with a notability under `90`.
-    
-::: {.callout-caution collapse="true"}
+2.  Which characters will this code extract: `characters[(characters$uni_name == "Harry Potter" | characters$uni_name != "Harry Potter") & !(characters$notability > 90), ]`?
+    -   [ ] All Harry Potter characters with a notability over `90`.
+    -   [ ] All characters that are not from the Harry Potter universe and have a notability under 90.
+    -   [ ] All characters with a notability over `90`.
+    -   [ ] All characters with a notability under `90`.
 
+::: {.callout-caution collapse="true"}
 ## Solution
-    - [ ] All Harry Potter characters with a notability over `90`.
-    - [ ] All characters that are not from the Harry Potter universe and have a notability under 90.
-    - [ ] All characters with a notability over `90`.
-    - [x] All characters with a notability under `90`.
+
+```         
+- [ ] All Harry Potter characters with a notability over `90`.
+- [ ] All characters that are not from the Harry Potter universe and have a notability under 90.
+- [ ] All characters with a notability over `90`.
+- [x] All characters with a notability under `90`.
+```
 
 Kind of a trick question: because we select all characters that are from the Harry Potter universe OR are not from there, we select all characters independent of their TV show. But we select all characters that have notability under 90 (beware of the `!` in front of the respective comparison).
 :::
 
-
 ## Exercise 3
-1. Extract all characters from "Game of Thrones" that have a notability over `75`, using `Base R`.
+
+1.  Extract all characters from "Game of Thrones" that have a notability over `75`, using `Base R`.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
+
 You need to define a logical vector which contains `TRUE` values for all "Game of Thrones" characters that have a notability over `75`.
 :::
 
 ::: {.callout-caution collapse="true"}
 ## Solution
+
 ```{r}
 characters[characters$uni_name == "Game of Thrones" & characters$notability > 75, ]
 ```
 :::
 
-2. Extract all characters that are either from "How I Met Your Mother" or "Breaking Bad", using the `tidyverse`.
+2.  Extract all characters that are either from "How I Met Your Mother" or "Breaking Bad", using the `tidyverse`.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
+
 Use the `filter()` function.
 :::
 
 ::: {.callout-caution collapse="true"}
 ## Solution
+
 ```{r, message = FALSE}
 library(tidyverse)
 filter(characters, uni_name %in% c("How I Met Your Mother", "Breaking Bad"))
 ```
 :::
-
-
-
-
-
-
