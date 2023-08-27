@@ -2,90 +2,182 @@
 title: "Plotting"
 ---
 
+::: {.callout-note, collapse="true"}
+## Open if you want to learn more about plotting in R (optional)
 This section is for more experienced R users who want to start plotting with `ggplot2`. It is not necessary to follow the rest of the conference.
 
-This is Zusatz. Plot world map with the winning countries, the more the darker. Same colours for same continents.
+Now, let's take a closer look at how `ggplot2` works. 
+We already had a quick glimpse at it: Plots are build from different layers to create complex outputs. There are endless possibilities for different plot types, [look] here(https://r-graph-gallery.com/) for some inspiration and code. 
 
+First, let's plot a relatively simple plot to get you familiar with how `ggplot2` works. After that, we will the preparation we have done in the last chapters to use and plot the number of gold medals each country has won over the years on a world map, which gets slightly more complex.
+
+Let's load our data:
 ```{r}
 library(tidyverse)
-winners <- readRDS(file = here::here("raw_data", "winners.rds"))
 
-continents <- read.csv(
-  file = here::here("raw_data", "continents.csv")
+athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
+```
+
+
+## First plot
+For this plot, we want to find the country with the most medal winners for each sport. The preparation is pretty similar to what we have done [before]().
+
+::: tidy
+```{r}
+best_by_sport <- athletes %>%
+  ## Get all gold medalists
+  filter(Medal == "Gold") %>%
+  ## Group them by sport and region
+  group_by(Sport, Region) %>%
+  ## count the number of medals each country has per sport category
+  count(Medal) %>%
+  ## Now only group by sport, so we can extract the maximum medal row by sport, and not by sport and country
+  group_by(Sport) %>%
+  ## Extract the country with the most medals
+  slice(which.max(n)) 
+```
+
+
+### `ggplot()`
+In general, a `ggplot` starts with the `ggplot()` function. In it we define the data we want to use, and some aesthetics. The `ggplot()` function then draws our (currently still empty) plotting area, with the defined axes (see next section).
+
+### `aes()`
+Aesthetics set parameters **dependent on the data**. In most cases, we will define our x and y axis here. We can also group data together by groups found in a column. If we want the data to have a different color, form, filling etc. depending on values in a column, we can define that here as well (we will look at that later on).
+
+```{r}
+#| fig-height: 8
+#| fig-width: 11
+
+p <- ggplot(
+  data = best_by_sport,
+  aes(
+    x = Sport,
+    y = n,
+  )
 )
 
+p
+```
 
-winners_continents <- merge(
-  x = winners,
-  y = continents,
-  by.x = "Nationality",
-  by.y = "Entity"
-)
+In this case, the sport is plotted on the x axis and the number of gold medals (`n`) on the y axis. Bar filling will vary depending on the region. 
 
-winners_continents$Seconds_total <- winners_continents$Hours * 60^2 + winners_continents$Minutes * 60 + winners_continents$Seconds
+### geom_()
+The geoms do the actual plotting. For example, if we want a barplot:
+```{r}
+#| fig-height: 8
+#| fig-width: 11
 
+p +
+  geom_col()
+```
 
-ggplot(data = winners_continents, 
-       aes(x = Year.x, 
-           y = Seconds_total ,
-           colour = Nationality, 
-           group = Category)
-       ) +
+Looking pretty boring, right? Let's give each country another color by defining the `fill` aesthetic. Also, lets order the x axis depending on the number of gold medalists:
+```{r}
+#| fig-height: 8
+#| fig-width: 11
+
+p <- p +
+  geom_col(aes(fill = Region, x = reorder(Sport, Region)))
+p
+```
+Correct! We can define the aesthetics also within the `geom_()` functions. In this case they will only be used for that specific function, and not for the whole plot (which would be the case if we had defined the `fill` aesthetic in the `ggplot()` function).
+
+```{r}
+#| fig-height: 8
+#| fig-width: 11
+
+p +
   geom_point()
+```
+
+This gives us black points now. If we had defined our aesthetics in the `ggplot()` function, the points would have the same colors as the bars. Also note that we layed another geom (`geom_point()`) over our plot, we added a new layer (that's what I meant earlier on by saying plots consist of different layers). 
+
+### General plotting options
+We can tweak all aspects of the appearance of a plot. For example, we might want to turn the x axis labels by 90 degrees to actually make them readable:
+```{r}
+#| fig-height: 8
+#| fig-width: 11
+
+p <- p +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+p
+```
+
+Or we could label the bars with the country: 
+```{r}
+#| fig-height: 8
+#| fig-width: 11
+ 
+p <- p +
+  geom_text(aes(label = Region), hjust = -0.3, angle = 90, size = 2.5)
+p
+```
+
+Or use different colors and a different theme:
+
+```{r}
+#| fig-height: 8
+#| fig-width: 11
+
+p <- p +
+  theme_classic() +
+  ## And turn the axis labels again, because the new theme has overwritten our theme
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  ## Specify which colors are used for the filling
+  scale_fill_manual(values = viridisLite::viridis(19))
+
+p  
+```
+
+Finally, change the title and axis labels:
+```{r}
+#| fig-height: 8
+#| fig-width: 11
+
+p +
+  ggtitle("Country with the most Olympic gold medal winners by sport") +
+  xlab("Sport") +
+  ylab("Number of gold medal winners")
+```
+
+:::
+
+Pretty cool! Now we know that the UK is the all time Olympic Tug-Of-War champion! Also note that we are looking at the number of people from each country winning a gold medal, so team sports are counted multiple times. 
+
+## Second plot
+Let's take a look at another, slightly different plot, just to see what can be easily achieved with `ggplot2` (and we have prepared the data to do that, so we don't want to wast the work).
+
+Here is our data preparation from the previous chapters:
+
+```{r}
+world_coordinates <- readRDS(file = here::here("raw_data", "world_coordinates.rds"))
+
+medal_counts <- athletes %>%
+  filter(Medal == "Gold") %>%
+  group_by(Region) %>%
+  count(Medal) 
+
+medal_countries <- world_coordinates %>%
+  rename("Region" = region) %>%
+  left_join(medal_counts)
 
 ```
 
-```{r, eval = FALSE}
-# Too complex?
 
-winners <- readRDS(file = here::here("raw_data", "winners.rds"))
+```{r}
+#| fig-height: 8
+#| fig-width: 11
 
-continents <- read.csv(
-  file = here::here("raw_data", "continents.csv")
-)
-
-
-winners_continents <- merge(
-  x = winners,
-  y = continents,
-  by.x = "Nationality",
-  by.y = "Entity"
-)
-head(winners_continents)
-
-
-## Lets count how often each country has won:
-
-world_coordinates <- map_data("world")
-
-winners_counts <- winners_continents$Nationality %>%
-  table %>%
-  as.data.frame() 
-
-colnames(winners_counts) <- c("region", "freq")
-
-
-winners_counts$region[which(!(winners_counts$region %in% world_coordinates$region))]
-
-
-winners_counts <- winners_counts %>%
-  mutate(region = recode(str_trim(region), 
-                         "United States" = "USA", 
-                         "United Kingdom" = "UK")
-         )
-
-winners_world <- merge(winners_counts, world_coordinates, all.y = TRUE, all.x = FALSE) 
-
-winners_world <- winners_world[order(winners_world$order), ]
-  
-ggplot(data = winners_world, 
-                   mapping = aes(x = long, y = lat, group = group)) + 
+ggplot(data = medal_countries, 
+       mapping = aes(x = long, y = lat, group = group)) + 
   coord_fixed(1.3) +
-  geom_polygon(aes(fill = freq)) +
-  scale_fill_distiller(palette ="RdBu", direction = -1) + # or direction=1
-  ggtitle("Winners of the London Marathon") +
+  geom_polygon(aes(fill = n)) +
+  scale_fill_distiller(palette ="YlOrBr", direction = 1) + # or direction=1
+  ggtitle("NUmber of Olympic gold medalists by country") +
   theme_void()
-
-
-
 ```
+
+Note that the medals for team sports are counted multiple times, as our data contained the gold medal wins by person, and not by discipline. 
+
+:::

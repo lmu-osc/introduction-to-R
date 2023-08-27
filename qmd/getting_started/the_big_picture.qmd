@@ -26,7 +26,7 @@ library(tidyverse)
 
 ## Load Data
 
-Data is loaded into R so you can work with it. For this chapter, we are going to use the data set [`babynames`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md), which we can find on the `tidytuesday` site. I have already tweaked the data set a bit, so download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) in case you want to follow along.  
+Data is loaded into R so you can work with it. For this chapter, we are going to use the data set [`babynames`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md), which we can find on the `tidytuesday` site. I have already tweaked the data set a bit, so download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) in case you want to follow along.\
 Our goal is to look at the most common name in every year and make a nice plot out of it.
 
 So, after downloading it and saving it in the folder `raw_data` within my project directory, I can load the data set into R with:
@@ -55,15 +55,13 @@ Especially for bigger data sets, it might be more feasible to only look at the s
 str(babynames)
 ```
 
-On the left we can see the columns of this data.frame, named `year`, `sex`, `names`, and `ID`. On the right we see the first values in each column, for example `1880`, `1880`, `1880`, `NA` etc ... in the `year`-column. 
+On the left we can see the columns of this data.frame, named `year`, `sex`, `names`, and `ID`. On the right we see the first values in each column, for example `1880`, `1880`, `1880`, `NA` etc ... in the `year`-column.
 
-So, what we can infer from the data and its online description is that it contains the most common names for boys and girls in the USA for each year since `1880`. 
-
+So, what we can infer from the data and its online description is that it contains the most common names for boys and girls in the USA for each year since `1880`.
 
 ## Merging
 
-Sadly the data is not complete. If we had the number of people named with each name every year, we could find out which name was the most common each year, and make a nice plot out of it. 
-However, the number of people with the respective name each year is missing (ok, i split it up for illustrative purposes). So let's [download](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) it and load it into R quickly:
+Sadly the data is not complete. If we had the number of people named with each name every year, we could find out which name was the most common each year, and make a nice plot out of it. However, the number of people with the respective name each year is missing (ok, i split it up for illustrative purposes). So let's [download](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) it and load it into R quickly:
 
 ```{r, echo = FALSE}
 babynames_n <- readRDS(here::here("raw_data", "babynames_n.rds"))
@@ -84,6 +82,7 @@ head(babynames_merged)
 Hold on! The column `years` seems to include missing values (`NA's`, see the cell on the top left). It is always a good idea to at least think about the [missing values](../missings/missings.qmd). before doing any analyses, so let's do just that:
 
 ## Missings
+
 There are multiple ways to deal with [missing values](../missings/missings.qmd). For reasons of simplicity, we will just remove any rows that contain `NA's`. We can achieve that very easily using a function from the `tidyverse` (the package collection we installed at the beginning of this chapter):
 
 ::: tidy
@@ -111,14 +110,13 @@ Now, we want to plot the percentages of each name, instead of the probability, b
 babynames_F$percentage <- babynames_F$prop * 100
 ```
 
-
 ## Selecting columns
-Now we can trim down our data set a bit more: 
+
+Now we can trim down our data set a bit more:
 
 ## Some additional summary statistics
 
-Now, the specifics of the next part are not really relevant. However, they can show you how easy it can be to deal with data in R, so follow along if you want to.
-First, let's group our data according to year:
+Now, the specifics of the next part are not really relevant. However, they can show you how easy it can be to deal with data in R, so follow along if you want to. First, let's group our data according to year:
 
 ::: tidy
 ```{r}
@@ -136,11 +134,12 @@ head(babynames_F_max)
 ```
 :::
 
-The `which.max(percentage)` command finds the maximum percentage per year. `slice()` will extract the respective rows, so we have only the row contatining the most common  name per year in the end. 
+The `which.max(percentage)` command finds the maximum percentage per year. `slice()` will extract the respective rows, so we have only the row contatining the most common name per year in the end.
 
 As already mentioned, the specifics of these functions are not really relevant for now, but we need them for our final plot:
 
 ## Plot the data
+
 We will use the package `ggplot2` (which is also part of the `tidyverse`) for [plotting our data](../plotting/plotting.qmd). It should be mentioned that `Base R` also has some powerful plotting functions, however, `ggplot2` makes it very easy to build complex and beautiful plots.
 
 A `ggplot` is constructed from multiple layers, that can be laid over each other using the `+` operator.
@@ -198,10 +197,8 @@ p +
 ```
 :::
 
-We would have many more options to style this plot further (for example we could sort the names in the Legend by order of appearance), but let's keep it at that for now. 
+We would have many more options to style this plot further (for example we could sort the names in the Legend by order of appearance), but let's keep it at that for now.
 
 ## Conclusion
 
-In this tutorial we learned, that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in. 
-But first, take a look at the new data set you will be working with throughout the exercises. 
-
+In this tutorial we learned, that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in. But first, take a look at the new data set you will be working with throughout the exercises.

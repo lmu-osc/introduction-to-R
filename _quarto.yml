@@ -64,6 +64,9 @@ website:
           contents:
             - qmd/missing/missing.qmd
             - qmd/missing/missing_exercise.qmd
+        - section: "Wide and long format"
+          contents:
+            - qmd/format/format.qmd
         - section: "Merging"
           contents:
             - qmd/merging/merging.qmd

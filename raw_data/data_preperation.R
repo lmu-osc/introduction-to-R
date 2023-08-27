@@ -2,20 +2,34 @@
 library(tidytuesdayR)
 library(tidyverse)
 
-# Winners -----------------------------------------------------------------
+# Athletes -----------------------------------------------------------------
 
-load(here::here("raw_data", "winners_raw.rda"))
+athletes <- read.csv(here::here("raw_data", "athlete_events.csv"))
+region <- read.csv(here::here("raw_data", "noc_regions.csv"))
 
-## Introduce some NAs
-na_rows <- c(2, 5, 8, 100, 54)
+athletes_region <- merge(athletes, regions) %>%
+  rename("Region" = region) %>%
+  select(-notes)
   
-winners_raw[na_rows, "Hours"] <- NA
+
+# ## Introduce some NAs
+# na_rows <- c(2, 5, 8, 100, 54)
+  
+# winners_raw[na_rows, "Hours"] <- NA
 
   
-winners <- winners_raw %>%
-  select(-c("Time"))
+# winners <- winners_raw %>%
+#   select(-c("Time"))
 
-saveRDS(as.data.frame(winners), file = here::here("raw_data", "winners.rds"))
+saveRDS(as.data.frame(athletes_region), file = here::here("raw_data", "athletes.rds"))
+
+
+
+# Coordinates -------------------------------------------------------------
+
+world_coordinates <- ggplot2::map_data("world")
+
+saveRDS(as.data.frame(world_coordinates), file = here::here("raw_data", "world_coordinates.rds"))
 
 
 # Babynames ---------------------------------------------------------------

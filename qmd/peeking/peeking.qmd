@@ -3,7 +3,7 @@ title: "Getting an overview"
 ---
 
 ```{r, echo = FALSE}
-winners <- readRDS(file = here::here("raw_data", "winners.rds"))
+athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 ```
 
 Before starting to do something with your data, it is always a good idea to get an overview. Our goal is to answer questions in the line of:
@@ -20,7 +20,7 @@ To answer these questions, we have different tools at our disposal:
 To take a look at these data structures, we can use different commands. One of the most important ones might be `View()`, which will open the data set excel-style in a new window:
 
 ```{r, eval = FALSE}
-View(winners)
+View(athletes)
 ```
 
 In this window we can sort and filter, which makes it a pretty useful tool.
@@ -30,7 +30,7 @@ In this window we can sort and filter, which makes it a pretty useful tool.
 Head helps you to get an overview of the data, as it prints the first six rows of it into your console:
 
 ```{r}
-head(winners)
+head(athletes)
 ```
 
 We have already used that to get an overview of the data.
@@ -40,17 +40,17 @@ We have already used that to get an overview of the data.
 This one is actually my favorite, as for bigger data sets it is often more feasible to only look at the structure and not the whole data set. It looks a bit different to what we are used to though:
 
 ```{r}
-str(winners)
+str(athletes)
 ```
 
-Here, the column names are printed on the left side, followed by the [type]() of the column and then the first few values of each column. We can also see in the first row that this object is a data frame with `165` rows and `7` columns.
+Here, the column names are printed on the left side, followed by the [type]() of the column and then the first few values of each column. We can also see in the first row that this object is a data frame with `271116` rows and `15` columns.
 
 ## `summary()`
 
 Finally, to get an overview of the statistical properties of all columns and their missing values, we can use `summary()`:
 
 ```{r}
-summary(winners)
+summary(athletes)
 ```
 
-For numeric columns we can see some distributional properties, like minimum and maximum, median and mean, as well as the first and third quantile. In case of [missing values](../missings/missings.qmd) (`NAs`) their number is printed at the bottom (look at the `Hours` column). We will look at how to deal with missings soon, but first we have to talk about [subsetting data](../subsetting/subsetting.qmd).
+For numeric columns we can see some distributional properties, like minimum and maximum, median and mean, as well as the first and third quantile. In case of [missing values](../missings/missings.qmd) (`NAs`) their number is printed at the bottom (e.g., look at the `Age` column). We will look at how to deal with missings soon, but first we have to talk about [subsetting data](../subsetting/subsetting.qmd).
