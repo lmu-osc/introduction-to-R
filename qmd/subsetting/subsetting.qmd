@@ -48,7 +48,7 @@ And of course we can combine both calls:
 ```{r, output.lines=4}
 athletes[c(1, 4), c(2, 4)]
 
-athletes[c(1, 4), c("Year", "Nationality")]
+athletes[c(1, 4), c("Year", "Sport")]
 ```
 
 We can also use Boolean values (every row/column must get a value here, so we extract the first 100 rows by repeating `TRUE` 100 times, and than add `FALSE` for the remaining rows):
@@ -155,5 +155,5 @@ vec_sport[2:4]
 Another way would be to provide a logical vector, which defines for each position if we want to extract the element or not (like we already did for data frames):
 
 ```{r, output.lines=4}
-vec_athlete[c(rep(TRUE, 100), rep(FALSE, 65))]
+vec_sport[c(rep(TRUE, 100), rep(FALSE, 65))]
 ```

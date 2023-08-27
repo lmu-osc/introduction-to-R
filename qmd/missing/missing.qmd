@@ -45,6 +45,7 @@ What happens here? Like always when [filtering specific rows](https://nickhaf.gi
 We also assign the new name `athletes_na` to the resulting data frame, so we don't overwrite the original one.
 
 Removing `NA's` from a data set works pretty similar:
+
 ```{r, output.lines = 4}
 athletes_na <- athletes[!(athletes$Weight), ]
 athletes_na
@@ -52,6 +53,8 @@ athletes_na
 
 ::: tidy
 ```{r, output.lines = 4}
+library(tidyverse)
+
 athletes_na <- athletes %>%
   drop_na(Weight)
 athletes_na
