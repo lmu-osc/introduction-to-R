@@ -1,7 +1,8 @@
 ---
 title: "Plotting: Exercises"
 ---
-Keep in mind we haven't really checked the questions etc, so there would be a lot more work done on such a data set before you could really extract something from it. 
+
+Keep in mind we haven't really checked the questions etc, so there would be a lot more work done on such a data set before you could really extract something from it.
 
 ```{r}
 library(tidyverse)
@@ -34,6 +35,7 @@ ggplot(data = characters_subset,
            y = question,
            colour = name)) +
   #facet_grid(. ~ name) +
-  geom_point()
+  geom_point() +
+  facet_grid(. ~ uni_name)
 
 ```

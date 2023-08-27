@@ -2,7 +2,7 @@
 title: "Merging data"
 ---
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, message = FALSE}
 source(here::here("output_hook.R"))
 library(tidyverse)
 ```
@@ -23,8 +23,9 @@ athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 
 ## Before merging
 
-Right now, we have multiple rows for each country in both data sets. This will not be possible to merge easily, so we have to reduce our athletes data first. As you know, our goal is to plot the number of gold medals each country has won. So, we need to calculate how many gold medals each country has won over time. Let's do that quickly, using some `tidyverse` functions. It is not especially important you understand and know everything that happens here, but we need it for the next chapters, so here it goes: ::: tidy
+Right now, we have multiple rows for each country in both data sets. This will not be possible to merge easily, so we have to reduce our athletes data first. As you know, our goal is to plot the number of gold medals each country has won. So, we need to calculate how many gold medals each country has won over time. Let's do that quickly, using some `tidyverse` functions. It is not especially important you understand and know everything that happens here, but we need it for the next chapters, so here it goes:
 
+::: tidy
 ```{r}
 medal_counts <- athletes %>%
   filter(Medal == "Gold") %>%
@@ -33,10 +34,9 @@ medal_counts <- athletes %>%
 
 medal_counts
 ```
-
 :::
 
-What happens here? We extract all rows containing gold medals, group them by region, so our next operation is performed region wise, and not for the whole data set, and then we count how many gold medals each region got.
+What happens here? We extract all rows containing gold medals, group them by region, so our next operation is performed region wise, and not for the whole data set. Then we count how many gold medals each region got.
 
 ## Merging
 
@@ -57,6 +57,7 @@ medal_countries <- merge(
   all.x = FALSE,
   all.y = TRUE
 )
+
 head(medal_countries)
 
 ```
@@ -71,7 +72,7 @@ medal_countries <- world_coordinates %>%
   rename("Region" = region) %>%
   left_join(medal_counts)
 
-medal_countries
+head(medal_countries)
 ```
 :::
 

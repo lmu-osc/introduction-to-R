@@ -1,5 +1,5 @@
 ---
-title: "Overview: Exercises"
+title: "Getting an Overview: Exercises"
 ---
 
 Let's take a look at the `characters` data set we have loaded in [last chapters exercise](../load_data/load_data_exercise.qmd):
@@ -9,3 +9,42 @@ Let's take a look at the `characters` data set we have loaded in [last chapters 
 characters <- readRDS(file = here::here("raw_data", "characters.rds"))
 ```
 :::
+
+## Exercise 1
+
+1. How many rows and how many columns does the data frame have?
+
+
+::: {.callout-tip collapse="true"}
+
+## Hint
+Use `str()`.
+:::
+
+::: {.callout-caution collapse="true"}
+
+## Solution
+```{r}
+str(characters)
+```
+
+The data frame has `r nrow(character)` rows and `r ncol(characters)` columns.
+
+:::
+
+2. What show are the first characters in the data frame from?
+
+::: {.callout-tip collapse="true"}
+
+## Hint
+Use `head()`.
+:::
+
+::: {.callout-caution collapse="true"}
+
+## Solution
+```{r}
+head(characters)
+```
+:::
+
