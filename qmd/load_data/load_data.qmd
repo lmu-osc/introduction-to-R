@@ -2,7 +2,7 @@
 title: "Loading data"
 ---
 
-## Data types
+## Data types {#data-types}
 
 There are many different data types out there, most of which can also be loaded into R. Depending on the type, different commands are used. Sometimes, we will have to use additional packages to get access to that function, mainly `readxl` and `haven`.
 
@@ -47,7 +47,7 @@ The working directory is the path R is currently working in. I can obtain it by 
 getwd()
 ```
 
-Luckily, we have already created a RStudio projects, which sets the working directory set automatically, so we don't really have to deal with that. 
+Luckily, we have already created a RStudio projects, which sets the working directory set automatically, so we don't really have to deal with that.
 
 Now take a look at the working directory and the relative path I used for loading the `winners.rda`. Notice something? Correct, both paths combined equal the **absolute path** to the file. So by splitting it up, we obtain a more reproducible path, that works independent of where the current working directory is.
 
@@ -57,7 +57,7 @@ Another great way to deal with the path confusion is to use the `here` package. 
 
 ## Example
 
-Let's load our Olympic athletes data set into R. When we look into our [table](#Data-types) we can see we have to use the `readRDS()` function for loading `.rds` files:
+Let's load our Olympic athletes data set into R. When we look into our [table](#Data-types) we can see we have to use the `readRDS()` function for loading `.rds` files. In case you wonder what the `here::here()` part means look at the section about [the `here` package](https://nickhaf.github.io/r_tutorial/qmd/load_data/load_data.html#the-here-package). It facilitates working with file pahts in R. 
 
 ```{r}
 athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))

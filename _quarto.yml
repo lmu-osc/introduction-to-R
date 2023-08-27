@@ -10,8 +10,8 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - setup.qmd
-      - the_big_picture.qmd
+      - qmd/setup/setup.qmd
+      - qmd/getting_started/the_big_picture.qmd
   sidebar: 
     style: "docked"
     search: true
