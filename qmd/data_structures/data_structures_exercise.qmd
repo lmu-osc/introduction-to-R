@@ -4,6 +4,8 @@ title: "Data Structures: Exercises"
 
 ## Data structures
 
+Examine this object:
+
 ```{r, echo = FALSE}
 obj <- list(c(3, 5, 1), "a")
 ```
