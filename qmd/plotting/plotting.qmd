@@ -9,11 +9,11 @@ This chapter is optional. It is not necessary to follow the rest of the conferen
 
 :::
 
-Now, let's take a closer look at how `ggplot2` works. We already had a quick glimpse at it: Plots are build from different layers to create complex outputs. There are endless possibilities for different plot types, \[look\] here(https://r-graph-gallery.com/) for some inspiration and code.
+Now, let's take a closer look at how `ggplot2` works. We already had a quick glimpse at it: Plots are build from different layers to create complex outputs. There are endless possibilities for different plot types, look at the [R graph gallery](https://r-graph-gallery.com/) for some inspiration and code.
 
-First, let's plot a relatively simple plot to get you familiar with how `ggplot2` works. After that, we will the preparation we have done in the last chapters to use and plot the number of gold medals each country has won over the years on a world map, which gets slightly more complex.
+First, let's plot a relatively simple plot to get you familiar with how `ggplot2` works. After that, we will use the preparation we have done in the last chapters to plot the number of gold medals each country has won over the years on a world map, which gets slightly more complex.
 
-Let's load our data:
+Let's load our data (if you haven't already):
 
 ```{r, message = FALSE}
 library(tidyverse)
@@ -158,7 +158,7 @@ Pretty cool! Now we know that the UK is the all time Olympic Tug-Of-War champion
 
 ## Second plot
 
-Let's take a look at another, slightly different plot, just to see what can be easily achieved with `ggplot2` (and we have prepared the data to do that, so we don't want to wast the work).
+Let's take a look at another, slightly different plot, just to see what can be easily achieved with `ggplot2` (and we have prepared the data to do that, so we don't want to waste the work).
 
 Here is our data preparation from the previous chapters:
 
