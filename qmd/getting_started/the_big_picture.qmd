@@ -70,7 +70,7 @@ babynames_n <- read.csv(here::here("raw_data", "babynames_n.csv"))
 babynames_n <- read.csv("./raw_data/babynames_n.csv")
 ```
 
-And now [merge](manipulation.qmd#Merging) it with our other data set by the `ID` column:
+And now [merge](../merging/merging.qmd) it with our other data set by the `ID` column:
 
 ```{r}
 babynames_merged <- merge(babynames, babynames_n)
@@ -92,7 +92,7 @@ babynames_merged <- drop_na(babynames_merged)
 
 ## Subsetting data
 
-One very important part of working with data in R is the [subsetting](subsetting.qmd) of data. This means we select specific values from a data set. Let's suppose we want to only look at the female names in this data set:
+One very important part of working with data in R is the [subsetting](../subsetting/subsetting.qmd) of data. This means we select specific values from a data set. Let's suppose we want to only look at the female names in this data set:
 
 ::: tidy
 ```{r}
