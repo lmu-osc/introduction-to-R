@@ -106,8 +106,8 @@ head(athletes_3)
 
 Hmm, that looks a bit weird. Some rows only contain `NA` values. That's because there are [missing values](../missing/missing.qmd) in the `Weight` column. We will look at that closer in the [missings chapter](../missing/missing.qmd) and ignore that problem for now.
 
-In the long run, always having to define the data frame multiple time in each row can become a bit annoying and clutters the code. Also the missings problem ...  
-Enter, the `filter()` function:
+In the long run, always having to specify the name of the data frame for each column or row  with condition can become a bit annoying and clutters the code. Also this code leaves all rows with missing values...  
+Instead, we can use the `filter()` function from the tidyverse:
 
 #### Rows: Tidyverse
 
