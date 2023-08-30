@@ -73,7 +73,9 @@ babynames_n <- read.csv("./raw_data/babynames_n.csv")
 And now [merge](../merging/merging.qmd) it with our other data set by the `ID` column:
 
 ```{r}
-babynames_merged <- merge(babynames, babynames_n)
+babynames_merged <- merge(babynames, 
+                          babynames_n, 
+                          by = "ID")
 
 head(babynames_merged)
 ```

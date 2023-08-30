@@ -40,13 +40,13 @@ What happens here? We extract all rows containing gold medals, group them by reg
 
 ## Merging
 
-To merge two data frames that include information that belongs together, we need a common column, on which we can combine them. In our case, this is the column containing the country. They are both named `region`, but one with an upper case `R`. This doesn't pose a problem, as we can define which columns should be taken from which data frame for merging. Let's take a quick look before to see, if there are any countries named differently in both data sets:
+To merge two data frames that include information that belongs together, we need a common column, on which we can combine them. In our case, this is the column containing the country. They are both named `region`, but one with an upper case `R`. This doesn't pose a problem, as we can define which columns should be taken from which data frame for merging. Let's take a quick look before to see if there are any countries named differently in both data sets (this simply combines commands we have already looked at in the [Basic operations chapter](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#comparisons-and-logical-operators):
 
 ```{r}
 medal_counts$Region[!(medal_counts$Region %in% world_coordinates$region)]
 ```
 
-Looks like all of the countries in our `medal_countries` data frame can be also found in our `world_coordinates` frame. Only athletes without a country will be lost when merging, but thats ok for now. So let's merge:
+Looks like all of the countries in our `medal_countries` data frame can be also found in our `world_coordinates` frame. Only athletes without a country will be lost when merging, but that's ok for now, as we are interested in the country specific gold medal counts. So let's merge:
 
 ```{r}
 medal_countries <- merge(
@@ -76,4 +76,4 @@ head(medal_countries)
 ```
 :::
 
-Great! Now the information that belongs together is stored together. Note that we didn't check, if all the country names are actually identical and therefore possible to merge. We should have done that.
+Great! Now the information that belongs together is stored together.

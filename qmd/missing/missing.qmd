@@ -45,10 +45,10 @@ What happens here? Like always when [filtering specific rows](https://nickhaf.gi
 
 We also assign the new name `athletes_na` to the resulting data frame, so we don't overwrite the original one.
 
-Removing `NA's` from a data set works pretty similar:
+Removing `NA's` from a data frame works pretty similar:
 
 ```{r}
-athletes_na <- athletes[!(athletes$Weight), ]
+athletes_na <- athletes[!is.na(athletes$Weight), ]
 head(athletes_na)
 ```
 
@@ -61,5 +61,7 @@ athletes_na <- athletes %>%
 head(athletes_na)
 ```
 :::
+
+Both code versions will remove all rows containing `NAs` in the `weight column`.
 
 As already stated, it is not always necessary to remove `NAs` manually from the data set. In other cases it might be feasible to ignore them, and many functions can deal with missing values by themselves.
