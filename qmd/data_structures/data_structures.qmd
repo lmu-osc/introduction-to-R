@@ -88,7 +88,7 @@ persons <- mutate(persons, big5_agree= c(2, 5, 2, 1) )
 
 ### Tibbles
 
-A special type of data frames are the so called `tibbles`. Tibbles are a modern version of data frames and the standard data frame type of the `tidyverse`, as they have some advantageous characteristics (e.g., note the prettier printing of the data frame). So don't be confused if you run into them, in general they behave like data frames.
+A special type of data frames are the so called `tibbles`. Tibbles are a modern version of data frames and the standard data frame type of the `tidyverse`, as they have some advantageous characteristics (e.g., note the more informative printing of the data frame). So don't be confused if you run into them, in general they behave like data frames.
 
 ::: tidy
 ```{r}
