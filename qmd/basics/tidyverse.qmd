@@ -16,7 +16,7 @@ We will mainly use the `tidyverse` packages `dpylr` and `ggplot2`.
 
 ## The pipe operator
 
-`tidyverse` code is often written using the pipe operator `%>%` (*than do*), which makes it easy to connect multiple function calls:
+`tidyverse` code is often written using the pipe operator `%>%` (read as '*then do*'), which makes it easy to connect multiple function calls:
 
 In base R, one could write:
 ```{r}
