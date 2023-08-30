@@ -10,9 +10,9 @@ In the end, it is a question of preference what you want to learn. Most code wil
 ```{r}
 Tidyverse syntax will be marked like this.
 ```
+:::
 
 We will mainly use the `tidyverse` packages `dpylr` and `ggplot2`. 
-
 
 ## The pipe operator
 
