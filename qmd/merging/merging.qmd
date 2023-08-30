@@ -9,7 +9,7 @@ library(tidyverse)
 
 ## Data set
 
-In the end, we want to plot the medals the countries have won on a world map. To do that, we need a data set containing coordinates of the different countries. Luckily, `ggplot2` (part of the `tidyverse`) provides a fitting data set. Let's [download](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) it and load it into R:
+In the end, we want to plot the number of gold medals the countries have won on a world map. To do that, we need a data set containing coordinates of the different countries. Luckily, `ggplot2` (part of the `tidyverse`) provides a fitting data set. Let's [download](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) it and load it into R:
 
 ```{r}
 world_coordinates <- readRDS(file = here::here("raw_data", "world_coordinates.rds"))
@@ -64,7 +64,7 @@ head(medal_countries)
 
 Note that we also used the `all.x` and `all.y` arguments. In this example, we want to take all rows from the second data set, but only those from the first data set, that have a match in the second data set. This is necessary, because we want to plot all countries later on, but only those we have coordinates for, because they won't show up on the map otherwise.
 
-Using the tidyverse, we first have to rename our region column, as the column names need to be the same over both data sets that are merged. `left_join()` means that we will merge onto the first data set (world_coordinates), like we have done using the `all.x` and `all.y` arguments in the `merge()` function.
+Using the tidyverse, we first have to rename our region column, as the column names need to be the same over both data sets that are merged. `left_join()` means that we will merge onto the first data set (world_coordinates in the code below), like we have done using the `all.x` and `all.y` arguments in the `merge()` function.
 
 ::: tidy
 ```{r}
@@ -76,4 +76,4 @@ head(medal_countries)
 ```
 :::
 
-Great! Now the information that belongs together is stored together. Note that we didn't check, if all the country names are actually identical and therefore possible to merge. We should have done that
+Great! Now the information that belongs together is stored together. Note that we didn't check, if all the country names are actually identical and therefore possible to merge. We should have done that.
