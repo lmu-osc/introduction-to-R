@@ -8,7 +8,7 @@ There are many different data types out there, most of which can also be loaded 
 
 ```{r, results = 'asis', echo = FALSE}
 formats_dat <- data.frame("Data type" = c("R objects (.Rdata, .rda)", 
-                                       "single R object (.Rds)", 
+                                       "single R object (.rds)", 
                                        "text-files (.txt)",
                                        ".csv-files (.csv)",
                                        "Excel-files (.xlsx)",
@@ -53,11 +53,11 @@ Now take a look at the working directory and the relative path I used for loadin
 
 ## The `here` package
 
-Another great way to deal with the path confusion is to use the `here` package. It can build the paths relative to the directory where your RStudio project is saved in. For example, `".\raw_data\winners.rda"` becomes `here::here("raw_data", "winners.rda")`. This is not increadibly important right now, but I need to mention it because I have to use these path structures sometimes during the tutorial, so don't be confused! It is just another way to build file paths. Look [here](https://here.r-lib.org/) (:D) if you want to learn more about the package.
+Another great way to deal with the path confusion is to use the `here` package. It can build the paths relative to the directory where your RStudio project is saved in. For example, `".\raw_data\winners.rda"` becomes `here::here("raw_data", "winners.rda")`. This is not incredibly important right now, but I need to mention it because I have to use these path structures sometimes during the tutorial, so don't be confused! It is just another way to build file paths. Look [here](https://here.r-lib.org/) (:D) if you want to learn more about the package.
 
 ## Example
 
-Let's load our Olympic athletes data set into R. When we look into our [table](#Data-types) we can see we have to use the `readRDS()` function for loading `.rds` files.  
+Let's load our Olympic athletes data set into R. By looking at it's ending, we can see it is as `.rds` file, so it is R-specific, and can only be loaded into R. By taking a quick look into our [table](#Data-types) we can see we have to use the `readRDS()` function for loading `.rds` files.
 
 ```{r}
 athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))

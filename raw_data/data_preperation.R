@@ -46,8 +46,18 @@ babynames$ID <- 1:nrow(babynames)
 babynames_n <- babynames[, c("ID", "n", "prop")]
 babynames <- babynames[, -c(4, 5)]
 
-saveRDS(as.data.frame(babynames), file = here::here("raw_data", "babynames.rds"))
-saveRDS(as.data.frame(babynames_n), file = here::here("raw_data", "babynames_n.rds"))
+babynames <- as.data.frame(babynames)
+babynames_n <- as.data.frame(babynames_n)
+
+
+write.table(babynames, 
+            row.names = FALSE, 
+            file = here::here("raw_data", "babynames.csv"),
+            sep = ",")
+write.table(babynames_n, 
+            row.names = FALSE, 
+            file = here::here("raw_data", "babynames_n.csv"),
+            sep = ",")
 
 
 # Characters --------------------------------------------------------------
