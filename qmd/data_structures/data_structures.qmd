@@ -104,7 +104,7 @@ persons_tibble
 
 ## Honorable mention: List
 
-A list is a one dimensional object, which can, unlike like a vector, contain elements of different types, but also of different lengths. For example, we can store a vectors of different lengths and data frames in a list, which makes it the most versatile data structure:
+A list is a one dimensional object, which can, unlike a vector, contain elements of different types, but also of different lengths. For example, we can store a vectors of different lengths and data frames in a list, which makes it the most versatile data structure:
 
 ```{r}
 personality_rating <- list(
