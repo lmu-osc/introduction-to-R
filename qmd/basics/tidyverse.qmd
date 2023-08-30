@@ -15,11 +15,12 @@ We will mainly use the `tidyverse` packages `dpylr` and `ggplot2`.
 
 `tidyverse` code is often written using the pipe operator `%>%` (*than do*), which makes it easy to connect multiple function calls:
 
+In base R, one could write:
 ```{r}
 sum(seq(from = 1, to = mean(c(45:100), na.rm = TRUE), by = 0.1))
 ```
 
-Is the same as:
+Which, in the tidyverse, would be written:
 
 ::: tidy
 ```{r, output.lines=4}
