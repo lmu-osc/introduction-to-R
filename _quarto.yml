@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "Open Research Summer School"
+  title: "Introduction to R"
   page-navigation: true
   open-graph: true
   repo-url: https://github.com/nickhaf/r_tutorial

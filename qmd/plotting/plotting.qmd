@@ -2,11 +2,8 @@
 title: "Plotting"
 ---
 
-
-::: {.callout-note} 
-
-This chapter is optional. It is not necessary to follow the rest of the conference, but you will get startet with plotting in R. 
-
+::: callout-note
+This chapter is optional. It is not necessary to follow the rest of the conference, but you will get started with plotting in R.
 :::
 
 Now, let's take a closer look at how `ggplot2` works. We already had a quick glimpse at it: Plots are build from different layers to create complex outputs. There are endless possibilities for different plot types, look at the [R graph gallery](https://r-graph-gallery.com/) for some inspiration and code.
