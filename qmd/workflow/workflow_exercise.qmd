@@ -26,12 +26,12 @@ Go to `File` - `New File` - `R Script`. Save it in you folder.
 
 ::: callout-tip
 ## Organizing your scripts
-How you organize your scripts is up do you. I recomend to create seperate scripts for every use case. For this workshop, you could create one script for the exercises, and one script for the theory part, in case you want to try out some things by yourself. 
+How you organize your scripts is up do you. I recommend to create seperate scripts for every use case. For this workshop, you could create one script for the exercises, and one script for the theory part, in case you want to try out some things by yourself. 
 :::
 
 ::: callout-tip
 ## Organizing your directory
-Within your project folder create a folder named `R`, where all your R Scripts will go. You can do the same for `data`, `plots` etc. later on. This will help you to structure your working directory.
+Within your project folder, create a folder named `R`, where all your R Scripts will go. You can do the same for `data`, `plots` etc. later on. This will help you to structure your working directory.
 :::
 
 Now that you are ready to go, let's get an overview of how working with data in R can look like. 
