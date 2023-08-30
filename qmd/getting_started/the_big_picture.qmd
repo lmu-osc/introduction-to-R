@@ -1,6 +1,6 @@
 # The Big Picture
 
-Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project" with very basic data, which follows a possible workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little more depth for each topic, so don't worry if you don't understand something quite yet, it will be covered again in later chapters. 
+Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project" with very basic data, which follows a possible workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little more depth for each topic, so don't worry if you don't understand something quite yet, it will be covered again in later chapters.
 
 ## Packages
 
@@ -26,17 +26,17 @@ library(tidyverse)
 
 ## Load Data
 
-Data is loaded into R so you can work with it. For this chapter, we are going to use the data set [`babynames`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md), which we can find on the `tidytuesday` site. I have already tweaked the data set a bit, so download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) in case you want to follow along.\
+Data is loaded into R so you can work with it. For this chapter, we are going to use the data set [`babynames`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md), which we can find on the `tidytuesday` site. I have already tweaked the data set a bit, so download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) in case you want to follow along. Right-click on the respective data set found under this link, select 'save as' and then choose a folder on your notebook where to save it. We have talked about where that optimally should be in [Workflow: Exercises](../getting_started/worflow_exercise.qmd).
 Our goal is to look at the most common name in every year and make a nice plot out of it.
 
 So, after downloading it and saving it in the folder `raw_data` within my project directory, I can load the data set into R with:
 
 ```{r, echo = FALSE}
-babynames <- readRDS(here::here("raw_data", "babynames.rds"))
+babynames <- read.csv(here::here("raw_data", "babynames.csv"))
 ```
 
 ```{r, eval = FALSE}
-babynames <- readRDS("./raw_data/babynames.rds")
+babynames <- read.csv("./raw_data/babynames.csv")
 ```
 
 This will load the data into R and assigning it the name `babynames` by using the `<-`. You can see the data popping up in your `Environment` pane on the upper right. Note that the file path might differ on your device, depending on where you saved your data.
@@ -64,11 +64,11 @@ So, what we can infer from the data and its online description is that it contai
 Sadly the data is not complete. If we had the number of people named with each name every year, we could find out which name was the most common each year, and make a nice plot out of it. However, the number of people with the respective name each year is missing (ok, i split it up for illustrative purposes). So let's [download](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) it and load it into R quickly:
 
 ```{r, echo = FALSE}
-babynames_n <- readRDS(here::here("raw_data", "babynames_n.rds"))
+babynames_n <- read.csv(here::here("raw_data", "babynames_n.csv"))
 ```
 
 ```{r , eval = FALSE}
-babynames_n <- readRDS("./raw_data/babynames_n.rds")
+babynames_n <- read.csv("./raw_data/babynames_n.csv")
 ```
 
 And now [merge](manipulation.qmd#Merging) it with our other data set by the `ID` column:
