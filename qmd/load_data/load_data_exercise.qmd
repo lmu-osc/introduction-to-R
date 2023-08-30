@@ -8,7 +8,8 @@ title: "Loading data: Exercises"
 
 ::: {.callout-tip collapse="true"}
 ## Hint
-Right-click on the respective data set found under this link, select 'save as' and then choose a folder on your notebook where to save it. We have talked about where that optimally should be in [Workflow: Exercises](../getting_started/worflow_exercise.qmd).
+
+Right-click on the respective data set found under this link, select 'save as' and then choose a folder on your notebook where to save it. We have talked about where that optimally should be in [Workflow: Exercises](../workflow/worflow_exercise.qmd).
 :::
 
 2.  Load it into R, and assign the name `characters`.
