@@ -86,10 +86,16 @@ Then use `paste()` to build and print the statement.
 
 ```{r output.lines = 20}
 
-for(i in unique(characters_friends$question)){
+for(i in unique(characters_friends$question)){ # goes over all unique questions
+  
+  ## Build a subset that only consists of ratings about the current question:
   question_dat <- characters_friends %>%
     filter(question == i)
+  
+  ## Calculate the mean for that subset:
   question_mean <- mean(question_dat$mean_rating)
+  
+  ## Build and print the final statement:
   statement <- paste("The mean rating for the fictional universe 'Friends' on the question '", i, "' is:", question_mean)
   print(statement)
 }
@@ -137,4 +143,19 @@ for(i in 1:length(unique(characters_friends$question))){
 
 head(mean_ratings)
 ```
+
+### Let's compare that with a `group_by()`
+
+::: tidy
+```{r}
+characters_friends %>%
+  group_by(question) %>%
+  summarise(mean_rating = mean(mean_rating)) %>%
+  ## Let's look at the rating of this question for comparison:
+  filter(question == 'beautiful/ugly')
+```
+:::
+
+Great, its the same! So it ist propably a lot easier to just use `group_by()` with `summarise()`, but maybe not quite as instructive. 
+
 :::
