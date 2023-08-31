@@ -23,7 +23,6 @@ website:
     contents:
       - section: "0) Before the workshop"
         contents:
-          - index.qmd
           - qmd/setup/setup.qmd
       - section: "1) Getting Started"
         contents:
