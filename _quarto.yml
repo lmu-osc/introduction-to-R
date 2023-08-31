@@ -78,7 +78,7 @@ website:
         - section: "Functions"
           contents: 
             - qmd/functions/functions.qmd
-        - section: "Loops"
+        - section: "Loops and Conditions"
           contents:
             - qmd/loops/loops.qmd
             - qmd/loops_exercise.qmd

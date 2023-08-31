@@ -16,6 +16,7 @@ This chapter is optional.
 
 ::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
+
 ```{r}
 library(tidyverse)
 world_coordinates <- readRDS(file = here::here("raw_data", "world_coordinates.rds"))
@@ -30,14 +31,13 @@ medal_counts <- athletes %>%
   count(Medal) 
 ```
 :::
-
 :::
 
 ## For-loops
+
 ### Motivation
-When programming, you often want to repeat an operation multiple times. 
-For example, assume you want to print the number of gold medals for each country into your console. 
-The most intuitive way would be to just copy paste the code with changed country names:
+
+When programming, you often want to repeat an operation multiple times. For example, assume you want to print the number of gold medals for each country into your console. The most intuitive way would be to just copy paste the code with changed country names:
 
 ```{r}
 print(
@@ -73,9 +73,8 @@ print(
 
 ```
 
-This could go on ...  
-Here we paste together a sentence consisting of data and some pre specified character strings, which we then print into the console. However, this can become pretty tedious if we want to add more countries, and what if we want to change something in the print statement? In this case, we would have to go over all rows and change it multiple times. 
-So, let's write a loop that does that automatically for us: 
+This could go on ...\
+Here we paste together a sentence consisting of data and some pre specified character strings, which we then print into the console. However, this can become pretty tedious if we want to add more countries, and what if we want to change something in the print statement? In this case, we would have to go over all rows and change it multiple times. So, let's write a loop that does that automatically for us:
 
 ```{r}
 for(i in unique(medal_counts$Region)){
@@ -89,20 +88,22 @@ for(i in unique(medal_counts$Region)){
 }
 ```
 
-So this little piece of code can do what we started to do in the above code section, but already for all countries. Also, if we want to change something, we only have to change it once. 
+So this little piece of code can do what we started to do in the above code section, but already for all countries. Also, if we want to change something, we only have to change it once.
 
-::: {.callout-tip}
-In general, try not to repeat yourself when writing code. As a general rule of thumb, use loops and/or [functions](../functions/functions.qmd) if you need to copy/paste something more than two times. 
+::: callout-tip
+In general, try not to repeat yourself when writing code. As a general rule of thumb, use loops and/or [functions](../functions/functions.qmd) if you need to copy/paste something more than two times.
 :::
 
 ### How to write a for-loop?
+
 Let's take a step back and look at what we are actually doing here. A `for loop` is generally constructed like this:
 
-```
+```         
 for(counter in values){
   repeat something with changing counter
 }
 ```
+
 What does that mean? Let's look at a simple example first. We want to multiply the values from `10` to `20` with `100` and then print them into our console:
 
 ```{r}
@@ -112,10 +113,10 @@ for(i in 10:20){
 }
 ```
 
-1. In the first iteration, `i` takes the value of the first vector element behind `in`, which is `10`. 
-1. The operation in the loop body gets executed, in this case the current value gets multiplied by `100` and then printed into the console. 
-1. After the operation is finished, `i` takes the next value, in this case `11`, and the whole process starts again.
-1. The loop is finished after the operation on the last value has been executed, in this case `20`.
+1.  In the first iteration, `i` takes the value of the first vector element behind `in`, which is `10`.
+2.  The operation in the loop body gets executed, in this case the current value gets multiplied by `100` and then printed into the console.
+3.  After the operation is finished, `i` takes the next value, in this case `11`, and the whole process starts again.
+4.  The loop is finished after the operation on the last value has been executed, in this case `20`.
 
 Let's get back to our initial example. Try to figure out what happens here by yourself. What is the first and the last value `i` gets assigned?
 
@@ -137,10 +138,12 @@ In this example we don't loop over some numbers, but over the unique regions in 
 unique(medal_counts$Region)
 ```
 
-`i` takes each of these elements in turn, then the corresponding `n` value of each country gets extracted and pasted into some sentence. 
+`i` takes each of these elements in turn, then the corresponding `n` value of each country gets extracted and pasted into some sentence.
 
 ## Conditions
+
 ### If-else statement
+
 Have you noticed that our output doesn't sound that correct if we only have one gold medal winner in a country?
 
 `"1 Olympic gold medalists are from Mozambique."`
@@ -172,7 +175,7 @@ for(i in unique(medal_counts$Region)){
 
 Let's look at a more simple example to explain the concept:
 
-```
+```         
 if(condition){
   do something
 }else{
@@ -181,6 +184,7 @@ if(condition){
 ```
 
 For example:
+
 ```{r}
 x <- 10
 
@@ -191,9 +195,9 @@ if(x < 100){
 }
 ```
 
-Inside the `if()` we define our [condition](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#comparisons-and-logical-operators). Then, inside the `{ }` we define an operation that gets executed, if this condition is met. Inside the `else{ }` part we define an operation that gets executed if the condition in `if()` is not met. 
+Inside the `if()` we define our [condition](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#comparisons-and-logical-operators). Then, inside the `{ }` we define an operation that gets executed, if this condition is met. Inside the `else{ }` part we define an operation that gets executed if the condition in `if()` is not met.
 
-In our inital example we check if the number of gold medalists is equal to one. If that is the case, we print the specific statement. If not, we print the other. 
+In our inital example we check if the number of gold medalists is equal to one. If that is the case, we print the specific statement. If not, we print the other.
 
 ### `ifelse()`
 
@@ -209,5 +213,4 @@ medal_counts$n_100 <- ifelse(
 head(medal_counts)
 ```
 
-Note that the look of this `ifelse()` function is a bit different from our `if else statement`, but the logic behind it is exactly the same:
-Here we [add the new column](https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#adding-new-columns) `n_100` which gets filled with `TRUE` and `FALSE`. If the statement `medal_counts$n >= 100`, which is the first argument of the `ifelse()` function, is met, the function returns a `TRUE`, if not a `FALSE`. 
+Note that the look of this `ifelse()` function is a bit different from our `if else statement`, but the logic behind it is exactly the same: Here we [add the new column](https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#adding-new-columns) `n_100` which gets filled with `TRUE` and `FALSE`. If the statement `medal_counts$n >= 100`, which is the first argument of the `ifelse()` function, is met, the function returns a `TRUE`, if not a `FALSE`.
