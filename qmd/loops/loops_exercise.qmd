@@ -1,0 +1,13 @@
+---
+tilte: "Loops: Exercises"
+---
+
+::: callout-note
+These exercises are optional.
+:::
+
+## Exercise 1
+Print something simple from the characters data frame into the console. 
+
+## Exercise 2
+Write a loop for `group_by()`.
