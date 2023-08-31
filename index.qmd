@@ -1,10 +1,14 @@
 ---
 title: "Welcome"
+author: 
+  - name: Nicklas Hafiz
+  - affiliation: Institut für Qualitätsentwicklung im Bildungswesen (IQB)
+date: 09-11-2023
 ---
 
 ## About this workshop
 
-Welcome!\
+Welcome![^1]
 This workshop will teach you the basics of R. It's structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](/qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to scientific programming with R and want to follow the course structure?
 
 ::: {.callout-note collapse="true" icon="false"}
@@ -32,3 +36,5 @@ Please [install the necessary software](qmd/setup/setup.qmd) **before the worksh
 -   This is not R specific, but because you can write programs for your specific use cases, it facilitates many workflow related tasks like automation, tracking changes with git, result preparation with markdown/latex and many more.
 
 There are many more reasons to learn R, as it is a very flexible tool for almost every aspect of scientific work, so let's dive right into it!
+
+[^1]: This workshop was designed by Nicklas Hafiz, PhD student and research fellow at the Institut für Qualitätsentwicklung im Bildungswesen (IQB).
