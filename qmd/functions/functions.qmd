@@ -1,1 +1,10 @@
+---
+title: "Functions"
+---
 
+
+![](../pictures/clockwork.jpg)[^1]
+
+[^1]: Image by [Laura Ockel](https://unsplash.com/de/@viazavier?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/UQ2Fw_9oApU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
+
+## Motivation

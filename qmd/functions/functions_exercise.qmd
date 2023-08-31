@@ -1,1 +1,73 @@
-## kg to pound function or something simila, look in material.
+---
+title: "Functions: Exercises"
+---
+
+## Exerise 1 
+
+Take a look at the following function:
+```{r}
+fun_1 <- function(x, y){ 
+ res <- round(x/y^2, digits = 2)
+ print(paste0("This returns:", res))
+}
+```
+
+1. What does it do?
+
+- [ ] It calculates the rounded quotient of `x` and `y^2` and prints the result with some text.
+- [ ] It calculates the rounded quotient of `x` and `y^2` but doesn't do anything with it. 
+- [ ] It calculates the rounded quotient of `x` and `y^2`, prints this result with some text and returns only the result without any text. 
+- [ ] It only returns the rounded quotient of `x` and `y^2` without any text.
+
+::: {.callout-caution collapse="true"}
+
+## Solution
+
+Let's take a look:
+```{r}
+out_fun_1 <- fun_1(86, 1.87)
+out_fun_1
+```
+
+Hmm, so option one seems to be correct:
+
+- [x] It calculates the rounded quotient of `x` and `y^2` and prints the result with some text.
+- [ ] It calculates the rounded quotient of `x` and `y^2` but doesn't do anything with it. 
+- [ ] It calculates the rounded quotient of `x` and `y^2`, prints this result with some text and returns only the result without any text. 
+- [ ] It only returns the rounded quotient of `x` and `y^2` without any text.
+
+Actually, this function calculates the Body Mass Index (BMI): $\frac{weight(kg)}{height(m)^2}$.
+However, it doesn't return a numeric value, but just prints the result of the calculation along with some text.
+
+:::
+
+2. Improve it, so it becomes clearer what it does, and it returns something more meaningful. 
+
+::: {.callout-tip collapse="true"}
+
+## Hint
+Assign a more informative name and more informative argument names. Use `return()` to make clear what the function returns. Print a more informative statement. 
+:::
+
+::: {.callout-caution collapse="true"}
+
+## Solution
+
+```{r}
+calc_bmi <- function(kg, meter){ 
+ 
+  res <- round(kg/meter^2, digits = 2)
+ 
+  print(paste0("Your BMI is: ", res))
+ 
+  return(res)
+}
+
+my_bmi <- calc_bmi(86, 1.87)
+
+my_bmi
+```
+
+Here we gave the function and its arguments some more informative names and used the `return()` function to clearly return the result of the calculation, and we can save it in an object. Also, we wrote a more informative printed statement.  
+
+:::

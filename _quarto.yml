@@ -14,6 +14,7 @@ website:
         text: Home
       - qmd/setup/setup.qmd
       - qmd/getting_started/the_big_picture.qmd
+    right: 
       - href: https://docs.google.com/document/d/19uUsS9xiAsxmAtblkaPqbdl3m1IxurWKOoPdTc0oymM/edit?usp=sharing
         text: Ask a question
   sidebar: 
@@ -78,6 +79,7 @@ website:
         - section: "Functions"
           contents: 
             - qmd/functions/functions.qmd
+            - qmd/functions/functions_exercise.qmd
         - section: "Loops and Conditions"
           contents:
             - qmd/loops/loops.qmd

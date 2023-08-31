@@ -20,7 +20,7 @@ Each section is divided into a theory part and some exercises. Most of these exe
 ::: callout-warning
 ## Software installation
 
-Please [install the necessary software](qmd/setup/setup.qmd) **before the workshop**. Of course, feel free to [ask questions by opening a new issue](https://github.com/nickhaf/r_tutorial/issues) if you run into problems along the way.
+Please [install the necessary software](qmd/setup/setup.qmd) **before the workshop**. Of course, feel free to [ask questions](https://docs.google.com/document/d/19uUsS9xiAsxmAtblkaPqbdl3m1IxurWKOoPdTc0oymM/edit) if you run into problems along the way.
 :::
 
 ## Why R?
