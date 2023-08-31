@@ -81,7 +81,7 @@ website:
         - section: "Loops and Conditions"
           contents:
             - qmd/loops/loops.qmd
-            - qmd/loops_exercise.qmd
+            - qmd/loops/loops_exercise.qmd
       - section: "4) Optional: Visualization"
         contents:
         - section: "Plotting"
