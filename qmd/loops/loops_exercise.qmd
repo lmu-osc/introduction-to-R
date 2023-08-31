@@ -2,12 +2,139 @@
 tilte: "Loops: Exercises"
 ---
 
+```{r, echo = FALSE, message = FALSE}
+source(here::here("output_hook.R"))
+```
+
 ::: callout-note
 These exercises are optional.
 :::
 
+
+::: {.callout-caution icon="false" collapse="true"}
+
+## Previous code
+
+```{r, message = FALSE}
+library(tidyverse)
+
+## Load the data
+characters <- readRDS(file = here::here("raw_data", "characters.rds"))
+psych_stats <- read.csv(
+  file = here::here("raw_data", "psych_stats.csv"),
+  sep = ";"
+)
+
+## Merge it
+characters_stats <- merge(
+  x = characters,
+  y = psych_stats,
+  by.x = "id", 
+  by.y = "char_id"
+)
+```
+:::
+
 ## Exercise 1
-Print something simple from the characters data frame into the console. 
+
+Print each fictional universe (column: `uni_name`) in the `characters_stats` data frame into your console once, like this:
+`"The fictional universe 'fictional universe' is part of the characters data set."`
+
+:::{.callout-caution collapse="true"}
+
+## Solution
+```{r output.lines = 20}
+for(universe in unique(characters_stats$uni_name)){
+  print(paste0("The fictional universe '", universe, "' is part of the characters data set."))
+}
+```
+
+We don't have to use `i` as counter (even though it is convention).
+:::
 
 ## Exercise 2
-Write a loop for `group_by()`.
+Remember how we used the `group_by()` command to [calculate the number of gold medals for each country](https://nickhaf.github.io/r_tutorial/qmd/merging/merging.html#before-merging)?
+Well, now you know enough to do something similar without using the tidyverse, but just a `for-loop`. 
+
+1. Subset a data frame that only contains the characters of one (your favorite) fictional universe.
+
+:::{.callout-caution collapse="true"}
+
+## Solution
+
+::: tidy
+```{r}
+characters_friends <- characters_stats %>%
+  filter(uni_name == "Friends")
+```
+:::
+
+:::
+
+2. Now calculate the mean rating over **all characters** in this fictional universe for each question and print the result in a statement containing the sentence: `"The mean rating for the fictional universe 'your_universe' on the question 'question' is: 'mean_rating'."`
+
+::: {.callout-tip collapse="true"}
+
+## Hint
+Build a `for loop` that goes over all unique questions in your subsetted data frames. Inside this `for-loop` you can subset again, this time only the rows containing the question that the loop is at at the moment, and calculate its mean rating from here. 
+Then use `paste()` to build and print the statement. 
+:::
+
+:::{.callout-caution collapse="true"}
+
+## Solution
+
+```{r output.lines = 20}
+
+for(i in unique(characters_friends$question)){
+  question_dat <- characters_friends %>%
+    filter(question == i)
+  question_mean <- mean(question_dat$mean_rating)
+  statement <- paste("The mean rating for the fictional universe 'Friends' on the question '", i, "' is:", question_mean)
+  print(statement)
+}
+```
+
+There seem to be pretty beautiful people on the fictional universe ...
+:::
+
+3. Tweak your for loop so the mean values get saved in a new data frame, containing the question and the mean rating for each question. 
+
+::: {.callout-tip collapse="true"}
+
+## Hints
+1. Build an empty data frame where you will save your results. 
+1. Now you can't easily loop over the question column itself, because you need the position of each element to save it in a new data frame: `for(i in 1:length(unique(characters_friends$question))){`.
+1. Because of that you can save the result of your calculateion in row `i` of your new data frame. 
+
+:::
+
+:::{.callout-caution collapse="true"}
+
+## Solution
+```{r}
+
+## Build an empty data frame for storing the results:
+mean_ratings <- data.frame()
+
+for(i in 1:length(unique(characters_friends$question))){
+  ## Extract the question on position i:
+  question_i <- unique(characters_friends$question)[i]
+  
+  ## Extract all rows that contain values for this question:
+  question_dat <- characters_friends %>%
+    filter(question == question_i)
+  
+  ## Calculate the mean for that question
+  question_mean <- mean(question_dat$mean_rating)
+
+  ## Save the question in the row corresponding to the position of i:
+  mean_ratings[i, "question"] <- question_i
+  
+  ## Save the mean in the row corresponding to the position of i:
+  mean_ratings[i, "mean"] <- question_mean
+}
+
+head(mean_ratings)
+```
+:::
