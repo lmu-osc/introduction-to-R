@@ -887,7 +887,7 @@
     },
     "igraph": {
       "Package": "igraph",
-      "Version": "1.5.1.9001",
+      "Version": "1.5.1.9003",
       "Source": "Repository",
       "Repository": "https://igraph.r-universe.dev",
       "Requirements": [
@@ -905,7 +905,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "93d255daeb2186dea6f5f294145c7527"
+      "Hash": "9c71efd82fc11a4792ba753ebdf1f3a0"
     },
     "ini": {
       "Package": "ini",
