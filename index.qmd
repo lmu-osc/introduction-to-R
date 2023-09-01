@@ -10,6 +10,10 @@ date: 09-11-2023
 
 Welcome![^1][^2] This workshop will teach you the basics of R. It's structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](/qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to scientific programming with R and want to follow the course structure?
 
+[^1]: This workshop was designed by Nicklas Hafiz, PhD student and research fellow at the Institut für Qualitätsentwicklung im Bildungswesen (IQB). and can
+
+[^2]: It is licensed under the [MIT License](https://opensource.org/license/mit/).
+
 ::: {.callout-note collapse="true" icon="false"}
 ## Unfold if you want to learn more about optional content
 
@@ -38,9 +42,4 @@ Please [install the necessary software](qmd/setup/setup.qmd) **before the worksh
 -   It has great tools for making beautiful plots.
 -   This is not R specific, but because you can write programs for your specific use cases, it facilitates many workflow related tasks like automation, tracking changes with git, result preparation with markdown/latex and many more.
 
-There are many more reasons to learn R, as it is a very flexible tool for almost every aspect of scientific work, so let's dive right into it!
-
-
-
-[^1]: This workshop was designed by Nicklas Hafiz, PhD student and research fellow at the Institut für Qualitätsentwicklung im Bildungswesen (IQB). and can 
-[^2]: It is licensed under the [MIT License](https://opensource.org/license/mit/). 
+There are many more reasons to learn R, as it is a very flexible tool for almost every aspect of scientific work (after all, I have created this whole workshop from within RStudio), so let's dive right into it!
