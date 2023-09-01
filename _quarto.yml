@@ -83,12 +83,10 @@ website:
           contents:
             - qmd/loops/loops.qmd
             - qmd/loops/loops_exercise.qmd
-      - section: "4) Optional: Visualization"
+      - section: "4) Visualization"
         contents:
-        - section: "Plotting"
-          contents:
-            - qmd/plotting/plotting.qmd
-            - qmd/plotting/plotting_exercise.qmd
+          - qmd/plotting/plotting.qmd
+          - qmd/plotting/plotting_exercise.qmd
       - section: "5) Additional Resources"
         contents:
           - section: "Cheat Sheets" 
