@@ -10,7 +10,7 @@ Packages are extensions to the `base R` you get by default. Most times they prov
 
 We can compare them somewhat to apps in an appstore:
 
-![](../pictures/playstore.png){width="19"}[^2] First, we have to install the package: `install.packages("packagename")`. Most of the openly available packages lie on [CRAN](https://cran.r-project.org/) (Comprehensive R Archive Network). But you can also download packages form other sources, for example [GitHub](https://github.com/). This is what you did when downloading the `tutoR` package in [About this workshop](setup.qmd#about-this-workshop).
+![](../pictures/playstore.png){width="19"}[^2] First, we have to install the package: `install.packages("packagename")`. Most of the openly available packages lie on [CRAN](https://cran.r-project.org/) (Comprehensive R Archive Network). But you can also download packages form other sources, for example [GitHub](https://github.com/).
 
 [^2]: Icons from [icons8.de](https://icons8.de).
 
@@ -39,14 +39,14 @@ devtools::install_github("cutterkom/generativeart")
 After installing a package, we have to load it into our R session. Optimally we do this for all packages we are going to use at the top of our script, so dependencies are easy to spot.
 
 ```{r}
-#library(aRtsy)
+library(aRtsy)
 ```
 
 Now we are free to use it, in this case to generate some artwork:
 
 ```{r}
-#set.seed(1)
-#canvas_collatz(colors = colorPalette("lava"))
+set.seed(1)
+canvas_collatz(colors = colorPalette("lava"))
 ```
 
 ## Function conflicts
