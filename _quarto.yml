@@ -89,8 +89,23 @@ website:
           contents:
             - qmd/plotting/plotting.qmd
             - qmd/plotting/plotting_exercise.qmd
-
-          
+      - section: "5) Additional Resources"
+        contents:
+          - section: "Cheat Sheets" 
+            contents: 
+              - href: https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf
+                text: "Base R"
+              - href: https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+                text: "Data Wrangling with tidyverse"
+              - href: https://rstudio.github.io/cheatsheets/data-visualization.pdf
+                text: "Data visualization with ggplot2"
+          - section: "Books"
+            contents: 
+              - href: https://r4ds.hadley.nz/
+                text: "R for Data Science"
+              - href: https://adv-r.hadley.nz/
+                text: "Advanced R"
+              
 format:
   html:
     theme: cosmo
