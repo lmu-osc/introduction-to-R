@@ -6,4 +6,139 @@ title: "Functions"
 
 [^1]: Image by [Laura Ockel](https://unsplash.com/de/@viazavier?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/UQ2Fw_9oApU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 
+::: callout-note
+This chapter is optional.
+:::
+
+::: {.callout-caution icon="false" collapse="true"}
+## Previous code
+
+```{r}
+library(tidyverse)
+world_coordinates <- readRDS(file = here::here("raw_data", "world_coordinates.rds"))
+athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
+```
+
+:::
+
 ## Motivation
+Let's assume we want to know the number of goldmedals a specific athlete has won, along with some additional data, all printed into the console.  
+Well, we could do something like this:
+::: tidy
+```{r}
+
+medal_counts_athlete <- athletes %>%
+  # Extract all rows containing gold medal winners:
+  filter(Medal %in% c("Gold")) %>%
+  # Group them by name:
+  group_by(Name) %>%
+  # Count the number of medals for each name:
+  count(Medal) 
+
+# Extract all rows of Usain Bolt
+medals_bolt <- medal_counts_athlete %>% 
+  filter(Name == "Usain St. Leo Bolt")
+
+# Extract all rows of Usain bolt from the athletes data set
+stats_bolt <- athletes %>%
+  filter(Name == "Usain St. Leo Bolt") %>%
+  ## sort the data frame by year:
+  arrange(Year)
+
+# Print a statement using the data we just have extracted: 
+print(
+  paste("Usain St. Leo Bolt participated in Olympic games in the year(s)",
+        paste0(unique(stats_bolt$Year), collapse = ", "), 
+        "and won", 
+        medals_bolt$n, 
+        "Goldmedal/s in total. The athletes sport was:", 
+        unique(stats_bolt$Sport), 
+        ".")
+  )
+```
+:::
+
+
+Puuh, already not that quick, especially if this is meant as an easy way for users to extract the gold medal number for multiple persons. They would have to specify for both data frames the name and build togehter their print statement from scratch.  
+Luckily, we can just write a **function** which is a way to organize multiple operations together, so they can easily get repeated. Let's do that quickly, and then take a step back and look at the components of a function: 
+
+::: tidy
+```{r}
+count_goldmedals <- function(athlete_name) {
+  medal_counts_athlete <- athletes %>%
+    ## Extract all rows with gold medal winners:
+    filter(Medal == "Gold") %>%
+    ## Group them by name
+    group_by(Name) %>%
+    ## count the number of medals for each name:
+    count(Medal)
+
+  ## Extract the medal count row for the athlete name provided by the user using the athlete_name argument:
+  medals_name <- medal_counts_athlete %>%
+    filter(Name == athlete_name)
+
+  ## Extract the rows in the athlets data frame for the athlete name provided by the user using the athlete_name argument
+  stats_name <- athletes %>%
+    filter(Name == athlete_name) %>%
+    ## Sort by year:
+    arrange(Year)
+
+  ## Build the statement:
+  statement <- paste(
+    athlete_name,
+    "participated in Olympic games in the year(s)",
+    paste0(unique(stats_name$Year), collapse = ", "),
+    "and won",
+    medals_name$n,
+    "Goldmedal/s in total. The athletes sport was:",
+    unique(stats_name$Sport),
+    "."
+  )
+
+  print(statement)
+
+  return(medals_name)
+}
+
+count_goldmedals(athlete_name = "Usain St. Leo Bolt")
+count_goldmedals(athlete_name = "Simone Arianne Biles")
+
+```
+:::
+
+Pretty cool, right? We just write our code once, and can reuse it as often as we want to. 
+So, let's take a closer look at how to actually do that.
+
+## How to write a function?
+Everything that does something in R is a function. We have already used a lot of them, like `print()`, `filter()`, `merge()`. The great thing is: we can define our own functions pretty easily:
+
+```
+function_name <- function(argument_1, argument_2, ...){
+  do some operations
+  
+  return(result)
+}
+```
+We always have to give the function a concise name (often not that easy). Then we specify some arguments (which should also have concise names), which can be changed by the user. In our introductory example that was just the athlete name. Inside the `{ }` we define the operations, which can use the arguments so the users can specify some parts of the functions behavior. In the end, it is good practice to return the result by using `return()`, so it is always clear what the function is giving back to the user. 
+One minimal example with three arguments would be to sum three numbers. We can also provide a default option for the arguments, which the function will fall back on, if the user doesn't specify anything:
+
+```{r}
+sum_num <- function(x, y, z = 0){
+  result <- x + y + z
+  return(result)
+}
+
+sum_num(x = 1, y = 1, z = 2)
+
+## We don't have to use the arguments in order, IF we name them:
+sum_num(y = 2, z = 4, x = 1)
+
+## We don't have to specify z, because the function can use a default:
+sum_num(x = 3, y = 1)
+
+```
+
+:::{.callout-tip}
+It often makes sense to explicitly write the argument names into your function call. This makes your code clearer, and avoid a mix up. 
+:::
+
