@@ -57,6 +57,16 @@ We can also use Boolean values (every row/column must get a value here, so we ex
 str(athletes[c(rep(TRUE, 100), rep(FALSE, 271016)), ])
 ```
 
+::: callout-tip
+
+Instead of writing `271016` we should actually use the current row number, in case that changes as well:
+
+```{r}
+str(athletes[c(rep(TRUE, 100), rep(FALSE, nrow(athletes) - 100)), ])
+```
+```
+:::
+
 ### Conditional filtering
 
 Now the stuff we looked at in [logical operators](../basics/basics.qmd#comparisons-and-logical-operators) comes in handy! We can filter rows which match some condition. For example, we might want to look at all athletes from Germany:
@@ -106,7 +116,7 @@ head(athletes_3)
 
 Hmm, that looks a bit weird. Some rows only contain `NA` values. That's because there are [missing values](../missing/missing.qmd) in the `Weight` column. We will look at that closer in the [missings chapter](../missing/missing.qmd) and ignore that problem for now.
 
-In the long run, always having to specify the name of the data frame for each column or row  with condition can become a bit annoying and clutters the code. Also this code leaves all rows with missing values...  
+In the long run, always having to specify the name of the data frame for each column or row with condition can become a bit annoying and clutters the code. Also this code leaves all rows with missing values...\
 Instead, we can use the `filter()` function from the tidyverse:
 
 #### Rows: Tidyverse
