@@ -21,7 +21,7 @@ result <- 1 + 1
 result
 
 ## Assign the result of the comparison to the object 'log_result':
-log_result <- !(10 > 1)
+log_result <- 10 > 1
 log_result
 ```
 
