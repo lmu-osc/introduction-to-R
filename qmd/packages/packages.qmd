@@ -6,18 +6,17 @@ title: "Packages"
 
 [^1]: Image by [Jan Antonin Kolar](https://unsplash.com/de/@jankolar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash]https://unsplash.com/de/fotos/lRoX0shwjUQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 
-
 Packages are extensions to the `base R` you get by default. Most times they provide many new functions, bundled around a specific use case. When working with R you will have to rely heavily on packages developed by others. There are many, many great packages out there facilitating your work with R and making possible many different analyses, visualizations and many more.
 
 We can compare them somewhat to apps in an appstore:
 
-![](./pictures/playstore.png){width="19"}[^packages-2] First, we have to install the package: `install.packages("packagename")`. Most of the openly available packages lie on [CRAN](https://cran.r-project.org/) (Comprehensive R Archive Network). But you can also download packages form other sources, for example [GitHub](https://github.com/). This is what you did when downloading the `tutoR` package in [About this workshop](setup.qmd#about-this-workshop).
+![](../pictures/playstore.png){width="19"}[^2] First, we have to install the package: `install.packages("packagename")`. Most of the openly available packages lie on [CRAN](https://cran.r-project.org/) (Comprehensive R Archive Network). But you can also download packages form other sources, for example [GitHub](https://github.com/). This is what you did when downloading the `tutoR` package in [About this workshop](setup.qmd#about-this-workshop).
 
-[^packages-2]: Icons from [icons8.de](https://icons8.de).
+[^2]: Icons from [icons8.de](https://icons8.de).
 
-![](./pictures/app.png){width="19"}[^packages-3] Then, we have to load them in each session where we want to use them (like tapping on the app icon): `library(packagename)`.
+![](../pictures/app.png){width="19"}[^3] Then, we have to load them in each session where we want to use them (like tapping on the app icon): `library(packagename)`.
 
-[^packages-3]: Icons from [icons8.de](https://icons8.de).
+[^3]: Icons from [icons8.de](https://icons8.de).
 
 -   Note that in `install.packages("packagename")` we have to put the package into quotation marks, but not when calling `library(packagename)`.
 
