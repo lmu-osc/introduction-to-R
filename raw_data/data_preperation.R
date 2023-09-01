@@ -81,11 +81,11 @@ saveRDS(characters,
         )
 write.table(psych_stats, here::here("raw_data", "psych_stats.csv"), sep = ";")
 
+# Volleyball data ------------------------------------------------------------
+vb <- tidytuesdayR::tt_load('2020-05-19')$vb_matches
 
+vb_w <- vb %>% select(-starts_with("l_p"))
+vb_l <- vb %>% select(-starts_with("w_p"))
 
-# Medical data ------------------------------------------------------------
-
-install.packages("medicaldata")
-library(medicaldata)
-
-data(package = "medicaldata")
+write.table(vb_w, here::here("raw_data", "vb_w.csv"), sep = " ")
+haven::write_sav(vb_l, here::here("raw_data", "vb_l.sav"))
