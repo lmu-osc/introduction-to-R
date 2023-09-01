@@ -40,8 +40,8 @@ The boolean variables in R are `TRUE` and `FALSE`. Comparison operators return e
 These are the comparison operators you will typically use:
 
 ```{r, echo = FALSE}
-dat_structs <- data.frame("Operator" = c("<", ">", "==", "!=", "<=", ">="),
-                          "Description" = c("less than", "greater than", "equal to", "not equal to", "less or equal", "greater or equal")
+dat_structs <- data.frame("Operator" = c("<", ">", "==", "!=", "<=", ">=", "%in%"),
+                          "Description" = c("less than", "greater than", "equal to", "not equal to", "less or equal", "greater or equal", "part of")
 )
 
 knitr::kable(dat_structs, "pipe",
@@ -60,6 +60,13 @@ vec_num < 5
 ```
 
 This will become important later on, when we want to subset vectors and data frames to extract only those values that satisfy some requirements we defined.
+
+## %in% 
+The `%in%` operator is used to check for each element of its first argument if it is part of the second argument:
+
+```{r}
+c("Monica", "Rachel", "Barny") %in% c("Monica", "Rachel", "Ross", "Joey", "Phoebe", "Chandler")
+```
 
 ## !
 
