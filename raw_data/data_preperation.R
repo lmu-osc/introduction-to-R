@@ -80,3 +80,12 @@ saveRDS(characters,
         file = here::here("raw_data", "characters.rds")
         )
 write.table(psych_stats, here::here("raw_data", "psych_stats.csv"), sep = ";")
+
+
+
+# Medical data ------------------------------------------------------------
+
+install.packages("medicaldata")
+library(medicaldata)
+
+data(package = "medicaldata")

@@ -1,0 +1,53 @@
+---
+title: "Final Exercise"
+---
+
+[^1]: Image by [Mitchell Luo](https://unsplash.com/de/@mitchel3uo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/2Oazk1nJzhM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
+
+
+This exercise comes back to most topics presented in this workshop. If you a total R beginner and followed the workshop, you can do this last exercise in the end to again test your knowledge. If you already have some R experience, you can do this exercise before the rest of the workshop and use it to identify weak points to follow up on. 
+
+So, in order to provide you with a totally fresh data set, let's look at beach volleyball, even though the others might be worth further exploring as well. 
+
+## Exercise 1
+1. [Download](../qmd/load_data/load_data_exercise.qmd) the data set [`volleyball`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and load it into R. 
+
+```{r}
+tuesdata <- tidytuesdayR::tt_load('2020-05-19')$vb_matches
+
+tuesdata$winning_height <- rowMeans(tuesdata[, c("w_p1_hgt", "w_p2_hgt")]) 
+tuesdata$losing_height <- rowMeans(tuesdata[, c("l_p1_hgt", "l_p2_hgt")]) 
+
+volleyball_data_men <- tuesdata %>% 
+  filter(gender == "M")
+
+
+hist(volleyball_data_men$winning_height)
+hist(volleyball_data_men$losing_height)
+
+t.test(volleyball_data_men$winning_height, volleyball_data_men$losing_height)
+
+## Transform into long for plotting
+
+
+## Plot boxplot for winner and loser distribution
+
+ggplot(volleyball_data_men) +
+  geom_boxplot(aes(y = ))
+
+## Zusatz:
+## Write a function to calculate cohens d
+
+
+## Write a function for inch into meter:
+inch_m <- function(inch){
+  m <- inch * 0.0254
+  return(m)
+}
+
+volleyball_data_men$winning_height <- inch_m(volleyball_data_men$winning_height)
+volleyball_data_men$losing_height <- inch_m(volleyball_data_men$losing_height)
+
+
+```
+
