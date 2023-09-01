@@ -23,7 +23,7 @@ The main objective of this workshop is to get you started with using R for your 
 Each section is divided into a theory part and some exercises. Most of these exercises will use the `characters` data set, more on that in the [next chapter](/qmd/getting_started/data_sets.qmd). 
 
 ::: callout-tip
-Learning how to program can be tough, and to get started it is important to write as much code as possible, and think about many different problems to get used to coding. So do the exercises! This will hopefully get you started with solving problems in R. 
+Learning how to program can be tough, and to get started it is important to write as much code as possible, and think about many different problems to get used to coding. So do the exercises! They will hopefully get you started with solving problems in R. 
 :::
 
 ::: callout-warning

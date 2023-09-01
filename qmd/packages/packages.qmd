@@ -4,7 +4,7 @@ title: "Packages"
 
 ![](../pictures/drawers.jpg)[^1]
 
-[^1]: Image by [Jan Antonin Kolar](https://unsplash.com/de/@jankolar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash]https://unsplash.com/de/fotos/lRoX0shwjUQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
+[^1]: Image by [Jan Antonin Kolar](https://unsplash.com/de/@jankolar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on \[Unsplash\]https://unsplash.com/de/fotos/lRoX0shwjUQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 
 Packages are extensions to the `base R` you get by default. Most times they provide many new functions, bundled around a specific use case. When working with R you will have to rely heavily on packages developed by others. There are many, many great packages out there facilitating your work with R and making possible many different analyses, visualizations and many more.
 
