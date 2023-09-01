@@ -38,16 +38,25 @@ devtools::install_github("cutterkom/generativeart")
 
 After installing a package, we have to load it into our R session. Optimally we do this for all packages we are going to use at the top of our script, so dependencies are easy to spot.
 
-```{r}
+```{r eval = FALSE}
 library(aRtsy)
 ```
 
 Now we are free to use it, in this case to generate some artwork:
 
-```{r}
+```{r eval = FALSE, echo = FALSE}
+library(ggplot2)
+set.seed(1)
+p <- canvas_collatz(colors = colorPalette("lava"))
+ggsave("art.jpg", plot = p, path = here::here("qmd", "packages"))
+```
+
+```{r eval = FALSE}
 set.seed(1)
 canvas_collatz(colors = colorPalette("lava"))
 ```
+
+![](./art.jpg)
 
 ## Function conflicts
 
