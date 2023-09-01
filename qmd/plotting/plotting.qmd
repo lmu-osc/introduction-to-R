@@ -2,19 +2,18 @@
 title: "Plotting"
 ---
 
-
-
 ::: callout-note
 This chapter is optional. It is not necessary to follow the rest of the conference, but you will get started with plotting in R.
 :::
 
-::: {.callout-caution}
+::: callout-caution
 ## Previous code
 
 ::: tidy
 ```{r}
 library(tidyverse)
 
+athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 world_coordinates <- readRDS(file = here::here("raw_data", "world_coordinates.rds"))
 
 medal_counts <- athletes %>%
@@ -27,22 +26,12 @@ medal_countries <- world_coordinates %>%
   left_join(medal_counts)
 
 ```
-
 :::
-
 :::
 
 Now, let's take a closer look at how `ggplot2` works. We already had a quick glimpse at it: Plots are build from different layers to create complex outputs. There are endless possibilities for different plot types, look at the [R graph gallery](https://r-graph-gallery.com/) for some inspiration and code.
 
 First, let's plot a relatively simple plot to get you familiar with how `ggplot2` works. After that, we will use the preparation we have done in the last chapters to plot the number of gold medals each country has won over the years on a world map, which gets slightly more complex.
-
-Let's load our data (if you haven't already):
-
-```{r, message = FALSE}
-library(tidyverse)
-
-athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
-```
 
 ## First plot
 
@@ -177,7 +166,7 @@ p +
 ```
 :::
 
-::: {.callout-tip}
+::: callout-tip
 Of course we don't have to assign every intermediate step to the `p` object. Normally, we would just combine all layers by using the `+`.
 :::
 
@@ -187,7 +176,8 @@ Pretty cool! Now we know that the most Olympic Tug-Of-War gold medalists are fro
 
 Let's take a look at a different plot, just to see what can be easily achieved with `ggplot2` (and we have prepared the data to do that, so we don't want to waste the work).
 
-So, let's build our coordinate system: 
+So, let's build our coordinate system:
+
 ```{r}
 #| fig-height: 8
 #| fig-width: 11
@@ -200,11 +190,13 @@ p
 ```
 
 Now we add the map by using the polygon geom:
+
 ```{r}
 p <- p +
   geom_polygon(aes(fill = n))
 p
 ```
+
 Remember what `aes()` does? Here we can specify which aspects of the plot should change **in dependence of the data**, so in this case the polygon filling (which are our countries) will change depending on `n` (the number of gold medalists).
 
 In the end we can clean up the plot by rescaling the x and y axis, provide a new colour scale, titles and theme:
