@@ -2,113 +2,137 @@
 title: "Final Exercise"
 ---
 
-[^1]: Image by [Mitchell Luo](https://unsplash.com/de/@mitchel3uo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/2Oazk1nJzhM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
+This exercise comes back to most topics presented in this workshop (but will also go beyond it slightly in some cases to provide some additional input). If you are a R beginner and followed the workshop, you can do this last exercise in the end to again test your knowledge. If you already have some R experience, you can do this exercise before the rest of the workshop and use it to identify weak points to follow up on. It will be a bit harder than the other workshop exercises to challenge you one last time and think about concepts you might want to revisit, so don't worry if some exercises feel a bit harder, we haven't talked about everything yet.
 
+So, in order to provide you with a totally fresh data set, let's look at beach volleyball, even though the others might be worth further exploring as well.
 
-This exercise comes back to most topics presented in this workshop (but will also go beyond it a slightly in some cases to provide some additional input). If you are a R beginner and followed the workshop, you can do this last exercise in the end to again test your knowledge. If you already have some R experience, you can do this exercise before the rest of the workshop and use it to identify weak points to follow up on. 
-
-So, in order to provide you with a totally fresh data set, let's look at beach volleyball, even though the others might be worth further exploring as well. 
-
-::: {.callout-tip}
-Throughout this script I will use a mixture of [tidyverse](../basics/tidyverse.qmd) and `Base R` code. Fell free to use the syntax you fell comfortable with. 
+::: callout-tip
+Throughout this script I will use a mixture of [tidyverse](../basics/tidyverse.qmd) and `Base R` code. Fell free to use the syntax you fell comfortable with.
 :::
 
 ## Exercise 1
-1. [Download](../qmd/load_data/load_data_exercise.qmd) the data sets [`volleyball_win` and `volleyball_lose`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and [load the data](../load_data/load_data.qmd) them into R. 
 
-::: {.callout=caution collapse="true"}
-## Solution
-```{r}
-library(tidyverse)
-vb <- tidytuesdayR::tt_load('2020-05-19')$vb_matches
+1.  [Download](../qmd/load_data/load_data_exercise.qmd) the data sets [`vb_w` and `vb_l`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and [load the data](../load_data/load_data.qmd) them into R.
 
-```
+::: {.callout-tip collapse="true"}
+## Hints
+
+1.  Admittedly not the easiest data loading exercise. One file is a `.csv` file, the other an SPSS file (`.sav`). Take a look [here](../load_data/load_data.qmd) to see how to load them into R.
+2.  You need to install `haven` to load the `.sav` file.
+3.  You need to look at the `sep` argument in `read.csv()`: It needs to specify how the values in the `.csv` file are seperated. Take a look into the file itself to find out. We have seen a simmilar example in [this exercise](https://nickhaf.github.io/r_tutorial/qmd/load_data/load_data_exercise.html#exercies-2).
 :::
 
-2. Our goal will be to compare the mean height of the winning team against the mean height of the losing team. [Select](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#columns) only the columns from the data frames that are relevant to this question, and an identifier column, so we can merge them in the next step.
-
 ::: {.callout=caution collapse="true"}
+
 ## Solution
+
 ```{r}
-vb_l <- vb_l[ , c("gender", "l_p1_hgt", "l_p2_hgt"))]
-vb_w <- vb_w[ , c("gender", "w_p1_hgt", "w_p2_hgt"))]
+# install.packages("have") # Commented out, only execute if the package needs to be installed. 
+library(haven)
 
+vb_w <- read.csv(file = here::here("raw_data", "vb_w.csv"), sep = " ")
+vb_l <- read_sav(file = here::here("raw_data", "vb_l.sav"))
 ```
-::: 
 
-3. [Merge](../merging/merging.qmd) `vb_l` and `vb_w`.
+:::
+
+2.  [Merge](../merging/merging.qmd) `vb_l` and `vb_w`.
+
+::: {.callout-tip collapse="true"}
+## Hint
+
+`merge()` can detect the columns that have the same name and merge using them automatically.
+:::
 
 ```{r}
 vb <- merge(vb_l, 
-            vb_w,
-            by = 
-           )
-```
-4. Remove any remaining [NAs](../missings/missings.qmd) from this data set.
-
-```
-vb <- na.omit(vb)
+            vb_w)
 ```
 
-5. Calculate the mean height by team. Add the results in two new columns to the `vb` data frame.
+3.  Our goal will be to compare the mean height of the winning team against the mean height of the losing team. [Select](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#columns) only the columns from the data frames that are relevant to this question, and an identifier column, so we can merge them in the next step.
+
+::: {.callout=tip collapse="true"} The relevant columns are: `c("gender", "l_p1_hgt", "l_p2_hgt", "w_p1_hgt", "w_p2_hgt")`. :::
+
+::: {.callout=caution collapse="true"}
+
+## Solution
+
+```{r}
+vb <- vb[ , c("gender", "l_p1_hgt", "l_p2_hgt", "w_p1_hgt", "w_p2_hgt")]
 
 ```
-```
 
+:::
 
-6. [Plot](../plotting/plotting.qmd) two scatterplots to get a feeling for the distribution, one for the winning team mean height and one for the losing team mean height. Use a [for-loop](../loops/loops.qmd). 
+4.  Remove any remaining [NAs](../missings/missings.qmd) from this data set.
 
-:::{.callout=warning collapse="true"}
-This is a specifity 
-You can pass a changing value into a ggplot function with like this: 
+::: {.callout=tip collapse="true"}
+
+## Hint
+
+Use `na_omit()` to remove all `NAs` at once.
+
 :::
 
 ::: {.callout=caution collapse="true"}
 
-```{r}
-for(i in c("win_mean_height", "lose_mean_height")){
-ggplot(data = vb, 
-       mapping = aes(x =  )
-      )
-}
-```
-Huh that is weird? Height should be normally distributed, not bimodal. 
-Ah, we still have men and women in the same data set. 
-So let's group by gender:
+## Solution
 
 ```{r}
-
+vb <- na.omit(vb)
 ```
-Ah, that looks better. 
- 
+
 :::
 
+5.  Calculate the mean height by team. Add the results in two new columns to the `vb` data frame.
 
-7. Build two separate data sets, one for men, one for women. 
+6.  [Plot](../plotting/plotting.qmd) two scatterplots to get a feeling for the distribution, one for the winning team mean height and one for the losing team mean height. Use a [for-loop](../loops/loops.qmd).
 
+:::{.callout=warning collapse="true"} This is a specifity You can pass a changing value into a ggplot function with like this: :::
+
+::: {.callout=caution collapse="true"}
+
+## Solution
+
+Huh that is weird? Height should be normally distributed, not bimodal. Ah, we still have men and women in the same data set. So let's group by gender:
+
+```{r}
+
+```
+
+Ah, that looks better.
+
+:::
+
+7.  Build two separate data sets, one for men, one for women.
 
 ::: {.callout=note collapse="true"}
-We haven't really looked at most of this stuff in depth. Use your favorite search engine and try to solve it anyways, as you will often encounter problems you haven't seen yet. 
 
-8. Do a t test comparing the mean winners height against the mean losers height. Use a loop to iterate over both data sets, so you can calculate the t test for men and women separately. Save the results in a list.
+We haven't really looked at most of this stuff in depth. Use your favorite search engine and try to solve it anyways, as you will often encounter problems you haven't seen yet.
 
-9. Look at the mean difference. Not very big in most cases, right? Let's calculate a standardized effect size, Cohen's *d*:
+8.  Do a paired t-test comparing the mean winners height against the mean losers height. Use a loop to iterate over both data sets, so you can calculate the t test for men and women separately. Save the results in a list.
 
+```{r}
+# t.test(paired = "true")
+```
 
-Write a function to do that, and add the function to your for loop, so it automatically returns the effect size along with the p value. 
+9.  Look at the mean difference. Not very big in most cases, right? Let's calculate a standardized effect size, Cohen's *d*:
+
+Write a function to do that, and add the function to your for loop, so it automatically returns the effect size along with the p value.
+
 :::
 
 10. For plotting, add the rows of the men's data frame to the bottom of the women's data frame.
 
-
-11. Add a new column containing the height in meters, not in Inch (one Inch are 0.0254 m). 
+11. Add a new column containing the height in meters, not in Inch (one Inch are 0.0254 m).
 
 12. Reform this resulting data frame into long format.
 
-13. Use ggplot to build a violin plot showing the winners and losers distribution by gender. Violin plots are similar to boxplotsy but have the advantage of conveying more distributional information.
+13. Use ggplot to build a violin plot showing the winners and losers distribution by gender. Violin plots are similar to boxplots but have the advantage of conveying more distributional information.
 
+Group by game and draw lines.
 
-```
+```         
 tuesdata$winning_height <- rowMeans(tuesdata[, c("w_p1_hgt", "w_p2_hgt")]) 
 tuesdata$losing_height <- rowMeans(tuesdata[, c("l_p1_hgt", "l_p2_hgt")]) 
 
@@ -141,7 +165,4 @@ inch_m <- function(inch){
 
 volleyball_data_men$winning_height <- inch_m(volleyball_data_men$winning_height)
 volleyball_data_men$losing_height <- inch_m(volleyball_data_men$losing_height)
-
-
 ```
-
