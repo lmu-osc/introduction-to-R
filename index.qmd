@@ -8,8 +8,9 @@ date: 09-11-2023
 
 ## About this workshop
 
-Welcome![^1]
-This workshop will teach you the basics of R. It's structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](/qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to scientific programming with R and want to follow the course structure?
+Welcome![^1] This workshop will teach you the basics of R. It's structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](/qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to scientific programming with R and want to follow the course structure?
+
+[^1]: This workshop was designed by Nicklas Hafiz, PhD student and research fellow at the Institut für Qualitätsentwicklung im Bildungswesen (IQB).
 
 ::: {.callout-note collapse="true" icon="false"}
 ## Unfold if you want to learn more about optional content
@@ -17,9 +18,13 @@ This workshop will teach you the basics of R. It's structure is meant to support
 Don't worry if you don't finish the whole workshop in time, or the material seems a bit overwhelming. It is designed to provide additional information for self studying and looking up topics of interest (that may come up during the following week, or in general). Optional input and exercises can be found in folded in sections like this one.
 :::
 
-The main objective of this workshop is to get you familiar with the basics of programming in R. To do that, we will repeat and try out the main concepts multiple times, so you get to work with them as much and as from many different perspectives as possible.
+The main objective of this workshop is to get you started with using R for your own scientific work. To do that, we will repeat and try out the main concepts multiple times, so you get to work with them as much and as from many different perspectives as possible. Along the way, some advanced ideas will be introduced as well, which you can follow up on later in case you think they might be relevant for your own work. 
 
-Each section is divided into a theory part and some exercises. Most of these exercises will use the `characters` data set, more on that in the [next chapter](/qmd/getting_started/data_sets.qmd).
+Each section is divided into a theory part and some exercises. Most of these exercises will use the `characters` data set, more on that in the [next chapter](/qmd/getting_started/data_sets.qmd). 
+
+::: callout-tip
+Learning how to program can be tough, and to get started it is important to write as much code as possible, and think about many different problems to get used to coding. So do the exercises! This will hopefully get you started with solving problems in R. 
+:::
 
 ::: callout-warning
 ## Software installation
@@ -36,5 +41,3 @@ Please [install the necessary software](qmd/setup/setup.qmd) **before the worksh
 -   This is not R specific, but because you can write programs for your specific use cases, it facilitates many workflow related tasks like automation, tracking changes with git, result preparation with markdown/latex and many more.
 
 There are many more reasons to learn R, as it is a very flexible tool for almost every aspect of scientific work, so let's dive right into it!
-
-[^1]: This workshop was designed by Nicklas Hafiz, PhD student and research fellow at the Institut für Qualitätsentwicklung im Bildungswesen (IQB).
