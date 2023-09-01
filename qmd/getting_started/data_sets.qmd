@@ -20,4 +20,4 @@ For the theory part of the workshop, we will mainly work with the `athletes` dat
 
 Over the course of this workshop, you can work on exercises to train the theoretical knowledge acquired in the chapters. Most of these exercises will use the `characters` data set, downloaded from [here](https://openpsychometrics.org/tests/characters/documentation/), which contains psychometric ratings for different fictional characters, rated by a large number of people on a personality scale developed by the author of the questionnaire.
 
-You will load the data, prepare it for analyses and also plot it in the end, if you follow the whole workshop.
+You will load the data, prepare it for analyses and also plot it in the end. 

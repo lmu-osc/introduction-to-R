@@ -1,6 +1,8 @@
-# The Big Picture
+---
+title: "The Big Picture"
+---
 
-Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project" with very basic data, which follows a possible workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little more depth for each topic, so don't worry if you don't understand something quite yet, it will be covered again in later chapters.
+Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project" with very basic data, which follows a possible workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little more depth for each topic, so don't worry if you don't understand something quite yet, it will be covered again in later chapters. The goal of this chapter is to simply give you an idea of what is possible in R, before dealing with the specifics. 
 
 ## Packages
 
@@ -26,7 +28,7 @@ library(tidyverse)
 
 ## Load Data
 
-Data is loaded into R so you can work with it. For this chapter, we are going to use the data set [`babynames`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md), which we can find on the `tidytuesday` site. I have already tweaked the data set a bit, so download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) in case you want to follow along. Right-click on the respective data set found under this link, select 'save as' and then choose a folder on your notebook where to save it. We have talked about where that optimally should be in [Workflow: Exercises](../workflow/worflow_exercise.qmd). Our goal is to look at the most common name in every year and make a nice plot out of it.
+Data is loaded into R so you can work with it. For this chapter, we are going to use the data set [`babynames`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md), which we can find on the `tidytuesday` site. I have already tweaked the data set a bit, so download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) to follow along. Right-click on the respective data set found under this link, select 'save as' and then choose a folder on your notebook where to save it. We have talked about where that optimally should be in [Workflow: Exercises](../workflow/worflow_exercise.qmd). Our goal is to look at the most common name in every year and make a nice plot out of it.
 
 So, after downloading it and saving it in the folder `raw_data` within my project directory, I can load the data set into R with:
 
@@ -123,7 +125,7 @@ babynames_F <- babynames_F %>%
 
 ## Some additional summary statistics
 
-Now, the specifics of the next part are not really relevant. However, they can show you how easy it can be to deal with data in R, so follow along if you want to. First, let's group our data according to year:
+Now, the next part can show you how easy it can be to deal with data in R. First, let's group our data according to year:
 
 ::: tidy
 ```{r}
@@ -143,7 +145,7 @@ head(babynames_F_max)
 
 The `which.max(percentage)` command finds the maximum percentage per year. `slice()` will extract the respective rows, so we have only the row contatining the most common name per year in the end.
 
-As already mentioned, the specifics of these functions are not really relevant for now, but we need them for our final plot:
+At the moment we only want to get an idea what R can do, so don't hold up if the functions are not that clear to you right now, hopefully that will change throughout this tutorial. 
 
 ## Plot the data
 
