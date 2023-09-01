@@ -213,7 +213,7 @@ In the end we can clean up the plot by rescaling the x and y axis, provide a new
   p +
   coord_fixed(1.3) +
   scale_fill_distiller(palette ="YlOrBr", direction = 1) + 
-  ggtitle("Number of Olympic gold medalists by country") +
+  ggtitle("Olympic Gold Medal winners") +
   guides(fill=guide_legend(title="Gold medal \n winners")) +
   theme_void()
 ```
