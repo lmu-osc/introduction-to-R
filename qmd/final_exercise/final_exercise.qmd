@@ -41,17 +41,40 @@ vb <- vb[ , c()]
 
 5. Look at distribution.
 
-6. T test
 
-7. Function for inch to m or for Cohen's d
+::: {.callout=caution collapse="true"}
+Huh that is weird? Height should be normally distributed, not bimodal. 
+Ah, we still have men and women in the same data set. 
+So group by gender.
 
-8. Long format
+Ah, that looks better. 
+ 
+:::
 
-9. rbind Men 
+6. Calculate the mean height per team. 
 
-10.Violin plot for men an women winners and losers.
+7. Build two separate data sets, one for men, one for women. 
 
 
+::: {.callout=note collapse="true"}
+We haven't really looked at most of this stuff in depth. Use your favorite search engine and try to solve it anyways, as you will often encounter problems you haven't seen yet. 
+
+8. Do a t test comparing the mean winners height against the mean losers height. Use a loop to iterate over both data sets, so you can calculate the t test for men and women separately. Save the results in a list.
+
+9. Look at the mean difference. Not very big in most cases, right? Let's calculate a standardized effect size, Cohen's *d*:
+
+
+Write a function to do that, and add the function to your for loop, so it automatically returns the effect size along with the p value. 
+:::
+
+10. For plotting, add the rows of the men's data frame to the bottom of the women's data frame.
+
+
+11. Add a new column containing the height in meters, not in Inch (one Inch are 0.0254 m). 
+
+12. Reform this resulting data frame into long format.
+
+13. Use ggplot to build a violin plot showing the winners and losers distribution by gender. Violin plots are similar to boxplotsy but have the advantage of conveying more distributional information.
 
 
 ```
