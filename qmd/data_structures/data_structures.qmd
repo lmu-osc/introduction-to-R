@@ -33,8 +33,6 @@ log_vec <- c(TRUE, FALSE)
 log_vec
 ```
 
-The `c()` stands for combine, or concatenate, and is the basic function for building a vector out of single elements.
-
 ### Remarks: Data types
 
 If we take a look at the structure of the vectors we have just created, we see se a short description of the data type we are dealing with in front of the vector:

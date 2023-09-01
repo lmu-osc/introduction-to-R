@@ -25,6 +25,16 @@ log_result <- 10 > 1
 log_result
 ```
 
+## Combination of elements
+We can combine multiple elements to build a new one:
+
+```{r}
+new_element <- c(1, 10, 15)
+```
+
+In this case, this new element is a [vector](https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#vector), which is a one dimensional collection of element.
+The `c()` stands for combine, or concatenate, and is the basic function for building a vector out of single elements.
+
 ## Comparisons and Logical operators
 
 The boolean variables in R are `TRUE` and `FALSE`. Comparison operators return either `TRUE` or `FALSE`:
@@ -76,13 +86,11 @@ We can invert boolean values by using `!`:
 !TRUE
 
 !(1 > 100)
-
-!(1:10 != c(1, 2))
 ```
 
 ## Functions
 
-Everything that **does** something in R is a function. A function call has the form: `functionname(argument1 = value, argument2 = value, ...)`. One basic example for a function is the function that can calculate the square root:
+Everything that **does** something in R is a [function](../functions/functions.qmd). A function call has the form: `functionname(argument1 = value, argument2 = value, ...)`. One basic example for a function is the function that can calculate the square root:
 
 ```{r}
 sqrt(4)
