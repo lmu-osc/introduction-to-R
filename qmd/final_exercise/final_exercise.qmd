@@ -5,16 +5,56 @@ title: "Final Exercise"
 [^1]: Image by [Mitchell Luo](https://unsplash.com/de/@mitchel3uo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/2Oazk1nJzhM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 
 
-This exercise comes back to most topics presented in this workshop. If you a total R beginner and followed the workshop, you can do this last exercise in the end to again test your knowledge. If you already have some R experience, you can do this exercise before the rest of the workshop and use it to identify weak points to follow up on. 
+This exercise comes back to most topics presented in this workshop. If you are a R beginner and followed the workshop, you can do this last exercise in the end to again test your knowledge. If you already have some R experience, you can do this exercise before the rest of the workshop and use it to identify weak points to follow up on. 
 
 So, in order to provide you with a totally fresh data set, let's look at beach volleyball, even though the others might be worth further exploring as well. 
 
 ## Exercise 1
 1. [Download](../qmd/load_data/load_data_exercise.qmd) the data set [`volleyball`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and load it into R. 
 
+::: {.callout=caution collapse="true"}
+## Solution
 ```{r}
-tuesdata <- tidytuesdayR::tt_load('2020-05-19')$vb_matches
+vb <- tidytuesdayR::tt_load('2020-05-19')$vb_matches
 
+```
+:::
+
+
+2. Our goal will be to compare the mean height of the winning team against the mean height of the losing team. Select only the columns from the data frame that are relevant to this question 
+
+
+::: {.callout=caution collapse="true"}
+## Solution
+
+```{r}
+vb <- vb[ , c()]
+```
+
+::: 
+
+
+3. Merge losing on winning team.
+
+
+4. Remove NAs.
+
+5. Look at distribution.
+
+6. T test
+
+7. Function for inch to m or for Cohen's d
+
+8. Long format
+
+9. rbind Men 
+
+10.Violin plot for men an women winners and losers.
+
+
+
+
+```
 tuesdata$winning_height <- rowMeans(tuesdata[, c("w_p1_hgt", "w_p2_hgt")]) 
 tuesdata$losing_height <- rowMeans(tuesdata[, c("l_p1_hgt", "l_p2_hgt")]) 
 
