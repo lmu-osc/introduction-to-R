@@ -78,7 +78,7 @@ Or, using the `tidyverse` with the help of `mutate()`:
 
 ::: tidy
 ```{r, message = FALSE}
-library(dplyr)
+library(tidyverse)
 
 persons <- mutate(persons, big5_agree= c(2, 5, 2, 1) )
 ```
@@ -90,7 +90,7 @@ A special type of data frames are the so called `tibbles`. Tibbles are a modern 
 
 ::: tidy
 ```{r}
-persons_tibble <- tibble::tibble(
+persons_tibble <- tibble(
   name = c("Anna", "Alex", "John", "Jessi"),
   age = c(19, 17, 18, 18),
   birth_month = c("Jan", "Sep", "Oct", "Mar"),
