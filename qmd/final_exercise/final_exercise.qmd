@@ -5,53 +5,84 @@ title: "Final Exercise"
 [^1]: Image by [Mitchell Luo](https://unsplash.com/de/@mitchel3uo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/2Oazk1nJzhM?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 
 
-This exercise comes back to most topics presented in this workshop. If you are a R beginner and followed the workshop, you can do this last exercise in the end to again test your knowledge. If you already have some R experience, you can do this exercise before the rest of the workshop and use it to identify weak points to follow up on. 
+This exercise comes back to most topics presented in this workshop (but will also go beyond it a slightly in some cases to provide some additional input). If you are a R beginner and followed the workshop, you can do this last exercise in the end to again test your knowledge. If you already have some R experience, you can do this exercise before the rest of the workshop and use it to identify weak points to follow up on. 
 
 So, in order to provide you with a totally fresh data set, let's look at beach volleyball, even though the others might be worth further exploring as well. 
 
+::: {.callout-tip}
+Throughout this script I will use a mixture of [tidyverse](../basics/tidyverse.qmd) and `Base R` code. Fell free to use the syntax you fell comfortable with. 
+:::
+
 ## Exercise 1
-1. [Download](../qmd/load_data/load_data_exercise.qmd) the data set [`volleyball`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and load it into R. 
+1. [Download](../qmd/load_data/load_data_exercise.qmd) the data sets [`volleyball_win` and `volleyball_lose`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and [load the data](../load_data/load_data.qmd) them into R. 
 
 ::: {.callout=caution collapse="true"}
 ## Solution
 ```{r}
+library(tidyverse)
 vb <- tidytuesdayR::tt_load('2020-05-19')$vb_matches
 
 ```
 :::
 
-
-2. Our goal will be to compare the mean height of the winning team against the mean height of the losing team. Select only the columns from the data frame that are relevant to this question 
-
+2. Our goal will be to compare the mean height of the winning team against the mean height of the losing team. [Select](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#columns) only the columns from the data frames that are relevant to this question, and an identifier column, so we can merge them in the next step.
 
 ::: {.callout=caution collapse="true"}
 ## Solution
-
 ```{r}
-vb <- vb[ , c()]
-```
+vb_l <- vb_l[ , c("gender", "l_p1_hgt", "l_p2_hgt"))]
+vb_w <- vb_w[ , c("gender", "w_p1_hgt", "w_p2_hgt"))]
 
+```
 ::: 
 
+3. [Merge](../merging/merging.qmd) `vb_l` and `vb_w`.
 
-3. Merge losing on winning team.
+```{r}
+vb <- merge(vb_l, 
+            vb_w,
+            by = 
+           )
+```
+4. Remove any remaining [NAs](../missings/missings.qmd) from this data set.
+
+```
+vb <- na.omit(vb)
+```
+
+5. Calculate the mean height by team. Add the results in two new columns to the `vb` data frame.
+
+```
+```
 
 
-4. Remove NAs.
+6. [Plot](../plotting/plotting.qmd) two scatterplots to get a feeling for the distribution, one for the winning team mean height and one for the losing team mean height. Use a [for-loop](../loops/loops.qmd). 
 
-5. Look at distribution.
-
+:::{.callout=warning collapse="true"}
+This is a specifity 
+You can pass a changing value into a ggplot function with like this: 
+:::
 
 ::: {.callout=caution collapse="true"}
+
+```{r}
+for(i in c("win_mean_height", "lose_mean_height")){
+ggplot(data = vb, 
+       mapping = aes(x =  )
+      )
+}
+```
 Huh that is weird? Height should be normally distributed, not bimodal. 
 Ah, we still have men and women in the same data set. 
-So group by gender.
+So let's group by gender:
 
+```{r}
+
+```
 Ah, that looks better. 
  
 :::
 
-6. Calculate the mean height per team. 
 
 7. Build two separate data sets, one for men, one for women. 
 
