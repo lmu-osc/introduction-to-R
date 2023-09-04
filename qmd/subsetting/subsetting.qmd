@@ -4,8 +4,15 @@ title: "Subsetting"
 
 ```{r, echo = FALSE}
 source(here::here("output_hook.R"))
-athletes <- readRDS(here::here("raw_data", "athletes.rds"))
 ```
+
+::: {.callout-caution icon="false" collapse="true"}
+## Previous code
+
+```{r}
+athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
+```
+:::
 
 Subsetting means extracting smaller sets of data from a bigger set. For example, we can extract specific rows from a data frame, or specific values from a vector. Let's take a look at how that is achieved in R:
 
@@ -58,13 +65,11 @@ str(athletes[c(rep(TRUE, 100), rep(FALSE, 271016)), ])
 ```
 
 ::: callout-tip
-
 Instead of writing `271016` we should actually use the current row number, in case that changes as well:
 
 ```{r}
 str(athletes[c(rep(TRUE, 100), rep(FALSE, nrow(athletes) - 100)), ])
 ```
-
 :::
 
 ### Conditional filtering
@@ -184,16 +189,18 @@ show_list <- list("TV-Show" = c("Friends", "How I Met Your Mother"),
                   )
 ```
 
-1. We can extract a list element. This is done by single square brackets:
+1.  We can extract a list element. This is done by single square brackets:
+
 ```{r}
 str(show_list[2])
 ```
+
 Note how the result is still a `list`? It's like taking out a drawer from a closet, but keeping the content inside this drawer.
 
-2. We can extract the element that is stored inside the list element. This is done by double square brackets:
+2.  We can extract the element that is stored inside the list element. This is done by double square brackets:
+
 ```{r}
 str(show_list[[2]])
 ```
-Here the result is the `data frame` that was saved inside the list. It's like taking the content out of the drawer. 
 
-
+Here the result is the `data frame` that was saved inside the list. It's like taking the content out of the drawer.

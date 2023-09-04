@@ -2,9 +2,13 @@
 title: "Getting an overview"
 ---
 
-```{r, echo = FALSE}
+::: {.callout-caution icon="false" collapse="true"}
+## Previous code
+
+```{r}
 athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 ```
+:::
 
 Before starting to do something with your data, it is always a good idea to get an overview. Our goal is to answer questions in the line of:
 
@@ -16,6 +20,7 @@ Before starting to do something with your data, it is always a good idea to get 
 To answer these questions, we have different tools at our disposal:
 
 ## `View()`
+
 `View()` will open the data set excel-style in a new window:
 
 ```{r, eval = FALSE}

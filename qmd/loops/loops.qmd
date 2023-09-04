@@ -19,7 +19,6 @@ This chapter is optional.
 
 ```{r}
 library(tidyverse)
-world_coordinates <- readRDS(file = here::here("raw_data", "world_coordinates.rds"))
 athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 ```
 
