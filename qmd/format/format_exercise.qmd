@@ -1,0 +1,68 @@
+---
+title: "Reshaping: Exercise"
+---
+
+```{r}
+characters <- readRDS(file = here::here("raw_data", "characters.rds"))
+psych_stats <- read.csv(
+  file = here::here("raw_data", "psych_stats.csv"),
+  sep = ";"
+)
+```
+
+
+## Exercise 1
+Take a look at the data frame `psych_stats`! 
+Which format does it have?
+
+- [ ] Wide format
+- [ ] Long format
+- [ ] None of the above
+
+::: {.callout-caution collapse="true"}
+## Solution
+- [x] Wide format
+- [ ] Long format
+- [ ] None of the above
+
+Each unit of observation, in this case each character, only has one row. 
+:::
+
+
+## Exercise 2
+Reshape it, so there are only three columns in the data set: `char_id`, `question` and `rating`.
+
+::: {.callout-caution collapse="true"}
+## Hint
+You can select multiple columns like this: `column_1:column_10`.
+:::
+
+::: {.callout-caution collapse="true"}
+## Solution
+```{r}
+psych_stats <- psych_stats %>%
+  pivot_longer(cols = messy_neat:innocent_jaded, 
+               names_to = "question", 
+               values_to = "rating")
+
+```
+Now we have multiple rows for every character, but all question ratings are nicely aligned in one column. 
+:::
+
+## Exercise 3
+Try to reshape the data into long format.
+
+::: {.callout-caution collapse="true"}
+## Solution
+```{r}
+psych_stats %>%
+  pivot_wider(id_cols = char_id, 
+               names_from = "question", 
+               values_from = "rating")
+
+```
+This is how we got it! But scratch that, that was just for the sake of the exercise. We want to use `psych_stats` in the long format from now on. 
+:::
+
+
+
