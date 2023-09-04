@@ -6,11 +6,11 @@ title: "Plotting"
 This chapter is optional. It is not necessary to follow the rest of the conference, but you will get started with plotting in R.
 :::
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Previous code
 
 ::: tidy
-```{r}
+```{r, message=FALSE}
 library(tidyverse)
 
 athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))

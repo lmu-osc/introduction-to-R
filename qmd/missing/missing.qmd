@@ -9,6 +9,16 @@ athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 
 ![](missing.jpg)[^1]
 
+[^1]: Image by [Pierre Bamin](https://unsplash.com/de/@bamin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/5B0IXL2wAQ0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
+
+::: {.callout-caution icon="false" collapse="true"}
+## Previous code
+
+```{r}
+athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
+```
+:::
+
 Remember the weird `NA` rows we encountered when [subsetting by condition]()? We were able to steer around that by using `filter()`, but let's take a closer look at that now.
 
 Missing values are denoted in R by `NA` (or `NaN` in some cases). They nullify a calculation or comparison pretty strongly - if one missing value is found somewhere along the line, the result will also be `NA` (if not specified otherwise):
@@ -67,6 +77,3 @@ head(athletes_na)
 Both code versions will remove all rows containing `NAs` in the `weight column`.
 
 As already stated, it is not always necessary to remove `NAs` manually from the data set. In other cases it might be feasible to ignore them, and many functions can deal with missing values by themselves.
-
-
-[^1]: Image by [Pierre Bamin](https://unsplash.com/de/@bamin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/5B0IXL2wAQ0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).

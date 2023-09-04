@@ -4,8 +4,16 @@ title: "Merging data"
 
 ```{r, echo = FALSE, message = FALSE}
 source(here::here("output_hook.R"))
-library(tidyverse)
 ```
+
+::: {.callout-caution icon="false" collapse="true"}
+## Previous code
+
+```{r}
+library(tidyverse)
+athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
+```
+:::
 
 ## Data set
 

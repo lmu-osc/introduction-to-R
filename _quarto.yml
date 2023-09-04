@@ -70,7 +70,7 @@ website:
           contents:
             - qmd/missing/missing.qmd
             - qmd/missing/missing_exercise.qmd
-        - section: "Wide and long format"
+        - section: "Reshaping"
           contents:
             - qmd/format/format.qmd
         - section: "Merging"

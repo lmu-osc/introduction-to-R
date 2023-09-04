@@ -2,11 +2,22 @@
 title: "Subsetting data: Exercises"
 ---
 
-We want to work more with the `characters` data set we have loaded in the [last chapter](../load_data/load_data_exercise.qmd):
 
-```{r}
+::: {.callout-caution icon="false" collapse="true"}
+## Previous code
+
+```{r, message = FALSE}
+library(tidyverse)
+
+## Load the data
 characters <- readRDS(file = here::here("raw_data", "characters.rds"))
+psych_stats <- read.csv(
+  file = here::here("raw_data", "psych_stats.csv"),
+  sep = ";"
+)
+str(characters)
 ```
+:::
 
 Because subsetting data is such a basic skill, it will come up multiple times during this workshop. Here are some first exercises to get you started.
 
@@ -60,11 +71,10 @@ characters[characters$uni_name == "Friends", ]
 ::: {.callout-caution collapse="true"}
 ## Solution
 
-         
-- [ ] All Harry Potter characters with a notability over `90`.
-- [ ] All characters that are not from the Harry Potter universe and have a notability under 90.
-- [ ] All characters with a notability over `90`.
-- [x] All characters with a notability under `90`.
+-   [ ] All Harry Potter characters with a notability over `90`.
+-   [ ] All characters that are not from the Harry Potter universe and have a notability under 90.
+-   [ ] All characters with a notability over `90`.
+-   [x] All characters with a notability under `90`.
 
 Kind of a trick question: because we select all characters that are from the Harry Potter universe OR are not from there, we select all characters independent of their TV show. But we select all characters that have notability under 90 (beware of the `!` in front of the respective comparison).
 :::
@@ -105,4 +115,3 @@ library(tidyverse)
 filter(characters, uni_name %in% c("How I Met Your Mother", "Breaking Bad"))
 ```
 :::
-

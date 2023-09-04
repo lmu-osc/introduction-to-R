@@ -2,26 +2,43 @@
 title: "Missing values: Exercises"
 ---
 
-::: {.calout-caution icon="false"}
 
+::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
-```{r load characters}
+
+```{r, message = FALSE}
+library(tidyverse)
+
+## Load the data
 characters <- readRDS(file = here::here("raw_data", "characters.rds"))
+psych_stats <- read.csv(
+  file = here::here("raw_data", "psych_stats.csv"),
+  sep = ";"
+)
 
+## Merge it
+characters_stats <- merge(
+  x = characters,
+  y = psych_stats,
+  by.x = "id", 
+  by.y = "char_id"
+)
 ```
-
 :::
 
 ## Exercise 1
-1. Does the `characters` data set contain any `NAs`?
+
+1.  Does the `characters` data set contain any `NAs`?
 
 ::: {.callout-tip collapse="true"}
 ## Hint
+
 Use `any()` to see if a logical vector contains any `TRUE` values.
 :::
 
 ::: {.callout-solution collapse="true"}
 ## Solution
+
 ```{r}
 any(is.na(characters))
 ```
@@ -29,10 +46,11 @@ any(is.na(characters))
 No, there don't seem to be any `NAs` in this data set, which would be great in real life. For this exercise it's not great, so let's introduce some `NAs` manually.
 :::
 
-2. Be careful not to overwrite the `characters` data frame, so copy it into the new object `characters_na` before doing anything. Then set the `name` to `NA` in the rows `34, 103, 300` and the `uni_name` to `NA` in the rows `404, 670`. 
+2.  Be careful not to overwrite the `characters` data frame, so copy it into the new object `characters_na` before doing anything. Then set the `name` to `NA` in the rows `34, 103, 300` and the `uni_name` to `NA` in the rows `404, 670`.
 
 ::: {.callout-solution collapse="true"}
 ## Solution
+
 ```{r}
 characters_na <- characters
 
@@ -41,10 +59,11 @@ characters_na[c(404, 670), "uni_name"] <- NA
 ```
 :::
 
-3. Remove all rows containing missing values in the column `name` from the `characters_na` data frame.
+3.  Remove all rows containing missing values in the column `name` from the `characters_na` data frame.
 
 ::: {.callout-solution collapse="true"}
 ## Solution
+
 ```{r}
 characters_na <- characters_na[!is.na(characters_na$name), ]
 ```
@@ -58,7 +77,5 @@ library(tidyverse)
 characters_na <- characters_na %>%
   drop_na(name)
 ```
-
 :::
-
 :::

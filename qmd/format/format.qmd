@@ -1,1 +1,75 @@
+---
+title: "Wide and Long Format"
+---
 
+In this chapter, we will look at a simpler data set that makes it a bit easier to explain reshaping as our relatively complex `athletes` data set, which already has a sensible shape.
+
+Let's define our own data set:
+
+```{r}
+inhabitants_wide <- data.frame(
+  country = c("China", "India", "USA"),
+  inhabitants_2021 = c(1425893465, 1407563842, NA),
+  inhabitants_2022 = c(1425857720, 1420939232, 338903174)
+)
+```
+
+## Wide Format
+
+In the wide format, we have only one row per unit of analysis. In this example, each country has it's own row:
+
+```{r}
+head(inhabitants_wide)
+```
+
+However, the variable `inhabitatns` is stretched over multiple rows. In many cases it makes sense to reshape the data, so the `inhabitants` are all put into one column:
+
+## Long Format
+
+This would be the long data format, where each unit of analysis is spread over multiple rows.
+
+## Reshaping from Wide to Long Format
+
+To get from Wide Format to Long Format we can use the `pivot_longer()` function from the `tidyverse`:
+
+::: tidy
+```{r}
+inhabitants_long <- inhabitants_wide %>%
+  pivot_longer(
+    cols = c("inhabitants_2022", "inhabitants_2021"),
+    names_to = "year",
+    values_to = "inhabitants"
+  )
+
+head(inhabitants_long)
+```
+:::
+
+## Reshaping from Long to Wide Format
+
+In other cases it might happen, that multiple variables are put into the same column, togehter with an identifier column:
+
+```{r, echo = FALSE}
+inhabitants_long_2 <- inhabitants_wide %>%
+  mutate(inhabitants_2021 = c(9597000, 3287000, 9834000)) %>%
+  rename(area = inhabitants_2021) %>%
+  pivot_longer(!country, names_to = "variable", values_to = "value") %>%
+  data.frame()
+```
+
+```{r}
+inhabitants_long_2
+```
+
+In that case it can make sense to spread the the distinct variables into two columns:
+
+```{r}
+inhabitants_wide_2 <- inhabitants_long_2 %>%
+  pivot_wider(
+    id_cols = "country",
+    names_from = "variable",
+    values_from = "value"
+  )
+
+inhabitants_wide_2
+```

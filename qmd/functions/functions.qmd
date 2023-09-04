@@ -18,13 +18,13 @@ library(tidyverse)
 world_coordinates <- readRDS(file = here::here("raw_data", "world_coordinates.rds"))
 athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 ```
-
 :::
 
 ## Motivation
-Let's assume we want to know the number of goldmedals a specific athlete has won, along with some additional data, all printed into the console.  
-Well, we could do something like this:
-::: tidy
+
+Let's assume we want to know the number of goldmedals a specific athlete has won, along with some additional data, all printed into the console.\
+Well, we could do something like this: ::: tidy
+
 ```{r}
 
 medal_counts_athlete <- athletes %>%
@@ -56,11 +56,11 @@ print(
         ".")
   )
 ```
+
 :::
 
-
-Puuh, already not that quick, especially if this is meant as an easy way for users to extract the gold medal number for multiple persons. They would have to specify for both data frames the name and build togehter their print statement from scratch.  
-Luckily, we can just write a **function** which is a way to organize multiple operations together, so they can easily get repeated. Let's do that quickly, and then take a step back and look at the components of a function: 
+Puuh, already not that quick, especially if this is meant as an easy way for users to extract the gold medal number for multiple persons. They would have to specify for both data frames the name and build togehter their print statement from scratch.\
+Luckily, we can just write a **function** which is a way to organize multiple operations together, so they can easily get repeated. Let's do that quickly, and then take a step back and look at the components of a function:
 
 ::: tidy
 ```{r}
@@ -106,21 +106,21 @@ count_goldmedals(athlete_name = "Simone Arianne Biles")
 ```
 :::
 
-Pretty cool, right? We just write our code once, and can reuse it as often as we want to. 
-So, let's take a closer look at how to actually do that.
+Pretty cool, right? We just write our code once, and can reuse it as often as we want to. So, let's take a closer look at how to actually do that.
 
 ## How to write a function?
+
 Everything that does something in R is a function. We have already used a lot of them, like `print()`, `filter()`, `merge()`. The great thing is: we can define our own functions pretty easily:
 
-```
+```         
 function_name <- function(argument_1, argument_2, ...){
   do some operations
   
   return(result)
 }
 ```
-We always have to give the function a concise name (often not that easy). Then we specify some arguments (which should also have concise names). In our introductory example that was just the athlete name. Inside the `{ }` we define the operations, which can use the arguments so the users can specify some aspects of the functions behavior. In the end, it is good practice to return the result by using `return()`, so it is always clear what the function is giving back to the user. 
-One minimal example with three arguments would be to sum three numbers. We can also provide a default option for the arguments, which the function will fall back on, if the user doesn't specify anything:
+
+We always have to give the function a concise name (often not that easy). Then we specify some arguments (which should also have concise names). In our introductory example that was just the athlete name. Inside the `{ }` we define the operations, which can use the arguments so the users can specify some aspects of the functions behavior. In the end, it is good practice to return the result by using `return()`, so it is always clear what the function is giving back to the user. One minimal example with three arguments would be to sum three numbers. We can also provide a default option for the arguments, which the function will fall back on, if the user doesn't specify anything:
 
 ```{r}
 sum_num <- function(x, y, z = 0){
@@ -138,7 +138,6 @@ sum_num(x = 3, y = 1)
 
 ```
 
-:::{.callout-tip}
-It often makes sense to explicitly write the argument names into your function call. This makes your code clearer, and avoids a mix up. 
+::: callout-tip
+It often makes sense to explicitly write the argument names into your function call. This makes your code clearer, and avoids a mix up.
 :::
-
