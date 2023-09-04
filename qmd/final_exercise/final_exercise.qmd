@@ -4,7 +4,7 @@ title: "Final Exercise"
 
 This exercise comes back to most topics presented in this workshop (but will also go beyond it slightly in some cases to provide some additional input). If you are a R beginner and followed the workshop, you can do this last exercise in the end to again test your knowledge. If you already have some R experience, you can do this exercise before the rest of the workshop and use it to identify weak points to follow up on. It will be a bit harder than the other workshop exercises to challenge you one last time and think about concepts you might want to revisit, so don't worry if some exercises feel a bit harder, we haven't talked about everything yet. Use all resources at your disposal, that's how you would work on a real project as well.
 
-So, in order to provide you with a totally fresh data set, let's look at beach volleyball, even though the others might be worth further exploring as well.
+So, in order to provide you with a totally fresh data set, let's look at beach volleyball. We want to know if height differences in volleyball matter that much, that taller teams have a winning advantage. If that would be the case, the mean height of the winning team should be significantly larger than the mean height of the losing team. Let's take a look: 
 
 ::: callout-tip
 Throughout this script I will use a mixture of [tidyverse](../basics/tidyverse.qmd) and `Base R` code. Fell free to use the syntax you fell comfortable with.
@@ -41,24 +41,29 @@ vb_l <- read_sav(file = here::here("raw_data", "vb_l.sav"))
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-`merge()` can detect the columns that have the same name and merge using them automatically.
+Use the argument `by` in `merge()` to select the columns `id` and `gender` on which the data sets wil get merged. 
 :::
 
 ```{r}
 vb <- merge(vb_l, 
-            vb_w)
+            vb_w, 
+            by = c("id", "gender"))
 ```
 
-3.  Our goal will be to compare the mean height of the winning team against the mean height of the losing team. [Select](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#columns) only the columns from the data frames that are relevant to this question, and an identifier column, so we can merge them in the next step.
+4. [Select](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#columns) only the columns from the data frames that are relevant to this question, and an identifier column, so we can merge them in the next step.
 
-::: {.callout=tip collapse="true"} The relevant columns are: `c("gender", "l_p1_hgt", "l_p2_hgt", "w_p1_hgt", "w_p2_hgt")`. :::
+::: {.callout=tip collapse="true"} 
+
+## Hint
+The relevant columns are: `c("gender", "l_p1_hgt", "l_p2_hgt", "w_p1_hgt", "w_p2_hgt")`. 
+:::
 
 ::: {.callout=caution collapse="true"}
 
 ## Solution
 
 ```{r}
-vb <- vb[ , c("gender", "l_p1_hgt", "l_p2_hgt", "w_p1_hgt", "w_p2_hgt")]
+vb <- vb[ , c("id", "gender", "l_p1_hgt", "l_p2_hgt", "w_p1_hgt", "w_p2_hgt")]
 
 ```
 
@@ -86,22 +91,19 @@ vb <- na.omit(vb)
 
 5.  Calculate the mean height by team. Add the results in two new columns to the `vb` data frame.
 
-6.  [Plot](../plotting/plotting.qmd) two scatterplots to get a feeling for the distribution, one for the winning team mean height and one for the losing team mean height. Use a [for-loop](../loops/loops.qmd).
+::: {.callout-tip collapse="true"}
+## Hint
 
-:::{.callout=warning collapse="true"} This is a specifity You can pass a changing value into a ggplot function with like this: :::
+You will need to calculate the mean of the two columns **by row**. There is a function called `rowMeans()` which can do exactly that. Provide a data frame consisting only of the relevant columns as input.
+:::
 
-::: {.callout=caution collapse="true"}
-
+::: {.callout-caution collapse="true"}
 ## Solution
 
-Huh that is weird? Height should be normally distributed, not bimodal. Ah, we still have men and women in the same data set. So let's group by gender:
-
 ```{r}
-
+vb$winning_height <- rowMeans(vb[, c("w_p1_hgt", "w_p2_hgt")]) 
+vb$losing_height <- rowMeans(vb[, c("l_p1_hgt", "l_p2_hgt")]) 
 ```
-
-Ah, that looks better.
-
 :::
 
 7.  Build two separate data sets, one for men, one for women.
@@ -110,59 +112,101 @@ Ah, that looks better.
 
 We haven't really looked at most of this stuff in depth. Use your favorite search engine and try to solve it anyways, as you will often encounter problems you haven't seen yet.
 
-8.  Do a paired t-test comparing the mean winners height against the mean losers height. Use a loop to iterate over both data sets, so you can calculate the t test for men and women separately. Save the results in a list.
+## Exercise 2
+
+Now, let's do a paired paired t-test comparing the mean winners height against the mean losers height.
+
+1.  One assumption of the paired t-test is a normal distribution of the differences of the pairs. Check this assumption [visually](../plotting/plotting.qmd) by creating a histogram of the `winning_height - losing_height` difference.
+
+::: {.callout=caution collapse="true"} \## Solution
 
 ```{r}
-# t.test(paired = "true")
+ggplot(data = vb,
+       mapping = aes(x = winning_height - losing_height)
+       ) +
+  geom_histogram(binwidth = 0.5)
+
+
 ```
-
-9.  Look at the mean difference. Not very big in most cases, right? Let's calculate a standardized effect size, Cohen's *d*:
-
-Write a function to do that, and add the function to your for loop, so it automatically returns the effect size along with the p value.
 
 :::
 
-10. For plotting, add the rows of the men's data frame to the bottom of the women's data frame.
+2.  Do a paired t-test compairing the winning teams height vs the losing team height.
 
-11. Add a new column containing the height in meters, not in Inch (one Inch are 0.0254 m).
+::: {.callout=tip collapse="true"} \## Hint Use the function `t.test()` and set the argument `paired = "true"`. :::
 
-12. Reform this resulting data frame into long format.
+::: {.callout=caution collapse="true"}
 
-13. Use ggplot to build a violin plot showing the winners and losers distribution by gender. Violin plots are similar to boxplots but have the advantage of conveying more distributional information.
+```{r}
+t.test(vb$winning_height, vb$losing_height, paired = "true")
+```
 
-Group by game and draw lines.
+Th p-value is `< 0.001`. However, we have a **very** large sample, so almost all group differences will become significant. 
 
-```         
-tuesdata$winning_height <- rowMeans(tuesdata[, c("w_p1_hgt", "w_p2_hgt")]) 
-tuesdata$losing_height <- rowMeans(tuesdata[, c("l_p1_hgt", "l_p2_hgt")]) 
+:::
 
-volleyball_data_men <- tuesdata %>% 
-  filter(gender == "M")
+2.  Look at the mean difference. Not very big, right? Let's calculate a standardized effect size, Cohen's *d*:
 
+$d = \frac{\overline{x}_1 - \overline{x}_2}{\sqrt{(s^2_1 + s^2_2)/2}}$
 
-hist(volleyball_data_men$winning_height)
-hist(volleyball_data_men$losing_height)
+Write a function to do that, then calculate the effect size using it. 
 
-t.test(volleyball_data_men$winning_height, volleyball_data_men$losing_height)
-
-## Transform into long for plotting
-
-
-## Plot boxplot for winner and loser distribution
-
-ggplot(volleyball_data_men) +
-  geom_boxplot(aes(y = ))
-
-## Zusatz:
-## Write a function to calculate cohens d
-
-
-## Write a function for inch into meter:
-inch_m <- function(inch){
-  m <- inch * 0.0254
-  return(m)
+::: {.calout-caution collapse="true"}
+```{r}
+cohens_d <- function(x_1, x_2, var_1, var_2){
+  d <- (x_1 - x_2)/(sqrt(var_1 + var_2)/2)
+  return(d)
 }
 
-volleyball_data_men$winning_height <- inch_m(volleyball_data_men$winning_height)
-volleyball_data_men$losing_height <- inch_m(volleyball_data_men$losing_height)
+cohens_d(x_1 = mean(vb$winning_height), 
+         x_2 = mean(vb$losing_height), 
+         var_1 = var(vb$winning_height), 
+         var_2 = var(vb$losing_height)
+         )
+
 ```
+
+So, following Cohen's conventions, this is not even inside the range for small effect sizes. The height differences in professional volleyball are therefore probably negligible, as the size differences will be very small anyways.   
+
+:::
+
+## Exercise 3
+
+1. Reform this resulting data frame into long format, so all heights can be found in one column, with the winning/losing information in another column. 
+
+::: {.calout-caution collapse="true"}
+
+::: tidy
+```{r}
+vb_long <- vb %>%
+  pivot_longer(cols = c("winning_height", "losing_height"),
+               names_to = "result",
+               values_to = "mean_height")
+```
+
+:::
+
+:::
+
+2. Use `ggplot` to build a violin plot showing the winners and losers height distribution by gender. Violin plots are similar to boxplots but have the advantage of conveying more distributional information. Group by game and draw lines.
+
+::: {.calout-caution collapse="true"}
+
+::: tidy
+```{r}
+install.packages("ggExtra")
+library(ggExtra)
+
+vb_long <- vb_long %>%
+  mutate(group = paste0(.$result, .$gender))
+
+ggplot(vb_long, 
+       mapping = aes(x = group, y = mean_height, fill = gender)) +
+  geom_violin() +
+  geom_boxplot(width=0.1, color="grey", alpha=0.2, position = "dodge") +
+  scale_fill_brewer(palette = "Dark2") +
+    theme_bw()
+
+```
+:::
+:::

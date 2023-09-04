@@ -82,7 +82,8 @@ saveRDS(characters,
 write.table(psych_stats, here::here("raw_data", "psych_stats.csv"), sep = ";")
 
 # Volleyball data ------------------------------------------------------------
-vb <- tidytuesdayR::tt_load('2020-05-19')$vb_matches
+vb <- tidytuesdayR::tt_load('2020-05-19')$vb_matches %>%
+  mutate(id = 1:nrow(.))
 
 vb_w <- vb %>% select(-starts_with("l_p"))
 vb_l <- vb %>% select(-starts_with("w_p"))
