@@ -32,24 +32,38 @@ characters_stats <- merge(
 :::
 
 
+## Exercise 1
+Now, let's make a nice plot out of the data we've got. 
 
-Keep in mind we haven't really checked the questions etc, so there would be a lot more work done on such a data set before you could really extract something from it.
+1. Select up to `15` questions you want to display in the plot and save them into a new vector. 
 
+::: {.callout-caution collapse="true"}
+## Solution
+I'm just gonna take the first 15 questions from all unique ones:
 ```{r}
-
 questions <- unique(characters_stats$question)[1:15]
+questions
+```
+:::
 
-## Characters subset
+2. Select one show (your favorite), extract it from the data frame and save it into a new data set. It should only contain the questions you have selected in the first step. 
+```{r}
 characters_subset <- characters_stats %>% 
-  filter(uni_name == "Breaking Bad", question %in% questions)
+  filter(uni_name %in% c("Friends", "How I Met Your Mother"), 
+         question %in% questions)
+```
 
+```{r eval = FALSE, echo = FALSE}
 
 ggplot(data = characters_subset, 
        aes(x = rating, 
            y = question,
-           colour = name)) +
-  #facet_grid(. ~ name) +
-  geom_point() +
-  facet_grid(. ~ uni_name)
+           colour = uni_name, 
+           group = uni_name)) +
+  geom_point() 
+  #facet_grid(. ~ uni_name)
 
 ```
+
+
+
