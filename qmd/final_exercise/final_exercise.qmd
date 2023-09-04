@@ -188,15 +188,12 @@ vb_long <- vb %>%
 
 :::
 
-2. Use `ggplot` to build a violin plot showing the winners and losers height distribution by gender. Violin plots are similar to boxplots but have the advantage of conveying more distributional information. Group by game and draw lines.
+2. Use `ggplot` to build a violin plot showing the winners and losers height distribution by gender. Violin plots are similar to box plots but have the advantage of conveying more distributional information. If you want, you can also add a small box plot on top of the violin plot to have the advantage of both. 
 
 ::: {.calout-caution collapse="true"}
 
 ::: tidy
 ```{r}
-install.packages("ggExtra")
-library(ggExtra)
-
 vb_long <- vb_long %>%
   mutate(group = paste0(.$result, .$gender))
 
