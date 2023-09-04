@@ -1,5 +1,5 @@
 ---
-tilte: "Loops: Exercises"
+title: "Loops: Exercises"
 ---
 
 ```{r, echo = FALSE, message = FALSE}
@@ -22,6 +22,12 @@ psych_stats <- read.csv(
   file = here::here("raw_data", "psych_stats.csv"),
   sep = ";"
 )
+
+## Reshape psych_stats into long format:
+psych_stats <- psych_stats %>%
+  pivot_longer(cols = messy_neat:innocent_jaded, 
+               names_to = "question", 
+               values_to = "rating")
 
 ## Merge it
 characters_stats <- merge(

@@ -2,6 +2,37 @@
 title: "Plotting: Exercises"
 ---
 
+
+::: {.callout-caution icon="false" collapse="true"}
+## Previous code
+```{r, message = FALSE}
+library(tidyverse)
+
+## Load the data
+characters <- readRDS(file = here::here("raw_data", "characters.rds"))
+psych_stats <- read.csv(
+  file = here::here("raw_data", "psych_stats.csv"),
+  sep = ";"
+)
+
+## Reshape psych_stats into long format:
+psych_stats <- psych_stats %>%
+  pivot_longer(cols = messy_neat:innocent_jaded, 
+               names_to = "question", 
+               values_to = "rating")
+
+## Merge it
+characters_stats <- merge(
+  x = characters,
+  y = psych_stats,
+  by.x = "id", 
+  by.y = "char_id"
+)
+```
+:::
+
+
+
 Keep in mind we haven't really checked the questions etc, so there would be a lot more work done on such a data set before you could really extract something from it.
 
 ```{r}

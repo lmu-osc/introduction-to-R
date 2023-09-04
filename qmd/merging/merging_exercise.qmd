@@ -2,21 +2,28 @@
 title: "Merging: Exercise"
 ---
 
-Now we have gotten to know our `characters` data set a bit more. However, the personality ratings are not included yet. For that, we need to load the `psych_stats` data set as well, which contains the ratings for all characters. We have already done that in [Exercise 2 of the Load data chapter](https://nickhaf.github.io/r_tutorial/qmd/load_data/load_data_exercise.html#exercies-2), so here is the code again:
 
-::: {.calout-caution icon="false"}
-```{r load characters}
+
+::: {.callout-caution icon="false" collapse="true"}
+## Previous code
+
+```{r, message = FALSE}
+library(tidyverse)
+
+## Load the data
 characters <- readRDS(file = here::here("raw_data", "characters.rds"))
-```
-
-```{r load psych_stats}
 psych_stats <- read.csv(
   file = here::here("raw_data", "psych_stats.csv"),
   sep = ";"
 )
+
+## Take a look at the data sets
+str(characters)
+str(psych_stats)
 ```
 :::
 
+Now we have gotten to know our `characters` data set a bit more. However, the personality ratings are not included yet. For that, we need to load the `psych_stats` data set as well, which contains the ratings for all characters. 
 Now we want to combine both data frames into one, so all information belonging together can be found in the same data frame.
 
 ## Exercise 1
