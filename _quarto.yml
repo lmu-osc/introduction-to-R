@@ -35,6 +35,7 @@ website:
             contents: 
               - qmd/getting_started/the_big_picture.qmd
               - qmd/getting_started/data_sets.qmd
+              - qmd/final_exercise/final_exercise.qmd      
       - section: "2) Basics"
         contents:
         - section: "Basics"
