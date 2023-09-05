@@ -31,10 +31,6 @@ psych_stats <- psych_stats %>%
     values_to = "rating"
   )
 
-## Take a look at the data sets
-str(characters)
-str(psych_stats)
-
 ## Merge it
 characters_stats <- merge(
   x = characters,
@@ -64,36 +60,89 @@ questions
 
 2.  Select one show (your favorite), extract it from the data frame and save it into a new data set. It should only contain the questions you have selected in the first step.
 
+::: {.callout-caution collapse="true"}
+## Solution
 ```{r}
-characters_subset <- characters_stats %>% 
-  filter(uni_name %in% c("Friends"), 
-         question %in% questions)
+characters_subset <- characters_stats %>%
+  filter(
+    uni_name %in% c("Friends"),
+    question %in% questions
+  )
+```
+:::
+
+3. Build the coordinate system of the plot. Plot the `rating` on the x axis and the `question` on the y axis.
+
+::: {.callout-caution collapse="true"}
+## Solution
+
+::: tidy
+```{r}
+p <- ggplot(
+  data = characters_subset,
+  aes(
+    x = rating,
+    y = question
+  )
+)
+
+p
+```
+:::
+
+:::
+
+4. No let's split up the plot, so every character gets an own pane. Use `facet_grid()` to do that.
+
+::: {.callout-tip collapse="true"}
+## Hint
+use `?facet_grid` to find out how to use it. 
+:::
+
+::: {.callout-caution collapse="true"}
+## Solution
+
+:::tidy
+```{r}
+p <- p +
+  facet_grid(. ~ name)
+p
+```
+:::
+:::
+
+5. Let's add bars to the plot by using `geom_col()`. The filling of the bars should depend on the `rating`.
+
+::: {.callout-caution collapse="true"}
+## Solution
+
+:::tidy
+```{r}
+p <- p +
+  geom_col(
+    aes(fill = rating),
+    position = "dodge",
+    colour = "black"
+  )
+
+p
 ```
 
-```{r eval = FALSE, echo = FALSE}
+:::
 
-ggplot(data = characters_subset, 
-       aes(x = question, 
-           y = rating,
-           fill = name)
-       ) +
-  geom_col(position = "dodge", colour = "black") +
-  scale_fill_brewer(palette = "Dark2") +
+:::
+
+6. Style the plot. You could choose another color palette, another theme, other labels ... Get creative!
+
+::: {.callout-caution collapse="true"}
+## Solution
+
+::: tidy
+```{r}
+p +
+  #scale_fill_manual(values = viridisLite::scale_colour_viridis_d()) +
   theme_bw()
 ```
+:::
 
-```{r eval = FALSE, echo = FALSE}
-
-ggplot(data = characters_subset, 
-       aes(x = rating, 
-           y = question,
-           fill = name)
-       ) +
-  geom_col(position = "dodge", colour = "black") +
-  scale_fill_brewer(palette = "Dark2") +
-  facet_grid(. ~ name) +
-  theme_bw() 
-
-## second axis?
-  
-```
+:::

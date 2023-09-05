@@ -106,6 +106,8 @@ website:
                 text: "R for Data Science"
               - href: https://adv-r.hadley.nz/
                 text: "Advanced R"
+          - href: https://r-graph-gallery.com/
+            text: "R Graph Gallery"
               
 format:
   html:

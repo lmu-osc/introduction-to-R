@@ -19,23 +19,22 @@ world_coordinates <- readRDS(file = here::here("raw_data", "world_coordinates.rd
 medal_counts <- athletes %>%
   filter(Medal == "Gold") %>%
   group_by(Region) %>%
-  count(Medal) 
+  count(Medal)
 
 medal_countries <- world_coordinates %>%
   rename("Region" = region) %>%
   left_join(medal_counts)
-
 ```
 :::
 :::
 
-Now, let's take a closer look at how `ggplot2` works. We already had a quick glimpse at it: Plots are build from different layers to create complex outputs. There are endless possibilities for different plot types, look at the [R graph gallery](https://r-graph-gallery.com/) for some inspiration and code.
+We now want to take a closer look at how `ggplot2` works. We already had a quick glimpse at it: Plots are build from different layers to create complex output. There are endless possibilities for different plot types, look at the [R graph gallery](https://r-graph-gallery.com/) for some inspiration and code.
 
 First, let's plot a relatively simple plot to get you familiar with how `ggplot2` works. After that, we will use the preparation we have done in the last chapters to plot the number of gold medals each country has won over the years on a world map, which gets slightly more complex.
 
 # First plot
 
-For this plot, we want to find the country with the most medal winners for each sport. The preparation is pretty similar to what we have done [before]().
+For this plot, we want to find the country with the most medal winners for each sport. The preparation is pretty similar to what we have done before:
 
 ::: tidy
 ```{r}
@@ -49,15 +48,17 @@ best_by_sport <- athletes %>%
   ## Now only group by sport, so we can extract the maximum medal row by sport, and not by sport and country
   group_by(Sport) %>%
   ## Extract the country with the most medals
-  slice(which.max(n)) 
+  slice(which.max(n))
+
+head(best_by_sport)
 ```
 :::
 
-## ggplot()
+## `ggplot()`
 
 In general, a `ggplot` starts with the `ggplot()` function. In it we define the data we want to use, and some aesthetics. The `ggplot()` function then draws our (currently still empty) plotting area, with the defined axes (see next section).
 
-## aes()
+## `aes()`
 
 Aesthetics set parameters **dependent on the data**. In most cases, we will define our x and y axis here. We can also group data together by groups found in a column. If we want the data to have a different color, form, filling etc. depending on values in a column, we can define that here as well (we will look at that later on).
 
@@ -70,7 +71,7 @@ p <- ggplot(
   data = best_by_sport,
   aes(
     x = Sport,
-    y = n,
+    y = n
   )
 )
 
@@ -78,9 +79,9 @@ p
 ```
 :::
 
-In this case, the sport is plotted on the x axis and the number of gold medals (`n`) on the y axis. Bar filling will vary depending on the region.
+In this case, the sport is plotted on the x axis and the number of gold medals (`n`) on the y axis.
 
-## geom\_()
+## `geom_()`
 
 The geoms do the actual plotting. For example, if we want a barplot:
 
@@ -107,19 +108,54 @@ p
 ```
 :::
 
-Correct! We can define the aesthetics also within the `geom_()` functions. In this case they will only be used for that specific function, and not for the whole plot (which would be the case if we had defined the `fill` aesthetic in the `ggplot()` function).
+Correct! We can define the aesthetics also within the `geom_()` functions. In this case they will only be used for that specific function, and not for the whole plot (which would be the case if we had defined the `fill` aesthetic in the `ggplot()` function):
+
+## Global vs local `aes()`
+
+To illustrate this, we use the `colour` aesthetic instead of `fill`:
 
 ::: tidy
 ```{r}
 #| fig-height: 8
 #| fig-width: 11
 
-p +
+p_2 <- p +
+  geom_col(aes(colour = Region, x = reorder(Sport, n)))
+p_2
+```
+:::
+
+Now let's add some points:
+
+::: tidy
+```{r}
+#| fig-height: 8
+#| fig-width: 11
+
+p_2 +
   geom_point()
 ```
 :::
 
-This gives us black points now. If we had defined our aesthetics in the `ggplot()` function, the points would have the same colors as the bars. Also note that we layed another geom (`geom_point()`) over our plot, we added a new layer (that's what I meant earlier on by saying plots consist of different layers).
+This gives us black points now. But if we define our aesthetics within the `ggplot()` function, the points have the same colors as the bars, as now the aesthetics apply to all layers:
+```{r}
+#| fig-height: 8
+#| fig-width: 11
+
+ggplot(
+  data = best_by_sport,
+  aes(
+    x = Sport,
+    y = n,
+    colour = Region
+  )
+) +
+  geom_col() +
+  geom_point()
+```
+
+
+Also note that we layer another geom (`geom_point()`) over our plot (that's what I meant earlier on by saying plots consist of different layers).
 
 ## General plotting options
 
@@ -131,7 +167,7 @@ We can tweak all aspects of the appearance of a plot. For example, we might want
 #| fig-width: 11
 
 p <- p +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
 p
 ```
@@ -143,7 +179,7 @@ Or we could label the bars with the country:
 ```{r}
 #| fig-height: 8
 #| fig-width: 11
- 
+
 p <- p +
   geom_text(aes(label = Region), hjust = -0.3, angle = 90, size = 2.5)
 p
@@ -160,11 +196,11 @@ Or use different colors and a different theme:
 p <- p +
   theme_classic() +
   ## And turn the axis labels again, because the new theme has overwritten our theme
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
   ## Specify which colors are used for the filling
   scale_fill_manual(values = viridisLite::viridis(19))
 
-p  
+p
 ```
 :::
 
@@ -217,17 +253,22 @@ p
 ```
 :::
 
-Remember what `aes()` does? Here we can specify which aspects of the plot should change **in dependence of the data**, so in this case the polygon filling (which are our countries) will change depending on `n` (the number of gold medalists).
+In this case the polygon filling (which are our countries) will change depending on `n` (the number of gold medalists).
 
 In the end we can clean up the plot by rescaling the x and y axis, provide a new colour scale, titles and theme:
 
 ::: tidy
 ```{r}
-  p +
+p +
+  ## Rescale the plot
   coord_fixed(1.3) +
-  scale_fill_distiller(palette ="YlOrBr", direction = 1) + 
+  ## Use another colour palette:
+  scale_fill_distiller(palette = "YlOrBr", direction = 1) +
+  ## Plot title
   ggtitle("Olympic Gold Medal winners") +
-  guides(fill=guide_legend(title="Gold medal \n winners")) +
+  ## Legend title:
+  guides(fill = guide_legend(title = "Gold medal \n winners")) +
+  ## Minimal theme:
   theme_void()
 ```
 :::
