@@ -7,6 +7,8 @@ In this chapter, we will look at a simpler data set that makes it a bit easier t
 Let's define our own data set:
 
 ```{r}
+library(tidyverse) # Only if you haven't loaded it yet. Will use later.
+
 inhabitants_wide <- data.frame(
   country = c("China", "India", "USA"),
   inhabitants_2021 = c(1425893465, 1407563842, NA),
