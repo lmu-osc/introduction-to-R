@@ -2,7 +2,7 @@
 title: "The Big Picture"
 ---
 
-Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project" with very basic data, which follows a possible workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters, we will go into a little more depth for each topic, so don't worry if you don't understand something quite yet, it will be covered again in later chapters. The goal of this chapter is to simply give you an idea of what is possible in R, before dealing with the specifics. 
+Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project" with very basic data, which follows a possible workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters we will go into a little more detail for each topic, so don't worry if you don't understand something quite yet, it will be covered again. The goal of this chapter is to simply give you an idea of what is possible in R, before dealing with the specifics.
 
 ## Packages
 
@@ -28,7 +28,7 @@ library(tidyverse)
 
 ## Load Data
 
-Data is loaded into R so you can work with it. For this chapter, we are going to use the data set [`babynames`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md), which we can find on the `tidytuesday` site. I have already tweaked the data set a bit, so download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) to follow along. Right-click on the respective data set found under this link, select 'save as' and then choose a folder on your notebook where to save it. We have talked about where that optimally should be in [Workflow: Exercises](../workflow/worflow_exercise.qmd). Our goal is to look at the most common name in every year and make a nice plot out of it.
+Data is [loaded into R](../load_data/load_data.qmd) so you can work with it. For this chapter, we are going to use the data set [`babynames`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md), which we can find on the [`tidytuesday`](https://github.com/rfordatascience/tidytuesday) site. I have already tweaked the data set a bit, so download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) to follow along. Right-click on the respective data set found under this link, select 'save as' and then choose a folder on your notebook where to save it. We have talked about where that optimally should be in [Workflow: Exercises](../workflow/workflow_exercise.qmd). Our goal is to look at the most common name in every year and make a nice plot out of it.
 
 So, after downloading it and saving it in the folder `raw_data` within my project directory, I can load the data set into R with:
 
@@ -44,7 +44,7 @@ This will load the data into R and assigning it the name `babynames` by using th
 
 ## Take a look
 
-Now that we have our data loaded safely into R, we can get an overview with a multitude of commands. One of the most important ones might be `head()`, which will give us the first few rows of the data:
+Now that we have our data loaded safely into R, we can [get an overview](../peeking/peeking.qmd) with a multitude of commands. One of the most important ones might be `head()`, which will give us the first few rows of the data:
 
 ```{r}
 head(babynames)
@@ -56,13 +56,13 @@ Especially for bigger data sets, it might be more feasible to only look at the s
 str(babynames)
 ```
 
-On the left we can see the columns of this data.frame, named `year`, `sex`, `names`, and `ID`. On the right we see the first values in each column, for example `1880`, `1880`, `1880`, `NA` etc ... in the `year`-column.
+On the left we can see the columns of this data frame, named `year`, `sex`, `names`, and `ID`. On the right we see the first values in each column, for example `1880`, `1880`, `1880`, `NA` etc ... in the `year`-column.
 
 So, what we can infer from the data and its online description is that it contains the most common names for boys and girls in the USA for each year since `1880`.
 
 ## Merging
 
-Sadly the data is not complete. If we had the number of people named with each name every year, we could find out which name was the most common each year, and make a nice plot out of it. However, the number of people with the respective name each year is missing (ok, i split it up for illustrative purposes). So let's [download](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) it and load it into R quickly:
+Sadly the data is not complete. If we had the number of people born with a specific name for every year, we could find out which name was the most common each year. However, the number of people is missing from our data (ok, i split it up for illustrative purposes). So let's [download](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) it and load it into R:
 
 ```{r, echo = FALSE}
 babynames_n <- read.csv(here::here("raw_data", "babynames_n.csv"))
@@ -72,7 +72,7 @@ babynames_n <- read.csv(here::here("raw_data", "babynames_n.csv"))
 babynames_n <- read.csv("./raw_data/babynames_n.csv")
 ```
 
-And now [merge](../merging/merging.qmd) it with our other data set by the `ID` column:
+Now we can [merge](../merging/merging.qmd) it with our other data set by the `ID` column:
 
 ```{r}
 babynames_merged <- merge(babynames, 
@@ -82,17 +82,18 @@ babynames_merged <- merge(babynames,
 head(babynames_merged)
 ```
 
-Hold on! The column `years` seems to include missing values (`NA's`, see the cell on the top left). It is always a good idea to at least think about the [missing values](../missing/missing.qmd). before doing any analyses, so let's do just that:
+Great, now we can see the number of people born with that name in each year since 1880, and the propability that they get this specific name, calculated from the total of births in this year!
+But hold on! The column `years` seems to include missing values (`NA's`). It is always a good idea to at least think about the [missing values](../missing/missing.qmd) before doing any analyses, so let's do just that:
 
 ## Missings
 
-There are multiple ways to deal with [missing values](../missing/missing.qmd). For reasons of simplicity, we will just remove any rows that contain `NA's`. We can achieve that very easily using a function from the `tidyverse` (the package collection we installed at the beginning of this chapter):
+There are multiple ways to deal with [missing values](../missing/missing.qmd). For reasons of simplicity, we will just remove any rows that contain `NA's`. We can achieve that very easily using the function `na.omit()`:
 
-::: tidy
 ```{r}
-babynames_merged <- drop_na(babynames_merged)
+babynames_merged <- na.omit(babynames_merged)
+head(babynames_merged)
 ```
-:::
+
 
 ## Subsetting data
 
@@ -104,24 +105,28 @@ babynames_F <- babynames_merged %>%
   filter(sex == "F")
 ```
 :::
+Wondering what the `%>%` means? That's a [pipe operator](https://nickhaf.github.io/r_tutorial/qmd/basics/tidyverse.html#the-pipe-operator), which is used, mainly in the `tidyverse`, to connect multiple function calls. This can make code a lot more readable. In our case, we start with the `babynames_merged` data frame and then perform an operation on it, in this case filtering specific values.
 
 ## Adding a new column
 
-Now, we want to plot the percentages of each name, instead of the probability, because it looks a bit more intuitive. So, let's build a new column named `percentage`, which is just the `prop` column multiplied by `100`:
+Now, we want to plot the percentages of each name, instead of the probability, because it looks a bit more intuitive. So, let's [build a new column](https://nickhaf.github.io/r_tutorial/qmd/getting_started/the_big_picture.html#adding-a-new-column) named `percentage`, which is just the `prop` column multiplied by `100`:
 
 ```{r}
 babynames_F$percentage <- babynames_F$prop * 100
+head(babynames_F)
 ```
 
 ## Selecting columns
 
-Now we can trim down our data set a bit more and select only the columns we are actually going to need:
+Now we can trim down our data set a bit more and [select] only the columns we are actually going to need:
 
+::: tidy
 ```{r}
 babynames_F <- babynames_F %>%
   select(year, name, percentage)
-
+head(babynames_F)
 ```
+:::
 
 ## Some additional summary statistics
 
@@ -145,7 +150,7 @@ head(babynames_F_max)
 
 The `which.max(percentage)` command finds the maximum percentage per year. `slice()` will extract the respective rows, so we have only the row contatining the most common name per year in the end.
 
-At the moment we only want to get an idea what R can do, so don't hold up if the functions are not that clear to you right now, hopefully that will change throughout this tutorial. 
+At the moment we only want to get an idea what R can do, so don't hold up if the functions are not that clear to you right now, hopefully that will change throughout this tutorial.
 
 ## Plot the data
 

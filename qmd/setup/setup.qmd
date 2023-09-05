@@ -12,11 +12,11 @@ Please go to [this website](https://posit.co/download/rstudio-desktop/) and down
 In case you don't use a notebook where you can install R and RStudio, or you don't want to, you can use the posit Cloud service. It can be run in you browser, and provides the same functions and interface as if you were working with your own RStudio installation. And it's free as well!
 
 1.  Go to [posit Cloud](https://posit.cloud/plans/free).
-1.  Click on `Sign Up` to create an account (it's free) and login.
-1.  On the upper right, click on `New Project`. This will create a new RStudio project, which you can follow this workshop with the same way as if you had installed R on your notebook. 
+2.  Click on `Sign Up` to create an account (it's free) and login.
+3.  On the upper right, click on `New Project`. This will create a new RStudio project, which you can use to follow this workshop the same way as if you had installed R on your notebook.
 
 ::: {.callout-warning collapse="true"}
-Keep in mind that the free posit Cloud account only gives you 25 computing hours per month, but this should be more than enough for this week. See [here](https://posit.cloud/plans) for the subscription plans.
+Keep in mind that the free posit Cloud account only gives you 25 computing hours per month, but this should be more than enough for this workshop. Take a look [here](https://posit.cloud/plans) for the subscription plans.
 :::
 :::
 
@@ -32,28 +32,27 @@ The window can be split into 4 parts:
 
 ### 1) Script pane
 
-The script pane is used to edit scripts. Scripts are the files you store your code in.  
-You can execute a line of code by pressing `ctrl + enter` (on windows) or `command + return` (on macOS). To execute multiple lines of code at once, mark them before you press the keys. Try it yourself! Write:
+The script pane is used to edit [scripts](https://nickhaf.github.io/r_tutorial/qmd/workflow/workflow.html#scripts). Scripts are the files you store your code in. You can execute a line of code by pressing `ctrl + enter` (on windows) or `command + return` (on macOS). To execute multiple lines of code at once, mark them before you press the keys. Try it yourself! Write:
 
 ```{r}
 # Our first line of code:
 print("Hello World!")
 ```
 
-into your script and execute it. It should output "Hello World!" in your console.
+**into your script** and execute it. It should output "Hello World!" in your console.
 
-By the way: Code lines, that are preceded by a `#` are commented out, and will not be evaluated.
+By the way: Code lines that are preceded by a `#` are commented out, and will not be evaluated.
 
 ### 2) Console
 
-You can also work directly in the console. Type, into your console and then just press `enter`:
+You can also work directly in the console. Type **into your console** and then just press `enter`:
 
 ```{r}
 # Sum two values
 10 + 5
 ```
 
-Just beware that the code you write here will not be saved, so it is more usefull for trying out things or for code, you don't need to save in a script. 
+Just beware that the code you write here will not be saved, so it is more usefull for trying out things or for code you don't need to save in a script.
 
 ### 3) Workspace
 

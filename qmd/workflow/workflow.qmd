@@ -1,21 +1,18 @@
-## Workflow
+---
+title: "Workflow"
+---
 
-### RStudio Projects
+## RStudio Projects
 
-Over time, it will become increasingly hard to organize all your files, working directories and workspaces in a reasonable manner. A reasonable big project will consists of multiple script files, data, output and plots. To keep everything toghether, RStudio Projects can be used (highly recommended). Therefore, when starting a new project in R, the first thing you should do is creating an RStudio project.   
+Over time, it will become increasingly hard to organize all your files, working directories and workspaces in a sensible manner. A reasonable big project will consist of multiple script files, data, output and plots. To keep everything toghether, [RStudio Projects](https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects) can be used (highly recommended). Therefore, when starting a new project in R, the first thing you should do is creating an RStudio project.
 
-You can create a new RStudio project by clicking on `File - New Project` in the RStudio window. 
+You can create a new RStudio project by clicking on `File - New Project` in the RStudio window. You can either create a totally new directory, or choose an already existing folder for the project.
 
-### Scripts
+## Scripts
 
 Scripts are the documents code is saved in.
+Therefore, every time you start a new project, you should also create at least one script to put your code in. If you have a lot of code, you can also split it up among several scripts to make it more readable.
 
-::: callout-warning
-When only coding in our [console](#console) we quickly run into the question where to save our code for further evaluation. Therefore, we want to write all our important code into a [script](https://nickhaf.github.io/r_tutorial/qmd/setup/setup.html#script-pane).
-:::
+You can create a new script by clicking on `File - New File - R Script` in the RStudio window.
 
-Therefore, every time you start a new project, you should also create at least one script to put your code in. You can also split up long code among several scripts to make it more readable.  
-
-You can create a new script by clicking on `File - New File - R Script` in the RStudio window.  
-
-Now it's your turn! In the Workflow exercise you will set yourself up for the following workshop. 
+Now it's your turn! In the [Workflow: Exercises](./workflow/workflow_exercise.qmd) you will set yourself up for the following workshop.
