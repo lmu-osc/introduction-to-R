@@ -19,6 +19,12 @@ psych_stats <- read.csv(
   sep = ";"
 )
 
+## Reshape into long format:
+psych_stats <- psych_stats %>%
+  pivot_longer(cols = messy_neat:innocent_jaded, 
+               names_to = "question", 
+               values_to = "rating")
+
 ## Take a look at the data sets
 str(characters)
 str(psych_stats)
@@ -40,7 +46,7 @@ Identify the common columns. Are they named the same in both data frames? Look a
 ::: {.callout-caution collapse="true"}
 ## Solution
 
-First, let\`s take a look at both data sets again:
+First, let's take a look at both data sets again:
 
 ```{r}
 str(characters)

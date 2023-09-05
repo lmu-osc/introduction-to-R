@@ -67,7 +67,7 @@ Now we have multiple rows for every character, but all question ratings are nice
 
 ## Exercise 3
 
-Try to reshape the data into long format.
+Try to reshape the data into long format again.
 
 ::: {.callout-caution collapse="true"}
 ## Solution
