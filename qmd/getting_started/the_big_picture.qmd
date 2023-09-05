@@ -161,8 +161,8 @@ We will use the package `ggplot2` (which is also part of the `tidyverse`) for [p
 
 A `ggplot` is constructed from multiple layers, that can be laid over each other using the `+` operator.
 
-We start with the function `ggplot()`, where we define our data and the x and y axes. This will draw our (empty) coordinate system. 
-We have to use the [`aes()`](http://localhost:7280/qmd/plotting/plotting.html#aes) (aesthetics) function for everything that changes in relation to the data. The simplest example would be our axes, as the exact location of each element in the plot is dependent on the x and y position deposited in the data frame: 
+We start with the function `ggplot()`, in which we define our data and the x and y axes. This will draw our (empty) coordinate system. 
+We have to use the [`aes()`]() (aesthetics) function for everything that changes in relation to the data. For example, the exact location of each element in the plot is dependent on the x and y position deposited in the data frame, so we have to specify our axes inside the `aes()` function: 
 
 ::: tidy
 ```{r}
@@ -178,30 +178,30 @@ p <- ggplot(
 p
 ```
 
-We can also define different colors for different groups. For example, if we want the bars to get filled with a color corresponding to the name they are representing, we can do that:
+Now that we have defined our aesthetics, we can add a [`geom`-layer]. This will make use of the data we have defined in `ggplot()` and plot some bars for us:
 
 ```{r}
-p <- ggplot(
-  data = babynames_F_max,
-  aes(
-    x = year,
-    y = percentage,
-    fill = name
-  )
-)
-```
-If we wanted all bars to have the same color, we would have specified the `fill` argument **outside** of the `aes()` function, because in that case, it wouldn't have to change in dependence of our data.
+#| fig-height: 8
+#| fig-width: 11
 
-Now that we have defined our aesthetics, we can add a `geom`-layer. This will make use of the data we have defined in `ggplot()` and plot some bars for us:
+p +
+  geom_col()
+```
+
+We can also define different colors for different groups. For example, if we want the bars to get filled with a color corresponding to the name they are representing, we can do that:
 
 ```{r}
 #| fig-height: 8
 #| fig-width: 11
 
 p <- p +
-  geom_col()
+  geom_col(aes(fill = name))
 p
+
 ```
+If we wanted all bars to have the same color, we would have specified the `fill` argument **outside** of the `aes()` function, because in that case, it wouldn't have to change in dependence of our data. 
+We could also have defined our `fill` argument in the `aes()` function we have defined in `ggplot()`. In that case, it would have influenced all `geom_()` functions. Because we defined it in `geom_col()`, it only influences this `geom_col()` call.
+
 
 Let's give the axes some more informative names and a title to the plot:
 
@@ -212,7 +212,7 @@ Let's give the axes some more informative names and a title to the plot:
 p <- p +
   ggtitle("Most common female name in the United States of America by year") +
   xlab("Birthyear") +
-  ylab("Percentage of children given that name relative to total births")
+  ylab("Percentage of children given that name")
 p
 ```
 
@@ -233,4 +233,4 @@ We would have many more options to style this plot further (for example we could
 
 ## Conclusion
 
-In this tutorial we have learned that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in. But first, take a look at the new data set you will be working with throughout the exercises.
+In this tutorial we have learned that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in. But first, take a look at the new data sets you will be working with throughout the exercises.
