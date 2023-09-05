@@ -39,7 +39,7 @@ characters <- readRDS(file = here::here("raw_data", "characters.rds"))
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-Take a look at the `.csv` file by opening it in a text editor. Look at the documentation of `read.csv()` and take a look at the `sep` argument. Can you define another separator, so R can deduce, which elements need to be separated into different cells?
+Take a look at the `.csv` file by opening it in a text editor. Look at the documentation of `read.csv()` and take a look at the `sep` argument. Can you define another separator, so R can deduce which elements need to be separated into different cells?
 :::
 
 ::: {.callout-caution collapse="true"}
@@ -53,13 +53,13 @@ psych_stats <- read.csv(file = here::here("raw_data", "psych_stats.csv"))
 head(psych_stats)
 ```
 
-Huh, that looks weird. If we take a look at the file by opening it in a text editor, we can see that the values are seperated by `;`. So let's call the help for `read.csv()`:
+Huh, that looks weird. If we take a look at the file by opening it in a text editor, we can see that the values are separated by `;`. So let's call the help for `read.csv()`:
 
 ```{r, eval = FALSE}
 ?read.csv
 ```
 
-The `sep` argument specifies that the seperator needs to be a white space (meaning tabs, spaces ... - look at the details in the documentation).\
+The `sep` argument specifies that the seperator needs to be a white space (meaning tabs, spaces ... - look at the details in the documentation).
 So, we can do the following:
 
 ```{r}
@@ -68,9 +68,9 @@ psych_stats <- read.csv(
   sep = ";"
 )
 
-head(psych_stats)
+str(psych_stats)
 ```
 
-This looks better!
+That looks better!
 :::
 :::

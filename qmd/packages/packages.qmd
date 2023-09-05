@@ -10,16 +10,14 @@ Packages are extensions to the `base R` you get by default. Most times they prov
 
 We can compare them somewhat to apps in an appstore:
 
-![](../pictures/playstore.png){width="19"}[^2] First, we have to install the package: `install.packages("packagename")`. It's like downloading an app from the playstore.
+![](../pictures/playstore.png){width="19"}\[\^2\] First, we have to install the package: `install.packages("packagename")`. It's like downloading an app from the playstore. \[\^2\]: Icons from [icons8.de](https://icons8.de).
+
+![](../pictures/app.png){width="19"}[^2] Then, we have to load them in each session where we want to use them (like tapping on the app icon): `library(packagename)`.
+
 [^2]: Icons from [icons8.de](https://icons8.de).
 
-![](../pictures/app.png){width="19"}[^3] Then, we have to load them in each session where we want to use them (like tapping on the app icon): `library(packagename)`.
-
-[^3]: Icons from [icons8.de](https://icons8.de).
-
-::: {.callout-tip}
-
-Note that in `install.packages("packagename")` we have to put the package into quotation marks, but not when calling `library(packagename)`. 
+::: callout-tip
+Note that in `install.packages("packagename")` we have to put the package into quotation marks, but not when calling `library(packagename)`.
 :::
 
 ## Install packages
@@ -98,5 +96,3 @@ sessionInfo()
 
 A more elegant approach to manage your packages is to use a dedicated package like [`renv`](https://rstudio.github.io/renv/articles/renv.html), which will make it a lot easier to manage your package versions. But this is past the scope of this workshop, just keep in mind it might be something rewarding to look at, if you should start to programm more with R.
 :::
-
-Now, let's take a look at how to get data into R in the next chapter, so we can actually start to work with it.

@@ -4,10 +4,10 @@ title: "Packages: Exercises"
 
 ## Exercise 1
 
-For this exercise, we are going to install all the packages we are going to need for the exercises in the coming chapters. So please install and load the following packages: 
+For this exercise, we are going to install all the packages we are going to need for the exercises in the coming chapters. So please install and load the following packages:
 
-- `tidyverse` 
-- `here`
+-   `tidyverse`
+-   `here`
 
 ::: {.callout-caution collapse="true"}
 ## Solution

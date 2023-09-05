@@ -18,7 +18,12 @@ This chapter is optional.
 ## Previous code
 
 ```{r}
+# install.packages("tidyverse")
+# install.packages("here")
+
 library(tidyverse)
+library(here)
+
 athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 ```
 
