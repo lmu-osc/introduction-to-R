@@ -12,7 +12,7 @@ Throughout this workshop you will come into contact with some functions from the
 
 We will mainly use the `tidyverse` packages `dpylr` and `ggplot2`.
 
-## The pipe operator
+## The Pipe Operator
 
 `tidyverse` code is often written using the pipe operator `%>%` (read as '*then do*'), which makes it easy to connect multiple function calls:
 
@@ -22,10 +22,10 @@ In base R, one could write:
 sum(seq(from = 1, to = mean(c(45:100), na.rm = TRUE), by = 0.1))
 ```
 
-Which, in the tidyverse, would be written:
+Which, in the tidyverse, would be written like so:
 
 ::: tidy
-```{r, output.lines=4}
+```{r, message = FALSE}
 library(tidyverse)
 
 c(45:100) %>%
