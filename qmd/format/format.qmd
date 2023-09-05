@@ -1,5 +1,5 @@
 ---
-title: "Wide and Long Format"
+title: "Reshaping"
 ---
 
 ::: {.callout-caution icon="false" collapse="true"}

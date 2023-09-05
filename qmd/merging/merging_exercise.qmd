@@ -2,13 +2,15 @@
 title: "Merging: Exercise"
 ---
 
-
-
 ::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
 
 ```{r, message = FALSE}
+# install.packages("tidyverse")
+# install.packages("here")
+
 library(tidyverse)
+library(here)
 
 ## Load the data
 characters <- readRDS(file = here::here("raw_data", "characters.rds"))
@@ -23,8 +25,7 @@ str(psych_stats)
 ```
 :::
 
-Now we have gotten to know our `characters` data set a bit more. However, the personality ratings are not included yet. For that, we need to load the `psych_stats` data set as well, which contains the ratings for all characters. 
-Now we want to combine both data frames into one, so all information belonging together can be found in the same data frame.
+Now we have gotten to know our `characters` data set a bit more. However, the personality ratings are not included yet. For that, we need to combine it with the `psych_stats` data set.
 
 ## Exercise 1
 

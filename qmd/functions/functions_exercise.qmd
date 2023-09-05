@@ -2,6 +2,10 @@
 title: "Functions: Exercises"
 ---
 
+::: callout-note
+These exercises are optional.
+:::
+
 ## Exerise 1
 
 Take a look at the following function:

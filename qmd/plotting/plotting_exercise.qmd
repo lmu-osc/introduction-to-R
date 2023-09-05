@@ -2,9 +2,13 @@
 title: "Plotting: Exercises"
 ---
 
+::: callout-note
+These exercises are optional.
+:::
 
 ::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
+
 ```{r, message = FALSE}
 library(tidyverse)
 
@@ -31,22 +35,25 @@ characters_stats <- merge(
 ```
 :::
 
-
 ## Exercise 1
-Now, let's make a nice plot out of the data we've got. 
 
-1. Select up to `15` questions you want to display in the plot and save them into a new vector. 
+Now, let's make a nice plot out of the data we've got.
+
+1.  Select up to `15` questions you want to display in the plot and save them into a new vector.
 
 ::: {.callout-caution collapse="true"}
 ## Solution
+
 I'm just gonna take the first 15 questions from all unique ones:
+
 ```{r}
 questions <- unique(characters_stats$question)[1:10]
 questions
 ```
 :::
 
-2. Select one show (your favorite), extract it from the data frame and save it into a new data set. It should only contain the questions you have selected in the first step. 
+2.  Select one show (your favorite), extract it from the data frame and save it into a new data set. It should only contain the questions you have selected in the first step.
+
 ```{r}
 characters_subset <- characters_stats %>% 
   filter(uni_name %in% c("Friends"), 
@@ -80,5 +87,3 @@ ggplot(data = characters_subset,
 ## second axis?
   
 ```
-
-
