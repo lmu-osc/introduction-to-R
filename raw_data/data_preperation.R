@@ -88,6 +88,10 @@ psych_stats <- tuesdata$psych_stats %>%
 saveRDS(characters,
   file = here::here("raw_data", "characters.rds")
 )
+
+write.table(psych_stats, here::here("raw_data", "psych_stats.csv"), sep = ";")
+psych_stats <- read.csv(here::here("raw_data", "psych_stats.csv"), sep = ";") %>%
+  select(-starts_with("X."))
 write.table(psych_stats, here::here("raw_data", "psych_stats.csv"), sep = ";")
 
 # Volleyball data ------------------------------------------------------------

@@ -92,7 +92,7 @@ for(i in unique(characters_friends$question)){ # goes over all unique questions
     filter(question == i)
   
   ## Calculate the mean for that subset:
-  question_mean <- mean(question_dat$mean_rating)
+  question_mean <- mean(question_dat$rating)
   
   ## Build and print the final statement:
   statement <- paste("The mean rating for the fictional universe 'Friends' on the question '", i, "' is:", question_mean)
@@ -130,7 +130,7 @@ for(i in 1:length(unique(characters_friends$question))){
     filter(question == question_i)
   
   ## Calculate the mean for that question
-  question_mean <- mean(question_dat$mean_rating)
+  question_mean <- mean(question_dat$rating)
 
   ## Save the question in the row corresponding to the position of i:
   mean_ratings[i, "question"] <- question_i
@@ -148,11 +148,11 @@ head(mean_ratings)
 ```{r}
 characters_friends %>%
   group_by(question) %>%
-  summarise(mean_rating = mean(mean_rating)) %>%
+  summarise(mean_rating = mean(rating)) %>%
   ## Let's look at the rating of this question for comparison:
-  filter(question == 'beautiful/ugly')
+  filter(question == 'beautiful_ugly')
 ```
 :::
 
-Great, its the same! So it ist propably a lot easier to just use `group_by()` with `summarise()`, but maybe not quite as instructive.
+Great, its the same!
 :::
