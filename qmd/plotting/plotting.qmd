@@ -33,7 +33,7 @@ Now, let's take a closer look at how `ggplot2` works. We already had a quick gli
 
 First, let's plot a relatively simple plot to get you familiar with how `ggplot2` works. After that, we will use the preparation we have done in the last chapters to plot the number of gold medals each country has won over the years on a world map, which gets slightly more complex.
 
-## First plot
+# First plot
 
 For this plot, we want to find the country with the most medal winners for each sport. The preparation is pretty similar to what we have done [before]().
 
@@ -52,11 +52,11 @@ best_by_sport <- athletes %>%
   slice(which.max(n)) 
 ```
 
-### `ggplot()`
+## `ggplot()`
 
 In general, a `ggplot` starts with the `ggplot()` function. In it we define the data we want to use, and some aesthetics. The `ggplot()` function then draws our (currently still empty) plotting area, with the defined axes (see next section).
 
-### `aes()`
+## `aes()`
 
 Aesthetics set parameters **dependent on the data**. In most cases, we will define our x and y axis here. We can also group data together by groups found in a column. If we want the data to have a different color, form, filling etc. depending on values in a column, we can define that here as well (we will look at that later on).
 
@@ -77,7 +77,7 @@ p
 
 In this case, the sport is plotted on the x axis and the number of gold medals (`n`) on the y axis. Bar filling will vary depending on the region.
 
-### geom\_()
+## geom\_()
 
 The geoms do the actual plotting. For example, if we want a barplot:
 
@@ -112,7 +112,7 @@ p +
 
 This gives us black points now. If we had defined our aesthetics in the `ggplot()` function, the points would have the same colors as the bars. Also note that we layed another geom (`geom_point()`) over our plot, we added a new layer (that's what I meant earlier on by saying plots consist of different layers).
 
-### General plotting options
+## General plotting options
 
 We can tweak all aspects of the appearance of a plot. For example, we might want to turn the x axis labels by 90 degrees to actually make them readable:
 
@@ -172,7 +172,7 @@ Of course we don't have to assign every intermediate step to the `p` object. Nor
 
 Pretty cool! Now we know that the most Olympic Tug-Of-War gold medalists are from the UK! Also note that we are looking at the number of people from each country winning a gold medal, so team sports are counted multiple times.
 
-## Second plot
+# Second plot
 
 Let's take a look at a different plot, just to see what can be easily achieved with `ggplot2` (and we have prepared the data to do that, so we don't want to waste the work).
 
