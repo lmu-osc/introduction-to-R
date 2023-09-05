@@ -17,7 +17,9 @@ Throughout this script I will use a mixture of [tidyverse](../basics/tidyverse.q
 :::
 
 ## Exercise 1
-### 1)
+
+### 1) Loading Data
+
 [Download](../load_data/load_data_exercise.qmd) the data sets [`vb_w` and `vb_l`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and [load the data](../load_data/load_data.qmd) into R.
 
 ::: {.callout-tip collapse="true"}
@@ -47,7 +49,7 @@ str(vb_l)
 ```
 :::
 
-### 2)
+### 2) Merging
 
 [Merge](../merging/merging.qmd) `vb_l` and `vb_w`.
 
@@ -57,9 +59,9 @@ str(vb_l)
 Use the argument `by` in `merge()` to select the columns `id` and `gender` on which the data sets wil get merged.
 :::
 
-
 ::: {.callout-tip collapse="true"}
 ## Solution
+
 ```{r}
 vb <- merge(vb_l,
   vb_w,
@@ -67,10 +69,12 @@ vb <- merge(vb_l,
 )
 str(vb)
 ```
-If we don't put `gender` into the `by` argument, it will get duplicated with the suffix `.x` and `.y`. This happens because both data frames have a column with this name. But if we merge by this column, the function knows they belong together. 
+
+If we don't put `gender` into the `by` argument, it will get duplicated with the suffix `.x` and `.y`. This happens because both data frames have a column with this name. But if we merge by this column, the function knows they belong together.
 :::
 
-### 3)
+### 3) Selecting Columns
+
 [Select](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#columns) only the columns from the data frames that are relevant to our 'research question'.
 
 ::: {.callout-tip collapse="true"}
@@ -87,7 +91,8 @@ vb <- vb[, c("gender", "l_p1_hgt", "l_p2_hgt", "w_p1_hgt", "w_p2_hgt")]
 ```
 :::
 
-### 4)
+### 4) Removing Missings
+
 Remove any remaining [NAs](../missing/missing.qmd) from this data set.
 
 ::: {.callout-tip collapse="true"}
@@ -104,7 +109,8 @@ vb <- na.omit(vb)
 ```
 :::
 
-### 5)
+### 5) Calculating Mean
+
 Calculate the mean height by team. Add the results in two [new columns](https://nickhaf.github.io/r_tutorial/qmd/getting_started/the_big_picture.html#adding-a-new-column) to the `vb` data frame, one for the losing team mean height, and one for the winning team mean height.
 
 ::: {.callout-tip collapse="true"}
@@ -126,12 +132,13 @@ vb$losing_height <- rowMeans(vb[, c("l_p1_hgt", "l_p2_hgt")])
 
 Now, let's do a paired t-test comparing the mean winners height against the mean losers height.
 
-### 1)
+### 1) Histogram
+
 One assumption of the paired t-test is a normal distribution of the differences of the pairs. Check this assumption [visually](../plotting/plotting.qmd) by creating a histogram of the `winning_height - losing_height` difference. Use a [`for-loop`](../for_loop/for_loop.qmd) to create one histogram for the men and one for the women data set. You need to explicitly `print()` the plot if you want to display it from within a `for-loop`.
 
 ::: {.callout-tip collapse="true"}
-1. The start of your for loop should look like this: `for(i in c("M", "W")){`. Inside, filter for men/women, and then create the plot using this subsetted data frame.
-1. Use `geom_histogram()` as `geom` for your plot.
+1.  The start of your for loop should look like this: `for(i in c("M", "W")){`. Inside, filter for men/women, and then create the plot using this subsetted data frame.
+2.  Use `geom_histogram()` as `geom` for your plot.
 :::
 
 ::: {.callout-caution collapse="true"}
@@ -158,18 +165,20 @@ for (i in c("M", "W")) {
 ```
 :::
 
-### 2)
+### 2) Paired t-test
+
 Do a paired t-test comparing the winning teams height vs the losing teams height. Again use a [`for-loop`](../loops/loopq.qmd) to test for men and women separately. Save the result in a [list](https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#honorable-mention-list)), and name the list elements.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-1. Use the function `t.test()` and set the argument `paired = "true"`.
-1. To save the result in an empty list you have created, use: `result_list[[i]] <- calculation`.
+1.  Use the function `t.test()` and set the argument `paired = "true"`.
+2.  To save the result in an empty list you have created, use: `result_list[[i]] <- calculation`.
 :::
 
 ::: {.callout-caution collapse="true"}
 ## Solution
+
 ```{r}
 ## Define an empty list to save your t-test results in. 
 result_list <- list()
@@ -216,7 +225,8 @@ The output of `lapply()` is always a list, so we don't have to define an empty l
 :::
 :::
 
-### 3)
+### 3) Functions
+
 Look at the mean differences. Not very big, right? Let's calculate a standardized effect size, Cohen's *d*:
 
 $d = \frac{\overline{x}_1 - \overline{x}_2}{\sqrt{(s^2_1 + s^2_2)/2}}$
@@ -225,6 +235,7 @@ Write a [function](../functions/functions.qmd) to do that, then add it to your l
 
 ::: {.callout-caution collapse="true"}
 ## Solution
+
 ```{r}
 ## Function for calculating Cohen's d
 cohens_d <- function(x_1, x_2, var_1, var_2) {
@@ -261,10 +272,12 @@ So, following Cohen's conventions, this could be interpreted as (very) small eff
 ## Exercise 3
 
 ### 1) Reshaping
+
 [Reshape](../format/format.qmd) the `vb` data frame (with both men and women in it) into long format, so all heights can be found in one column, with the winning/losing information in another column.
 
 ::: {.callout-caution collapse="true"}
 ## Solution
+
 ::: tidy
 ```{r}
 vb_long <- vb %>%
@@ -280,16 +293,18 @@ head(vb_long)
 :::
 
 ### 2) Plotting
+
 [Use `ggplot`](../plotting/plotting.qmd) to build a violin plot showing the winners and losers height distribution by gender. Violin plots are similar to box plots but have the advantage of conveying more distributional information. If you want, you can also add a small box plot on top of the violin plot to have the advantage of both. Give meaningful axis labels and a plot title.
 
-::: {.callout-tip}
+::: callout-tip
 ## Hint
-We want four violin plots/box plots in the end. Two for the winning teams (men, women), and two for the losing teams (men/women). The easiest way to achieve this is to [build a new column](https://nickhaf.github.io/r_tutorial/qmd/getting_started/the_big_picture.html#adding-a-new-column) containing the winning information and the gender in one pasted string. This new column can then be used as the x axis. This is not necessarily required, but makes it easier to lay the boxplot on top of the violin plot.  
 
+We want four violin plots/box plots in the end. Two for the winning teams (men, women), and two for the losing teams (men/women). The easiest way to achieve this is to [build a new column](https://nickhaf.github.io/r_tutorial/qmd/getting_started/the_big_picture.html#adding-a-new-column) containing the winning information and the gender in one pasted string. This new column can then be used as the x axis. This is not necessarily required, but makes it easier to lay the boxplot on top of the violin plot.
 :::
 
 ::: {.callout-caution collapse="true"}
 ## Solution
+
 ::: tidy
 ```{r}
 ## Build a new column that can be used as x axis.
