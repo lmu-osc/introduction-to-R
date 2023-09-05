@@ -124,7 +124,7 @@ Hmm, that looks a bit weird. Some rows only contain `NA` values. That's because 
 In the long run, always having to specify the name of the data frame for each column or row with condition can become a bit annoying and clutters the code. Also this code leaves all rows with missing values...\
 Instead, we can use the `filter()` function from the tidyverse:
 
-#### Rows: Tidyverse
+### Rows: Tidyverse
 
 ::: tidy
 ```{r, message = FALSE, output.lines=4}
@@ -137,7 +137,7 @@ athletes %>%
 
 Note how we can just write our conditions without connecting them with `&` (`filter()` does that automatically for us). Also, we don't have to put the column names into `""`, because `filter()` knows that this are column names of the `athletes` data frame, which makes coding a bit more pleasant. And finally, missing rows are automatically removed, which makes sense in many cases!
 
-#### Columns: Tidyverse
+### Columns: Tidyverse
 
 For extracting columns, we need `select()`:
 

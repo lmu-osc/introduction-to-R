@@ -8,8 +8,7 @@ date: 09-11-2023
 
 ## About this workshop
 
-Welcome![^1][^2] This workshop will teach you the basics of R. It's structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](/qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to scientific programming with R and want to follow the course structure? 
-This workshop provides different entry points. You can either follow the outline on the left side and work on all topics in the order they are presented in. If you already have some R experience, you might want to read [The Big Picture](/qmd/getting_started/the_big_picture.qmd) and/or the [Final Exercise](./qmd/final_exercise/final_exercise.qmd) first to identify topics of interest for you. 
+Welcome![^1][^2] This workshop will teach you the basics of R. It's structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](/qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to programming with R and want to follow the course structure? This workshop provides different entry points. You can either follow the outline on the left side and work on all topics in the order they are presented in. Or, if you already have some R experience, you might want to read [The Big Picture](/qmd/getting_started/the_big_picture.qmd) and/or the [The Big Picture: Exercise](./qmd/final_exercise/final_exercise.qmd) first to identify topics you want to work on.
 
 [^1]: This workshop was designed by Nicklas Hafiz, PhD student and research fellow at the Institut für Qualitätsentwicklung im Bildungswesen (IQB).
 
@@ -18,17 +17,15 @@ This workshop provides different entry points. You can either follow the outline
 ::: {.callout-note collapse="true" icon="false"}
 ## Unfold if you want to learn more about optional content
 
-Don't worry if you don't finish the whole workshop in time, or the material seems a bit overwhelming. It is designed to provide additional information for self studying and looking up topics of interest (that may come up during the following week, or in general). Optional input and exercises can be found in folded in sections like this one.
+Don't worry if you don't finish the whole workshop in time, or the material seems a bit overwhelming. It is designed to provide additional information for self studying and looking up topics of interest. Optional input and exercises can be found in folded in sections like this one.
 :::
 
 The main objective of this workshop is to get you started with using R for your own scientific work. To do that, we will repeat and try out the main concepts multiple times, so you get to work with them as much and as from many different perspectives as possible. Along the way, some advanced ideas will be introduced as well, which you can follow up on later in case you think they might be relevant for your own work.
 
-Each section is divided into a theory part and some exercises. Most of these exercises will use the `characters` data set, more on that in the [next chapter](/qmd/getting_started/data_sets.qmd).  
-
-You can use the [Ask a question](https://docs.google.com/document/d/19uUsS9xiAsxmAtblkaPqbdl3m1IxurWKOoPdTc0oymM/edit) button on the upper right corner if something is unclear to you. 
+Each section is divided into a theory part and some exercises. If something is unclear, you can use the [Ask a question](https://docs.google.com/document/d/19uUsS9xiAsxmAtblkaPqbdl3m1IxurWKOoPdTc0oymM/edit) button on the upper right corner.
 
 ::: callout-tip
-Learning how to program can be tough, and to get started it is important to write as much code as possible, and think about many different problems to get used to coding. So do the exercises! They will hopefully get you started with solving problems in R.
+Learning how to program can be tough, and to get started it is important to write as much code as possible, and think about many different problems to get used to coding. So do the exercises!
 :::
 
 ::: callout-warning
