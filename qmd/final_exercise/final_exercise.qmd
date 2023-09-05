@@ -127,7 +127,7 @@ vb$losing_height <- rowMeans(vb[, c("l_p1_hgt", "l_p2_hgt")])
 Now, let's do a paired t-test comparing the mean winners height against the mean losers height.
 
 ### 1)
-One assumption of the paired t-test is a normal distribution of the differences of the pairs. Check this assumption [visually](../plotting/plotting.qmd) by creating a histogram of the `winning_height - losing_height` difference. Use a [`for-loop`](../for_loop/for_loop.qmd) to create one histogram from the men and one for the women data set. You need to explicitly `print()` the plot if you want to display it from within a `for-loop`.
+One assumption of the paired t-test is a normal distribution of the differences of the pairs. Check this assumption [visually](../plotting/plotting.qmd) by creating a histogram of the `winning_height - losing_height` difference. Use a [`for-loop`](../for_loop/for_loop.qmd) to create one histogram for the men and one for the women data set. You need to explicitly `print()` the plot if you want to display it from within a `for-loop`.
 
 ::: {.callout-tip collapse="true"}
 1. The start of your for loop should look like this: `for(i in c("M", "W")){`. Inside, filter for men/women, and then create the plot using this subsetted data frame.
@@ -141,7 +141,7 @@ One assumption of the paired t-test is a normal distribution of the differences 
 
 for (i in c("M", "W")) {
   
-  ## Filter the gender i is at at the moment
+## Extract men/women, depending on i
   vb_gender <- vb %>% filter(gender == i)
 
   p <- ggplot(
@@ -159,42 +159,60 @@ for (i in c("M", "W")) {
 :::
 
 ### 2)
-Do a paired t-test comparing the winning teams height vs the losing team height. Again use a [`for-loop`](../loops/loopq.qmd) to test for men and women separately. Save the result in a [list](https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#honorable-mention-list)), and name the list.
+Do a paired t-test comparing the winning teams height vs the losing teams height. Again use a [`for-loop`](../loops/loopq.qmd) to test for men and women separately. Save the result in a [list](https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#honorable-mention-list)), and name the list elements.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-Use the function `t.test()` and set the argument `paired = "true"`.
+1. Use the function `t.test()` and set the argument `paired = "true"`.
+1. To save the result in an empty list you have created, use: `result_list[[i]] <- calculation`.
 :::
 
 ::: {.callout-caution collapse="true"}
+## Solution
 ```{r}
+## Define an empty list to save your t-test results in. 
 result_list <- list()
 
+## Iterate over men and women:
 for (i in c("M", "W")) {
+  
+  ## Extract men/women, depending on i
   vb_gender <- vb %>% filter(gender == i)
 
-  result_list[[i]] <- t.test(vb_gender$winning_height, vb_gender$losing_height, paired = "true")
+  ## Do the t-test and save the result 
+  result_list[[i]] <- t.test(vb_gender$winning_height, 
+                             vb_gender$losing_height, 
+                             paired = "true")
 }
 
 result_list
 ```
 
-Th p-value is `< 0.001`. However, we have a **very** large sample, so almost all group differences will become significant.
+Th p-value is `< 0.001` in both subgroups. However, we have a **very** large sample, so almost all group differences will become significant.
 
 ::: callout-note
-Actually, this would be a perfect application for `lapply()`:
+Actually, this example would be a perfect application for [`lapply()`](https://r-coder.com/lapply-r/?utm_content=cmp-true):
 
 ```{r}
 result_list <- lapply(c("M", "W"), function(x) {
+  
+  ## Extract men/women
   vb_gender <- vb %>% filter(gender == x)
+  
+  ## Calculate the t-test. Note how we don't need an empty list to save the results in, lapply() does that for us. 
   t_test_result <- t.test(vb_gender$winning_height, vb_gender$losing_height, paired = "true")
+  
+  ## Explictly return the result:
   return(t_test_result)
+  
 })
+
+## We still hav to name our resulting list to know what is what: 
 names(result_list) <- c("M", "W")
 ```
 
-The output of `lapply()` is a list, so we don't have to define an empty list in the beginning of the loop.
+The output of `lapply()` is always a list, so we don't have to define an empty list in the beginning of the loop.
 :::
 :::
 
@@ -203,10 +221,12 @@ Look at the mean differences. Not very big, right? Let's calculate a standardize
 
 $d = \frac{\overline{x}_1 - \overline{x}_2}{\sqrt{(s^2_1 + s^2_2)/2}}$
 
-Write a [function](../functions/functions.qmd) to do that, then add it to your loop.
+Write a [function](../functions/functions.qmd) to do that, then add it to your loop so Cohen's *d* gets printed into your console.
 
 ::: {.callout-caution collapse="true"}
+## Solution
 ```{r}
+## Function for calculating Cohen's d
 cohens_d <- function(x_1, x_2, var_1, var_2) {
   d <- (x_1 - x_2) / (sqrt(var_1 + var_2) / 2)
   return(d)
@@ -214,29 +234,37 @@ cohens_d <- function(x_1, x_2, var_1, var_2) {
 
 
 for (i in c("M", "W")) {
+  
+  ## filter men/women
   vb_gender <- vb %>% filter(gender == i)
 
+  ## Paired t-test
   result_list[[i]] <- t.test(vb_gender$winning_height, vb_gender$losing_height, paired = "true")
+  
+  ## Our Cohen's d function
   d <- cohens_d(
     x_1 = mean(vb_gender$winning_height),
     x_2 = mean(vb_gender$losing_height),
     var_1 = var(vb_gender$winning_height),
     var_2 = var(vb_gender$losing_height)
   )
+  
+  ## Print d
   print(d)
 }
 
 ```
 
-So, following Cohen's conventions, this could be interpreted as a (very) small effect sizes. The height differences in professional volleyball are therefore probably negligible, as the size differences will be very small anyways, but still, teams with taller players seem to have a very small edge.
+So, following Cohen's conventions, this could be interpreted as (very) small effect sizes. The height differences in professional volleyball are therefore probably negligible, as the size differences will be very small anyways, but still, teams with taller players seem to have a very slight edge.
 :::
 
 ## Exercise 3
 
-### 1)
-Reform the `vb` data frame (with both men and women in it) into [long format](../format/format.qmd), so all heights can be found in one column, with the winning/losing information in another column.
+### 1) Reshaping
+[Reshape](../format/format.qmd) the `vb` data frame (with both men and women in it) into long format, so all heights can be found in one column, with the winning/losing information in another column.
 
 ::: {.callout-caution collapse="true"}
+## Solution
 ::: tidy
 ```{r}
 vb_long <- vb %>%
@@ -245,26 +273,51 @@ vb_long <- vb %>%
     names_to = "result",
     values_to = "mean_height"
   )
+
+head(vb_long)
 ```
 :::
 :::
 
-### 2)
+### 2) Plotting
 [Use `ggplot`](../plotting/plotting.qmd) to build a violin plot showing the winners and losers height distribution by gender. Violin plots are similar to box plots but have the advantage of conveying more distributional information. If you want, you can also add a small box plot on top of the violin plot to have the advantage of both. Give meaningful axis labels and a plot title.
 
+::: {.callout-tip}
+## Hint
+We want four violin plots/box plots in the end. Two for the winning teams (men, women), and two for the losing teams (men/women). The easiest way to achieve this is to [build a new column](https://nickhaf.github.io/r_tutorial/qmd/getting_started/the_big_picture.html#adding-a-new-column) containing the winning information and the gender in one pasted string. This new column can then be used as the x axis. This is not necessarily required, but makes it easier to lay the boxplot on top of the violin plot.  
+
+:::
+
 ::: {.callout-caution collapse="true"}
+## Solution
 ::: tidy
 ```{r}
+## Build a new column that can be used as x axis.
 vb_long <- vb_long %>%
   mutate(group = paste0(.$result, .$gender))
 
+
+## Build the coordinate system
 ggplot(vb_long,
-  mapping = aes(x = group, y = mean_height, fill = gender)
+  mapping = aes(x = group, 
+                y = mean_height, 
+                fill = gender)
 ) +
+  ## Violin plot:
   geom_violin() +
-  geom_boxplot(width = 0.1, color = "grey", alpha = 0.2, position = "dodge") +
+  ## Boxplot with some additional specifications:
+  geom_boxplot(width = 0.1, 
+               color = "grey", 
+               alpha = 0.2, 
+               position = "dodge") +
+  ## New colour palette:
   scale_fill_brewer(palette = "Dark2") +
-  theme_bw()
+  ## New theme:
+  theme_bw() +
+  ## Labels:
+  ggtitle("Height differences between winning and losing teams in professional volleyball") +
+  ylab("Height in inch") +
+  xlab("Group")
 ```
 :::
 :::
