@@ -2,12 +2,15 @@
 title: "Getting an Overview: Exercises"
 ---
 
-
 ::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
 
 ```{r, message = FALSE}
+# install.packages("tidyverse")
+# install.packages("here")
+
 library(tidyverse)
+library(here)
 
 ## Load the data
 characters <- readRDS(file = here::here("raw_data", "characters.rds"))
@@ -18,10 +21,11 @@ psych_stats <- read.csv(
 ```
 :::
 
-
 ## Exercise 1
-Take a look at the `characters` data set.
-1.  How many rows and how many columns does the data frame have?
+
+Take a look at the `characters` data set. 
+
+1. How many rows and how many columns does the data frame have?
 
 ::: {.callout-tip collapse="true"}
 ## Hint
@@ -53,6 +57,6 @@ Use `head()`.
 ```{r}
 head(characters)
 ```
+They are from Friends.
 :::
 
-They are from Friends.

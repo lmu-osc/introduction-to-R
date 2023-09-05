@@ -6,7 +6,11 @@ title: "Subsetting data: Exercises"
 ## Previous code
 
 ```{r, message = FALSE}
+# install.packages("tidyverse")
+# install.packages("here")
+
 library(tidyverse)
+library(here)
 
 ## Load the data
 characters <- readRDS(file = here::here("raw_data", "characters.rds"))
@@ -55,6 +59,7 @@ You need to extract the column from the data frame with `$` before you can compa
 :::
 
 ::: {.callout-caution collapse="true"}
+## Solution
 ```{r}
 characters[characters$uni_name == "Friends", ]
 
@@ -94,9 +99,10 @@ You need to define a logical vector which contains `TRUE` values for all "Game o
 ```{r}
 characters[characters$uni_name == "Game of Thrones" & characters$notability > 90, ]
 ```
+That's only Tyrion Lannister.
+
 :::
 
-That's only Tyrion Lannister.
 
 2.  Which characters from "How I Met Your Mother" or "Breaking Bad" are included in the data? Use the `tidyverse`.
 

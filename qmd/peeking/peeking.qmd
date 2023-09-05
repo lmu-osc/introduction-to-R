@@ -6,6 +6,12 @@ title: "Getting an overview"
 ## Previous code
 
 ```{r}
+# install.packages("tidyverse")
+# install.packages("here")
+
+library(tidyverse)
+library(here)
+
 athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 ```
 :::
@@ -14,14 +20,14 @@ Before starting to do something with your data, it is always a good idea to get 
 
 1.  Which variables does our data have?
 2.  How many rows/columns does our data frame have? If we have a list, how long is it, what is saved within?
-3.  What types do our variables have (are they numeric, character ...)? Do we have to transform them, before we can work with them?
+3.  What types do our variables have (are they numeric, character ...)? Do we have to transform them before we can work with them?
 4.  Do we have any [missing values](../missing/missing.qmd)?
 
 To answer these questions, we have different tools at our disposal:
 
 ## `View()`
 
-`View()` will open the data set excel-style in a new window:
+`View()` will open the data set Excel-style in a new window:
 
 ```{r, eval = FALSE}
 View(athletes)

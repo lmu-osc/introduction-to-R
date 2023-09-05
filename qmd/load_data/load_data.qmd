@@ -12,10 +12,9 @@ title: "Loading data"
 library(tidyverse)
 library(here)
 ```
-
 :::
 
-## Data types
+## Data types {#data-types}
 
 There are many different data types that can be loaded into R. Depending on the type, different commands are used. Sometimes, we will have to use additional packages to get access to that function, mainly `readxl`, `writexl` and `haven`.
 
