@@ -2,7 +2,7 @@
 title: "Wide and Long Format"
 ---
 
-In this chapter, we will look at a simpler data set that makes it a bit easier to explain reshaping as our relatively complex `athletes` data set, which already has a sensible shape.
+In this chapter, we will look at a simpler data set that makes it a bit easier to explain reshaping between the wide and long data format, as our relatively complex `athletes` data set.
 
 Let's define our own data set:
 
@@ -22,11 +22,11 @@ In the wide format, we have only one row per unit of analysis. In this example, 
 head(inhabitants_wide)
 ```
 
-However, the variable `inhabitatns` is stretched over multiple rows. In many cases it makes sense to reshape the data, so the `inhabitants` are all put into one column:
+However, the variable `inhabitants` is stretched over multiple rows. In many cases it makes sense to reshape the data, so the `inhabitants` are all put into one column:
 
 ## Long Format
 
-This would be the long data format, where each unit of analysis is spread over multiple rows.
+This is what happens in the Long data Format does, where each unit of analysis is spread over multiple rows.
 
 ## Reshaping from Wide to Long Format
 
