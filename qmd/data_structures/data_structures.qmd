@@ -1,4 +1,4 @@
-# Data structures
+# Data Structures
 
 There are five main data structures in R which differ on their dimensions (one dimension, two dimensions, n dimensions) and the type of the elements they are containing (same type, different types):[^data_structures-1]
 
@@ -33,7 +33,7 @@ log_vec <- c(TRUE, FALSE)
 log_vec
 ```
 
-### Remarks: Data types
+### Data types
 
 If we take a look at the structure of the vectors we have just created, we see se a short description of the data type we are dealing with in front of the vector:
 
@@ -53,7 +53,7 @@ gives us a warning, because the input has the wrong format.
 
 ## Data frame
 
-A data frame is two dimensional and can store elements of different types. It is the closest to data tables we are probably most used to working with.
+A data frame is two dimensional and can store elements of different types. It is the closest to the data tables we are probably most used to working with in Excel.
 
 ```{r}
 persons <- data.frame(name = c("Anna", "Alex", "John", "Jessi"),
@@ -63,7 +63,7 @@ persons <- data.frame(name = c("Anna", "Alex", "John", "Jessi"),
                       )
 ```
 
-Note that we do nothing else here than combining vectors to a data frame. Each vector will be one column.
+Note that we do nothing else here than combining vectors to a data frame. Each vector will be one column, with an assigned column name.
 
 ### Adding new columns
 
@@ -80,13 +80,14 @@ Or, using the `tidyverse` with the help of `mutate()`:
 ```{r, message = FALSE}
 library(tidyverse)
 
-persons <- mutate(persons, big5_agree= c(2, 5, 2, 1) )
+persons <- persons %>% 
+  mutate(big5_agree= c(2, 5, 2, 1) )
 ```
 :::
 
 ### Tibbles
 
-A special type of data frames are the so called `tibbles`. Tibbles are a modern version of data frames and the standard data frame type of the `tidyverse`, as they have some advantageous characteristics (e.g., note the more informative printing of the data frame). So don't be confused if you run into them, in general they behave like data frames.
+A special type of data frame are the so called `tibbles`. Tibbles are a modern version of data frames and the standard data frame type of the `tidyverse`, as they have some advantageous characteristics (e.g., note the more informative printing of the data frame). So don't be confused if you run into them, in general they behave like data frames.
 
 ::: tidy
 ```{r}
@@ -114,4 +115,4 @@ personality_rating <- list(
 personality_rating
 ```
 
-Here, we define the list `personality_rating`, which includes a data frame with the personality rating, and some meta information in the form of a character vector, describing the rating type. We won't use it any more in this workshop, but keep in mind it exists, as it quickly becomes necessary for managing more complex tasks.
+Here, we define the list `personality_ratings`, which includes a data frame with the personality rating, and some meta information in the form of a character vector, describing the rating type. We won't use it much in this workshop, but keep in mind it exists, as it quickly becomes necessary for managing more complex tasks.

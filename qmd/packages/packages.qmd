@@ -4,31 +4,33 @@ title: "Packages"
 
 ![](../pictures/drawers.jpg)[^1]
 
-[^1]: Image by [Jan Antonin Kolar](https://unsplash.com/de/@jankolar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on \[Unsplash\]https://unsplash.com/de/fotos/lRoX0shwjUQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
+[^1]: Image by [Jan Antonin Kolar](https://unsplash.com/de/@jankolar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/lRoX0shwjUQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 
 Packages are extensions to the `base R` you get by default. Most times they provide many new functions, bundled around a specific use case. When working with R you will have to rely heavily on packages developed by others. There are many, many great packages out there facilitating your work with R and making possible many different analyses, visualizations and many more.
 
 We can compare them somewhat to apps in an appstore:
 
-![](../pictures/playstore.png){width="19"}[^2] First, we have to install the package: `install.packages("packagename")`. Most of the openly available packages lie on [CRAN](https://cran.r-project.org/) (Comprehensive R Archive Network). But you can also download packages form other sources, for example [GitHub](https://github.com/).
-
+![](../pictures/playstore.png){width="19"}[^2] First, we have to install the package: `install.packages("packagename")`. It's like downloading an app from the playstore.
 [^2]: Icons from [icons8.de](https://icons8.de).
 
 ![](../pictures/app.png){width="19"}[^3] Then, we have to load them in each session where we want to use them (like tapping on the app icon): `library(packagename)`.
 
 [^3]: Icons from [icons8.de](https://icons8.de).
 
--   Note that in `install.packages("packagename")` we have to put the package into quotation marks, but not when calling `library(packagename)`.
+::: {.callout-tip}
+
+Note that in `install.packages("packagename")` we have to put the package into quotation marks, but not when calling `library(packagename)`. 
+:::
 
 ## Install packages
 
-Before we can use packages we have to install them once. Most packages are hosted via the Comprehensive R Archive Network (CRAN), to install a package from there, we can use:
+Before we can use packages we have to install them once. Most of the openly available packages lie on [CRAN](https://cran.r-project.org/) (Comprehensive R Archive Network):
 
 ```{r, eval = FALSE}
 install.packages("aRtsy")
 ```
 
-But often packages are only (or as well) provided via GitHub. To install a package from there, use:
+But you can also download packages form other sources, for example [GitHub](https://github.com/). To install a package from there, use:
 
 ```{r, eval = FALSE}
 devtools::install_github("cutterkom/generativeart")
@@ -63,7 +65,7 @@ canvas_collatz(colors = colorPalette("lava"))
 ::: {.callout-note collapse="true" icon="false"}
 ## Expand to learn about dealing with identical function names from different packages
 
-Of course it can happen that different packages include functions with the same name. For example, look at the warnings we get when installing and then loading the packages `ggplot2` and `psych`:
+Of course it can happen that different packages include functions with the same name. For example, look at the message we get when installing and then loading the packages `ggplot2` and `psych`:
 
 ```{r, eval = FALSE}
 install.packages("ggplot2")
@@ -75,7 +77,7 @@ library(ggplot2)
 library(psych)
 ```
 
-There seems to be a function named `alpha` which is included in both packages (but not the same function, just the same name). The warning message notifies us that the object `alpha` from `ggplot2` is masked, so if we call it, the `alpha` function from the `psych` package is used. To solve that quandary, we can use the `::` operator. In front we write the package name, and behind it the name of the function we want to use from that package:
+There seems to be a function named `alpha` which is included in both packages (it just has the same name). The message notifies us that the object `alpha` from `ggplot2` is masked, so if we call it, the `alpha` function from the `psych` package is used. To solve that quandary, we can use the `::` operator. In front we write the package name, and behind it the name of the function we want to use from that package:
 
 ```{r, eval = FALSE}
 ggplot2::alpha()
@@ -94,5 +96,7 @@ Finally, a quick note on package management and reproducability of your code. R 
 sessionInfo()
 ```
 
-A more elegant approach to manage your packages is to use a dedicated package like [`renv`](https://rstudio.github.io/renv/articles/renv.html), which will make it a lot easier to manage your package versions. But this is past the scope of this workshop, just keep in mind it might be something rewarding to look at, if you should start to programm more with R. Instead, let's look at how to get data into R in the next chapter, so we can actually get to work with it.
+A more elegant approach to manage your packages is to use a dedicated package like [`renv`](https://rstudio.github.io/renv/articles/renv.html), which will make it a lot easier to manage your package versions. But this is past the scope of this workshop, just keep in mind it might be something rewarding to look at, if you should start to programm more with R.
 :::
+
+Now, let's take a look at how to get data into R in the next chapter, so we can actually start to work with it.

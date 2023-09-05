@@ -86,7 +86,7 @@ vec_num <- c(sqrt(100)^3, exp(-6), 22.02/3 * sqrt(4^2) * 0.25, -120987/(47621 * 
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-You need to combine three logical statements. Go at it step by step: first find all elements in `vec_num` that are equal to `1000`, and then add a comparison for the rest of the statement behind an `|` (or).
+You need to combine three logical statements. Go at it step by step: first find all elements in `vec_num` that are equal to `1000`, and then add a comparison for the rest of the statement behind an `|` ("or").
 :::
 
 ::: {.callout-caution collapse="true"}
