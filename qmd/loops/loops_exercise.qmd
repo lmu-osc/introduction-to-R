@@ -29,9 +29,11 @@ psych_stats <- read.csv(
 
 ## Reshape into long format:
 psych_stats <- psych_stats %>%
-  pivot_longer(cols = messy_neat:innocent_jaded, 
-               names_to = "question", 
-               values_to = "rating")
+  pivot_longer(
+    cols = messy_neat:innocent_jaded,
+    names_to = "question",
+    values_to = "rating"
+  )
 
 ## Take a look at the data sets
 str(characters)
@@ -41,7 +43,7 @@ str(psych_stats)
 characters_stats <- merge(
   x = characters,
   y = psych_stats,
-  by.x = "id", 
+  by.x = "id",
   by.y = "char_id"
 )
 ```
@@ -55,17 +57,23 @@ Print each fictional universe (column: `uni_name`) in the `characters_stats` dat
 ## Solution
 
 ```{r output.lines = 20}
-for(universe in unique(characters_stats$uni_name)){
-  print(paste0("The fictional universe '", universe, "' is part of the characters data set."))
+for (universe in unique(characters_stats$uni_name)) {
+  print(
+    paste0(
+      "The fictional universe '", 
+      universe, 
+      "' is part of the characters data set."
+      )
+    )
 }
 ```
 
-We don't have to use `i` as counter (even though it is convention).
+Note how we don't have to use `i` as counter (even though it is convention).
 :::
 
 ## Exercise 2
 
-Remember how we used the `group_by()` command to [calculate the number of gold medals for each country](https://nickhaf.github.io/r_tutorial/qmd/merging/merging.html#before-merging)? Well, now you know enough to do something similar without using the tidyverse, but just a `for-loop`.
+Remember how we used the `group_by()` command to [calculate the number of gold medals for each country](https://nickhaf.github.io/r_tutorial/qmd/merging/merging.html#before-merging)? Well, now you know enough to do something similar without using the tidyverse, by using a `for-loop`.
 
 1.  Subset a data frame that only contains the characters of one (your favorite) fictional universe.
 
@@ -85,30 +93,28 @@ characters_friends <- characters_stats %>%
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-Build a `for loop` that goes over all unique questions in your subsetted data frames. Inside this `for-loop` you can subset again, this time only the rows containing the question that the loop is at at the moment, and calculate its mean rating from here. Then use `paste()` to build and print the statement.
+Build a `for loop` that goes over all unique questions (use `unique()` in your subsetted data frames. Inside this `for-loop` you can subset again, this time only the rows containing the question that the loop is at at the moment, and calculate its mean rating from here. Then use `paste()` to build and print the statement.
 :::
 
 ::: {.callout-caution collapse="true"}
 ## Solution
 
 ```{r output.lines = 20}
+for (i in unique(characters_friends$question)) { # goes over all unique questions
 
-for(i in unique(characters_friends$question)){ # goes over all unique questions
-  
   ## Build a subset that only consists of ratings about the current question:
   question_dat <- characters_friends %>%
     filter(question == i)
-  
+
   ## Calculate the mean for that subset:
   question_mean <- mean(question_dat$rating)
-  
+
   ## Build and print the final statement:
   statement <- paste("The mean rating for the fictional universe 'Friends' on the question '", i, "' is:", question_mean)
   print(statement)
 }
 ```
 
-There seem to be pretty beautiful people on the fictional universe ...
 :::
 
 3.  Tweak your for loop so the mean values get saved in a new data frame, containing the question and the mean rating for each question.
@@ -117,32 +123,31 @@ There seem to be pretty beautiful people on the fictional universe ...
 ## Hints
 
 1.  Build an empty data frame where you will save your results.
-2.  Now you can't easily loop over the question column itself, because you need the position of each element to save it in a new data frame: `for(i in 1:length(unique(characters_friends$question))){`.
-3.  Because of that you can save the result of your calculateion in row `i` of your new data frame.
+2.  Now you can't easily loop over the question column itself, because you need the position of each element to save it in the respective row of your new data frame: `for(i in 1:length(unique(characters_friends$question))){`.
+3.  Now you can save the result of your calculateion in row `i` of your new data frame.
 :::
 
 ::: {.callout-caution collapse="true"}
 ## Solution
 
 ```{r}
-
 ## Build an empty data frame for storing the results:
 mean_ratings <- data.frame()
 
-for(i in 1:length(unique(characters_friends$question))){
+for (i in 1:length(unique(characters_friends$question))) {
   ## Extract the question on position i:
   question_i <- unique(characters_friends$question)[i]
-  
+
   ## Extract all rows that contain values for this question:
   question_dat <- characters_friends %>%
     filter(question == question_i)
-  
+
   ## Calculate the mean for that question
   question_mean <- mean(question_dat$rating)
 
   ## Save the question in the row corresponding to the position of i:
   mean_ratings[i, "question"] <- question_i
-  
+
   ## Save the mean in the row corresponding to the position of i:
   mean_ratings[i, "mean"] <- question_mean
 }
@@ -150,7 +155,7 @@ for(i in 1:length(unique(characters_friends$question))){
 head(mean_ratings)
 ```
 
-### Let's compare that with a `group_by()`
+### Let's compare that with `group_by()`
 
 ::: tidy
 ```{r}
@@ -158,7 +163,7 @@ characters_friends %>%
   group_by(question) %>%
   summarise(mean_rating = mean(rating)) %>%
   ## Let's look at the rating of this question for comparison:
-  filter(question == 'beautiful_ugly')
+  filter(question == "messy_neat")
 ```
 :::
 

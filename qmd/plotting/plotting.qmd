@@ -3,7 +3,7 @@ title: "Plotting"
 ---
 
 ::: callout-note
-This chapter is optional. 
+This chapter is optional.
 :::
 
 ::: {.callout-caution collapse="true"}
