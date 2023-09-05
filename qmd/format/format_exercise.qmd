@@ -6,7 +6,11 @@ title: "Reshaping: Exercise"
 ## Previous code
 
 ```{r, message = FALSE}
+# install.packages("tidyverse")
+# install.packages("here")
+
 library(tidyverse)
+library(here)
 
 ## Load the data
 characters <- readRDS(file = here::here("raw_data", "characters.rds"))
@@ -23,7 +27,7 @@ str(psych_stats)
 
 ## Exercise 1
 
-Take a look at the data frame `psych_stats`! Which format does it have?
+Take a look at the data frame `psych_stats`. Which format does it have?
 
 -   [ ] Wide format
 -   [ ] Long format
@@ -43,7 +47,7 @@ Each unit of observation, in this case each character, only has one row.
 
 Reshape it, so there are only three columns in the data set: `char_id`, `question` and `rating`.
 
-::: {.callout-caution collapse="true"}
+::: {.callout-tip collapse="true"}
 ## Hint
 
 You can select multiple columns like this: `column_1:column_10`.
@@ -80,5 +84,5 @@ psych_stats %>%
 
 ```
 
-This is how we got it! But scratch that, that was just for the sake of the exercise. We want to use `psych_stats` in the long format from now on.
+This is how we got it! But scratch that, it was just for the sake of the exercise. We want to use `psych_stats` in the long format from now on.
 :::

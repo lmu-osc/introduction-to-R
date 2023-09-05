@@ -58,9 +58,9 @@ Assign a more informative name and more informative argument names. Use `return(
 ```{r}
 calc_bmi <- function(kg, meter){ 
  
-  res <- round(kg/meter^2, digits = 2)
+  bmi <- round(kg/meter^2, digits = 2)
  
-  print(paste0("Your BMI is: ", res))
+  print(paste0("Your BMI is: ", bmi))
  
   return(res)
 }
@@ -70,5 +70,5 @@ my_bmi <- calc_bmi(86, 1.87)
 my_bmi
 ```
 
-Here we gave the function and its arguments some more informative names and used the `return()` function to clearly return the result of the calculation, and we can save it in an object. Also, we wrote a more informative printed statement.
+Here we gave the function and its arguments some more informative names. We also used the `return()` function to clearly return the result of the calculation, which also makes it easy to save the output of the function in an object. Finally, we wrote a more informative printed statement.
 :::
