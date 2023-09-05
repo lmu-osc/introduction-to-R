@@ -2,13 +2,24 @@
 title: "Wide and Long Format"
 ---
 
-In this chapter, we will look at a simpler data set that makes it a bit easier to explain reshaping between the wide and long data format, as our relatively complex `athletes` data set.
+::: {.callout-caution icon="false" collapse="true"}
+## Previous code
+
+```{r}
+# install.packages("tidyverse")
+# install.packages("here")
+
+library(tidyverse)
+library(here)
+
+```
+:::
+
+In this chapter, we will look at a simpler data set that makes it a bit easier to explain reshaping between the wide and long data format, as our `athletes` data set is relatively complex.
 
 Let's define our own data set:
 
 ```{r}
-library(tidyverse) # Only if you haven't loaded it yet. Will use later.
-
 inhabitants_wide <- data.frame(
   country = c("China", "India", "USA"),
   inhabitants_2021 = c(1425893465, 1407563842, NA),
@@ -18,17 +29,30 @@ inhabitants_wide <- data.frame(
 
 ## Wide Format
 
-In the wide format, we have only one row per unit of analysis. In this example, each country has it's own row:
+In the Wide Format, we have only one row per unit of analysis. In this example, each country has it's own row:
 
 ```{r}
 head(inhabitants_wide)
 ```
 
-However, the variable `inhabitants` is stretched over multiple rows. In many cases it makes sense to reshape the data, so the `inhabitants` are all put into one column:
+However, the variable `inhabitants` is stretched over multiple rows. Depending on the application it can make sense to reshape the data, so the `inhabitants` are all put into one column:
 
 ## Long Format
 
-This is what happens in the Long data Format does, where each unit of analysis is spread over multiple rows.
+This is what happens in the Long Data Format does, where each unit of analysis is spread over multiple rows.
+
+```{r, echo = FALSE}
+inhabitants_long <- inhabitants_wide %>%
+  pivot_longer(
+    cols = c("inhabitants_2022", "inhabitants_2021"),
+    names_to = "year",
+    values_to = "inhabitants"
+  )
+```
+
+```{r}
+head(inhabitants_long)
+```
 
 ## Reshaping from Wide to Long Format
 
@@ -38,8 +62,11 @@ To get from Wide Format to Long Format we can use the `pivot_longer()` function 
 ```{r}
 inhabitants_long <- inhabitants_wide %>%
   pivot_longer(
+    ## Select the columns we want to reshape:
     cols = c("inhabitants_2022", "inhabitants_2021"),
+    ## Define a new column where the column names will go to:
     names_to = "year",
+    ## Define a new column where the values will go to:
     values_to = "inhabitants"
   )
 

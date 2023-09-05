@@ -73,6 +73,7 @@ website:
         - section: "Reshaping"
           contents:
             - qmd/format/format.qmd
+            - qmd/format/format_exercise.qmd
         - section: "Merging"
           contents:
             - qmd/merging/merging.qmd
