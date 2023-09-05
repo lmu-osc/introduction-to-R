@@ -118,7 +118,7 @@ head(babynames_F)
 
 ## Selecting columns
 
-Now we can trim down our data set a bit more and [select]() only the columns we are actually going to need:
+Now we can trim down our data set a bit more and [select](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#columns-tidyverse) only the columns we are actually going to need:
 
 ::: tidy
 ```{r}
