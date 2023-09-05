@@ -15,11 +15,18 @@ athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 ## Previous code
 
 ```{r}
+# install.packages("tidyverse")
+# install.packages("here")
+
+library(tidyverse)
+library(here)
+
 athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 ```
 :::
 
-Remember the weird `NA` rows we encountered when [subsetting by condition]()? We were able to steer around that by using `filter()`, but let's take a closer look at that now.
+## What are `NA's`?
+Remember the weird `NA` rows we have encountered when [subsetting by condition](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#conditional-filtering)? We were able to steer around that by using `filter()`, but let's take a closer look at that now.
 
 Missing values are denoted in R by `NA` (or `NaN` in some cases). They nullify a calculation or comparison pretty strongly - if one missing value is found somewhere along the line, the result will also be `NA` (if not specified otherwise):
 
@@ -29,6 +36,9 @@ c(4, NA) > 3
 
 That's why we got some `NA` rows when trying to extract specific rows by weight: these rows had an `NA` in the weight column, and R returned rows with `NA's` as a result.
 
+## How to deal with them?
+
+### Find `NA's`
 To check if values are `NA`, we can use `is.na()`:
 
 ```{r, output.lines = 4}
@@ -43,13 +53,17 @@ sum(is.na(athletes$Weight))
 
 We seem to have `r sum(is.na(athletes$Weight))` missings in this column.
 
-There are multiple different ways to deal with missings. For our comparison problem, we can add the new condition that all rows selected shouldn't have an `NA` in the `Weight` column:
+### Filtering rows with `NA's`
+There are multiple different ways to deal with missings. For our comparison problem, we can add the new condition that all rows that get selected shouldn't have an `NA` in the `Weight` column:
 
 ```{r, output.lines = 4}
 athletes[(athletes$Sport == "Judo") & (athletes$Weight > 100 | athletes$Weight < 50) & !is.na(athletes$Weight), ]
 ```
 
-What happens here? Like always when [filtering specific rows](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#conditional-filtering), we define a [logical vector](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#comparisons-and-logical-operators), which has a `TRUE` for all rows that have a missing on `ID` and a `FALSE` for all others (by using the `!` operator, which inverts the boolean values - otherwise we would extract all rows with missing values in the `Weight` column):
+::: {.callout-note collapse="true"}
+## Unfold if you want to take a closer look at what's happening here
+
+Like always when [filtering specific rows](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#conditional-filtering), we define a [logical vector](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#comparisons-and-logical-operators), which has a `TRUE` for all rows that have a missing on `ID` and a `FALSE` for all others (by using the `!` operator, which inverts the boolean values - otherwise we would extract all rows with missing values in the `Weight` column):
 
 ```{r, output.lines = 4}
 !is.na(athletes$Weight)
@@ -57,6 +71,9 @@ What happens here? Like always when [filtering specific rows](https://nickhaf.gi
 
 We also assign the new name `athletes_na` to the resulting data frame, so we don't overwrite the original one.
 
+:::
+
+### Removing `NA's`
 Removing `NA's` from a data frame works pretty similar:
 
 ```{r}
@@ -64,8 +81,10 @@ athletes_na <- athletes[!is.na(athletes$Weight), ]
 head(athletes_na)
 ```
 
+Or, using the `tidyverse`:
+
 ::: tidy
-```{r}
+```{r message=FALSE}
 library(tidyverse)
 
 athletes_na <- athletes %>%
@@ -74,6 +93,6 @@ head(athletes_na)
 ```
 :::
 
-Both code versions will remove all rows containing `NAs` in the `weight column`.
+Both code versions will remove all rows containing `NA's` in the `weight column`.
 
-As already stated, it is not always necessary to remove `NAs` manually from the data set. In other cases it might be feasible to ignore them, and many functions can deal with missing values by themselves.
+As already stated, it is not always necessary to remove `NA's` manually from the data set. In other cases it might be feasible to ignore them, and many functions can deal with missing values by themselves.

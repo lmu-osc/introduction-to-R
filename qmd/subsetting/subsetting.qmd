@@ -88,7 +88,7 @@ athletes[athletes$Team == "Germany", ]
 ```
 
 ::: {.callout-note collapse="true"}
-## Unfold if you want to take a closer look at what is happening here
+## Unfold if you want to take a closer look at what's happening here
 
 Take a close look at the comparison before the `,`:
 
