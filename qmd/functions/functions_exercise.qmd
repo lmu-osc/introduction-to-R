@@ -62,7 +62,7 @@ calc_bmi <- function(kg, meter){
  
   print(paste0("Your BMI is: ", bmi))
  
-  return(res)
+  return(bmi)
 }
 
 my_bmi <- calc_bmi(86, 1.87)

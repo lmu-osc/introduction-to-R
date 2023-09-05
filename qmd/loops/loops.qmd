@@ -17,7 +17,7 @@ This chapter is optional.
 ::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
 
-```{r}
+```{r message = FALSE}
 # install.packages("tidyverse")
 # install.packages("here")
 
@@ -37,9 +37,9 @@ medal_counts <- athletes %>%
 :::
 :::
 
-## For-loops
+# For-loops
 
-### Motivation
+## Motivation
 
 When programming, you often want to repeat an operation multiple times. For example, assume you want to print the number of gold medals for each country into your console. The most intuitive way would be to just copy paste the code with changed country names:
 
@@ -98,7 +98,7 @@ So this little piece of code can do what we started to do in the above code sect
 In general, try not to repeat yourself when writing code. As a general rule of thumb, use loops and/or [functions](../functions/functions.qmd) if you need to copy/paste something more than two times.
 :::
 
-### How to write a for-loop?
+## How to write a for-loop?
 
 Let's take a step back and look at what we are actually doing here. A `for loop` is generally constructed like this:
 
@@ -142,22 +142,27 @@ In this example we don't loop over some numbers, but over the unique regions in 
 unique(medal_counts$Region)
 ```
 
-`i` takes each of these elements in turn, then the corresponding `n` value of each country gets extracted and pasted into some sentence.
+`i` takes each of these elements in turn, then the corresponding `n` value of each country gets extracted and pasted into some sentence. In this case, `i` takes the value `r unique(medal_counts$Region)[1]` in the first iteration, and `r unique(medal_counts$Region)[length(unique(medal_counts$Region))]` in the last iteration.
 
-## Conditions
+::: callout-tip
+It should be noted that in general it is good practice to try avoiding for loops and use functions from the [apply-family](https://nicercode.github.io/guides/repeating-things/) instead, as `for-loops` allow you to write horrible code. Still, sometimes `for-loops` are the better option, depending on the use case. Also, their structure is pretty much the same over many programming languages.
+:::
 
-### If-else statement
+# Conditions
+
+## If-else statement
 
 Have you noticed that our output doesn't sound that correct if we only have one gold medal winner in a country?
 
 `"1 Olympic gold medalists are from Mozambique."`
 
-To solve this, we can add a conditional statement which only gets executed, if some condition is met. This can be done by an `if else` statement:
+To solve this, we can add a conditional statement which only gets executed if some condition is met. This can be done by an `if else` statement:
 
 ```{r}
 for(i in unique(medal_counts$Region)){
   n_medals <- medal_counts[medal_counts$Region == i, "n"]
   
+  ## Execute only if the number of medal is equal to 1!
   if(n_medals == 1){
     print(
     paste0(
@@ -166,6 +171,7 @@ for(i in unique(medal_counts$Region)){
       "." )
     )
   }else{
+    ## In all other cases, do the following:
   print(
     paste0(
       n_medals, 
@@ -203,11 +209,13 @@ Inside the `if()` we define our [condition](https://nickhaf.github.io/r_tutorial
 
 In our inital example we check if the number of gold medalists is equal to one. If that is the case, we print the specific statement. If not, we print the other.
 
-### `ifelse()`
+We don't even need to define the `else{}` part if nothing should happen in case the `if()` condition is not met. 
+
+## `ifelse()`
 
 We can use this concept for adding new values conditionally to a data frame. For example, let's build a dichotomous variable to check which countries have equal to or more than `100` gold medal winners:
 
-```{r, output.lines = 4, eval = FALSE, echo = FALSE}
+```{r}
 medal_counts$n_100 <- ifelse(
  medal_counts$n >= 100,
   yes = TRUE,
@@ -217,8 +225,4 @@ medal_counts$n_100 <- ifelse(
 head(medal_counts)
 ```
 
-Note that the look of this `ifelse()` function is a bit different from our `if else statement`, but the logic behind it is exactly the same: Here we [add the new column](https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#adding-new-columns) `n_100` which gets filled with `TRUE` and `FALSE`. If the statement `medal_counts$n >= 100`, which is the first argument of the `ifelse()` function, is met, the function returns a `TRUE`, if not a `FALSE`.
-
-::: callout-tip
-It should be noted that in general it is good practice to try to avoid using for loops and use functions from the [apply-family](https://nicercode.github.io/guides/repeating-things/) instead, as `for-loops` allow you to write horrible code. Still, sometimes `for-loops` are the better option, depending on the use case. Also, their structure is pretty much the same over many programming languages.
-:::
+Note that the look of this `ifelse()` function is a bit different from our `if else statement`, but the logic behind it is exactly the same: Here we [add the new column](https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#adding-new-columns) `n_100` which gets filled with `TRUE` and `FALSE`. If the conditional statement `medal_counts$n >= 100`, which is the first argument of the `ifelse()` function, is met, the function returns a `TRUE`, if not a `FALSE`.

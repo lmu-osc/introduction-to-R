@@ -22,11 +22,9 @@ athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 
 ## Motivation
 
-We want to know the number of gold medals a specific athlete has won, along with some additional data, all printed into the console.
-Well, we could do something like this: 
+We want to know the number of gold medals a specific athlete has won, along with some additional data, all printed into the console. Well, we could do something like this:
 
 ::: tidy
-
 ```{r}
 
 medal_counts_athlete <- athletes %>%
@@ -64,11 +62,9 @@ print(
         ".")
   )
 ```
-
 :::
 
-Puuh, already not that quick, especially if this is meant as an easy way for users to extract the gold medal number for multiple athletes. They would have to specify for both data frames the name and build togehter their print statement from scratch.
-Luckily, we can just write a **function** which is a way to organize multiple operations together, so they can easily get repeated. Let's do that quickly, and then take a step back and look at the components of a function:
+Puuh, already not that quick, especially if this is meant as an easy way for users to extract the gold medal number for multiple athletes. They would have to specify for both data frames the name and build togehter their print statement from scratch. Luckily, we can just write a **function** which is a way to organize multiple operations together, so they can easily get repeated. Let's do that quickly, and then take a step back and look at the components of a function:
 
 ::: tidy
 ```{r}

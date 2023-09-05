@@ -14,7 +14,11 @@ These exercises are optional.
 ## Previous code
 
 ```{r, message = FALSE}
+# install.packages("tidyverse")
+# install.packages("here")
+
 library(tidyverse)
+library(here)
 
 ## Load the data
 characters <- readRDS(file = here::here("raw_data", "characters.rds"))
@@ -23,11 +27,15 @@ psych_stats <- read.csv(
   sep = ";"
 )
 
-## Reshape psych_stats into long format:
+## Reshape into long format:
 psych_stats <- psych_stats %>%
   pivot_longer(cols = messy_neat:innocent_jaded, 
                names_to = "question", 
                values_to = "rating")
+
+## Take a look at the data sets
+str(characters)
+str(psych_stats)
 
 ## Merge it
 characters_stats <- merge(
