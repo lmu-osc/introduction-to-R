@@ -161,20 +161,24 @@ We will use the package `ggplot2` (which is also part of the `tidyverse`) for [p
 
 A `ggplot` is constructed from multiple layers, that can be laid over each other using the `+` operator.
 
-We start with the function `ggplot()`, where we define our data and the x and y axes. 
+We start with the function `ggplot()`, where we define our data and the x and y axes. This will draw our (empty) coordinate system. 
 We have to use the `aes()` (aesthetics) function for everything that changes in relation to the data. The simplest example would be our axes, as the exact location of each point on the plot is deposited in our data frame: 
 
 ::: tidy
 ```{r}
+#| fig-height: 8
+#| fig-width: 11
+#| 
 p <- ggplot(
   data = babynames_F_max,
   aes(
     x = year,
     y = percentage)
   )
+p
 ```
 
-We can also define different colours for different groups. For example, if we want the bars to get filled with a colour corresponding to the name they are representing, we can do that:
+We can also define different colors for different groups. For example, if we want the bars to get filled with a color corresponding to the name they are representing, we can do that:
 
 ```{r}
 p <- ggplot(
@@ -190,6 +194,9 @@ p <- ggplot(
 Now that we have defined our aesthetics, we can add a `geom`-layer. This will make use of the data we have defined in `ggplot()` and plot some bars for us:
 
 ```{r}
+#| fig-height: 8
+#| fig-width: 11
+
 p <- p +
   geom_col()
 p
@@ -198,6 +205,9 @@ p
 Let's give the axes some more informative names and a title to the plot:
 
 ```{r}
+#| fig-height: 8
+#| fig-width: 11
+
 p <- p +
   ggtitle("Most common female name in the United States of America by year") +
   xlab("Birthyear") +
@@ -208,6 +218,9 @@ p
 Finally, to style the plot a bit, let's add a predefined theme and a color palette:
 
 ```{r}
+#| fig-height: 8
+#| fig-width: 11
+
 p +
   theme_bw() + # Theme
   scale_fill_brewer(palette = "Spectral") # Color palette
@@ -215,7 +228,7 @@ p +
 ```
 :::
 
-We would have many more options to style this plot further (for example we could sort the names in the Legend by order of appearance), but let's keep it at that for now.
+We would have many more options to style this plot further (for example we could sort the names in the legend by order of appearance), but let's keep it at that for now.
 
 ## Conclusion
 
