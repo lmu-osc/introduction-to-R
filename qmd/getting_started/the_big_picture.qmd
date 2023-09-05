@@ -162,7 +162,7 @@ We will use the package `ggplot2` (which is also part of the `tidyverse`) for [p
 A `ggplot` is constructed from multiple layers, that can be laid over each other using the `+` operator.
 
 We start with the function `ggplot()`, where we define our data and the x and y axes. This will draw our (empty) coordinate system. 
-We have to use the [`aes()`]() (aesthetics) function for everything that changes in relation to the data. The simplest example would be our axes, as the exact location of each element in the plot is dependent on the x and y position deposited in the data frame: 
+We have to use the [`aes()`](http://localhost:7280/qmd/plotting/plotting.html#aes) (aesthetics) function for everything that changes in relation to the data. The simplest example would be our axes, as the exact location of each element in the plot is dependent on the x and y position deposited in the data frame: 
 
 ::: tidy
 ```{r}
