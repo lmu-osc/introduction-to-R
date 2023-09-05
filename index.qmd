@@ -8,7 +8,8 @@ date: 09-11-2023
 
 ## About this workshop
 
-Welcome![^1][^2] This workshop will teach you the basics of R. It's structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](/qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to scientific programming with R and want to follow the course structure?
+Welcome![^1][^2] This workshop will teach you the basics of R. It's structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](/qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to scientific programming with R and want to follow the course structure? 
+This workshop provides different entry points. You can either follow the outline on the left side and work on all topics in the order they are presented in. If you already have some R experience, you might want to read [The Big Picture](/qmd/getting_started/the_big_picture.qmd) and/or the [Final Exercise](./qmd/final_exercise/final_exercise.qmd) first to identify topics of interest for you. 
 
 [^1]: This workshop was designed by Nicklas Hafiz, PhD student and research fellow at the Institut für Qualitätsentwicklung im Bildungswesen (IQB).
 
@@ -22,7 +23,9 @@ Don't worry if you don't finish the whole workshop in time, or the material seem
 
 The main objective of this workshop is to get you started with using R for your own scientific work. To do that, we will repeat and try out the main concepts multiple times, so you get to work with them as much and as from many different perspectives as possible. Along the way, some advanced ideas will be introduced as well, which you can follow up on later in case you think they might be relevant for your own work.
 
-Each section is divided into a theory part and some exercises. Most of these exercises will use the `characters` data set, more on that in the [next chapter](/qmd/getting_started/data_sets.qmd).
+Each section is divided into a theory part and some exercises. Most of these exercises will use the `characters` data set, more on that in the [next chapter](/qmd/getting_started/data_sets.qmd).  
+
+You can use the [Ask a question](https://docs.google.com/document/d/19uUsS9xiAsxmAtblkaPqbdl3m1IxurWKOoPdTc0oymM/edit) button on the upper right corner if something is unclear to you. 
 
 ::: callout-tip
 Learning how to program can be tough, and to get started it is important to write as much code as possible, and think about many different problems to get used to coding. So do the exercises! They will hopefully get you started with solving problems in R.
