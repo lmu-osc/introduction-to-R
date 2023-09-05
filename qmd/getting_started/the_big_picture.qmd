@@ -162,7 +162,7 @@ We will use the package `ggplot2` (which is also part of the `tidyverse`) for [p
 A `ggplot` is constructed from multiple layers, that can be laid over each other using the `+` operator.
 
 We start with the function `ggplot()`, where we define our data and the x and y axes. This will draw our (empty) coordinate system. 
-We have to use the `aes()` (aesthetics) function for everything that changes in relation to the data. The simplest example would be our axes, as the exact location of each point on the plot is deposited in our data frame: 
+We have to use the [`aes()`]() (aesthetics) function for everything that changes in relation to the data. The simplest example would be our axes, as the exact location of each element in the plot is dependent on the x and y position deposited in the data frame: 
 
 ::: tidy
 ```{r}
@@ -190,6 +190,7 @@ p <- ggplot(
   )
 )
 ```
+If we wanted all bars to have the same color, we would have specified the `fill` argument **outside** of the `aes()` function, because in that case, it wouldn't have to change in dependence of our data.
 
 Now that we have defined our aesthetics, we can add a `geom`-layer. This will make use of the data we have defined in `ggplot()` and plot some bars for us:
 

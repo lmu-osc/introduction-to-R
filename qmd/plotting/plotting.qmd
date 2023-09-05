@@ -52,11 +52,11 @@ best_by_sport <- athletes %>%
   slice(which.max(n)) 
 ```
 
-## `ggplot()`
+## ggplot()
 
 In general, a `ggplot` starts with the `ggplot()` function. In it we define the data we want to use, and some aesthetics. The `ggplot()` function then draws our (currently still empty) plotting area, with the defined axes (see next section).
 
-## `aes()`
+## aes()
 
 Aesthetics set parameters **dependent on the data**. In most cases, we will define our x and y axis here. We can also group data together by groups found in a column. If we want the data to have a different color, form, filling etc. depending on values in a column, we can define that here as well (we will look at that later on).
 
@@ -77,7 +77,7 @@ p
 
 In this case, the sport is plotted on the x axis and the number of gold medals (`n`) on the y axis. Bar filling will vary depending on the region.
 
-## geom\_()
+## geom_()
 
 The geoms do the actual plotting. For example, if we want a barplot:
 
