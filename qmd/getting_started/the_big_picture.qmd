@@ -118,7 +118,7 @@ head(babynames_F)
 
 ## Selecting columns
 
-Now we can trim down our data set a bit more and [select] only the columns we are actually going to need:
+Now we can trim down our data set a bit more and [select]() only the columns we are actually going to need:
 
 ::: tidy
 ```{r}
@@ -130,7 +130,9 @@ head(babynames_F)
 
 ## Some additional summary statistics
 
-Now, the next part can show you how easy it can be to deal with data in R. First, let's group our data according to year:
+Now, the next part can show you how easy it can be to deal with data in R. It's `tidyverse` specific syntax, so don't worry about it to much for now.  
+
+First, let's group our data according to year:
 
 ::: tidy
 ```{r}
@@ -138,19 +140,20 @@ babynames_F_grouped <- group_by(babynames_F, year)
 ```
 :::
 
-Any operations we now perform are performed by year, and not on the whole data set at once. In our case, we want to find the most common name each year, which is the name with the maximum `percentage`:
+Any operations we now perform are performed by year, and not on the whole data set at once. In our case, we want to find the most common name each year, which is the name with the maximum `percentage`. With `slice_max(percentage)` we can extract the row with the highest percentage in each group: 
 
 ::: tidy
 ```{r}
-babynames_F_max <- slice(babynames_F_grouped, which.max(percentage))
+babynames_F_max <- babynames_F_grouped %>%
+  slice_max(percentage)
 
 head(babynames_F_max)
 ```
 :::
 
-The `which.max(percentage)` command finds the maximum percentage per year. `slice()` will extract the respective rows, so we have only the row contatining the most common name per year in the end.
+Now our data frame contains only the most common name for each year. 
 
-At the moment we only want to get an idea what R can do, so don't hold up if the functions are not that clear to you right now, hopefully that will change throughout this tutorial.
+At the moment we only want to get an idea what R can do, so don't hold up if some of the functions are not that clear to you right now, hopefully that will change throughout this tutorial.
 
 ## Plot the data
 
@@ -158,7 +161,8 @@ We will use the package `ggplot2` (which is also part of the `tidyverse`) for [p
 
 A `ggplot` is constructed from multiple layers, that can be laid over each other using the `+` operator.
 
-We start with the function `ggplot()`, where we define our data and the x and y axes.
+We start with the function `ggplot()`, where we define our data and the x and y axes. 
+We have to use the `aes()` (aesthetics) function for everything that changes in relation to the data. The simplest example would be our axes, as the exact location of each point on the plot is deposited in our data frame: 
 
 ::: tidy
 ```{r}
