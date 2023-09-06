@@ -59,7 +59,6 @@ Use `gsub()`. Look at `?gsub()` to see how it works.
 
 ```{r}
 characters_stats$question <- gsub("_", "/", characters_stats$question)
-
 ```
 :::
 
@@ -83,7 +82,7 @@ questions
 ```{r}
 characters_subset <- characters_stats %>%
   filter(
-    uni_name %in% c("Friends"),
+    uni_name == "Friends",
     question %in% questions
   )
 ```
@@ -96,13 +95,16 @@ characters_subset <- characters_stats %>%
 
 ::: tidy
 ```{r}
+#| fig-height: 8
+#| fig-width: 11
+
 p <- ggplot(
   data = characters_subset,
   aes(
     x = rating,
     y = question
   )
-) 
+)
 
 p
 ```
@@ -123,6 +125,9 @@ use `?facet_grid` to find out how to use it.
 
 :::tidy
 ```{r}
+#| fig-height: 8
+#| fig-width: 11
+
 p <- p +
   facet_grid(. ~ name)
 p
@@ -142,6 +147,11 @@ You can change a lot in the appearance of the bars. For example, you might want 
 
 :::tidy
 ```{r}
+
+#| fig-height: 8
+#| fig-width: 11
+
+
 p <- p +
   geom_col(
     aes(fill = rating),
@@ -163,17 +173,87 @@ p
 
 ::: tidy
 ```{r}
+#| fig-height: 8
+#| fig-width: 11
+
 
 p +
-  scale_fill_viridis_c(option = "D") + 
+  scale_fill_viridis_c(option = "D") +
   theme_bw() +
   ggtitle("Characteristics of the 'Friends' characters") +
   xlab("Rating") +
   ylab("")
-
 ```
 
-Great! With this color scale we can easily spot if a character is more balanced in his/her personality characteristics (like Chandler Bing), or tends to be pretty extreme (like Monica Geller).
+Great! With this color scale we can easily spot if a character is more balanced in his/her personality characteristics (like Chandler Bing), or tends to be pretty extreme (like Monica Geller or Joey Tribbiani).
+:::
+
+:::
+
+::: { .callout-note}
+
+## Optional: Make a function out of it
+Now, let's make a function out of it, where you can input a fictional universe, the questions you are interested in, and receive a plot! Just merge together the code snippets you have created during this exercise, and test the function with some fictional universes of your choice.
+
+::: {.callout-caution collapse="true"}
+## Solution
+
+::: tidy
+```{r}
+fictional_personalities <- function(fictional_universe, questions) {
+  ## Prepare the data:
+  characters_plot <- characters_stats %>%
+    mutate(question = gsub("_", "/", .$question)) %>%
+    filter(
+      uni_name == fictional_universe,
+      question %in% questions
+    )
+
+  ## Merge together the code snippets we already saw in the other exercises.
+  p <- ggplot(
+    data = characters_plot,
+    aes(
+      x = rating,
+      y = question
+    )
+  ) +
+    facet_grid(. ~ name) +
+    geom_col(
+      aes(fill = rating),
+      colour = "black",
+      width = 0.5
+    ) +
+    scale_fill_viridis_c(option = "D") +
+    theme_bw() +
+    ggtitle(paste("Characteristics of the '", fictional_universe, "' characters")) + # paste together the title, so it always shows the correct fictional universe
+    xlab("Rating") +
+    ylab("")
+
+  print(p)
+}
+```
+:::
+
+Now, let's try it out:
+```{r}
+#| fig-height: 8
+#| fig-width: 15
+
+fictional_personalities(
+  fictional_universe = "How I Met Your Mother",
+  questions = unique(characters_stats$question)[1:20]
+) # Use the first 40 questions
+
+## Sample some questions randomly:
+set.seed(42) # This makes the random sampling reproducable
+random_questions <- sample(unique(characters_stats$question), 20)
+
+fictional_personalities(
+  fictional_universe = "Breaking Bad",
+  questions = random_questions
+)
+```
+
 :::
 
 :::
