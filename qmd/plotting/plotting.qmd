@@ -193,11 +193,13 @@ Or use different colors and a different theme:
 #| fig-height: 8
 #| fig-width: 11
 
+# install.packages("viridisLite")
+
 p <- p +
   theme_classic() +
   ## And turn the axis labels again, because the new theme has overwritten our theme
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)) +
-  ## Specify which colors are used for the filling
+  ## Specify which colors are used for the filling. They are from the package viridsLite, so you might need to install it.
   scale_fill_manual(values = viridisLite::viridis(19))
 
 p

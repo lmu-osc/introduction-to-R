@@ -43,17 +43,35 @@ characters_stats <- merge(
 
 ## Exercise 1
 
-Now, let's make a nice plot out of the data we've got.
+Now, let's make a nice plot out of the data we've got. 
 
-1.  Select up to `15` questions you want to display in the plot and save them into a new vector.
+
+0. First of all, let's clean up our questions column a bit. Replace all "_" characters with "/" characters to make it clearer that we have two poles. Use the interent to figure out which function you need. 
+
+::: {.callout-tip collapse="true"}
+## Hint
+Use `gsub()`. Look at `?gsub()` to see how it works. 
+
+:::
 
 ::: {.callout-caution collapse="true"}
 ## Solution
 
-I'm just gonna take the first 15 questions from all unique ones:
+```{r}
+characters_stats$question <- gsub("_", "/", characters_stats$question)
+
+```
+:::
+
+1.  Select up to `40` questions you want to display in the plot and save them into a new vector.
+
+::: {.callout-caution collapse="true"}
+## Solution
+
+I'm just gonna take the first 40 questions from all unique ones:
 
 ```{r}
-questions <- unique(characters_stats$question)[1:10]
+questions <- unique(characters_stats$question)[1:40]
 questions
 ```
 :::
@@ -84,7 +102,7 @@ p <- ggplot(
     x = rating,
     y = question
   )
-)
+) 
 
 p
 ```
@@ -92,7 +110,8 @@ p
 
 :::
 
-4. No let's split up the plot, so every character gets an own pane. Use `facet_grid()` to do that.
+
+4. Now let's split up the plot, so every character gets an own pane. Use `facet_grid()` to do that.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
@@ -111,7 +130,12 @@ p
 :::
 :::
 
-5. Let's add bars to the plot by using `geom_col()`. The filling of the bars should depend on the `rating`.
+5. Let's add bars to the plot by using `geom_col()`. The filling of the bars should depend on the `rating`. You might also want to change the `width` of the bars to fit everything on the page.
+
+::: {.callout-tip collapse="true"}
+## Hint
+You can change a lot in the appearance of the bars. For example, you might want to use `width` to make the bars a bit smaller. Or use `color` to give them a frame.
+:::
 
 ::: {.callout-caution collapse="true"}
 ## Solution
@@ -121,8 +145,8 @@ p
 p <- p +
   geom_col(
     aes(fill = rating),
-    position = "dodge",
-    colour = "black"
+    colour = "black",
+    width = 0.5
   )
 
 p
@@ -139,10 +163,17 @@ p
 
 ::: tidy
 ```{r}
+
 p +
-  #scale_fill_manual(values = viridisLite::scale_colour_viridis_d()) +
-  theme_bw()
+  scale_fill_viridis_c(option = "D") + 
+  theme_bw() +
+  ggtitle("Characteristics of the 'Friends' characters") +
+  xlab("Rating") +
+  ylab("")
+
 ```
+
+Great! With this color scale we can easily spot if a character is more balanced in his/her personality characteristics (like Chandler Bing), or tends to be pretty extreme (like Monica Geller).
 :::
 
 :::
