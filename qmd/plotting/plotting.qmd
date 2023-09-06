@@ -249,6 +249,9 @@ Now we add the map by using the polygon geom:
 
 ::: tidy
 ```{r}
+#| fig-height: 8
+#| fig-width: 11
+
 p <- p +
   geom_polygon(aes(fill = n))
 p
@@ -261,6 +264,10 @@ In the end we can clean up the plot by rescaling the x and y axis, provide a new
 
 ::: tidy
 ```{r}
+#| fig-height: 8
+#| fig-width: 11
+
+
 p +
   ## Rescale the plot
   coord_fixed(1.3) +
