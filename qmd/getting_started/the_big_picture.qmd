@@ -82,8 +82,7 @@ babynames_merged <- merge(babynames,
 head(babynames_merged)
 ```
 
-Great, now we can see the number of people born with that name in each year since 1880, and the propability that they get this specific name, calculated from the total of births in this year!
-But hold on! The column `years` seems to include missing values (`NA's`). It is always a good idea to at least think about the [missing values](../missing/missing.qmd) before doing any analyses, so let's do just that:
+Great, now we can see the number of people born with that name in each year since 1880, and the propability that they get this specific name, calculated from the total of births in this year! But hold on! The column `years` seems to include missing values (`NA's`). It is always a good idea to at least think about the [missing values](../missing/missing.qmd) before doing any analyses, so let's do just that:
 
 ## Missings
 
@@ -93,7 +92,6 @@ There are multiple ways to deal with [missing values](../missing/missing.qmd). F
 babynames_merged <- na.omit(babynames_merged)
 head(babynames_merged)
 ```
-
 
 ## Subsetting data
 
@@ -105,6 +103,7 @@ babynames_F <- babynames_merged %>%
   filter(sex == "F")
 ```
 :::
+
 Wondering what the `%>%` means? That's a [pipe operator](https://nickhaf.github.io/r_tutorial/qmd/basics/tidyverse.html#the-pipe-operator), which is used, mainly in the `tidyverse`, to connect multiple function calls. This can make code a lot more readable. In our case, we start with the `babynames_merged` data frame and then perform an operation on it, in this case filtering specific values.
 
 ## Adding a new column
@@ -130,7 +129,7 @@ head(babynames_F)
 
 ## Some additional summary statistics
 
-Now, the next part can show you how easy it can be to deal with data in R. It's `tidyverse` specific syntax, so don't worry about it to much for now.  
+Now, the next part can show you how easy it can be to deal with data in R. It's `tidyverse` specific syntax, so don't worry about it to much for now.
 
 First, let's group our data according to year:
 
@@ -140,7 +139,7 @@ babynames_F_grouped <- group_by(babynames_F, year)
 ```
 :::
 
-Any operations we now perform are performed by year, and not on the whole data set at once. In our case, we want to find the most common name each year, which is the name with the maximum `percentage`. With `slice_max(percentage)` we can extract the row with the highest percentage in each group: 
+Any operations we now perform are performed by year, and not on the whole data set at once. In our case, we want to find the most common name each year, which is the name with the maximum `percentage`. With `slice_max(percentage)` we can extract the row with the highest percentage in each group:
 
 ::: tidy
 ```{r}
@@ -151,7 +150,7 @@ head(babynames_F_max)
 ```
 :::
 
-Now our data frame contains only the most common name for each year. 
+Now our data frame contains only the most common name for each year.
 
 At the moment we only want to get an idea what R can do, so don't hold up if some of the functions are not that clear to you right now, hopefully that will change throughout this tutorial.
 
@@ -161,8 +160,7 @@ We will use the package `ggplot2` (which is also part of the `tidyverse`) for [p
 
 A `ggplot` is constructed from multiple layers, that can be laid over each other using the `+` operator.
 
-We start with the function `ggplot()`, in which we define our data and the x and y axes. This will draw our (empty) coordinate system. 
-We have to use the [`aes()`]() (aesthetics) function for everything that changes in relation to the data. For example, the exact location of each element in the plot is dependent on the x and y position deposited in the data frame, so we have to specify our axes inside the `aes()` function: 
+We start with the function `ggplot()`, in which we define our data and the x and y axes. This will draw our (empty) coordinate system. We have to use the [`aes()`](https://nickhaf.github.io/r_tutorial/qmd/plotting/plotting.html#aes) (aesthetics) function for everything that changes in relation to the data. For example, the exact location of each element in the plot is dependent on the x and y position deposited in the data frame, so we have to specify our axes inside the `aes()` function:
 
 ::: tidy
 ```{r}
@@ -178,7 +176,7 @@ p <- ggplot(
 p
 ```
 
-Now that we have defined our aesthetics, we can add a [`geom`-layer]. This will make use of the data we have defined in `ggplot()` and plot some bars for us:
+Now that we have defined our aesthetics, we can add a \[`geom`-layer\]. This will make use of the data we have defined in `ggplot()` and plot some bars for us:
 
 ```{r}
 #| fig-height: 8
@@ -199,9 +197,8 @@ p <- p +
 p
 
 ```
-If we wanted all bars to have the same color, we would have specified the `fill` argument **outside** of the `aes()` function, because in that case, it wouldn't have to change in dependence of our data. 
-We could also have defined our `fill` argument in the `aes()` function we have defined in `ggplot()`. In that case, it would have influenced all `geom_()` functions. Because we defined it in `geom_col()`, it only influences this `geom_col()` call.
 
+If we wanted all bars to have the same color, we would have specified the `fill` argument **outside** of the `aes()` function, because in that case, it wouldn't have to change in dependence of our data. We could also have defined our `fill` argument in the `aes()` function we have defined in `ggplot()`. In that case, it would have influenced all `geom_()` functions. Because we defined it in `geom_col()`, it only influences this `geom_col()` call.
 
 Let's give the axes some more informative names and a title to the plot:
 
