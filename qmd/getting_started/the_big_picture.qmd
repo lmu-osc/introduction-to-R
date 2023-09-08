@@ -176,7 +176,7 @@ p <- ggplot(
 p
 ```
 
-Now that we have defined our aesthetics, we can add a \[`geom`-layer\]. This will make use of the data we have defined in `ggplot()` and plot some bars for us:
+Now that we have defined our aesthetics, we can add a [`geom`-layer](https://nickhaf.github.io/r_tutorial/qmd/plotting/plotting.html#geom_). This will make use of the data we have defined in `ggplot()` and plot some bars for us:
 
 ```{r}
 #| fig-height: 8
