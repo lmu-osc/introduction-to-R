@@ -1,0 +1,27 @@
+---
+title: "Additional Resources"
+---
+
+Here you can find a collection of resources that might help you with this tutorial, or might motivate you to do some further reading.
+
+# Cheat Sheets
+Cheat Sheets organize the most important commands in an clear way. You can use the recommendations already while doing this workshop, or even create your own.
+
+## `Base R`
+You can find a collection of the most important `Base R` commands [here](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf).
+
+
+## `tidyverse`
+A collection of `tidyverse` commands for [data wrangling](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf).  
+
+And for [ggplot2](https://rstudio.github.io/cheatsheets/data-visualization.pdf).
+
+
+# Books
+If you want to do some further reading I highly recommend these books:
+[R for Data Science](https://r4ds.hadley.nz/) is a great way to get started with working in R, but will also go into more depths in the later chapters, so it is not just for beginners.
+
+[Advanced R](https://adv-r.hadley.nz/) is definitely not for beginners, but helps R users and programmers coming from other languages to understand R and improve their programming skills in R. 
+
+# Data Visualization
+Finally, the amazing [R Graph Gallery](https://r-graph-gallery.com/) which helps to get inspiration for own plots. And it provides the corresponding code, to get you started directly. 
