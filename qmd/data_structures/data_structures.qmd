@@ -51,6 +51,20 @@ mean(char_vec)
 
 gives us a warning, because the input has the wrong format.
 
+By the way, strings are just 'words' combined of multiple characters. We can combine multiple strings by using `paste()` or `paste0()` (the first one leaves a space between the words, the second one not):
+
+```{r}
+vec_1 <- "My value"
+vec_2 <- "is:"
+value <- 10
+
+
+paste(vec_1, vec_2, value)
+paste0(vec_1, vec_2, value)
+
+```
+This will come in handy later when we write our own [functions](../functions/functions.qmd), because it helps us to print variable messages, depending on the input given by the user. In general it is a very useful function!
+
 ## Data frame
 
 A data frame is two dimensional and can store elements of different types. It is the closest to the data tables we are probably most used to working with in Excel.
@@ -118,6 +132,7 @@ personality_rating
 Here, we define the list `personality_ratings`, which includes a data frame with the personality rating, and some meta information in the form of a character vector, describing the rating type. We won't use it much in this workshop, but keep in mind it exists, as it quickly becomes necessary for managing more complex tasks.
 
 ## Matrix & Array
+
 Finally, just for the sake of comprehensiveness (we won't use them in the following workshop, but that doesn't mean they are irrelevant):
 
 ```{r}
@@ -131,7 +146,7 @@ my_matrix
 
 Note how everything gets converted to character (with the "" around it), because we used a `"3"` instead of `3`? That's because a matrix can only have values of the same type.
 
-Last but not least, just so you have seen it once: 
+Last but not least, just so you have seen it once:
 
 ```{r}
 my_array <- array(1:24, dim = c(2, 3, 4))
@@ -139,6 +154,3 @@ my_array
 ```
 
 By using the `dim` argument I specify that each matrix in this array has `2` rows, `3` columns, and that I want `4` matrices.
-
-
-
