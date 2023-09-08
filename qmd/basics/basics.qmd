@@ -89,7 +89,8 @@ We can invert boolean values by using `!`:
 !(1 > 100)
 ```
 
-## | ("or") and &("and")
+## `|` ("or") and `&` ("and")
+
 We can also combine multiple logical operations by using `|` ("or") and/or `&` ("and"):
 
 ```{r}
