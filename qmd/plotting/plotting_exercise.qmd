@@ -43,15 +43,14 @@ characters_stats <- merge(
 
 ## Exercise 1
 
-Now, let's make a nice plot out of the data we've got. 
+Now, let's make a nice plot out of the data we've got.
 
-
-0. First of all, let's clean up our questions column a bit. Replace all "_" characters with "/" characters to make it clearer that we have two poles. Use the interent to figure out which function you need. 
+0.  First of all, let's clean up our questions column a bit. Replace all "\_" characters with "/" characters to make it clearer that we have two poles. Use the interent to figure out which function you need.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
-Use `gsub()`. Look at `?gsub()` to see how it works. 
 
+Use `gsub()`. Look at `?gsub()` to see how it works.
 :::
 
 ::: {.callout-caution collapse="true"}
@@ -79,6 +78,7 @@ questions
 
 ::: {.callout-caution collapse="true"}
 ## Solution
+
 ```{r}
 characters_subset <- characters_stats %>%
   filter(
@@ -88,7 +88,7 @@ characters_subset <- characters_stats %>%
 ```
 :::
 
-3. Build the coordinate system of the plot. Plot the `rating` on the x axis and the `question` on the y axis.
+3.  Build the coordinate system of the plot. Plot the `rating` on the x axis and the `question` on the y axis.
 
 ::: {.callout-caution collapse="true"}
 ## Solution
@@ -109,21 +109,20 @@ p <- ggplot(
 p
 ```
 :::
-
 :::
 
-
-4. Now let's split up the plot, so every character gets an own pane. Use `facet_grid()` to do that.
+4.  Now let's split up the plot, so every character gets an own pane. Use `facet_grid()` to do that.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
-use `?facet_grid` to find out how to use it. 
+
+use `?facet_grid` to find out how to use it.
 :::
 
 ::: {.callout-caution collapse="true"}
 ## Solution
 
-:::tidy
+::: tidy
 ```{r}
 #| fig-height: 8
 #| fig-width: 11
@@ -135,17 +134,18 @@ p
 :::
 :::
 
-5. Let's add bars to the plot by using `geom_col()`. The filling of the bars should depend on the `rating`. You might also want to change the `width` of the bars to fit everything on the page.
+5.  Let's add bars to the plot by using `geom_col()`. The filling of the bars should depend on the `rating`. You might also want to change the `width` of the bars to fit everything on the page.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
+
 You can change a lot in the appearance of the bars. For example, you might want to use `width` to make the bars a bit smaller. Or use `color` to give them a frame.
 :::
 
 ::: {.callout-caution collapse="true"}
 ## Solution
 
-:::tidy
+::: tidy
 ```{r}
 
 #| fig-height: 8
@@ -161,12 +161,10 @@ p <- p +
 
 p
 ```
-
+:::
 :::
 
-:::
-
-6. Style the plot. You could choose another color palette, another theme, other labels ... Get creative!
+6.  Style the plot. You could choose another color palette, another theme, other labels ... Get creative!
 
 ::: {.callout-caution collapse="true"}
 ## Solution
@@ -187,12 +185,11 @@ p +
 
 Great! With this color scale we can easily spot if a character is more balanced in his/her personality characteristics (like Chandler Bing), or tends to be pretty extreme (like Monica Geller or Joey Tribbiani).
 :::
-
 :::
 
-::: { .callout-note}
-
+::: callout-note
 ## Optional: Make a function out of it
+
 Now, let's make a function out of it, where you can input a fictional universe, the questions you are interested in, and receive a plot! Just merge together the code snippets you have created during this exercise, and test the function with some fictional universes of your choice.
 
 ::: {.callout-caution collapse="true"}
@@ -235,6 +232,7 @@ fictional_personalities <- function(fictional_universe, questions) {
 :::
 
 Now, let's try it out:
+
 ```{r}
 #| fig-height: 8
 #| fig-width: 15
@@ -253,7 +251,12 @@ fictional_personalities(
   questions = random_questions
 )
 ```
-
+:::
 :::
 
-:::
+
+## The End
+Amazing, you've made it to the end of this workshop! You now can go back to [The Big Picture](../getting_started/the_big_picture.qmd), or do the [Final Exercise](../final_exercise/final_exercise.qmd) to test your knowledge one more time! If you had enough exercises for today, take a look at some of the [Resources](../resources/resources.qmd) I have assembled for further reading.  
+
+
+
