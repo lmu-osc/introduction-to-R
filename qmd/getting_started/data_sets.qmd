@@ -10,7 +10,7 @@ We will use two data sets during this workshop. One for the theory, and one for 
 
 [^1]: Image by [Florian Schmetz](https://unsplash.com/de/@floschmaezz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/fbCtFV3FkfE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 
-For the theory part of the workshop, we will mainly work with the `athletes` data set, downloaded from [here](https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results). It contains the Olympic athletes from 1896 to 2016, along with some basic stats, their sport and country, and the medals they won. 
+For the theory part of the workshop, we will mainly work with the [`athletes`](https://www.kaggle.com/datasets/heesoo37/120-years-of-olympic-history-athletes-and-results) data set. It contains the Olympic athletes from 1896 to 2016, along with some basic stats, their sport and country, and the medals they won. 
 
 
 ::: {.callout-caution icon="false"}
