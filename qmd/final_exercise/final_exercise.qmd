@@ -315,7 +315,7 @@ head(vb_long)
 
 ### 2) Plotting
 
-[Use `ggplot`](../plotting/plotting.qmd) to build a violin plot showing the winners and losers height distribution by gender. Violin plots are similar to box plots but have the advantage of conveying more distributional information. If you want, you can also add a small box plot on top of the violin plot to have the advantage of both. Give meaningful axis labels and a plot title.
+[Use `ggplot`](../plotting/plotting.qmd) to build a violin plot showing the winners and losers height distribution by gender. Violin plots are similar to box plots but have the advantage of conveying more distributional information. If you want, you can also add a small box plot on top of the violin plot to have the advantage of both (you can get some [inspiration](https://r-graph-gallery.com/violin_and_boxplot_ggplot2.html) on how to do that). Give meaningful axis labels and a plot title.
 
 ::: callout-tip
 ## Hint
