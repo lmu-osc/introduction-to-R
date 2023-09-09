@@ -76,7 +76,7 @@ head(inhabitants_long)
 
 ## Reshaping from Long to Wide Format
 
-In other cases, it might happen that multiple variables are put into the same column, togehter with an identifier column:
+In other cases, it might happen that multiple variables are put into the same column, together with an identifier column:
 
 ```{r, echo = FALSE}
 inhabitants_long_2 <- inhabitants_wide %>%
