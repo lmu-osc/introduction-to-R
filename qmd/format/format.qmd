@@ -39,7 +39,7 @@ However, the variable `inhabitants` is stretched over multiple rows. Depending o
 
 ## Long Format
 
-This is what happens in the Long Data Format does, where each unit of analysis is spread over multiple rows.
+This is what happens in the Long Data Format, where each unit of analysis is spread over multiple rows.
 
 ```{r, echo = FALSE}
 inhabitants_long <- inhabitants_wide %>%
