@@ -1,5 +1,5 @@
 ---
-title: "The Big Picture: Final Exercise"
+title: "Final Exercise"
 ---
 
 ![](../pictures/beach.jpg)[^1]
