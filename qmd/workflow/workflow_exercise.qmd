@@ -29,10 +29,33 @@ Go to `File` - `New File` - `R Script`. Save it into your folder.
 How you organize your scripts is up do you. I recommend to create seperate scripts for every use case. For this workshop, you could create one script for the exercises, and one script for the theory part, in case you want to try out some things by yourself.
 :::
 
+
+## Exercise 2: Download Data
+4. Within your folder create a new folder named `raw_data`. Then go to [this site](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) download the following data sets, and save them into your newly created folder. You can also just download the respective data set when it comes up in the workshop, in case you don't want to download them all at once.  
+
+* `athlete_events.csv`
+* `athletes.rds`
+* `babynames.csv`
+* `babynames_n.csv`
+* `characters.rds`
+* `contintents.csv`
+* `psych_stats.vsv`
+* `region_wide.csv`
+* `vb_l.sav`
+* `vb_w.csv`
+* `world_coordinates.rds`
+
+::: {.callout-tip collapse="true"}
+## Hint
+You can left-click on the respective data set you want to download. This will take you to this window, where you can click on the download button to download the data: 
+
+![](../pictures/download.png)
+:::
+
 ::: callout-tip
 ## Organizing your directory
 
-Within your project folder, create a folder named `R`, where all your R Scripts will go. You can do the same for `data`, `plots` etc. later on. This will help you to structure your working directory and make it easier to find specific files.
+Within your project folder, create a folder named `R`, where all your R Scripts will go. You can do the same for `data`, `plots` etc. This will help you to structure your working directory and make it easier to find specific files.
 :::
 
 Now that you are ready to go, let's get an overview of how working with data in R can look like.
