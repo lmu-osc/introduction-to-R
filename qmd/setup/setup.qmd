@@ -39,7 +39,7 @@ The script pane is used to edit [scripts](https://nickhaf.github.io/r_tutorial/q
 print("Hello World!")
 ```
 
-**into your script** and execute it. It should output "Hello World!" in your console.
+**into your script** and execute it. It should output "Hello World!" into your console.
 
 By the way: Code lines that are preceded by a `#` are commented out, and will not be evaluated.
 
