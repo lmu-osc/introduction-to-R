@@ -18,10 +18,6 @@ psych_stats <- read.csv(
   file = here::here("raw_data", "psych_stats.csv"),
   sep = ";"
 )
-
-## Take a look at the data sets
-str(characters)
-str(psych_stats)
 ```
 :::
 
