@@ -123,7 +123,7 @@ Calculate the mean height by team. Add the results in two [new columns](https://
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-You will need to calculate the mean of the two columns **by row**. There is a function called `rowMeans()` which can do exactly that. Provide a data frame consisting only of the relevant columns as input for the function.
+You will need to calculate the mean of the two columns **for each row**. There is a function called `rowMeans()` which can do exactly that. Provide a data frame consisting only of the relevant columns as input for the function. Or you can just add the respective columns and divide by two.
 :::
 
 ::: {.callout-caution collapse="true"}
