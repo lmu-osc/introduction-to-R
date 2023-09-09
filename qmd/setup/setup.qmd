@@ -20,7 +20,7 @@ Keep in mind that the free posit Cloud account only gives you 25 computing hours
 :::
 :::
 
-## Structure of the RStudio interface
+## Structure of the RStudio Interface
 
 When you open RStudio it will look something like this:
 
@@ -30,7 +30,7 @@ The window can be split into 4 parts:
 
 ![](../pictures/window_commented.PNG)
 
-### 1) Script pane
+### 1) Script Pane
 
 The script pane is used to edit [scripts](https://nickhaf.github.io/r_tutorial/qmd/workflow/workflow.html#scripts). Scripts are the files you store your code in. You can execute a line of code by pressing `ctrl + enter` (on windows) or `command + return` (on macOS). To execute multiple lines of code at once, mark them before you press the keys. Try it yourself! Write:
 
