@@ -87,7 +87,7 @@ babynames_merged <- merge(babynames,
 head(babynames_merged)
 ```
 
-Great, now we can see the number of people born with that name in each year since 1880, and the propability that they get this specific name, calculated from the total of births in this year! But hold on! The column `years` seems to include missing values (`NA's`). It is always a good idea to at least think about the [missing values](../missing/missing.qmd) before doing any analyses, so let's do just that:
+Great, now we can see the number of people born with that name in each year since 1880, and the propability that they get this specific name, calculated from the total of births in this year! But hold on! The column `years` seems to include [missing values](../missing/missing.qmd) (`NA's`). It is always a good idea to at least think about the [missing values](../missing/missing.qmd) before doing any analyses, so let's do just that:
 
 ## Missings
 
