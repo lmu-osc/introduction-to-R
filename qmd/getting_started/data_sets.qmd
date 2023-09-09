@@ -14,6 +14,7 @@ For the theory part of the workshop, we will mainly work with the `athletes` dat
 
 
 ::: {.callout-caution icon="false"}
+## Goal
 Our goal for the theory part of this workshop is to find the best country in each sport (operationalized by the number of gold medal winners from this country), and learn R along the way!
 :::
 
@@ -28,6 +29,7 @@ Over the course of this workshop, you can work on exercises to train the theoret
 You will load the data, prepare it for analyses and also plot it in the end.
 
 ::: {.callout-caution icon="false"}
+## Goal
 The goal for the exercise part of this workshop is to build a character profile for a fictional universe of your choosing.
 :::
 
