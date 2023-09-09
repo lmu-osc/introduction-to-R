@@ -235,9 +235,9 @@ The output of `lapply()` is always a list, so we don't have to define an empty l
 
 Look at the mean differences. Not very big, right? Let's calculate a standardized effect size, Cohen's *d*! We can do that for a paired t test by dividing the mean of the difference of both groups by the standard deviation of the difference between both groups:
 
-\$d = \frac{mean_{Diff}}{sd_{Diff}} \$
+$d = \frac{mean_{Diff}}{sd_{Diff}} $
 
-with $Diff$ as the differences of the paired sample values.
+with *Diff* as the differences of the paired sample values.
 
 Write a [function](../functions/functions.qmd) to do that, then add it to your loop so Cohen's *d* gets printed into your console. You can use the function `lsr::cohensD()` to check your function.
 
