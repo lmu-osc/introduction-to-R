@@ -28,7 +28,7 @@ Throughout this script I will use a mixture of [`tidyverse`](../basics/tidyverse
 
 ### 1) Loading Data
 
-[Download](https://nickhaf.github.io/r_tutorial/qmd/workflow/workflow_exercise.html#exercise-2-download-data) the data sets [`vb_w` and `vb_l`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and [load the data](../load_data/load_data.qmd) into R.
+[Download](https://nickhaf.github.io/r_tutorial/qmd/workflow/workflow_exercise.html#exercise-2-download-data) the data sets [`vb_w` and `vb_l`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and [load the data](../load_data/load_data.qmd) into R. `vb_w` contains the stats of the winning team, `vb_l` the stats of the losing team.
 
 ::: {.callout-tip collapse="true"}
 ## Hints
