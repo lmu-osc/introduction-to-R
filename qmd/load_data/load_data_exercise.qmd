@@ -6,11 +6,6 @@ title: "Loading data: Exercises"
 
 1.  Download the data set [`characters`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data).
 
-::: {.callout-tip collapse="true"}
-## Hint
-
-Right-click on the respective data set found under this link, select 'save as' and then choose a folder on your notebook where to save it. We have talked about where that optimally should be in [Workflow: Exercises](../workflow/worflow_exercise.qmd).
-:::
 
 2.  Load it into R, and assign the name `characters`.
 
@@ -59,8 +54,7 @@ Huh, that looks weird. If we take a look at the file by opening it in a text edi
 ?read.csv
 ```
 
-The `sep` argument specifies that the seperator needs to be a white space (meaning tabs, spaces ... - look at the details in the documentation).
-So, we can do the following:
+The `sep` argument specifies that the seperator needs to be a white space (meaning tabs, spaces ... - look at the details in the documentation). So, we can do the following:
 
 ```{r}
 psych_stats <- read.csv(
