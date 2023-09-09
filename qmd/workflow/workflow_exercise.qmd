@@ -29,27 +29,29 @@ Go to `File` - `New File` - `R Script`. Save it into your folder.
 How you organize your scripts is up do you. I recommend to create seperate scripts for every use case. For this workshop, you could create one script for the exercises, and one script for the theory part, in case you want to try out some things by yourself.
 :::
 
-
 ## Exercise 2: Download Data
-4. Within your folder create a new folder named `raw_data`. Then go to [this site](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) download the following data sets, and save them into your newly created folder. You can also just download the respective data set when it comes up in the workshop, in case you don't want to download them all at once.  
 
-* `athlete_events.csv`
-* `athletes.rds`
-* `babynames.csv`
-* `babynames_n.csv`
-* `characters.rds`
-* `contintents.csv`
-* `psych_stats.vsv`
-* `region_wide.csv`
-* `vb_l.sav`
-* `vb_w.csv`
-* `world_coordinates.rds`
+4.  Within your folder create a new folder named `raw_data`. Then go to [this site](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) download the following data sets, and save them into your newly created folder. You can also just download the respective data set when it comes up in the workshop, in case you don't want to download them all at once.
 
-::: {.callout-tip collapse="true"}
+-   `athlete_events.csv`
+-   `athletes.rds`
+-   `babynames.csv`
+-   `babynames_n.csv`
+-   `characters.rds`
+-   `contintents.csv`
+-   `psych_stats.vsv`
+-   `region_wide.csv`
+-   `vb_l.sav`
+-   `vb_w.csv`
+-   `world_coordinates.rds`
+
+::: callout-tip
 ## Hint
-You can left-click on the respective data set you want to download. This will take you to this window, where you can click on the download button to download the data: 
+
+You can left-click on the respective data set you want to download. This will take you to this window, where you can click on the download button to download the data:
 
 ![](../pictures/download.png)
+
 :::
 
 ::: callout-tip
