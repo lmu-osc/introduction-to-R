@@ -5,7 +5,7 @@ title: "Additional Resources"
 Here you can find a collection of resources that might help you with this tutorial, or might motivate you to do some further reading.
 
 # Cheat Sheets
-Cheat Sheets organize the most important commands in an clear way. You can use the recommendations already while doing this workshop, or even create your own.
+Cheat Sheets organize the most important commands in an clear way. You can use the recommendations already during this workshop, or even create your own.
 
 ## `Base R`
 You can find a collection of the most important `Base R` commands [here](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf).
