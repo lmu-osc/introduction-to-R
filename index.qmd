@@ -22,7 +22,7 @@ Don't worry if you don't finish the whole workshop in time, or the material seem
 
 The main objective of this workshop is to get you started with using R for your own scientific work. To do that, we will repeat and try out the main concepts multiple times, so you get to work with them as much and as from many different perspectives as possible. Along the way, some advanced ideas will be introduced as well, which you can follow up on later in case you think they might be relevant for your own work.
 
-Each section is divided into a theory part and some exercises. If something is unclear, you can use the [Ask a question](https://docs.google.com/document/d/19uUsS9xiAsxmAtblkaPqbdl3m1IxurWKOoPdTc0oymM/edit) button on the upper right corner.
+Each section is divided into a theory part and some exercises. If something is unclear, you can use the [Ask a question](https://docs.google.com/document/d/19uUsS9xiAsxmAtblkaPqbdl3m1IxurWKOoPdTc0oymM/edit) button on the upper right corner of the website.
 
 ::: callout-tip
 Learning how to program can be tough, and to get started it is important to write as much code as possible, and think about many different problems to get used to coding. So do the exercises!
