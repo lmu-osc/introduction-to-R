@@ -30,3 +30,10 @@ You will load the data, prepare it for analyses and also plot it in the end.
 ::: {.callout-caution icon="false"}
 The goal for the exercise part of this workshop is to build a character profile for a fictional universe of your choosing.
 :::
+
+
+::: {.callout-tip}
+We have looked at how to download these data sets in the [last section´]().
+
+:::
+
