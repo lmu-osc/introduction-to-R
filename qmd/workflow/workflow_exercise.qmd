@@ -26,7 +26,7 @@ Go to `File` - `New File` - `R Script`. Save it into your folder.
 ::: callout-tip
 ## Organizing your scripts
 
-How you organize your scripts is up do you. I recommend to create seperate scripts for every use case. For this workshop, you could create one script for the exercises, and one script for the theory part, in case you want to try out some things by yourself.
+How you organize your scripts is up do you. I recommend to create seperate scripts for every use case. For this workshop, you could create one script for the exercises, and one script for the theory part, in case you want to try out some of the examples by yourself.
 :::
 
 ## Exercise 2: Download Data
