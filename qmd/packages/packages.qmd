@@ -10,7 +10,7 @@ Packages are extensions to the `base R` you get by default. Most times they prov
 
 We can compare them somewhat to apps in an appstore:
 
-![](../pictures/playstore.png){width="19"}\[\^2\] First, we have to install the package: `install.packages("packagename")`. It's like downloading an app from the playstore. \[\^2\]: Icons from [icons8.de](https://icons8.de).
+![](../pictures/playstore.png){width="19"}[^2] First, we have to install the package: `install.packages("packagename")`. It's like downloading an app from the playstore. [^2]: Icons from [icons8.de](https://icons8.de).
 
 ![](../pictures/app.png){width="19"}[^2] Then, we have to load them in each session where we want to use them (like tapping on the app icon): `library(packagename)`.
 

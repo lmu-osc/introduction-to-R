@@ -51,7 +51,6 @@ How you organize your scripts is up do you. I recommend to create seperate scrip
 You can left-click on the respective data set you want to download. This will take you to this window, where you can click on the download button to download the data:
 
 ![](../pictures/download.png)
-
 :::
 
 ::: callout-tip
