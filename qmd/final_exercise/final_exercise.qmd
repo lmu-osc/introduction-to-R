@@ -141,7 +141,7 @@ Now, let's do a paired t-test comparing the mean winners height against the mean
 
 ### 1) Histogram
 
-One assumption of the paired t-test is a normal distribution of the differences of the pairs. Check this assumption [visually](../plotting/plotting.qmd) by creating a histogram of the `winning_height - losing_height` difference. Use a [`for-loop`](../for_loop/for_loop.qmd) to create one histogram for the men and one for the women. You need to explicitly `print()` the plot if you want to display it from within a `for-loop`.
+One assumption of the paired t-test is that the differences of the pairs are normally distributed. Check this assumption [visually](../plotting/plotting.qmd) by creating a histogram of the `winning_height - losing_height` difference. Use a [`for-loop`](../for_loop/for_loop.qmd) to create one histogram for the men and one for the women. You need to explicitly `print()` the plot if you want to display it from within a `for-loop`.
 
 ::: {.callout-tip collapse="true"}
 1.  The start of your for loop should look like this: `for(i in c("M", "W")){`. Inside, filter for men/women, and then create the plot using this subsetted data frame.
@@ -175,7 +175,7 @@ Hmm, so the differences in the mean team height are really small in most cases! 
 
 ### 2) Paired t-test
 
-Do a paired t-test comparing the winning teams height vs the losing teams height. Again use a [`for-loop`](../loops/loopq.qmd) to test for men and women separately. Save the result in a [list](https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#honorable-mention-list)), and name the list elements.
+Do a paired t-test comparing the winning teams height vs the losing teams height. Again use a [`for-loop`](../loops/loopq.qmd) to test for men and women separately. Save the result in a [list](https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#honorable-mention-list), and name the list elements.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
