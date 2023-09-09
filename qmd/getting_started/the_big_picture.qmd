@@ -109,7 +109,7 @@ babynames_F <- babynames_merged %>%
 ```
 :::
 
-Wondering what the `%>%` means? That's a [pipe operator](https://nickhaf.github.io/r_tutorial/qmd/basics/tidyverse.html#the-pipe-operator), which is used, mainly in the `tidyverse`, to connect multiple function calls. This can make code a lot more readable. In our case, we start with the `babynames_merged` data frame and then perform an operation on it, in this case filtering specific values.
+Wondering what the `%>%` means? That's a [pipe operator](https://nickhaf.github.io/r_tutorial/qmd/basics/tidyverse.html#the-pipe-operator), which is used, mainly in the [`tidyverse`](../basics/tidyverse.qmd), to connect multiple function calls. This can make code a lot more readable. Here we start with the `babynames_merged` data frame and then perform an operation on it, in this case filtering specific values.
 
 ## Adding a new column
 
