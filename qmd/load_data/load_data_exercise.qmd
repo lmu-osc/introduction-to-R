@@ -4,7 +4,7 @@ title: "Loading data: Exercises"
 
 ## Exercise 1
 
-1.  Download the data set [`characters`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data).
+1.  Download the data set [`characters`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) (in case you haven't already).
 
 
 2.  Load it into R, and assign the name `characters`.
@@ -28,7 +28,7 @@ characters <- readRDS(file = here::here("raw_data", "characters.rds"))
 ::: {.callout-note collapse="true" icon="false"}
 ## Advanced exercise
 
-1.  Download the [`psych_stats`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) data set.
+1.  Download the [`psych_stats`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) data set  (in case you haven't already).
 2.  Load it into R and assign the name `psych_stats`. Did that work as expected? If not, why not?
 
 ::: {.callout-tip collapse="true"}
