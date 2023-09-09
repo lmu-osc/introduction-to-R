@@ -347,8 +347,7 @@ ggplot(vb_long,
   geom_boxplot(
     width = 0.1,
     color = "grey",
-    alpha = 0.2,
-    position = "dodge"
+    alpha = 0.2
   ) +
   ## New colour palette:
   scale_fill_brewer(palette = "Dark2") +
