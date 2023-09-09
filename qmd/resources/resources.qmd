@@ -24,4 +24,4 @@ If you want to do some further reading I highly recommend these books:
 [Advanced R](https://adv-r.hadley.nz/) is definitely not for beginners, but helps R users and programmers coming from other languages to understand R and improve their programming skills in R. 
 
 # Data Visualization
-Finally, the amazing [R Graph Gallery](https://r-graph-gallery.com/) which helps to get inspiration for own plots. And it provides the corresponding code, to get you started directly. 
+Finally, the amazing [R Graph Gallery](https://r-graph-gallery.com/) which helps to get inspiration for own plots. And it provides the corresponding code to get you started instantly. 
