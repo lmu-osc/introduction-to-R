@@ -128,6 +128,11 @@ You will need to calculate the mean of the two columns **by row**. There is a fu
 ```{r}
 vb$winning_height <- rowMeans(vb[, c("w_p1_hgt", "w_p2_hgt")])
 vb$losing_height <- rowMeans(vb[, c("l_p1_hgt", "l_p2_hgt")])
+
+## Or:
+vb$winning_height <- (vb$w_p1_hgt + vb$w_p2_hgt)/2
+vb$losing_height <- (vb$l_p1_hgt + vb$l_p2_hgt)/2
+
 ```
 :::
 
@@ -165,8 +170,7 @@ for (i in c("M", "W")) {
 }
 ```
 
-Hmm, so the differences in the mean team height are really small in most cases!  One inch are `2.54` cm, and most height differences between the teams are not larger than `5` cm, so we probably won't see an effect. But let's proceed to confirm that!
-
+Hmm, so the differences in the mean team height are really small in most cases! One inch are `2.54` cm, and most height differences between the teams are not larger than `5` cm, so we probably won't see an effect. But let's proceed to confirm that!
 :::
 
 ### 2) Paired t-test
@@ -231,9 +235,9 @@ The output of `lapply()` is always a list, so we don't have to define an empty l
 
 Look at the mean differences. Not very big, right? Let's calculate a standardized effect size, Cohen's *d*! We can do that for a paired t test by dividing the mean of the difference of both groups by the standard deviation of the difference between both groups:
 
-$d = \frac{mean_{Diff}}{sd_{Diff}} $
+\$d = \frac{mean_{Diff}}{sd_{Diff}} \$
 
-with $Diff$ as the differences of the paired sample values. 
+with $Diff$ as the differences of the paired sample values.
 
 Write a [function](../functions/functions.qmd) to do that, then add it to your loop so Cohen's *d* gets printed into your console. You can use the function `lsr::cohensD()` to check your function.
 
@@ -281,8 +285,7 @@ for (i in c("M", "W")) {
 
 ```
 
-So, following Cohen's conventions, this are negligible effect sizes, so the height differences in professional volleyball are probably not that important for the outcome of the match. Not that surprising all together, because the height differences were very small in the first place, and there are probably much more important factors to winning a volleyball match than a minimal height advantage. 
-
+So, following Cohen's conventions, this are negligible effect sizes, so the height differences in professional volleyball are probably not that important for the outcome of the match. Not that surprising all together, because the height differences were very small in the first place, and there are probably much more important factors to winning a volleyball match than a minimal height advantage.
 :::
 
 ## Exercise 3
