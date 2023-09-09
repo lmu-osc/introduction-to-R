@@ -10,7 +10,11 @@ This exercise revisits most topics presented in the workshop (but will also go b
 
 If you are a R beginner and followed the workshop, you can do this last exercise **in the end** to test your knowledge. If you already have some R experience, you can do this exercise before the rest of the workshop and use it to identify weak points to follow up on. It will be a bit harder than the other workshop exercises to challenge you one last time and think about concepts you might want to revisit, so don't worry if some exercises feel a bit harder, we haven't talked about everything yet. Use all resources at your disposal (cheat sheets, stack overflow ...), that's how you would work on a real project as well.
 
-So, in order to provide you with a totally fresh data set, let's look at beach volleyball. The data was collected from international beach volleyball championships, and displays a lot of stats on each single match. For this exercise we want to focus on a simple questions: Do height differences in volleyball matter so much that taller teams have a winning advantage? If that would be the case, the mean height of the winning team should be significantly larger than the mean height of the losing team. Let's take a look!
+So, in order to provide you with a totally fresh data set, let's look at beach volleyball. The data was collected from international beach volleyball championships, and displays a lot of stats on each single match. 
+
+::: {.callout-caution icon="false"}
+For this exercise we want to focus on a simple questions: Do height differences in volleyball matter so much that taller teams have a winning advantage? If that would be the case, the mean height of the winning team should be significantly larger than the mean height of the losing team. Let's take a look!
+:::
 
 ::: callout-tip
 Throughout this script I will use a mixture of [tidyverse](../basics/tidyverse.qmd) and `Base R` code. Fell free to use the syntax you are comfortable with.
