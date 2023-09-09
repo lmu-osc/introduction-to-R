@@ -14,7 +14,6 @@ website:
         text: Home
       - qmd/setup/setup.qmd
       - qmd/getting_started/the_big_picture.qmd
-      - qmd/final_exercise/final_exercise.qmd
     right: 
       - href: https://docs.google.com/document/d/19uUsS9xiAsxmAtblkaPqbdl3m1IxurWKOoPdTc0oymM/edit?usp=sharing
         text: Ask a question
@@ -90,7 +89,10 @@ website:
         contents:
           - qmd/plotting/plotting.qmd
           - qmd/plotting/plotting_exercise.qmd
-      - section: "5) Additional Resources"
+      - section: "5) Final Exercise"
+        contents:
+          - qmd/final_exercise/final_exercise.qmd
+      - section: "6) Additional Resources"
         contents:
           - qmd/resources/resources.qmd
           - section: "Direkt Links to Cheat Sheets" 
