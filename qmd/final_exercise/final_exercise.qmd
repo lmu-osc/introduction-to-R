@@ -49,7 +49,6 @@ vb_l <- read_sav(file = here::here("raw_data", "vb_l.sav"))
 
 str(vb_w)
 str(vb_l)
-
 ```
 :::
 
@@ -149,10 +148,8 @@ One assumption of the paired t-test is a normal distribution of the differences 
 ## Solution
 
 ```{r}
-
 for (i in c("M", "W")) {
-  
-## Extract men/women, depending on i
+  ## Extract men/women, depending on i
   vb_gender <- vb %>% filter(gender == i)
 
   p <- ggplot(
@@ -167,6 +164,9 @@ for (i in c("M", "W")) {
   print(p)
 }
 ```
+
+Hmm, so the differences in the mean team height are really small in most cases!  One inch are `2.54` cm, and most height differences between the teams are not larger than `5` cm, so we probably won't see an effect. But let's proceed to confirm that!
+
 :::
 
 ### 2) Paired t-test
@@ -184,19 +184,19 @@ Do a paired t-test comparing the winning teams height vs the losing teams height
 ## Solution
 
 ```{r}
-## Define an empty list to save your t-test results in. 
+## Define an empty list to save your t-test results in.
 result_list <- list()
 
 ## Iterate over men and women:
 for (i in c("M", "W")) {
-  
   ## Extract men/women, depending on i
   vb_gender <- vb %>% filter(gender == i)
 
-  ## Do the t-test and save the result 
-  result_list[[i]] <- t.test(vb_gender$winning_height, 
-                             vb_gender$losing_height, 
-                             paired = "true")
+  ## Do the t-test and save the result
+  result_list[[i]] <- t.test(vb_gender$winning_height,
+    vb_gender$losing_height,
+    paired = "true"
+  )
 }
 
 result_list
@@ -209,19 +209,17 @@ Actually, this example would be a perfect application for [`lapply()`](https://r
 
 ```{r}
 result_list <- lapply(c("M", "W"), function(x) {
-  
   ## Extract men/women
   vb_gender <- vb %>% filter(gender == x)
-  
-  ## Calculate the t-test. Note how we don't need an empty list to save the results in, lapply() does that for us. 
+
+  ## Calculate the t-test. Note how we don't need an empty list to save the results in, lapply() does that for us.
   t_test_result <- t.test(vb_gender$winning_height, vb_gender$losing_height, paired = "true")
-  
+
   ## Explictly return the result:
   return(t_test_result)
-  
 })
 
-## We still hav to name our resulting list to know what is what: 
+## We still hav to name our resulting list to know what is what:
 names(result_list) <- c("M", "W")
 ```
 
@@ -231,46 +229,60 @@ The output of `lapply()` is always a list, so we don't have to define an empty l
 
 ### 3) Functions
 
-Look at the mean differences. Not very big, right? Let's calculate a standardized effect size, Cohen's *d*:
+Look at the mean differences. Not very big, right? Let's calculate a standardized effect size, Cohen's *d*! We can do that for a paired t test by dividing the mean of the difference of both groups by the standard deviation of the difference between both groups:
 
-$d = \frac{\overline{x}_1 - \overline{x}_2}{\sqrt{(s^2_1 + s^2_2)/2}}$
+$d = \frac{mean_{Diff}}{sd_{Diff}} $
 
-Write a [function](../functions/functions.qmd) to do that, then add it to your loop so Cohen's *d* gets printed into your console.
+with $Diff$ as the differences of the paired sample values. 
+
+Write a [function](../functions/functions.qmd) to do that, then add it to your loop so Cohen's *d* gets printed into your console. You can use the function `lsr::cohensD()` to check your function.
 
 ::: {.callout-caution collapse="true"}
 ## Solution
 
 ```{r}
+# install.packages("lsr") # Can be used for checking the own calculation
+
 ## Function for calculating Cohen's d
-cohens_d <- function(x_1, x_2, var_1, var_2) {
-  d <- (x_1 - x_2) / (sqrt(var_1 + var_2) / 2)
+cohens_d <- function(group_1, group_2) {
+  ## Calculate the difference
+  diff <- group_1 - group_2
+  
+  ## Calculate d accoring to our formula
+  d <- mean(diff) / sd(diff)
+
   return(d)
 }
 
-
 for (i in c("M", "W")) {
-  
   ## filter men/women
   vb_gender <- vb %>% filter(gender == i)
 
   ## Paired t-test
   result_list[[i]] <- t.test(vb_gender$winning_height, vb_gender$losing_height, paired = "true")
-  
+
   ## Our Cohen's d function
   d <- cohens_d(
-    x_1 = mean(vb_gender$winning_height),
-    x_2 = mean(vb_gender$losing_height),
-    var_1 = var(vb_gender$winning_height),
-    var_2 = var(vb_gender$losing_height)
+    group_1 = vb_gender$winning_height,
+    group_2 = vb_gender$losing_height
   )
-  
+
+  ## Cohen's d according to the lsr package:
+  d_2 <- lsr::cohensD(
+    x = vb_gender$winning_height,
+    y = vb_gender$losing_height,
+    method = "paired"
+  )
+
   ## Print d
-  print(d)
+  print(paste("My Cohen's d:", round(d, 3)))
+  print(paste("lsr Cohen's d:", round(d_2, 3)))
 }
 
 ```
 
-So, following Cohen's conventions, this could be interpreted as (very) small effect sizes. The height differences in professional volleyball are therefore probably negligible, as the size differences will be very small anyways, but still, teams with taller players seem to have a very slight edge.
+So, following Cohen's conventions, this are negligible effect sizes, so the height differences in professional volleyball are probably not that important for the outcome of the match. Not that surprising all together, because the height differences were very small in the first place, and there are probably much more important factors to winning a volleyball match than a minimal height advantage. 
+
 :::
 
 ## Exercise 3
@@ -318,17 +330,21 @@ vb_long <- vb_long %>%
 
 ## Build the coordinate system
 ggplot(vb_long,
-  mapping = aes(x = group, 
-                y = mean_height, 
-                fill = gender)
+  mapping = aes(
+    x = group,
+    y = mean_height,
+    fill = gender
+  )
 ) +
   ## Violin plot:
   geom_violin() +
   ## Boxplot with some additional specifications:
-  geom_boxplot(width = 0.1, 
-               color = "grey", 
-               alpha = 0.2, 
-               position = "dodge") +
+  geom_boxplot(
+    width = 0.1,
+    color = "grey",
+    alpha = 0.2,
+    position = "dodge"
+  ) +
   ## New colour palette:
   scale_fill_brewer(palette = "Dark2") +
   ## New theme:
