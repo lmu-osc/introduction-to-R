@@ -214,7 +214,7 @@ Let's give the axes some more informative names and a title to the plot:
 p <- p +
   ggtitle("Most common female name in the United States of America by year") +
   xlab("Birthyear") +
-  ylab("Percentage of children given that name")
+  ylab("Percentage of newborn children with that name")
 p
 ```
 
