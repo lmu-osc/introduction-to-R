@@ -4,9 +4,8 @@ title: "The Big Picture"
 
 Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project" with very basic data, which follows a possible workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters we will go into a little more detail for each topic, so don't worry if you don't understand something quite yet, it will be covered again. The goal of this chapter is to simply give you an idea of what is possible in R, before dealing with the specifics.
 
-
 ::: {.callout-caution icon="false"}
-Our goal for this chapter is to get an overview of the most common name each year in the USA beginning at the end of the 19th century. 
+Our goal for this chapter is to get an overview of the most common name each year in the USA beginning at the end of the 19th century.
 :::
 
 ## Packages
@@ -127,7 +126,7 @@ Now we can trim down our data set a bit more and [select](https://nickhaf.github
 ::: tidy
 ```{r}
 babynames_F <- babynames_F %>%
-  select(year, name, percentage)
+  select(year, name, percentage) # We take the percentage instead of the prop here, because i find it a little bit more intuitive to plot.
 head(babynames_F)
 ```
 :::
