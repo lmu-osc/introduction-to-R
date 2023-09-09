@@ -33,7 +33,7 @@ library(tidyverse)
 
 ## Load Data
 
-Data is [loaded into R](../load_data/load_data.qmd) so you can work with it. For this chapter, we are going to use the data set [`babynames`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md), which we can find on the [`tidytuesday`](https://github.com/rfordatascience/tidytuesday) site. I have already tweaked the data set a bit, so download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) to follow along. Right-click on the respective data set found under this link, select 'save as' and then choose a folder on your notebook where to save it. We have talked about where that optimally should be in [Workflow: Exercises](../workflow/workflow_exercise.qmd).
+Data is [loaded into R](../load_data/load_data.qmd) so you can work with it. For this chapter, we are going to use the data set [`babynames`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md), which we can find on the [`tidytuesday`](https://github.com/rfordatascience/tidytuesday) site. I have already tweaked the data set a bit, so download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) to follow along (in case you haven't already in the [previous exercise](https://nickhaf.github.io/r_tutorial/qmd/workflow/workflow_exercise.html#exercise-2-download-data). 
 
 So, after downloading it and saving it in the folder `raw_data` within my project directory, I can load the data set into R with:
 
