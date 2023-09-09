@@ -235,4 +235,4 @@ We would have many more options to style this plot further (for example we could
 
 ## Conclusion
 
-In this tutorial we have learned that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. Either follow the course, or navigate to the chapters you are most interested in. But first, take a look at the new data sets you will be working with throughout the exercises.
+In this tutorial we have learned that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. If you already have some R experience, you can now move on to [The Big Picture: Exercise](../final_exercise/final_exercise.qmd) to identify topics your want to work on. If you are a R beginner, I would suggest you follow the course, as outlined on the left.
