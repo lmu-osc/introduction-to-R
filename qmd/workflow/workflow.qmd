@@ -15,4 +15,4 @@ Therefore, every time you start a new project, you should also create at least o
 
 You can create a new script by clicking on `File - New File - R Script` in the RStudio window.
 
-Now it's your turn! In the [Workflow: Exercises](./workflow/workflow_exercise.qmd) you will set yourself up for the following workshop.
+Now it's your turn! In the [Workflow: Exercises](../workflow/workflow_exercise.qmd) you will set yourself up for the following workshop.
