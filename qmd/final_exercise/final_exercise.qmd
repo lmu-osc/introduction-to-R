@@ -21,7 +21,7 @@ For this exercise we want to focus on a simple questions: Do height differences 
 :::
 
 ::: callout-tip
-Throughout this script I will use a mixture of [tidyverse](../basics/tidyverse.qmd) and `Base R` code. Fell free to use the syntax you are comfortable with.
+Throughout this script I will use a mixture of [`tidyverse`](../basics/tidyverse.qmd) and `Base R` code. Fell free to use the syntax you are comfortable with.
 :::
 
 ## Exercise 1
