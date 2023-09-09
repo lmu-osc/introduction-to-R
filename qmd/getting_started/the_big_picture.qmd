@@ -45,7 +45,7 @@ babynames <- read.csv(here::here("raw_data", "babynames.csv"))
 babynames <- read.csv("./raw_data/babynames.csv")
 ```
 
-This will load the data into R and assigning it the name `babynames` by using the `<-`. You can see the data popping up in your `Environment` pane on the upper right. Note that the file path might differ on your device, depending on where you saved your data.
+This will load the data into R and assigning it the name `babynames` by using the `<-` operator. You can see the data popping up in your `Environment` pane on the upper right. Note that the file path might differ on your device, depending on where you saved your data.
 
 ## Take a look
 
