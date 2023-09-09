@@ -67,7 +67,7 @@ So, what we can infer from the data and its online description is that it contai
 
 ## Merging
 
-Sadly the data is not complete. If we had the number of people born with a specific name for every year, we could find out which name was the most common each year (which is our goal, as you might remember). However, the number of people is missing from our data (ok, i split it up for illustrative purposes). So let's [download](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) it and load it into R:
+Sadly the data is not complete. If we had the number of people born with a specific name for every year, we could find out which name was the most common each year (which is our goal, as you might remember). However, the number of people is missing from our data (ok, i split it up for illustrative purposes). So let's [download](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) `babynames_n.csv` (in case you haven't already):
 
 ```{r, echo = FALSE}
 babynames_n <- read.csv(here::here("raw_data", "babynames_n.csv"))
