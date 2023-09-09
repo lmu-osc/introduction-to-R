@@ -134,9 +134,8 @@ vb$winning_height <- rowMeans(vb[, c("w_p1_hgt", "w_p2_hgt")])
 vb$losing_height <- rowMeans(vb[, c("l_p1_hgt", "l_p2_hgt")])
 
 ## Or:
-vb$winning_height <- (vb$w_p1_hgt + vb$w_p2_hgt)/2
-vb$losing_height <- (vb$l_p1_hgt + vb$l_p2_hgt)/2
-
+vb$winning_height <- (vb$w_p1_hgt + vb$w_p2_hgt) / 2
+vb$losing_height <- (vb$l_p1_hgt + vb$l_p2_hgt) / 2
 ```
 :::
 
@@ -255,7 +254,7 @@ Write a [function](../functions/functions.qmd) to do that, then add it to your l
 cohens_d <- function(group_1, group_2) {
   ## Calculate the difference
   diff <- group_1 - group_2
-  
+
   ## Calculate d accoring to our formula
   d <- mean(diff) / sd(diff)
 
@@ -286,7 +285,6 @@ for (i in c("M", "W")) {
   print(paste("My Cohen's d:", round(d, 3)))
   print(paste("lsr Cohen's d:", round(d_2, 3)))
 }
-
 ```
 
 So, following Cohen's conventions, this are negligible effect sizes, so the height differences in professional volleyball are probably not that important for the outcome of the match. Not that surprising all together, because the height differences were very small in the first place, and there are probably much more important factors to winning a volleyball match than a minimal height advantage.
