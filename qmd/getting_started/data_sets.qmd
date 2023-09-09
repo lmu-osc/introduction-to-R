@@ -33,7 +33,7 @@ The goal for the exercise part of this workshop is to build a character profile 
 
 
 ::: {.callout-tip}
-We have looked at how to download these data sets in the [last section´]().
+We have looked at how to download these data sets in the [last section](https://nickhaf.github.io/r_tutorial/qmd/workflow/workflow_exercise.html#exercise-2-download-data).
 
 :::
 
