@@ -31,7 +31,7 @@ How you organize your scripts is up do you. I recommend to create seperate scrip
 
 ## Exercise 2: Download Data
 
-4.  Within your folder create a new folder named `raw_data`. Then go to [this site](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) download the following data sets, and save them into your newly created folder. You can also just download the respective data set when it comes up in the workshop, in case you don't want to download them all at once.
+1.  Within your folder create a new folder named `raw_data`. Then go to [this site](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) download the following data sets, and save them into your newly created folder. You can also just download the respective data set when it comes up in the workshop, in case you don't want to download them all at once.
 
 -   `athlete_events.csv`
 -   `athletes.rds`
@@ -50,10 +50,9 @@ How you organize your scripts is up do you. I recommend to create seperate scrip
 
 You can left-click on the respective data set you want to download. This will take you to this window, where you can click on the download button to download the data:
 
+![](../pictures/download.PNG)
+
 :::
-
-![](../pictures/download.png)
-
 
 ::: callout-tip
 ## Organizing your directory
