@@ -122,7 +122,7 @@ for (i in unique(characters_friends$question)) { # goes over all unique question
 
 1.  Build an empty data frame where you will save your results.
 2.  Now you can't easily loop over the question column itself, because you need the position of each element to save it in the respective row of your new data frame: `for(i in 1:length(unique(characters_friends$question))){`.
-3.  Now you can save the result of your calculation in row `i` of your new data frame.
+3.  Now you can save the result of your calculation in row `i` and column `mean` of your new data frame.
 :::
 
 ::: {.callout-caution collapse="true"}
