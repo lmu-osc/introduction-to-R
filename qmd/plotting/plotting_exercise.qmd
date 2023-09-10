@@ -147,7 +147,6 @@ You can change a lot in the appearance of the bars. For example, you might want 
 
 ::: tidy
 ```{r}
-
 #| fig-height: 8
 #| fig-width: 11
 
