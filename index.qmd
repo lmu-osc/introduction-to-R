@@ -17,7 +17,7 @@ Welcome![^1][^2] This workshop will teach you the basics of R. Its structure is 
 ::: {.callout-note collapse="true" icon="false"}
 ## Unfold if you want to learn more about optional content
 
-Don't worry if you don't finish the whole workshop in time, or the material seems a bit overwhelming. It is designed to provide additional information for self studying and looking up topics of interest. Optional input and exercises can be found in folded in sections like this one.
+Don't worry if you don't finish the whole workshop in time, or the material seems a bit overwhelming. It is designed to provide additional information for self studying. Optional input and exercises can be found in folded in sections like this one.
 :::
 
 The main objective of this workshop is to get you started with using R for your own scientific work. To do that, we will repeat and try out the main concepts multiple times, so you get to work with them as much and as from many different perspectives as possible. Along the way, some advanced ideas will be introduced as well, which you can follow up on later in case you think they might be relevant for your own work.
