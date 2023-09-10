@@ -5,7 +5,7 @@ title: "Getting an overview"
 ::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
 
-```{r}
+```{r message=FALSE}
 # install.packages("tidyverse")
 # install.packages("here")
 
