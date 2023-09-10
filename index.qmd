@@ -25,7 +25,7 @@ The main objective of this workshop is to get you started with using R for your 
 Each section is divided into a theory part and some exercises. If something is unclear, you can use the [Ask a question](https://docs.google.com/document/d/19uUsS9xiAsxmAtblkaPqbdl3m1IxurWKOoPdTc0oymM/edit) button on the upper right corner of the website.
 
 ::: callout-tip
-Learning how to program can be tough. To get started it is important to write as much code as possible, and think about many different problems to get used to coding. So do the exercises!
+Learning how to program can be tough. To get started it is important to write as much code as possible, and think about many different problems to get used to coding in the new language. So do the exercises!
 :::
 
 ::: callout-warning
