@@ -283,8 +283,3 @@ p +
 :::
 
 Note that the medals for team sports are counted multiple times, as our data contained the gold medal wins by person, and not by discipline.
-<<<<<<< HEAD
-=======
-
-:::
->>>>>>> b6fc02e2e0efbdbd60eeeac98e28b6b235109048
