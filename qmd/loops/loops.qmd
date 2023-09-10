@@ -10,9 +10,8 @@ source(here::here("output_hook.R"))
 
 [^1]: Image by [Tine Ivanic](https://unsplash.com/de/@tine999?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/u2d0BPZFXOY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 
-::: callout-note
+::: {.callout-note collapse="true"}
 This chapter is optional.
-:::
 
 ::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
@@ -209,7 +208,7 @@ Inside the `if()` we define our [condition](https://nickhaf.github.io/r_tutorial
 
 In our inital example we check if the number of gold medalists is equal to one. If that is the case, we print the specific statement. If not, we print the other.
 
-We don't even need to define the `else{}` part if nothing should happen in case the `if()` condition is not met. 
+We don't even need to define the `else{}` part if nothing should happen in case the `if()` condition is not met.
 
 ## `ifelse()`
 
@@ -226,3 +225,5 @@ head(medal_counts)
 ```
 
 Note that the look of this `ifelse()` function is a bit different from our `if else statement`, but the logic behind it is exactly the same: Here we [add the new column](https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#adding-new-columns) `n_100` which gets filled with `TRUE` and `FALSE`. If the conditional statement `medal_counts$n >= 100`, which is the first argument of the `ifelse()` function, is met, the function returns a `TRUE`, if not a `FALSE`.
+
+:::

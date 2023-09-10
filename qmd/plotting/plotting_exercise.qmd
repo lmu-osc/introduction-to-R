@@ -2,9 +2,8 @@
 title: "Plotting: Exercises"
 ---
 
-::: callout-note
+::: {.callout-note collapse="true"}
 These exercises are optional.
-:::
 
 ::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
@@ -254,9 +253,8 @@ fictional_personalities(
 :::
 :::
 
-
 ## The End
-Amazing, you've made it to the end of this workshop! You now can go back to [The Big Picture](../getting_started/the_big_picture.qmd), or do the [Final Exercise](../final_exercise/final_exercise.qmd) to test your knowledge one more time! If you had enough exercises for today, take a look at some of the [Resources](../resources/resources.qmd) I have assembled for further reading.  
 
+Amazing, you've made it to the end of this workshop! You now can go back to [The Big Picture](../getting_started/the_big_picture.qmd), or do the [Final Exercise](../final_exercise/final_exercise.qmd) to test your knowledge one more time! If you had enough exercises for today, take a look at some of the [Resources](../resources/resources.qmd) I have assembled for further reading.
 
-
+:::

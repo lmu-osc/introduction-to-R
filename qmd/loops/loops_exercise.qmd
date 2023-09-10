@@ -6,9 +6,8 @@ title: "Loops: Exercises"
 source(here::here("output_hook.R"))
 ```
 
-::: callout-note
+::: {.callout-note collapse="true"}
 These exercises are optional.
-:::
 
 ::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
@@ -114,7 +113,6 @@ for (i in unique(characters_friends$question)) { # goes over all unique question
   print(statement)
 }
 ```
-
 :::
 
 3.  Tweak your for loop so the mean values get saved in a new data frame, containing the question and the mean rating for each question.
@@ -168,4 +166,6 @@ characters_friends %>%
 :::
 
 Great, its the same!
+:::
+
 :::

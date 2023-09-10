@@ -2,9 +2,8 @@
 title: "Plotting"
 ---
 
-::: callout-note
+::: {.callout-note collapse="true"}
 This chapter is optional.
-:::
 
 ::: {.callout-caution collapse="true"}
 ## Previous code
@@ -138,6 +137,7 @@ p_2 +
 :::
 
 This gives us black points now. But if we define our aesthetics within the `ggplot()` function, the points have the same colors as the bars, as now the aesthetics apply to all layers:
+
 ```{r}
 #| fig-height: 8
 #| fig-width: 11
@@ -153,7 +153,6 @@ ggplot(
   geom_col() +
   geom_point()
 ```
-
 
 Also note that we layer another geom (`geom_point()`) over our plot (that's what I meant earlier on by saying plots consist of different layers).
 
@@ -283,3 +282,5 @@ p +
 :::
 
 Note that the medals for team sports are counted multiple times, as our data contained the gold medal wins by person, and not by discipline.
+
+:::

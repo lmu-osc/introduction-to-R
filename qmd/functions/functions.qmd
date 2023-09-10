@@ -6,9 +6,8 @@ title: "Functions"
 
 [^1]: Image by [Laura Ockel](https://unsplash.com/de/@viazavier?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/UQ2Fw_9oApU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 
-::: callout-note
+::: {.callout-note collapse="true"}
 This chapter is optional.
-:::
 
 ::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
@@ -22,7 +21,7 @@ athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 
 ## Motivation
 
-We want to know the number of gold medals a specific athlete has won, along with some additional data, all printed into the console. Well, we could do something like this:
+Suppose we want to know the number of gold medals a specific athlete has won, along with some additional data, all printed into the console. Well, we could do something like this:
 
 ::: tidy
 ```{r}
@@ -144,4 +143,6 @@ sum_num(x = 3, y = 1)
 
 ::: callout-tip
 It often makes sense to explicitly write the argument names into your function call. This makes your code clearer, and avoids a mix up.
+:::
+
 :::
