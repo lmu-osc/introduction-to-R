@@ -94,7 +94,7 @@ for(i in unique(medal_counts$Region)){
 So this little piece of code can do what we started to do in the above code section, but already for all countries. Also, if we want to change something, we only have to change it once.
 
 ::: callout-tip
-In general, try not to repeat yourself when writing code. As a general rule of thumb, use loops and/or [functions](../functions/functions.qmd) if you need to copy/paste something more than two times.
+In general, try not to repeat yourself when writing code. As a general rule of thumb, use loops and/or [functions](../functions/functions.qmd) if you need to copy/paste something more than two times. In the above example, we could also have put the `paste()` call into a function of it own, to trim down the code even more and make it more readable. 
 :::
 
 ## How to write a for-loop?
