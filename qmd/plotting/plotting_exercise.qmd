@@ -45,7 +45,7 @@ characters_stats <- merge(
 
 Now, let's make a nice plot out of the data we've got.
 
-0.  First of all, let's clean up our questions column a bit. Replace all "\_" characters with "/" characters to make it clearer that we have two poles. Use the interent to figure out which function you need.
+0.  First of all, let's clean up our questions column a bit. Replace all "\_" characters with "/" characters to make it clearer that we have two poles. Use the internet to figure out which function you need.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
