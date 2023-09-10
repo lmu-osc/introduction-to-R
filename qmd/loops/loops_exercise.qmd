@@ -92,7 +92,7 @@ characters_friends <- characters_stats %>%
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-Build a `for loop` that goes over all unique questions (use `unique()` in your subsetted data frames. Inside this `for-loop` you can subset again, this time only the rows containing the question that the loop is at at the moment, and calculate its mean rating from here. Then use `paste()` to build and print the statement.
+Build a `for loop` that goes over all unique questions (use `unique()`) in your subsetted data frame. Inside this `for-loop` you can subset again, this time only the rows containing the question that the loop is at at the moment, and calculate its mean rating from here. Then use `paste()` to build and print the statement.
 :::
 
 ::: {.callout-caution collapse="true"}
