@@ -56,7 +56,7 @@ Just beware that the code you write here will not be saved, so it is more useful
 
 ### 3) Workspace
 
-In the `Environment tab` you get an overview over the objects currently loaded into your R session. You can also look at your command history and some more things we don't need for now.
+In the `Environment tab` you get an overview of the objects currently loaded into your R session. You can also look at your command history and some more things we don't need for now.
 
 ### 4) Plots, Files, Help ...
 
