@@ -67,7 +67,7 @@ This will come in handy later when we write our own [functions](../functions/fun
 
 ## Data frame
 
-A data frame is two dimensional and can store elements of different types. It is the closest to the data tables we are probably most used to working with in Excel.
+A data frame is two dimensional and can store elements of different types.
 
 ```{r}
 persons <- data.frame(name = c("Anna", "Alex", "John", "Jessi"),
