@@ -51,7 +51,7 @@ This one is actually my favorite, as for bigger data sets it is often more feasi
 str(athletes)
 ```
 
-Here, the column names are printed on the left side, followed by the [type]() of the column and then the first few values of each column. We can also see at the top that this object is a data frame with `r nrow(athletes)` rows and `r ncol(athletes)` columns.
+Here, the column names are printed on the left side, followed by the [type](https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#data-types) of the column and then the first few values of each column. We can also see at the top that this object is a data frame with `r nrow(athletes)` rows and `r ncol(athletes)` columns.
 
 ## `summary()`
 
