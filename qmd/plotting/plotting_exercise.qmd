@@ -2,7 +2,7 @@
 title: "Plotting: Exercises"
 ---
 
-::: {.callout-note collapse="true"}
+::: {.callout-note}
 These exercises are optional.
 :::
 
