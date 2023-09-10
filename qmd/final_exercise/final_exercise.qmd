@@ -363,6 +363,4 @@ ggplot(vb_long,
 
 ## The End
 
-Impressive, you've finished the final exercise! If you really did it in the end of the workshop, that's it, you should be pretty proficient in working with R now. Take a look at some of the [Resources](../resources/resources.qmd) I have assembled if you want to to build on the foundation you just laid. If you have done this exercise in the beginning to test your knowledge, you can decide what to do next? Did you new everything already? Then also take a look at the [Resources](../resources/resources.qmd). Or do you want to follow up on some topics (if you haven't already). Use the links in this chapter to navigate there.
-
-Thanks for staying with me this long and good luck on your further R journey!
+Impressive, you've finished the final exercise! If you really did it in the end of the workshop, that's it, you should be pretty proficient in working with R now. Take a look at some of the [Resources](../resources/resources.qmd) I have assembled if you want to to build on the foundation you just laid. If you have done this exercise in the beginning to test your knowledge, you can decide what to do next: Did you new everything already? Then also take a look at the [Resources](../resources/resources.qmd). Or do you want to follow up on some topics (if you haven't already). Then you can use the links in this chapter to navigate there.

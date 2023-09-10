@@ -9,7 +9,7 @@ source(here::here("output_hook.R"))
 ::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
 
-```{r}
+```{r, message=FALSE}
 # install.packages("tidyverse")
 # install.packages("here")
 
@@ -30,7 +30,7 @@ world_coordinates <- readRDS(file = here::here("raw_data", "world_coordinates.rd
 
 ## Before merging
 
-Right now, we have multiple rows for each country in both data sets. This will not be merge easily, so we have to reduce our athletes data first. As you know, our goal is to plot the number of gold medals each country has won. So, we need to calculate how many gold medals each country has won in total. Let's do that quickly, using some `tidyverse` functions. It is not especially important you understand and know everything that happens here, but we need it for the next chapters, so here it goes:
+Right now, we have multiple rows for each country in both data sets. This will not be merged easily, so we have to reduce our athletes data first. We need to calculate how many gold medals each country has won in total. Let's do that quickly, using some `tidyverse` functions. It is not especially important you understand and know everything that happens here, but we need it for the next chapters, so here it goes:
 
 ::: tidy
 ```{r}
@@ -53,7 +53,7 @@ To merge two data frames that include information that belongs together, we need
 medal_counts$Region[!(medal_counts$Region %in% world_coordinates$region)]
 ```
 
-Looks like all of the countries in our `medal_countries` data frame can be also found in our `world_coordinates` frame. Only athletes without a country will be lost when merging, but that's ok for now, as we are interested in the country specific gold medal counts. So let's merge:
+Looks like all of the countries in our `medal_countries` data frame can also be found in our `world_coordinates` frame. Only athletes without a country will be lost when merging, but that's ok for now, as we are interested in the country specific gold medal counts. So let's merge:
 
 ```{r}
 medal_countries <- merge(
