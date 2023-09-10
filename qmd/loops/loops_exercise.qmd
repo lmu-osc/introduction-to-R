@@ -6,8 +6,9 @@ title: "Loops: Exercises"
 source(here::here("output_hook.R"))
 ```
 
-::: {.callout-note collapse="true"}
+::: {.callout-note}
 These exercises are optional.
+:::
 
 ::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
@@ -168,4 +169,3 @@ characters_friends %>%
 Great, its the same!
 :::
 
-:::

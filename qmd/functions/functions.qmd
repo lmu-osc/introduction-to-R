@@ -6,8 +6,9 @@ title: "Functions"
 
 [^1]: Image by [Laura Ockel](https://unsplash.com/de/@viazavier?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/de/fotos/UQ2Fw_9oApU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText).
 
-::: {.callout-note collapse="true"}
+::: callout-note
 This chapter is optional.
+:::
 
 ::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
@@ -143,6 +144,4 @@ sum_num(x = 3, y = 1)
 
 ::: callout-tip
 It often makes sense to explicitly write the argument names into your function call. This makes your code clearer, and avoids a mix up.
-:::
-
 :::

@@ -2,8 +2,9 @@
 title: "Plotting"
 ---
 
-::: {.callout-note collapse="true"}
+::: {.callout-note}
 This chapter is optional.
+:::
 
 ::: {.callout-caution collapse="true"}
 ## Previous code
@@ -282,5 +283,3 @@ p +
 :::
 
 Note that the medals for team sports are counted multiple times, as our data contained the gold medal wins by person, and not by discipline.
-
-:::

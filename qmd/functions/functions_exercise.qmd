@@ -2,8 +2,9 @@
 title: "Functions: Exercises"
 ---
 
-::: {.callout-note collapse="true"}
+::: {.callout-note}
 These exercises are optional.
+:::
 
 ## Exerise 1
 
@@ -70,6 +71,4 @@ my_bmi
 ```
 
 Here we gave the function and its arguments some more informative names. We also used the `return()` function to clearly return the result of the calculation, which also makes it easy to save the output of the function in an object. Finally, we wrote a more informative printed statement.
-:::
-
 :::
