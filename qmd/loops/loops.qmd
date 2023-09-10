@@ -107,7 +107,7 @@ for(counter in values){
 }
 ```
 
-What does that mean? Let's look at a simple example first. We want to multiply the values from `10` to `20` with `100` and then print them into our console:
+What does this mean? Let's look at a simple example first. We want to multiply the values from `10` to `20` with `100` and then print them into our console:
 
 ```{r}
 for(i in 10:20){
