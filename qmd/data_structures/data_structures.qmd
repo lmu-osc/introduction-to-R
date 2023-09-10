@@ -63,7 +63,7 @@ paste(vec_1, vec_2, value)
 paste0(vec_1, vec_2, value)
 
 ```
-This will come in handy later when we write our own [functions](../functions/functions.qmd), because it helps us to print variable messages, depending on the input given by the user. In general it is a very useful function!
+This will come in handy later when we write our own [functions](../functions/functions.qmd), because it helps us to print variable messages, depending on the input given by the user.
 
 ## Data frame
 
