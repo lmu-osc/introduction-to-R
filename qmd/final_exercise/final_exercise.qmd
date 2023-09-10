@@ -17,6 +17,9 @@ Use all resources at your disposal (cheat sheets, stack overflow ...), that's ho
 So, in order to provide you with a totally fresh data set, let's look at beach volleyball. The data was collected from international beach volleyball championships, and displays a lot of stats on each single match.
 
 ::: {.callout-caution icon="false"}
+
+## Goal
+
 For this exercise we want to focus on a simple questions: Do height differences in volleyball matter so much that taller teams have a winning advantage? If that would be the case, the mean height of the winning team should be significantly larger than the mean height of the losing team. Let's take a look!
 :::
 
