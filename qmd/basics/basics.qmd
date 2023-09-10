@@ -69,7 +69,7 @@ vec_num <- 1:10
 vec_num < 5
 ```
 
-This will become important later on, when we want to subset vectors and data frames to extract only those values that satisfy some requirements we defined.
+This will become important later on, when we want to subset vectors and data frames to extract only those values that satisfy some requirements we've defined.
 
 ## %in%
 
