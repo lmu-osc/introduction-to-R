@@ -8,7 +8,7 @@ title: "Final Exercise"
 
 This exercise revisits most topics presented in the workshop (but will also go beyond it slightly in some cases to provide additional input).
 
-If you are a R beginner and followed the workshop, you can do this last exercise **in the end** to test your knowledge. It will be a bit harder than the other workshop exercises to challenge you one last time and think about concepts you might want to revisit, so don't worry if some exercises feel a bit harder, we haven't talked about everything yet.  
+If you are a R beginner and followed the workshop, you can do this last exercise **in the end** to test your knowledge. It will be a bit harder than the other workshop exercises to challenge you one last time and encourage you to think about concepts you might want to revisit, so don't worry if some exercises feel a bit harder, we haven't talked about everything yet.  
 
 If you already have some R experience, you can do this exercise before the rest of the workshop and use it to identify weak points to follow up on.  
 
