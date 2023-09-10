@@ -116,7 +116,7 @@ p
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-use `?facet_grid` to find out how to use it.
+Use `?facet_grid` to find out how to use it.
 :::
 
 ::: {.callout-caution collapse="true"}
