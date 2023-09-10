@@ -145,7 +145,7 @@ This gives us black points now. But if we define our aesthetics within the `ggpl
 ggplot(
   data = best_by_sport,
   aes(
-    x = Sport,
+    x = reorder(Sport, n),
     y = n,
     colour = Region
   )
