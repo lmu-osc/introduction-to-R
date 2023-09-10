@@ -9,7 +9,7 @@ source(here::here("output_hook.R"))
 ::: {.callout-caution icon="false" collapse="true"}
 ## Previous code
 
-```{r}
+```{r message=FALSE}
 # install.packages("tidyverse")
 # install.packages("here")
 
