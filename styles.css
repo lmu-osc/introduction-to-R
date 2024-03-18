@@ -1,0 +1,12 @@
+/* css styles */
+.cell-output {
+  background-color: #fcfafa;
+  border-radius: 4px;
+}
+.tidy pre.r{
+  background-color: #d4ebf2;
+}
+.tidy .cell-output {
+  background-color: #e8f4f8;
+}
+
