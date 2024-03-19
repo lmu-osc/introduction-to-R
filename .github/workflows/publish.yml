@@ -4,8 +4,8 @@ on:
     branches: 
     - 'main'
   schedule:
-    - cron: 0 3 1 * *
-
+    - cron: 43 3 * * 6
+# run job every week to keep renv cache from auto-deleting. Do at random time in the morning to avoid high-load times.
 
 name: Quarto Publish
 
