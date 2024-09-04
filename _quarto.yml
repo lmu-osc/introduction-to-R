@@ -7,7 +7,7 @@ website:
   open-graph: true
   repo-url: https://github.com/nickhaf/r_tutorial
   repo-actions: [edit]
-  favicon: assets/LMU_OSC_favicon.png
+  favicon: assets/LMU_OSC_favicon.jpg
   margin-header: |
     ![](/assets/LMU-OSC_logo.jpg){width="175"}
   
