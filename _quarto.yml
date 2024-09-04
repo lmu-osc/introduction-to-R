@@ -7,6 +7,12 @@ website:
   open-graph: true
   repo-url: https://github.com/nickhaf/r_tutorial
   repo-actions: [edit]
+  favicon: assets/LMU_OSC_Book.png
+  margin-header: |
+    ![](/assets/LMU-OSC_logo.jpg){width="175"}
+  
+  
+  
   navbar:
     search: true
     left:
@@ -107,7 +113,9 @@ website:
               
 format:
   html:
-    theme: cosmo
+    theme: 
+      - cosmo
+      - custom.scss
     css: styles.css
     toc: true
 
