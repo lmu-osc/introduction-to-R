@@ -7,7 +7,7 @@ website:
   open-graph: true
   repo-url: https://github.com/nickhaf/introduction-to-R
   repo-actions: [edit, issue]
-  favicon: assets/LMU_OSC_favicon.jpg
+  favicon: assets/LMU-OSC_favicon.jpg
   margin-header: |
     ![](/assets/LMU-OSC_logo.jpg){width="175"}
   
