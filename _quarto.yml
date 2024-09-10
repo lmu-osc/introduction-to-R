@@ -5,7 +5,7 @@ website:
   title: "Introduction to R"
   page-navigation: true
   open-graph: true
-  repo-url: https://github.com/nickhaf/introduction-to-R
+  repo-url: https://github.com/lmu-osc/introduction-to-R
   repo-actions: [edit, issue]
   favicon: assets/LMU-OSC_favicon.jpg
   margin-header: |
