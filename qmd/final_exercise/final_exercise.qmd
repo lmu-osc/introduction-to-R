@@ -186,7 +186,7 @@ Do a paired t-test comparing the winning teams height vs the losing teams height
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-1.  Use the function `t.test()` and set the argument `paired = "true"`.
+1.  Use the function `t.test()` and set the argument `paired = TRUE`.
 2.  To save the result in an empty list you have created, use: `result_list[[i]] <- calculation`.
 :::
 
@@ -205,7 +205,7 @@ for (i in c("M", "W")) {
   ## Do the t-test and save the result
   result_list[[i]] <- t.test(vb_gender$winning_height,
     vb_gender$losing_height,
-    paired = "true"
+    paired = TRUE
   )
 }
 
@@ -223,7 +223,7 @@ result_list <- lapply(c("M", "W"), function(x) {
   vb_gender <- vb %>% filter(gender == x)
 
   ## Calculate the t-test. Note how we don't need an empty list to save the results in, lapply() does that for us.
-  t_test_result <- t.test(vb_gender$winning_height, vb_gender$losing_height, paired = "true")
+  t_test_result <- t.test(vb_gender$winning_height, vb_gender$losing_height, paired = TRUE)
 
   ## Explictly return the result:
   return(t_test_result)
@@ -269,7 +269,7 @@ for (i in c("M", "W")) {
   vb_gender <- vb %>% filter(gender == i)
 
   ## Paired t-test
-  result_list[[i]] <- t.test(vb_gender$winning_height, vb_gender$losing_height, paired = "true")
+  result_list[[i]] <- t.test(vb_gender$winning_height, vb_gender$losing_height, paired = TRUE)
 
   ## Our Cohen's d function
   d <- cohens_d(
