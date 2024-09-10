@@ -678,7 +678,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#the-end" id="toc-the-end" class="nav-link" data-scroll-target="#the-end">The End</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/nickhaf/introduction-to-R/edit/main/qmd/final_exercise/final_exercise.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nickhaf/introduction-to-R/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/lmu-osc/introduction-to-R/edit/main/qmd/final_exercise/final_exercise.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/lmu-osc/introduction-to-R/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -1257,7 +1257,7 @@ Hint
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Use the function <code>t.test()</code> and set the argument <code>paired = "true"</code>.</li>
+<li>Use the function <code>t.test()</code> and set the argument <code>paired = TRUE</code>.</li>
 <li>To save the result in an empty list you have created, use: <code>result_list[[i]] &lt;- calculation</code>.</li>
 </ol>
 </div>
@@ -1287,7 +1287,7 @@ Solution
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Do the t-test and save the result</span></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  result_list[[i]] <span class="ot">&lt;-</span> <span class="fu">t.test</span>(vb_gender<span class="sc">$</span>winning_height,</span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    vb_gender<span class="sc">$</span>losing_height,</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">paired =</span> <span class="st">"true"</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">paired =</span> <span class="cn">TRUE</span></span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
@@ -1339,7 +1339,7 @@ Note
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  vb_gender <span class="ot">&lt;-</span> vb <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">==</span> x)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Calculate the t-test. Note how we don't need an empty list to save the results in, lapply() does that for us.</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(vb_gender<span class="sc">$</span>winning_height, vb_gender<span class="sc">$</span>losing_height, <span class="at">paired =</span> <span class="st">"true"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(vb_gender<span class="sc">$</span>winning_height, vb_gender<span class="sc">$</span>losing_height, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Explictly return the result:</span></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(t_test_result)</span>
@@ -1392,7 +1392,7 @@ Solution
 <span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  vb_gender <span class="ot">&lt;-</span> vb <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender <span class="sc">==</span> i)</span>
 <span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Paired t-test</span></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  result_list[[i]] <span class="ot">&lt;-</span> <span class="fu">t.test</span>(vb_gender<span class="sc">$</span>winning_height, vb_gender<span class="sc">$</span>losing_height, <span class="at">paired =</span> <span class="st">"true"</span>)</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>  result_list[[i]] <span class="ot">&lt;-</span> <span class="fu">t.test</span>(vb_gender<span class="sc">$</span>winning_height, vb_gender<span class="sc">$</span>losing_height, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Our Cohen's d function</span></span>
 <span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">cohens_d</span>(</span>
@@ -1992,4 +1992,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nickhaf/introduction-to-R/edit/main/qmd/final_exercise/final_exercise.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nickhaf/introduction-to-R/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/lmu-osc/introduction-to-R/edit/main/qmd/final_exercise/final_exercise.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/lmu-osc/introduction-to-R/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
