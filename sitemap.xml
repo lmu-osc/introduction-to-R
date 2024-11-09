@@ -2,138 +2,138 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/index.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.793Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/format/format_exercise.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/load_data/load_data_exercise.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/data_structures/data_structures.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.793Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/peeking/peeking_exercise.html</loc>
-    <lastmod>2024-11-02T03:45:19.845Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.801Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/plotting/plotting_exercise.html</loc>
-    <lastmod>2024-11-02T03:45:19.869Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.825Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/getting_started/data_sets.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/loops/loops_exercise.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/merging/merging.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/basics/basics.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.793Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/basics/tidyverse.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.793Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/functions/functions.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/packages/packages_exercise.html</loc>
-    <lastmod>2024-11-02T03:45:19.845Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.801Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/resources/resources.html</loc>
-    <lastmod>2024-11-02T03:45:19.869Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.825Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/subsetting/subsetting.html</loc>
-    <lastmod>2024-11-02T03:45:19.869Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.825Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/missing/missing.html</loc>
-    <lastmod>2024-11-02T03:45:19.845Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/workflow/workflow_exercise.html</loc>
-    <lastmod>2024-11-02T03:45:19.869Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.825Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/workflow/workflow.html</loc>
-    <lastmod>2024-11-02T03:45:19.869Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.825Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/final_exercise/final_exercise.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/missing/missing_exercise.html</loc>
-    <lastmod>2024-11-02T03:45:19.845Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/subsetting/subsetting_exercise.html</loc>
-    <lastmod>2024-11-02T03:45:19.869Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.825Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/packages/packages.html</loc>
-    <lastmod>2024-11-02T03:45:19.845Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.801Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/functions/functions_exercise.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/setup/setup.html</loc>
-    <lastmod>2024-11-02T03:45:19.869Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.825Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/basics/basics_exercise.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.793Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/statistical_analyses/statistical_analyses.html</loc>
-    <lastmod>2024-11-02T03:45:19.869Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.825Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/merging/merging_exercise.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/loops/loops.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/getting_started/the_big_picture.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/plotting/plotting.html</loc>
-    <lastmod>2024-11-02T03:45:19.869Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.825Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/peeking/peeking.html</loc>
-    <lastmod>2024-11-02T03:45:19.845Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.801Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/data_structures/data_structures_exercise.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.793Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/load_data/load_data.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
   <url>
     <loc>https://lmu-osc.github.io/introduction-to-R/qmd/format/format.html</loc>
-    <lastmod>2024-11-02T03:45:19.841Z</lastmod>
+    <lastmod>2024-11-09T03:45:00.797Z</lastmod>
   </url>
 </urlset>
