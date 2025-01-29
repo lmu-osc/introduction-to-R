@@ -8,11 +8,9 @@ date: 09-11-2023
 
 ## About this workshop
 
-Welcome![^1][^2] This workshop will teach you the basics of R. Its structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](/qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to programming with R and want to follow the course structure? This workshop provides different entry points. You can either follow the outline on the left side and work on all topics in the order they are presented in. Or, if you already have some R experience, you might want to read [The Big Picture](/qmd/getting_started/the_big_picture.qmd) and/or the [Final Exercise](./qmd/final_exercise/final_exercise.qmd) first to identify topics you want to work on.
+Welcome![^1] This workshop will teach you the basics of R. Its structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](/qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to programming with R and want to follow the course structure? This workshop provides different entry points. You can either follow the outline on the left side and work on all topics in the order they are presented in. Or, if you already have some R experience, you might want to read [The Big Picture](/qmd/getting_started/the_big_picture.qmd) and/or the [Final Exercise](./qmd/final_exercise/final_exercise.qmd) first to identify topics you want to work on.
 
 [^1]: This workshop was designed by Nicklas Hafiz, PhD student and research fellow at the Institut für Qualitätsentwicklung im Bildungswesen (IQB).
-
-[^2]: It is licensed under the [MIT License](https://opensource.org/license/mit/).
 
 ::: {.callout-note collapse="true" icon="false"}
 ## Unfold if you want to learn more about optional content
