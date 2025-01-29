@@ -1,0 +1,30 @@
+---
+title: "About"
+date: 2023-09-11
+citation:
+  type: "webpage"
+  title: "Introduction to R"
+  container-title: "LMU Open Science Center"
+  url: https://lmu-osc.github.io/introduction-to-R
+  doi: "DOI HERE"
+author:
+  - name: Nicklas Hafiz
+    affiliation: "Institut zur Qualitätsentwicklung im Bildungswesen"
+    orcid: 0000-0001-9035-4483
+# google-scholar: true
+---
+
+
+# Contributors
+
+This site was authored by Nicklas Hafiz.
+
+# Licenses
+
+The overall project is licensed under the **[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)** license found at [LICENSE](LICENSE.md); all code snippets are additionally licensed under the **[CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/)** license found at [LICENSE-CODE](LICENSE-CODE.md).
+
+Why two licenses? The CC BY-SA 4.0 license is for the content of the website, while the CC0 1.0 Universal license is for the code and configuration files. This is a common practice for websites that include code snippets and other content that may be reused in other projects, particularly because the CC BY-SA 4.0 license is not intended to be used with software.
+
+# Notes
+
+This tutorial was primarily written in 2023 with later updates to R and relevant packages to v4.4.0. Major changes to R can be found at [CRAN](https://cran.r-project.org/) for the most up-to-date information, and to confirm that our tutorial is not out-of-date. 
