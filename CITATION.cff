@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Hafiz"
+  given-names: "Nicklas"
+  orcid: "https://orcid.org/0000-0001-9035-4483"
+title: "Introduction to R"
+version: 1.0.0
+doi: 
+date-released: 2025-01-20
+repository-code: "https://github.com/lmu-osc/introduction-to-R"
+url: "https://github.com/lmu-osc/introduction-to-R"
