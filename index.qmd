@@ -8,7 +8,7 @@ date: 09-11-2023
 
 ## About this workshop
 
-Welcome![^1] This workshop will teach you the basics of R. Its structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](/qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to programming with R and want to follow the course structure? This workshop provides different entry points. You can either follow the outline on the left side and work on all topics in the order they are presented in. Or, if you already have some R experience, you might want to read [The Big Picture](/qmd/getting_started/the_big_picture.qmd) and/or the [Final Exercise](./qmd/final_exercise/final_exercise.qmd) first to identify topics you want to work on.
+Welcome! This workshop will teach you the basics of R. Its structure is meant to support different levels of R expertise and interests: already know the basics and want to learn how to [plot](/qmd/plotting/plotting.qmd)? Want to freshen up your R skills and look at specific topics? Or are you new to programming with R and want to follow the course structure? This workshop provides different entry points. You can either follow the outline on the left side and work on all topics in the order they are presented in. Or, if you already have some R experience, you might want to read [The Big Picture](/qmd/getting_started/the_big_picture.qmd) and/or the [Final Exercise](./qmd/final_exercise/final_exercise.qmd) first to identify topics you want to work on.
 
 [^1]: This workshop was designed by Nicklas Hafiz, PhD student and research fellow at the Institut für Qualitätsentwicklung im Bildungswesen (IQB).
 
@@ -40,4 +40,4 @@ Please [install the necessary software](qmd/setup/setup.qmd) **before the worksh
 -   It has great tools for making beautiful plots.
 -   This is not R specific, but because you can write programs for your specific use cases, it facilitates many workflow related tasks like automation, tracking changes with git, result preparation with markdown/latex and many more.
 
-There are many more reasons to learn R, as it is a very flexible tool for almost every aspect of scientific work (after all, I have created this whole workshop from within RStudio), so let's dive right in by [setting up](qmd/setup/setup.qmd) everything!
+There are many more reasons to learn R, as it is a very flexible tool for almost every aspect of scientific work (after all, I[^1] have created this whole workshop from within RStudio), so let's dive right in by [setting up](qmd/setup/setup.qmd) everything!
