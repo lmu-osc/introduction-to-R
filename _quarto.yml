@@ -118,8 +118,8 @@ format:
       - custom.scss
     css: styles.css
     toc: true
-    header:
-      -include: matomo_analytics.html
+    include-in-header:
+      - file: matomo_analytics.html
 
 editor: visual
 
