@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Hafiz"
+  given-names: "Nicklas"
+  orcid: "https://orcid.org/0000-0001-9035-4483"
+  affiliation: 
+    - name: "Institut zur Qualitätsentwicklung im Bildungswesen"
+      ror: "https://ror.org/038t2yw28"
+title: "Introduction to R"
+version: 0.0.1
+doi: "DOI_HERE_AFTER_GENERATED" 
+date-released: "2023-09-11"
+repository-code: "https://github.com/lmu-osc/introduction-to-R"
+url: "https://lmu-osc.github.io/introduction-to-R/"
+license: "CC-BY-SA-4.0"
