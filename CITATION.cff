@@ -8,9 +8,22 @@ authors:
     - name: "Institut zur Qualitätsentwicklung im Bildungswesen"
       ror: "https://ror.org/038t2yw28"
 title: "Introduction to R"
-version: 0.0.1
+version: 0.1.0
 doi: "DOI_HERE_AFTER_GENERATED" 
 date-released: "2023-09-11"
 repository-code: "https://github.com/lmu-osc/introduction-to-R"
 url: "https://lmu-osc.github.io/introduction-to-R/"
 license: "CC-BY-SA-4.0"
+preferred-citation:
+  authors:
+    - family-names: "Hafiz"
+      given-names: "Nicklas"
+      orcid: "https://orcid.org/0000-0001-9035-4483"
+  title: "Introduction to R"
+  year: 2023
+  doi: "DOI_HERE_AFTER_GENERATED"
+  publisher:
+    name: "LMU Open Science Center"
+    ror: "https://ror.org/029e6qe04"
+  repository-code: "https://github.com/lmu-osc/introduction-to-R"
+  url: "https://lmu-osc.github.io/introduction-to-R/"
