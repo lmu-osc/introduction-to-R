@@ -110,6 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <!-- Matomo -->
 <script>
+if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
   var _paq = window._paq = window._paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
   _paq.push(['trackPageView']);
@@ -121,6 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
     g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
   })();
+}
 </script>
 <!-- End Matomo Code -->
 
@@ -785,7 +787,7 @@ Attaching package: 'psych'</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>R version 4.4.3 (2025-02-28)
+<pre><code>R version 4.5.2 (2025-10-31)
 Platform: x86_64-pc-linux-gnu
 Running under: Ubuntu 24.04.4 LTS
 
@@ -806,18 +808,18 @@ attached base packages:
 [1] stats     graphics  grDevices datasets  utils     methods   base     
 
 other attached packages:
-[1] psych_2.5.3   ggplot2_3.5.2
+[1] psych_2.6.3   ggplot2_4.0.3
 
 loaded via a namespace (and not attached):
- [1] vctrs_0.6.5        nlme_3.1-167       cli_3.6.5          knitr_1.50        
- [5] rlang_1.1.6        xfun_0.52          renv_1.1.4         generics_0.1.3    
- [9] jsonlite_2.0.0     glue_1.8.0         htmltools_0.5.8.1  scales_1.4.0      
-[13] rmarkdown_2.29     grid_4.4.3         evaluate_1.0.3     tibble_3.2.1      
-[17] fastmap_1.2.0      yaml_2.3.10        lifecycle_1.0.4    compiler_4.4.3    
-[21] dplyr_1.1.4        RColorBrewer_1.1-3 pkgconfig_2.0.3    lattice_0.22-6    
-[25] farver_2.1.2       digest_0.6.37      R6_2.6.1           tidyselect_1.2.1  
-[29] parallel_4.4.3     mnormt_2.1.1       pillar_1.10.2      magrittr_2.0.3    
-[33] withr_3.0.2        tools_4.4.3        gtable_0.3.6      </code></pre>
+ [1] vctrs_0.7.3        nlme_3.1-169       cli_3.6.6          knitr_1.51        
+ [5] rlang_1.2.0        xfun_0.57          renv_1.2.2         generics_0.1.4    
+ [9] S7_0.2.2           jsonlite_2.0.0     glue_1.8.1         htmltools_0.5.9   
+[13] scales_1.4.0       rmarkdown_2.31     grid_4.5.2         evaluate_1.0.5    
+[17] tibble_3.3.1       fastmap_1.2.0      yaml_2.3.12        lifecycle_1.0.5   
+[21] compiler_4.5.2     dplyr_1.2.1        RColorBrewer_1.1-3 pkgconfig_2.0.3   
+[25] lattice_0.22-9     farver_2.1.2       digest_0.6.39      R6_2.6.1          
+[29] tidyselect_1.2.1   parallel_4.5.2     mnormt_2.1.2       pillar_1.11.1     
+[33] magrittr_2.0.5     withr_3.0.2        tools_4.5.2        gtable_0.3.6      </code></pre>
 </div>
 </div>
 <p>A more elegant approach to manage your packages is to use a dedicated package like <a href="https://rstudio.github.io/renv/articles/renv.html"><code>renv</code></a>, which will make it a lot easier to manage your package versions. But this is past the scope of this workshop, just keep in mind it might be something rewarding to look at, if you should start to programm more with R.</p>
