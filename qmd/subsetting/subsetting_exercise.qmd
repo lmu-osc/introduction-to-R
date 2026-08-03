@@ -42,7 +42,7 @@ We have to target the rows we want to extract **before** the `,`, the columns af
 ## Solution
 
 ```{r}
-characters[1:10, 4:6]
+characters[1:10, 5:7]
 ```
 :::
 
@@ -60,6 +60,7 @@ You need to extract the column from the data frame with `$` before you can compa
 
 ::: {.callout-caution collapse="true"}
 ## Solution
+
 ```{r}
 characters[characters$uni_name == "Friends", ]
 
@@ -99,10 +100,9 @@ You need to define a logical vector which contains `TRUE` values for all "Game o
 ```{r}
 characters[characters$uni_name == "Game of Thrones" & characters$notability > 90, ]
 ```
+
 That's only Tyrion Lannister.
-
 :::
-
 
 2.  Which characters from "How I Met Your Mother" or "Breaking Bad" are included in the data? Use the `tidyverse`.
 
