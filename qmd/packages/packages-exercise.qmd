@@ -1,5 +1,6 @@
 ---
 title: "Packages: Exercises"
+aliases: [packages_exercise.html]
 ---
 
 ## Exercise 1

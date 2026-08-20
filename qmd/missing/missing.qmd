@@ -4,7 +4,7 @@ title: "Missing values"
 
 ```{r, echo = FALSE}
 source(here::here("output_hook.R"))
-athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
+athletes <- readRDS(file = here::here("raw-data", "athletes.rds"))
 ```
 
 ![](missing.jpg)[^1]
@@ -21,12 +21,12 @@ athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
 library(tidyverse)
 library(here)
 
-athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
+athletes <- readRDS(file = here::here("raw-data", "athletes.rds"))
 ```
 :::
 
 ## What are `NA's`?
-Remember the weird `NA` rows we have encountered when [subsetting by condition](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#conditional-filtering)? We were able to steer around that by using `filter()`, but let's take a closer look at that now.
+Remember the weird `NA` rows we have encountered when [subsetting by condition](https://lmu-osc.github.io/introduction-to-R/qmd/subsetting/subsetting.html#conditional-filtering)? We were able to steer around that by using `filter()`, but let's take a closer look at that now.
 
 Missing values are denoted in R by `NA` (or `NaN` in some cases). They nullify a calculation or comparison pretty strongly - if one missing value is found somewhere along the line, the result will also be `NA` (if not specified otherwise):
 
@@ -63,7 +63,7 @@ athletes[(athletes$Sport == "Judo") & (athletes$Weight > 100 | athletes$Weight <
 ::: {.callout-note collapse="true"}
 ## Unfold if you want to take a closer look at what's happening here
 
-Like always when [filtering specific rows](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#conditional-filtering), we define a [logical vector](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#comparisons-and-logical-operators), which has a `TRUE` for all rows that have a missing on `ID` and a `FALSE` for all others (by using the `!` operator, which inverts the boolean values - otherwise we would extract all rows with missing values in the `Weight` column):
+Like always when [filtering specific rows](https://lmu-osc.github.io/introduction-to-R/qmd/subsetting/subsetting.html#conditional-filtering), we define a [logical vector](https://lmu-osc.github.io/introduction-to-R/qmd/basics/basics.html#comparisons-and-logical-operators), which has a `TRUE` for all rows that have a missing on `ID` and a `FALSE` for all others (by using the `!` operator, which inverts the boolean values - otherwise we would extract all rows with missing values in the `Weight` column):
 
 ```{r, output.lines = 4}
 !is.na(athletes$Weight)

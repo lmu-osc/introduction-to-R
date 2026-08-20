@@ -1,5 +1,6 @@
 ---
 title: "Plotting: Exercises"
+aliases: [plotting_exercise.html]
 ---
 
 ::: {.callout-note}
@@ -17,9 +18,9 @@ library(tidyverse)
 library(here)
 
 ## Load the data
-characters <- readRDS(file = here::here("raw_data", "characters.rds"))
+characters <- readRDS(file = here::here("raw-data", "characters.rds"))
 psych_stats <- read.csv(
-  file = here::here("raw_data", "psych_stats.csv"),
+  file = here::here("raw-data", "psych-stats.csv"),
   sep = ";"
 )
 
@@ -255,6 +256,6 @@ fictional_personalities(
 
 ## The End
 
-Amazing, you've made it to the end of this workshop! You now can go back to [The Big Picture](../getting_started/the_big_picture.qmd), or do the [Final Exercise](../final_exercise/final_exercise.qmd) to test your knowledge one more time! If you had enough exercises for today, take a look at some of the [Resources](../resources/resources.qmd) I have assembled for further reading.
+Amazing, you've made it to the end of this workshop! You now can go back to [The Big Picture](../getting-started/the-big-picture.qmd), or do the [Final Exercise](../final-exercise/final-exercise.qmd) to test your knowledge one more time! If you had enough exercises for today, take a look at some of the [Resources](../resources/resources.qmd) I have assembled for further reading.
 
 

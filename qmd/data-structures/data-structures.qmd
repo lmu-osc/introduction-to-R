@@ -1,8 +1,11 @@
-# Data Structures
+---
+title: "Data Structures"
+aliases: [../data_structures/data_structures.html]
+---
 
-There are five main data structures in R which differ on their dimensions (one dimension, two dimensions, n dimensions) and the type of the elements they are containing (same type, different types):[^data_structures-1]
+There are five main data structures in R which differ on their dimensions (one dimension, two dimensions, n dimensions) and the type of the elements they are containing (same type, different types):[^data-structures-1]
 
-[^data_structures-1]: Table from [Advanced R](http://adv-r.had.co.nz/Data-structures.html).
+[^data-structures-1]: Table from [Advanced R](http://adv-r.had.co.nz/Data-structures.html).
 
 ```{r, echo = FALSE, results = 'asis'}
 dat_structs <- data.frame(" " = c("1d", "2d", "nd"),

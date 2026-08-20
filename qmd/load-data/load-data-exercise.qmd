@@ -1,10 +1,11 @@
 ---
 title: "Loading data: Exercises"
+aliases: [../load_data/load_data_exercise.html]
 ---
 
 ## Exercise 1
 
-1.  Download the data set [`characters`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) (in case you haven't already).
+1.  Download the data set [`characters`](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data) (in case you haven't already).
 
 
 2.  Load it into R, and assign the name `characters`.
@@ -19,7 +20,7 @@ It is a `.rds` file.
 ## Solution
 
 ```{r}
-characters <- readRDS(file = here::here("raw_data", "characters.rds"))
+characters <- readRDS(file = here::here("raw-data", "characters.rds"))
 ```
 :::
 
@@ -28,7 +29,7 @@ characters <- readRDS(file = here::here("raw_data", "characters.rds"))
 ::: {.callout-note collapse="true" icon="false"}
 ## Advanced exercise
 
-1.  Download the [`psych_stats`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) data set  (in case you haven't already).
+1.  Download the [`psych_stats`](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data) data set  (in case you haven't already).
 2.  Load it into R and assign the name `psych_stats`. Did that work as expected? If not, why not?
 
 ::: {.callout-tip collapse="true"}
@@ -43,7 +44,7 @@ Take a look at the `.csv` file by opening it in a text editor. Look at the docum
 Let's try the `read.csv()` function:
 
 ```{r}
-psych_stats <- read.csv(file = here::here("raw_data", "psych_stats.csv"))
+psych_stats <- read.csv(file = here::here("raw-data", "psych-stats.csv"))
 
 head(psych_stats)
 ```
@@ -58,7 +59,7 @@ The `sep` argument specifies that the seperator needs to be a white space (meani
 
 ```{r}
 psych_stats <- read.csv(
-  file = here::here("raw_data", "psych_stats.csv"),
+  file = here::here("raw-data", "psych-stats.csv"),
   sep = ";"
 )
 

@@ -13,8 +13,8 @@ This chapter is optional.
 ```{r, message=FALSE}
 library(tidyverse)
 
-athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
-world_coordinates <- readRDS(file = here::here("raw_data", "world_coordinates.rds"))
+athletes <- readRDS(file = here::here("raw-data", "athletes.rds"))
+world_coordinates <- readRDS(file = here::here("raw-data", "world-coordinates.rds"))
 
 medal_counts <- athletes %>%
   filter(Medal == "Gold") %>%

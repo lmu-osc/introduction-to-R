@@ -1,5 +1,6 @@
 ---
 title: "Final Exercise"
+aliases: [../final_exercise/final_exercise.html]
 ---
 
 ![](../pictures/beach.jpg)[^1]
@@ -31,14 +32,14 @@ Throughout this script I will use a mixture of [`tidyverse`](../basics/tidyverse
 
 ### 1) Loading Data
 
-[Download](https://nickhaf.github.io/r_tutorial/qmd/workflow/workflow_exercise.html#exercise-2-download-data) the data sets [`vb_w` and `vb_l`](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) and [load the data](../load_data/load_data.qmd) into R. `vb_w` contains the stats of the winning team, `vb_l` the stats of the losing team.
+[Download](https://lmu-osc.github.io/introduction-to-R/qmd/workflow/workflow-exercise.html#exercise-2-download-data) the data sets [`vb_w` and `vb_l`](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data) and [load the data](../load-data/load-data.qmd) into R. `vb_w` contains the stats of the winning team, `vb_l` the stats of the losing team.
 
 ::: {.callout-tip collapse="true"}
 ## Hints
 
-1.  Admittedly not the easiest data loading exercise. One file is a `.csv` file, the other an SPSS file (`.sav`). Take a look [here](../load_data/load_data.qmd) to see how to load them into R.
+1.  Admittedly not the easiest data loading exercise. One file is a `.csv` file, the other an SPSS file (`.sav`). Take a look [here](../load-data/load-data.qmd) to see how to load them into R.
 2.  You need to install `haven` to load the `.sav` file.
-3.  You need to look at the `sep` argument in `read.csv()`: It needs to specify how the values in the `.csv` file are separated. Use a text editor to take a look into the file itself to find out what the separator should be. We have seen a similar example in [Loading Data: Exercise 2](https://nickhaf.github.io/r_tutorial/qmd/load_data/load_data_exercise.html#exercies-2).
+3.  You need to look at the `sep` argument in `read.csv()`: It needs to specify how the values in the `.csv` file are separated. Use a text editor to take a look into the file itself to find out what the separator should be. We have seen a similar example in [Loading Data: Exercise 2](https://lmu-osc.github.io/introduction-to-R/qmd/load-data/load-data-exercise.html#exercies-2).
 :::
 
 ::: {.callout-caution collapse="true"}
@@ -49,8 +50,8 @@ Throughout this script I will use a mixture of [`tidyverse`](../basics/tidyverse
 library(haven)
 library(tidyverse) ## Will use later on
 
-vb_w <- read.csv(file = here::here("raw_data", "vb_w.csv"), sep = " ")
-vb_l <- read_sav(file = here::here("raw_data", "vb_l.sav"))
+vb_w <- read.csv(file = here::here("raw-data", "vb-w.csv"), sep = " ")
+vb_l <- read_sav(file = here::here("raw-data", "vb-l.sav"))
 
 ## Take a look:
 
@@ -85,7 +86,7 @@ If we don't put `gender` into the `by` argument, it will get duplicated with the
 
 ### 3) Selecting Columns
 
-[Select](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#columns) only the columns from the data frames that are relevant to our 'research question'.
+[Select](https://lmu-osc.github.io/introduction-to-R/qmd/subsetting/subsetting.html#columns) only the columns from the data frames that are relevant to our 'research question'.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
@@ -121,7 +122,7 @@ vb <- na.omit(vb)
 
 ### 5) Calculating Mean
 
-Calculate the mean height by team. Add the results in two [new columns](https://nickhaf.github.io/r_tutorial/qmd/getting_started/the_big_picture.html#adding-a-new-column) to the `vb` data frame, one for the losing team mean height, and one for the winning team mean height.
+Calculate the mean height by team. Add the results in two [new columns](https://lmu-osc.github.io/introduction-to-R/qmd/getting-started/the-big-picture.html#adding-a-new-column) to the `vb` data frame, one for the losing team mean height, and one for the winning team mean height.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
@@ -148,7 +149,7 @@ Now, let's do a paired t-test comparing the mean winners height against the mean
 
 ### 1) Histogram
 
-One assumption of the paired t-test is that the differences of the pairs are normally distributed. Check this assumption [visually](../plotting/plotting.qmd) by creating a histogram of the `winning_height - losing_height` difference. Use a [`for-loop`](../for_loop/for_loop.qmd) to create one histogram for the men and one for the women. You need to explicitly `print()` the plot if you want to display it from within a `for-loop`.
+One assumption of the paired t-test is that the differences of the pairs are normally distributed. Check this assumption [visually](../plotting/plotting.qmd) by creating a histogram of the `winning_height - losing_height` difference. Use a [`for-loop`](../loops/loops.qmd) to create one histogram for the men and one for the women. You need to explicitly `print()` the plot if you want to display it from within a `for-loop`.
 
 ::: {.callout-tip collapse="true"}
 1.  The start of your for loop should look like this: `for(i in c("M", "W")){`. Inside, filter for men/women, and then create the plot using this subsetted data frame.
@@ -181,7 +182,7 @@ Hmm, so the differences in the mean team height are really small in most cases! 
 
 ### 2) Paired t-test
 
-Do a paired t-test comparing the winning teams height vs the losing teams height. Again use a [`for-loop`](../loops/loopq.qmd) to test for men and women separately. Save the result in a [list](https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#honorable-mention-list), and name the list elements.
+Do a paired t-test comparing the winning teams height vs the losing teams height. Again use a [`for-loop`](../loops/loops.qmd) to test for men and women separately. Save the result in a [list](https://lmu-osc.github.io/introduction-to-R/qmd/data-structures/data-structures.html#honorable-mention-list), and name the list elements.
 
 ::: {.callout-tip collapse="true"}
 ## Hint
@@ -323,7 +324,7 @@ head(vb_long)
 ::: callout-tip
 ## Hint
 
-We want four violin plots/box plots in the end. Two for the winning teams (men, women), and two for the losing teams (men/women). The easiest way to achieve this is to [build a new column](https://nickhaf.github.io/r_tutorial/qmd/getting_started/the_big_picture.html#adding-a-new-column) containing the winning information and the gender in one pasted string. This new column can then be used as the x axis. This is not necessarily required, but makes it easier to lay the boxplot on top of the violin plot.
+We want four violin plots/box plots in the end. Two for the winning teams (men, women), and two for the losing teams (men/women). The easiest way to achieve this is to [build a new column](https://lmu-osc.github.io/introduction-to-R/qmd/getting-started/the-big-picture.html#adding-a-new-column) containing the winning information and the gender in one pasted string. This new column can then be used as the x axis. This is not necessarily required, but makes it easier to lay the boxplot on top of the violin plot.
 :::
 
 ::: {.callout-caution collapse="true"}

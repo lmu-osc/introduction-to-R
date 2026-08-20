@@ -24,15 +24,15 @@ Keep in mind that the free posit Cloud account only gives you 25 computing hours
 
 When you open RStudio it will look something like this:
 
-![](../pictures/RStudio_window.PNG)
+![](../pictures/rstudio-window.png)
 
 The window can be split into 4 parts:
 
-![](../pictures/window_commented.PNG)
+![](../pictures/window-commented.png)
 
 ### 1) Script Pane
 
-The script pane is used to edit [scripts](https://nickhaf.github.io/r_tutorial/qmd/workflow/workflow.html#scripts). Scripts are the files you store your code in. You can execute a line of code by pressing `ctrl + enter` (on windows) or `command + return` (on macOS). To execute multiple lines of code at once, mark them before you press the keys. Try it yourself! Write:
+The script pane is used to edit [scripts](https://lmu-osc.github.io/introduction-to-R/qmd/workflow/workflow.html#scripts). Scripts are the files you store your code in. You can execute a line of code by pressing `ctrl + enter` (on windows) or `command + return` (on macOS). To execute multiple lines of code at once, mark them before you press the keys. Try it yourself! Write:
 
 ```{r}
 # Our first line of code:
@@ -60,4 +60,4 @@ In the `Environment tab` you get an overview of the objects currently loaded int
 
 ### 4) Plots, Files, Help ...
 
-[Plots](../plotting/plotting.qmd) you build in your R session get output in the `Plot tab`. If you call the [help function](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#help) the documentation opens in the `Help tab`. The `Files tab` let's you mange the files in your working directory.
+[Plots](../plotting/plotting.qmd) you build in your R session get output in the `Plot tab`. If you call the [help function](https://lmu-osc.github.io/introduction-to-R/qmd/basics/basics.html#help) the documentation opens in the `Help tab`. The `Files tab` let's you mange the files in your working directory.

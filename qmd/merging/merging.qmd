@@ -16,16 +16,16 @@ source(here::here("output_hook.R"))
 library(tidyverse)
 library(here)
 
-athletes <- readRDS(file = here::here("raw_data", "athletes.rds"))
+athletes <- readRDS(file = here::here("raw-data", "athletes.rds"))
 ```
 :::
 
 ## Data set
 
-In the end, we want to plot the number of gold medals the countries have won on a world map. To do that, we need a data set containing coordinates of the different countries. Luckily, `ggplot2` (part of the `tidyverse`) provides a fitting data set. Let's [download](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) it and load it into R:
+In the end, we want to plot the number of gold medals the countries have won on a world map. To do that, we need a data set containing coordinates of the different countries. Luckily, `ggplot2` (part of the `tidyverse`) provides a fitting data set. Let's [download](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data) it and load it into R:
 
 ```{r}
-world_coordinates <- readRDS(file = here::here("raw_data", "world_coordinates.rds"))
+world_coordinates <- readRDS(file = here::here("raw-data", "world-coordinates.rds"))
 ```
 
 ## Before merging
@@ -47,7 +47,7 @@ What happens here? We extract all rows containing gold medals, group them by reg
 
 ## Merging
 
-To merge two data frames that include information that belongs together, we need a common column, on which we can combine them. In our case, this is the column containing the country. They are both named `region`, but one with an upper case `R`. This doesn't pose a problem, as we can define which columns should be taken from which data frame for merging. Let's take a quick look before merging to check if there are any countries named differently in both data sets (this simply combines commands we have already looked at in the [Basic operations chapter](https://nickhaf.github.io/r_tutorial/qmd/basics/basics.html#comparisons-and-logical-operators):
+To merge two data frames that include information that belongs together, we need a common column, on which we can combine them. In our case, this is the column containing the country. They are both named `region`, but one with an upper case `R`. This doesn't pose a problem, as we can define which columns should be taken from which data frame for merging. Let's take a quick look before merging to check if there are any countries named differently in both data sets (this simply combines commands we have already looked at in the [Basic operations chapter](https://lmu-osc.github.io/introduction-to-R/qmd/basics/basics.html#comparisons-and-logical-operators):
 
 ```{r}
 medal_counts$Region[!(medal_counts$Region %in% world_coordinates$region)]

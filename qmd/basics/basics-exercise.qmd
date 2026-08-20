@@ -1,5 +1,6 @@
 ---
 title: "Basic Operations: Exercises"
+aliases: [basics_exercise.html]
 ---
 
 ## Exercise 1

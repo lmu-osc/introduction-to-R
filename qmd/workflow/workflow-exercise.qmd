@@ -1,5 +1,6 @@
 ---
 title: "Workflow: Exercises"
+aliases: [workflow_exercise.html]
 ---
 
 The following exercises will set up your working space for the rest of the workshop. All code you write will be saved in the script(s) you create here.
@@ -31,26 +32,26 @@ How you organize your scripts is up do you. I recommend to create seperate scrip
 
 ## Exercise 2: Download Data
 
-1.  Within your folder create a new folder named `raw_data`. Then go to [this site](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) download the following data sets, and save them into your newly created folder. You can also just download the respective data set when it comes up in the workshop, in case you don't want to download them all at once.
+1.  Within your folder create a new folder named `raw-data`. Then go to [this site](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data) download the following data sets, and save them into your newly created folder. You can also just download the respective data set when it comes up in the workshop, in case you don't want to download them all at once.
 
--   `athlete_events.csv`
+-   `athlete-events.csv`
 -   `athletes.rds`
 -   `babynames.csv`
--   `babynames_n.csv`
+-   `babynames-n.csv`
 -   `characters.rds`
 -   `contintents.csv`
 -   `psych_stats.vsv`
--   `region_wide.csv`
--   `vb_l.sav`
--   `vb_w.csv`
--   `world_coordinates.rds`
+-   `region-wide.csv`
+-   `vb-l.sav`
+-   `vb-w.csv`
+-   `world-coordinates.rds`
 
 ::: callout-tip
 ## Hint
 
 You can left-click on the respective data set you want to download. This will take you to this window, where you can click on the download button to download the data:
 
-![](../pictures/download.PNG)
+![](../pictures/download.png)
 
 :::
 

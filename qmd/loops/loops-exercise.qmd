@@ -1,5 +1,6 @@
 ---
 title: "Loops: Exercises"
+aliases: [loops_exercise.html]
 ---
 
 ```{r, echo = FALSE, message = FALSE}
@@ -21,9 +22,9 @@ library(tidyverse)
 library(here)
 
 ## Load the data
-characters <- readRDS(file = here::here("raw_data", "characters.rds"))
+characters <- readRDS(file = here::here("raw-data", "characters.rds"))
 psych_stats <- read.csv(
-  file = here::here("raw_data", "psych_stats.csv"),
+  file = here::here("raw-data", "psych-stats.csv"),
   sep = ";"
 )
 
@@ -73,7 +74,7 @@ Note how we don't have to use `i` as counter (even though it is convention).
 
 ## Exercise 2
 
-Remember how we used the `group_by()` command to [calculate the number of gold medals for each country](https://nickhaf.github.io/r_tutorial/qmd/merging/merging.html#before-merging)? Well, now you know enough to do something similar without using the tidyverse, by using a `for-loop`.
+Remember how we used the `group_by()` command to [calculate the number of gold medals for each country](https://lmu-osc.github.io/introduction-to-R/qmd/merging/merging.html#before-merging)? Well, now you know enough to do something similar without using the tidyverse, by using a `for-loop`.
 
 1.  Subset a data frame that only contains the characters of one (your favorite) fictional universe.
 

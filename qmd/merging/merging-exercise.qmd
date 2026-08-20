@@ -1,5 +1,6 @@
 ---
 title: "Merging: Exercise"
+aliases: [merging_exercise.html]
 ---
 
 ::: {.callout-caution icon="false" collapse="true"}
@@ -13,9 +14,9 @@ library(tidyverse)
 library(here)
 
 ## Load the data
-characters <- readRDS(file = here::here("raw_data", "characters.rds"))
+characters <- readRDS(file = here::here("raw-data", "characters.rds"))
 psych_stats <- read.csv(
-  file = here::here("raw_data", "psych_stats.csv"),
+  file = here::here("raw-data", "psych-stats.csv"),
   sep = ";"
 )
 

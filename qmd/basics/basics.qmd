@@ -8,7 +8,7 @@ We can use R as a calculator:
 
 ```{r, eval = FALSE}
 (1 + 2) * 3^2
-2 - 3/log(8)
+2 - 3 / log(8)
 ```
 
 ## Assignment Operator
@@ -33,7 +33,7 @@ We can combine multiple elements to build a new one:
 new_element <- c(1, 10, 15)
 ```
 
-In this case, this new element is a [vector](https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#vector), which is a one dimensional collection of values. The `c()` stands for combine, or concatenate, and is the basic function for building a vector out of single elements.
+In this case, this new element is a [vector](https://lmu-osc.github.io/introduction-to-R/qmd/data-structures/data-structures.html#vector), which is a one dimensional collection of values. The `c()` stands for combine, or concatenate, and is the basic function for building a vector out of single elements.
 
 ## Comparisons and Logical Operators
 
@@ -44,22 +44,28 @@ The boolean variables in R are `TRUE` and `FALSE`. Comparison operators return e
 
 # But:
 2 < 1
-
 ```
 
 These are the comparison operators you will typically use:
 
 ```{r, echo = FALSE}
-dat_structs <- data.frame("Operator" = c("<", ">", "==", "!=", "<=", ">=", "%in%"),
-                          "Description" = c("less than", "greater than", "equal to", "not equal to", "less or equal", "greater or equal", "part of")
+dat_structs <- data.frame(
+  "Operator" = c("<", ">", "==", "!=", "<=", ">=", "%in%"),
+  "Description" = c(
+    "less than",
+    "greater than",
+    "equal to",
+    "not equal to",
+    "less or equal",
+    "greater or equal",
+    "part of"
+  )
 )
 
-knitr::kable(dat_structs, "pipe",
-             col.names = c("Operator", "Description")
-             ) 
+knitr::kable(dat_structs, "pipe", col.names = c("Operator", "Description"))
 ```
 
-Mainly we will use these logical operations to check which elements in a [vector](data_structures.qmd#vector) satisfy some requirements:
+Mainly we will use these logical operations to check which elements in a [vector](../data-structures/data-structures.qmd#vector) satisfy some requirements:
 
 ```{r}
 # Build a vector of numbers ranging from 1 to 10
@@ -76,7 +82,8 @@ This will become important later on, when we want to subset vectors and data fra
 The `%in%` operator is used to check for each element of its first argument if it is part of the second argument:
 
 ```{r}
-c("Monica", "Rachel", "Barny") %in% c("Monica", "Rachel", "Ross", "Joey", "Phoebe", "Chandler")
+c("Monica", "Rachel", "Barny") %in%
+  c("Monica", "Rachel", "Ross", "Joey", "Phoebe", "Chandler")
 ```
 
 ## !
@@ -100,7 +107,6 @@ TRUE | FALSE
 (10 < 20 | "a" == "b")
 (10 < 20 & "a" == "b")
 !(10 < 20 & "a" == "b")
-
 ```
 
 ## Functions

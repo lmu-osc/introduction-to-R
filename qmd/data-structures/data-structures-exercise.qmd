@@ -1,5 +1,6 @@
 ---
 title: "Data Structures: Exercises"
+aliases: [../data_structures/data_structures_exercise.html]
 ---
 
 ## Data structures

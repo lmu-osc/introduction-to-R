@@ -1,5 +1,6 @@
 ---
 title: "Functions: Exercises"
+aliases: [functions_exercise.html]
 ---
 
 ::: {.callout-note}

@@ -1,5 +1,6 @@
 ---
 title: "The Big Picture"
+aliases: [../getting_started/the_big_picture.html]
 ---
 
 Now that we have completed our set up, let's dive right into programming with `R`. In this chapter, we will go through a "mini-project" with very basic data, which follows a possible workflow when working with data in `R`. We will install and load packages, load data, perform some operations on this data, calculate some summary statistics and plot them. In later chapters we will go into a little more detail for each topic, so don't worry if you don't understand something quite yet, it will be covered again. This chapter will simply give you an idea of what is possible in R, before we deal with the specifics.
@@ -33,16 +34,16 @@ library(tidyverse)
 
 ## Load Data
 
-Data is [loaded into R](../load_data/load_data.qmd) so you can work with it. For this chapter, we are going to use the data set [`babynames`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md), which we can find on the [`tidytuesday`](https://github.com/rfordatascience/tidytuesday) site. I have already tweaked the data set a bit, so download it from [here](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) to follow along (in case you haven't already in the [previous exercise](https://nickhaf.github.io/r_tutorial/qmd/workflow/workflow_exercise.html#exercise-2-download-data). 
+Data is [loaded into R](../load-data/load-data.qmd) so you can work with it. For this chapter, we are going to use the data set [`babynames`](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md), which we can find on the [`tidytuesday`](https://github.com/rfordatascience/tidytuesday) site. I have already tweaked the data set a bit, so download it from [here](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data) to follow along (in case you haven't already in the [previous exercise](https://lmu-osc.github.io/introduction-to-R/qmd/workflow/workflow-exercise.html#exercise-2-download-data). 
 
-So, after downloading it and saving it in the folder `raw_data` within my project directory, I can load the data set into R with:
+So, after downloading it and saving it in the folder `raw-data` within my project directory, I can load the data set into R with:
 
 ```{r, echo = FALSE}
-babynames <- read.csv(here::here("raw_data", "babynames.csv"))
+babynames <- read.csv(here::here("raw-data", "babynames.csv"))
 ```
 
 ```{r, eval = FALSE}
-babynames <- read.csv("./raw_data/babynames.csv")
+babynames <- read.csv("./raw-data/babynames.csv")
 ```
 
 This will load the data into R and assigning it the name `babynames` by using the `<-` operator. You can see the data popping up in your `Environment` pane on the upper right. Note that the file path might differ on your device, depending on where you've saved your data.
@@ -67,14 +68,14 @@ So, what we can infer from the data and its online description is that it contai
 
 ## Merging
 
-Sadly the data is not complete. If we had the number of people born with a specific name for every year, we could find out which name was the most common each year (which is our goal, as you might remember). However, the number of people is missing from our data (ok, i split it up for illustrative purposes). So let's [download](https://github.com/nickhaf/r_tutorial/tree/main/raw_data) `babynames_n.csv` (in case you haven't already) and [load it into R](../load_data/load_data.qmd):
+Sadly the data is not complete. If we had the number of people born with a specific name for every year, we could find out which name was the most common each year (which is our goal, as you might remember). However, the number of people is missing from our data (ok, i split it up for illustrative purposes). So let's [download](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data) `babynames-n.csv` (in case you haven't already) and [load it into R](../load-data/load-data.qmd):
 
 ```{r, echo = FALSE}
-babynames_n <- read.csv(here::here("raw_data", "babynames_n.csv"))
+babynames_n <- read.csv(here::here("raw-data", "babynames-n.csv"))
 ```
 
 ```{r , eval = FALSE}
-babynames_n <- read.csv("./raw_data/babynames_n.csv")
+babynames_n <- read.csv("./raw-data/babynames-n.csv")
 ```
 
 Now we can [merge](../merging/merging.qmd) it with our other data set by the `ID` column:
@@ -109,11 +110,11 @@ babynames_F <- babynames_merged %>%
 ```
 :::
 
-Wondering what the `%>%` means? That's a [pipe operator](https://nickhaf.github.io/r_tutorial/qmd/basics/tidyverse.html#the-pipe-operator), which is used, mainly in the [`tidyverse`](../basics/tidyverse.qmd), to connect multiple function calls. This can make code a lot more readable. Here we start with the `babynames_merged` data set and then perform an operation on it, in this case filtering specific values.
+Wondering what the `%>%` means? That's a [pipe operator](https://lmu-osc.github.io/introduction-to-R/qmd/basics/tidyverse.html#the-pipe-operator), which is used, mainly in the [`tidyverse`](../basics/tidyverse.qmd), to connect multiple function calls. This can make code a lot more readable. Here we start with the `babynames_merged` data set and then perform an operation on it, in this case filtering specific values.
 
 ## Adding a new column
 
-Now, we want to plot the percentages of each name instead of the probability, because it looks a bit more intuitive (in my opinion). So, let's [build a new column](https://nickhaf.github.io/r_tutorial/qmd/getting_started/the_big_picture.html#adding-a-new-column) named `percentage`, which is just the `prop` column multiplied by `100`:
+Now, we want to plot the percentages of each name instead of the probability, because it looks a bit more intuitive (in my opinion). So, let's [build a new column](https://lmu-osc.github.io/introduction-to-R/qmd/getting-started/the-big-picture.html#adding-a-new-column) named `percentage`, which is just the `prop` column multiplied by `100`:
 
 ```{r}
 babynames_F$percentage <- babynames_F$prop * 100
@@ -122,7 +123,7 @@ head(babynames_F)
 
 ## Selecting columns
 
-Now we can trim down our data set a bit more and [select](https://nickhaf.github.io/r_tutorial/qmd/subsetting/subsetting.html#columns-tidyverse) only the columns we are actually going to need:
+Now we can trim down our data set a bit more and [select](https://lmu-osc.github.io/introduction-to-R/qmd/subsetting/subsetting.html#columns-tidyverse) only the columns we are actually going to need:
 
 ::: tidy
 ```{r}
@@ -165,7 +166,7 @@ We will use the package `ggplot2` (which is also part of the `tidyverse`) for [p
 
 A `ggplot` is constructed from multiple layers that can be laid over each other using the `+` operator.
 
-We start with the function [`ggplot()`](https://nickhaf.github.io/r_tutorial/qmd/plotting/plotting.html#ggplot), in which we define our data and the x and y axes. This will draw our (empty) coordinate system. We have to use the [`aes()`](https://nickhaf.github.io/r_tutorial/qmd/plotting/plotting.html#aes) (aesthetics) function for everything that changes in relation to the data. For example, the exact location of each element in the plot is dependent on the x and y position deposited in the data, so we have to specify our axes inside the `aes()` function:
+We start with the function [`ggplot()`](https://lmu-osc.github.io/introduction-to-R/qmd/plotting/plotting.html#ggplot), in which we define our data and the x and y axes. This will draw our (empty) coordinate system. We have to use the [`aes()`](https://lmu-osc.github.io/introduction-to-R/qmd/plotting/plotting.html#aes) (aesthetics) function for everything that changes in relation to the data. For example, the exact location of each element in the plot is dependent on the x and y position deposited in the data, so we have to specify our axes inside the `aes()` function:
 
 ::: tidy
 ```{r}
@@ -181,7 +182,7 @@ p <- ggplot(
 p
 ```
 
-Now that we have defined our aesthetics, we can add a [`geom`-layer](https://nickhaf.github.io/r_tutorial/qmd/plotting/plotting.html#geom_). This will make use of the data we have defined in `ggplot()` and plot some bars for us:
+Now that we have defined our aesthetics, we can add a [`geom`-layer](https://lmu-osc.github.io/introduction-to-R/qmd/plotting/plotting.html#geom_). This will make use of the data we have defined in `ggplot()` and plot some bars for us:
 
 ```{r}
 #| fig-height: 8
@@ -235,4 +236,4 @@ We would have many more options to style this plot further (for example we could
 
 ## Conclusion
 
-In this tutorial we have learned that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. If you already have some R experience, you can now move on to the [Final Exercise](../final_exercise/final_exercise.qmd) to identify topics your want to work on. If you are a R beginner, I would suggest you follow the course, as outlined on the left.
+In this tutorial we have learned that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. If you already have some R experience, you can now move on to the [Final Exercise](../final-exercise/final-exercise.qmd) to identify topics your want to work on. If you are a R beginner, I would suggest you follow the course, as outlined on the left.
