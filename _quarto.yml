@@ -1,33 +1,39 @@
+# Begin Project
 project:
-  type: website
+  type: tutorial-template
+  # FYI: the tutorial-template project type is defined in the lmu-osc/tutorial-template extension
+# End Project
 
+# Begin Website
+repo-url: https://github.com/lmu-osc/introduction-to-R
 website:
   title: "Introduction to R"
-  page-navigation: true
-  open-graph: true
+  page-footer:
+    border: false
+    center: © 2026 Nicklas Hafiz. Published by LMU Open Science Center. Licensed under CC BY-SA 4.0.
   repo-url: https://github.com/lmu-osc/introduction-to-R
-  repo-actions: [edit, issue]
-  favicon: assets/LMU-OSC_favicon.jpg
-  margin-header: |
-    ![](/assets/LMU-OSC_logo.jpg){width="175"}
-  
-  
-  
+
   navbar:
-    search: true
-    right: 
+    right:
       - about.qmd
     left:
       - href: index.qmd
         text: Home
-      - qmd/setup/setup.qmd
-      - qmd/getting_started/the_big_picture.qmd
-      - qmd/final_exercise/final_exercise.qmd
+    tools:
+      - icon: github
+        menu:
+          - text: Source Code
+            href: https://github.com/lmu-osc/introduction-to-R
+          - text: Report a Bug
+            href: https://github.com/lmu-osc/introduction-to-R/issues
+      - icon: house-heart
+        url: https://www.osc.lmu.de/
 
-  sidebar: 
+  sidebar:
     style: "docked"
-    search: true
     contents:
+      - text: "Overview"
+        href: index.qmd
       - section: "0) Before the workshop"
         contents:
           - qmd/setup/setup.qmd
@@ -36,93 +42,99 @@ website:
           - section: "Workflow"
             contents:
               - qmd/workflow/workflow.qmd
-              - qmd/workflow/workflow_exercise.qmd
+              - qmd/workflow/workflow-exercise.qmd
           - section: "Overview"
-            contents: 
-              - qmd/getting_started/the_big_picture.qmd
-              - qmd/getting_started/data_sets.qmd
+            contents:
+              - qmd/getting-started/the-big-picture.qmd
+              - qmd/getting-started/data-sets.qmd
       - section: "2) Basics"
         contents:
-        - section: "Basics"
-          contents:
-            - qmd/basics/basics.qmd
-            - qmd/basics/tidyverse.qmd
-            - qmd/basics/basics_exercise.qmd
-        - section: "Data structures"
-          contents:
-            - qmd/data_structures/data_structures.qmd
-            - qmd/data_structures/data_structures_exercise.qmd
-        - section: "Packages"
-          contents:
-            - qmd/packages/packages.qmd
-            - qmd/packages/packages_exercise.qmd
-        - section: "Loading data"
-          contents:
-            - qmd/load_data/load_data.qmd
-            - qmd/load_data/load_data_exercise.qmd
-
+          - section: "Basics"
+            contents:
+              - qmd/basics/basics.qmd
+              - qmd/basics/tidyverse.qmd
+              - qmd/basics/basics-exercise.qmd
+          - section: "Data structures"
+            contents:
+              - qmd/data-structures/data-structures.qmd
+              - qmd/data-structures/data-structures-exercise.qmd
+          - section: "Packages"
+            contents:
+              - qmd/packages/packages.qmd
+              - qmd/packages/packages-exercise.qmd
+          - section: "Loading data"
+            contents:
+              - qmd/load-data/load-data.qmd
+              - qmd/load-data/load-data-exercise.qmd
       - section: "3) Data manipulation and transformation"
         contents:
-        - section: "Getting an overview"
-          contents: 
-            - qmd/peeking/peeking.qmd
-            - qmd/peeking/peeking_exercise.qmd
-        - section: "Subsetting"
-          contents:
-            - qmd/subsetting/subsetting.qmd
-            - qmd/subsetting/subsetting_exercise.qmd
-        - section: "Missings"
-          contents:
-            - qmd/missing/missing.qmd
-            - qmd/missing/missing_exercise.qmd
-        - section: "Reshaping"
-          contents:
-            - qmd/format/format.qmd
-            - qmd/format/format_exercise.qmd
-        - section: "Merging"
-          contents:
-            - qmd/merging/merging.qmd
-            - qmd/merging/merging_exercise.qmd
-        - section: "Functions"
-          contents: 
-            - qmd/functions/functions.qmd
-            - qmd/functions/functions_exercise.qmd
-        - section: "Loops and Conditions"
-          contents:
-            - qmd/loops/loops.qmd
-            - qmd/loops/loops_exercise.qmd
+          - section: "Getting an overview"
+            contents:
+              - qmd/peeking/peeking.qmd
+              - qmd/peeking/peeking-exercise.qmd
+          - section: "Subsetting"
+            contents:
+              - qmd/subsetting/subsetting.qmd
+              - qmd/subsetting/subsetting-exercise.qmd
+          - section: "Missings"
+            contents:
+              - qmd/missing/missing.qmd
+              - qmd/missing/missing-exercise.qmd
+          - section: "Reshaping"
+            contents:
+              - qmd/format/format.qmd
+              - qmd/format/format-exercise.qmd
+          - section: "Merging"
+            contents:
+              - qmd/merging/merging.qmd
+              - qmd/merging/merging-exercise.qmd
+          - section: "Functions"
+            contents:
+              - qmd/functions/functions.qmd
+              - qmd/functions/functions-exercise.qmd
+          - section: "Loops and Conditions"
+            contents:
+              - qmd/loops/loops.qmd
+              - qmd/loops/loops-exercise.qmd
       - section: "4) Visualization"
         contents:
           - qmd/plotting/plotting.qmd
-          - qmd/plotting/plotting_exercise.qmd
+          - qmd/plotting/plotting-exercise.qmd
       - section: "5) Final Exercise"
         contents:
-          - qmd/final_exercise/final_exercise.qmd
+          - qmd/final-exercise/final-exercise.qmd
       - section: "6) Additional Resources"
         contents:
           - qmd/resources/resources.qmd
-          - section: "Direkt Links to Cheat Sheets" 
-            contents: 
+          - section: "Direkt Links to Cheat Sheets"
+            contents:
               - href: https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf
                 text: "Base R"
               - href: https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
                 text: "Data Wrangling with tidyverse"
               - href: https://rstudio.github.io/cheatsheets/data-visualization.pdf
                 text: "Data visualization with ggplot2"
+# End Website
 
-              
+# Begin Includes
+include-in-header:
+  - file: matomo-analytics.html
+include-after-body:
+  - file: footer/footer.html
+# End Includes
+
+# Begin Format
+# use only if needed. the default format for `tutorial-template` projects is tutorial-template-html+tutorial
+# we recommend just extending the definition below if you need to make format changes
 format:
-  html:
-    theme: 
-      - cosmo
-      - custom.scss
-    css: styles.css
-    toc: true
-    include-in-header:
-      - file: matomo_analytics.html
+  tutorial-template-html+tutorial:
+    css:
+      - footer/footer-style.css
+      - tutorial.css
+# End Format
 
-editor: visual
+# Begin Editor
+editor: source
+# End Editor
 
-execute: 
-  freeze: auto 
-
+bibliography: references.bib
