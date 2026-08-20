@@ -3,8 +3,8 @@ library(tidyverse)
 
 # Athletes -----------------------------------------------------------------
 
-athletes <- read.csv(here::here("raw_data", "athlete_events.csv"))
-region <- read.csv(here::here("raw_data", "noc_regions.csv"))
+athletes <- read.csv(here::here("raw-data", "athlete-events.csv"))
+region <- read.csv(here::here("raw-data", "noc-regions.csv"))
 
 athletes_region <- merge(athletes, region) %>%
   rename("Region" = region) %>%
@@ -20,7 +20,7 @@ athletes_region <- merge(athletes, region) %>%
 # winners <- winners_raw %>%
 #   select(-c("Time"))
 
-saveRDS(as.data.frame(athletes_region), file = here::here("raw_data", "athletes.rds"))
+saveRDS(as.data.frame(athletes_region), file = here::here("raw-data", "athletes.rds"))
 
 
 
@@ -28,7 +28,7 @@ saveRDS(as.data.frame(athletes_region), file = here::here("raw_data", "athletes.
 
 world_coordinates <- ggplot2::map_data("world")
 
-saveRDS(as.data.frame(world_coordinates), file = here::here("raw_data", "world_coordinates.rds"))
+saveRDS(as.data.frame(world_coordinates), file = here::here("raw-data", "world-coordinates.rds"))
 
 
 # Babynames ---------------------------------------------------------------
@@ -51,12 +51,12 @@ babynames_n <- as.data.frame(babynames_n)
 
 write.table(babynames,
   row.names = FALSE,
-  file = here::here("raw_data", "babynames.csv"),
+  file = here::here("raw-data", "babynames.csv"),
   sep = ","
 )
 write.table(babynames_n,
   row.names = FALSE,
-  file = here::here("raw_data", "babynames_n.csv"),
+  file = here::here("raw-data", "babynames-n.csv"),
   sep = ","
 )
 
@@ -86,13 +86,13 @@ psych_stats <- tuesdata$psych_stats %>%
   )
 
 saveRDS(characters,
-  file = here::here("raw_data", "characters.rds")
+  file = here::here("raw-data", "characters.rds")
 )
 
-write.table(psych_stats, here::here("raw_data", "psych_stats.csv"), sep = ";")
-psych_stats <- read.csv(here::here("raw_data", "psych_stats.csv"), sep = ";") %>%
+write.table(psych_stats, here::here("raw-data", "psych-stats.csv"), sep = ";")
+psych_stats <- read.csv(here::here("raw-data", "psych-stats.csv"), sep = ";") %>%
   select(-starts_with("X."))
-write.table(psych_stats, here::here("raw_data", "psych_stats.csv"), sep = ";")
+write.table(psych_stats, here::here("raw-data", "psych-stats.csv"), sep = ";")
 
 # Volleyball data ------------------------------------------------------------
 vb <- tidytuesdayR::tt_load("2020-05-19")$vb_matches %>%
@@ -101,5 +101,5 @@ vb <- tidytuesdayR::tt_load("2020-05-19")$vb_matches %>%
 vb_w <- vb %>% select(-starts_with("l_p"))
 vb_l <- vb %>% select(-starts_with("w_p"))
 
-write.table(vb_w, here::here("raw_data", "vb_w.csv"), sep = " ")
-haven::write_sav(vb_l, here::here("raw_data", "vb_l.sav"))
+write.table(vb_w, here::here("raw-data", "vb-w.csv"), sep = " ")
+haven::write_sav(vb_l, here::here("raw-data", "vb-l.sav"))
