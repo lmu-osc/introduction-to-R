@@ -37,9 +37,9 @@ medal_counts <- athletes %>%
 :::
 :::
 
-# For-loops
+## For-loops
 
-## Motivation
+### Motivation
 
 When programming, you often want to repeat an operation multiple times. For example, assume you want to print the number of gold medals for each country into your console. The most intuitive way would be to just copy paste the code with changed country names:
 
@@ -98,7 +98,7 @@ So this little piece of code can do what we started to do in the above code sect
 In general, try not to repeat yourself when writing code. As a general rule of thumb, use loops and/or [functions](../functions/functions.qmd) if you need to copy/paste something more than two times. In the above example, we could also have put the `paste()` call into a function of it own, to trim down the code even more and make it more readable. 
 :::
 
-## How to write a for-loop?
+### How to write a for-loop?
 
 Let's take a step back and look at what we are actually doing here. A `for loop` is generally constructed like this:
 
@@ -148,9 +148,9 @@ unique(medal_counts$Region)
 It should be noted that in general it is good practice to try avoiding for loops and use functions from the [apply-family](https://nicercode.github.io/guides/repeating-things/) instead, as `for-loops` allow you to write horrible code. Still, sometimes `for-loops` are the better option, depending on the use case. Also, their structure is pretty much the same over many programming languages.
 :::
 
-# Conditions
+## Conditions
 
-## If-else statement
+### If-else statement
 
 Have you noticed that our output doesn't sound that correct if we only have one gold medal winner in a country?
 
@@ -211,7 +211,7 @@ In our inital example we check if the number of gold medalists is equal to one. 
 
 We don't even need to define the `else{}` part if nothing should happen in case the `if()` condition is not met.
 
-## `ifelse()`
+### `ifelse()`
 
 We can use this concept for adding new values conditionally to a data frame. For example, let's build a dichotomous variable to check which countries have equal to or more than `100` gold medal winners:
 

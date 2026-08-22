@@ -1,4 +1,6 @@
-# Basic Operations
+---
+title: "Basic Operations"
+---
 
 Let's take a quick look at the most important basic operations in R. You can also use a [cheat sheet](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf) to keep an overview during the course.
 
