@@ -130,7 +130,6 @@ format:
   tutorial-template-html+tutorial:
     css:
       - footer/footer-style.css
-      - tutorial.css
 # End Format
 
 # Begin Editor
