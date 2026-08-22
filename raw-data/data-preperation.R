@@ -16,24 +16,30 @@ athletes_region <- merge(athletes, region) %>%
 
 # winners_raw[na_rows, "Hours"] <- NA
 
-
 # winners <- winners_raw %>%
 #   select(-c("Time"))
 
-saveRDS(as.data.frame(athletes_region), file = here::here("raw-data", "athletes.rds"))
-
+saveRDS(
+  as.data.frame(athletes_region),
+  file = here::here("raw-data", "athletes.rds")
+)
 
 
 # Coordinates -------------------------------------------------------------
 
 world_coordinates <- ggplot2::map_data("world")
 
-saveRDS(as.data.frame(world_coordinates), file = here::here("raw-data", "world-coordinates.rds"))
+saveRDS(
+  as.data.frame(world_coordinates),
+  file = here::here("raw-data", "world-coordinates.rds")
+)
 
 
 # Babynames ---------------------------------------------------------------
 
-babynames <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-03-22/babynames.csv")
+babynames <- read_csv(
+  "https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-03-22/babynames.csv"
+)
 
 ## Introduce some NAs
 na_rows <- c(4, 800)
@@ -49,12 +55,14 @@ babynames <- as.data.frame(babynames)
 babynames_n <- as.data.frame(babynames_n)
 
 
-write.table(babynames,
+write.table(
+  babynames,
   row.names = FALSE,
   file = here::here("raw-data", "babynames.csv"),
   sep = ","
 )
-write.table(babynames_n,
+write.table(
+  babynames_n,
   row.names = FALSE,
   file = here::here("raw-data", "babynames-n.csv"),
   sep = ","
@@ -72,10 +80,13 @@ characters <- as.data.frame(tuesdata$characters)
 psych_stats <- tuesdata$psych_stats %>%
   ## Recode
   mutate(question2 = str_extract(question, "^.*(?=(/))")) %>%
-  mutate(mean_rating = ifelse(personality == question2,
-    yes = 100 - avg_rating,
-    no = avg_rating
-  )) %>%
+  mutate(
+    mean_rating = ifelse(
+      personality == question2,
+      yes = 100 - avg_rating,
+      no = avg_rating
+    )
+  ) %>%
   mutate(question = gsub("/", "_", question)) %>%
   select(char_id, question, mean_rating) %>%
   pivot_wider(
@@ -85,12 +96,13 @@ psych_stats <- tuesdata$psych_stats %>%
     values_fn = mean
   )
 
-saveRDS(characters,
-  file = here::here("raw-data", "characters.rds")
-)
+saveRDS(characters, file = here::here("raw-data", "characters.rds"))
 
 write.table(psych_stats, here::here("raw-data", "psych-stats.csv"), sep = ";")
-psych_stats <- read.csv(here::here("raw-data", "psych-stats.csv"), sep = ";") %>%
+psych_stats <- read.csv(
+  here::here("raw-data", "psych-stats.csv"),
+  sep = ";"
+) %>%
   select(-starts_with("X."))
 write.table(psych_stats, here::here("raw-data", "psych-stats.csv"), sep = ";")
 
