@@ -34,10 +34,10 @@ website:
     contents:
       - text: "Overview"
         href: index.qmd
-      - section: "0) Before the workshop"
+      - section: "Before the workshop"
         contents:
           - qmd/setup/setup.qmd
-      - section: "1) Getting Started"
+      - section: "Getting Started"
         contents:
           - section: "Workflow"
             contents:
@@ -47,7 +47,7 @@ website:
             contents:
               - qmd/getting-started/the-big-picture.qmd
               - qmd/getting-started/data-sets.qmd
-      - section: "2) Basics"
+      - section: "Basics"
         contents:
           - section: "Basics"
             contents:
@@ -66,7 +66,7 @@ website:
             contents:
               - qmd/load-data/load-data.qmd
               - qmd/load-data/load-data-exercise.qmd
-      - section: "3) Data manipulation and transformation"
+      - section: "Data manipulation and transformation"
         contents:
           - section: "Getting an overview"
             contents:
@@ -96,14 +96,14 @@ website:
             contents:
               - qmd/loops/loops.qmd
               - qmd/loops/loops-exercise.qmd
-      - section: "4) Visualization"
+      - section: "Visualization"
         contents:
           - qmd/plotting/plotting.qmd
           - qmd/plotting/plotting-exercise.qmd
-      - section: "5) Final Exercise"
+      - section: "Final Exercise"
         contents:
           - qmd/final-exercise/final-exercise.qmd
-      - section: "6) Additional Resources"
+      - section: "Additional Resources"
         contents:
           - qmd/resources/resources.qmd
           - section: "Direkt Links to Cheat Sheets"
