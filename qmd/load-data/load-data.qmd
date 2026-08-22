@@ -20,32 +20,38 @@ library(here)
 There are many different data types that can be loaded into R. Depending on the type, different commands are used. Sometimes, we will have to use additional packages to get access to that function, mainly `readxl`, `writexl` and `haven`.
 
 ```{r, results = 'asis', echo = FALSE}
-formats_dat <- data.frame("Data type" = c("R objects (.Rdata, .rda)", 
-                                       "single R object (.rds)", 
-                                       "text-files (.txt)",
-                                       ".csv-files (.csv)",
-                                       "Excel-files (.xlsx)",
-                                       "SPSS-files (.sav)", 
-                                       "SAS-files (.sas)", 
-                                       "Stata-files (.stata)"
-                                       ),
-                          Import = c("````load()````",
-                                       "````readRDS()````",
-                                       "````read.table()````",
-                                       "````read.csv()````",
-                                       "````readxl::read_excel()````",
-                                       "````haven::read_sav()````",
-                                       "````haven::read_sas()````",
-                                       "````haven::read_dta()````"),
-                          Export = c("````save()````",
-                                       "````saveRDS()````",
-                                       "````write.table()````",
-                                       "````write.csv()````",
-                                       "````writexl::write_xlsx()````",
-                                       "````haven::write_sav()````",
-                                       "````haven::write_sas()````",
-                                       "````haven::write_dta()````")
-                          )
+formats_dat <- data.frame(
+  "Data type" = c(
+    "R objects (.Rdata, .rda)",
+    "single R object (.rds)",
+    "text-files (.txt)",
+    ".csv-files (.csv)",
+    "Excel-files (.xlsx)",
+    "SPSS-files (.sav)",
+    "SAS-files (.sas)",
+    "Stata-files (.stata)"
+  ),
+  Import = c(
+    "````load()````",
+    "````readRDS()````",
+    "````read.table()````",
+    "````read.csv()````",
+    "````readxl::read_excel()````",
+    "````haven::read_sav()````",
+    "````haven::read_sas()````",
+    "````haven::read_dta()````"
+  ),
+  Export = c(
+    "````save()````",
+    "````saveRDS()````",
+    "````write.table()````",
+    "````write.csv()````",
+    "````writexl::write_xlsx()````",
+    "````haven::write_sav()````",
+    "````haven::write_sas()````",
+    "````haven::write_dta()````"
+  )
+)
 
 knitr::kable(formats_dat, "pipe")
 ```

@@ -32,7 +32,7 @@ athletes <- readRDS(file = here::here("raw-data", "athletes.rds"))
 medal_counts <- athletes %>%
   filter(Medal == "Gold") %>%
   group_by(Region) %>%
-  count(Medal) 
+  count(Medal)
 ```
 :::
 :::
@@ -46,49 +46,54 @@ When programming, you often want to repeat an operation multiple times. For exam
 ```{r}
 print(
   paste0(
-    medal_counts[medal_counts$Region == "Algeria", "n"], 
-    " Olympic gold medalists are from ", 
-    medal_counts[medal_counts$Region == "Algeria", "Region"], 
-    ".")
+    medal_counts[medal_counts$Region == "Algeria", "n"],
+    " Olympic gold medalists are from ",
+    medal_counts[medal_counts$Region == "Algeria", "Region"],
+    "."
   )
+)
 
 print(
   paste0(
-    medal_counts[medal_counts$Region == "Argentina", "n"], 
-    " Olympic gold medalists are from ", 
-    medal_counts[medal_counts$Region == "Argentina", "Region"], 
-    ".")
+    medal_counts[medal_counts$Region == "Argentina", "n"],
+    " Olympic gold medalists are from ",
+    medal_counts[medal_counts$Region == "Argentina", "Region"],
+    "."
   )
+)
 
 print(
   paste0(
-    medal_counts[medal_counts$Region == "Armenia", "n"], 
-    " Olympic gold medalists are from ", 
-    medal_counts[medal_counts$Region == "Armenia", "Region"], 
-    ".")
+    medal_counts[medal_counts$Region == "Armenia", "n"],
+    " Olympic gold medalists are from ",
+    medal_counts[medal_counts$Region == "Armenia", "Region"],
+    "."
   )
+)
 
 print(
-  paste0(medal_counts[medal_counts$Region == "Australia", "n"], 
-         " Olympic gold medalists are from ", 
-         medal_counts[medal_counts$Region == "Australia", "Region"],
-         ".")
+  paste0(
+    medal_counts[medal_counts$Region == "Australia", "n"],
+    " Olympic gold medalists are from ",
+    medal_counts[medal_counts$Region == "Australia", "Region"],
+    "."
   )
-
+)
 ```
 
 This could go on ...\
 Here we paste together a sentence consisting of data and some pre specified character strings, which we then print into the console. However, this can become pretty tedious if we want to add more countries, and what if we want to change something in the print statement? In this case, we would have to go over all rows and change it multiple times. So, let's write a loop that does that automatically for us:
 
 ```{r}
-for(i in unique(medal_counts$Region)){
+for (i in unique(medal_counts$Region)) {
   print(
     paste0(
-      medal_counts[medal_counts$Region == i, "n"], 
-      " Olympic gold medalists are from ", 
-      i, 
-      "." )
+      medal_counts[medal_counts$Region == i, "n"],
+      " Olympic gold medalists are from ",
+      i,
+      "."
     )
+  )
 }
 ```
 
@@ -111,7 +116,7 @@ for(counter in values){
 What does this mean? Let's look at a simple example first. We want to multiply the values from `10` to `20` with `100` and then print them into our console:
 
 ```{r}
-for(i in 10:20){
+for (i in 10:20) {
   new_i <- i * 100
   print(new_i)
 }
@@ -125,14 +130,15 @@ for(i in 10:20){
 Let's get back to our initial example. Try to figure out what happens here by yourself. What is the first and the last value `i` gets assigned?
 
 ```{r}
-for(i in unique(medal_counts$Region)){
+for (i in unique(medal_counts$Region)) {
   print(
     paste0(
-      medal_counts[medal_counts$Region == i, "n"], 
-      " Olympic gold medalists are from ", 
-      i, 
-      "." )
+      medal_counts[medal_counts$Region == i, "n"],
+      " Olympic gold medalists are from ",
+      i,
+      "."
     )
+  )
 }
 ```
 
@@ -159,25 +165,27 @@ Have you noticed that our output doesn't sound that correct if we only have one 
 To solve this, we can add a conditional statement which only gets executed if some condition is met. This can be done by an `if else` statement:
 
 ```{r}
-for(i in unique(medal_counts$Region)){
+for (i in unique(medal_counts$Region)) {
   n_medals <- medal_counts[medal_counts$Region == i, "n"]
-  
+
   ## Execute only if the number of medal is equal to 1!
-  if(n_medals == 1){
+  if (n_medals == 1) {
     print(
-    paste0(
-      "One Olympic gold medalist is from ", 
-      i, 
-      "." )
+      paste0(
+        "One Olympic gold medalist is from ",
+        i,
+        "."
+      )
     )
-  }else{
+  } else {
     ## In all other cases, do the following:
-  print(
-    paste0(
-      n_medals, 
-      " Olympic gold medalists are from ", 
-      i, 
-      "." )
+    print(
+      paste0(
+        n_medals,
+        " Olympic gold medalists are from ",
+        i,
+        "."
+      )
     )
   }
 }
@@ -198,9 +206,9 @@ For example:
 ```{r}
 x <- 10
 
-if(x < 100){
+if (x < 100) {
   x * 2
-}else{
+} else {
   x
 }
 ```
@@ -217,7 +225,7 @@ We can use this concept for adding new values conditionally to a data frame. For
 
 ```{r}
 medal_counts$n_100 <- ifelse(
- medal_counts$n >= 100,
+  medal_counts$n >= 100,
   yes = TRUE,
   no = FALSE
 )

@@ -14,7 +14,9 @@ This chapter is optional.
 library(tidyverse)
 
 athletes <- readRDS(file = here::here("raw-data", "athletes.rds"))
-world_coordinates <- readRDS(file = here::here("raw-data", "world-coordinates.rds"))
+world_coordinates <- readRDS(
+  file = here::here("raw-data", "world-coordinates.rds")
+)
 
 medal_counts <- athletes %>%
   filter(Medal == "Gold") %>%
@@ -266,7 +268,6 @@ In the end we can clean up the plot by rescaling the x and y axis, provide a new
 ```{r}
 #| fig-height: 8
 #| fig-width: 11
-
 
 p +
   ## Rescale the plot

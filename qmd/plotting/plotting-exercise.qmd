@@ -151,7 +151,6 @@ You can change a lot in the appearance of the bars. For example, you might want 
 #| fig-height: 8
 #| fig-width: 11
 
-
 p <- p +
   geom_col(
     aes(fill = rating),
@@ -173,7 +172,6 @@ p
 ```{r}
 #| fig-height: 8
 #| fig-width: 11
-
 
 p +
   scale_fill_viridis_c(option = "D") +
@@ -222,7 +220,11 @@ fictional_personalities <- function(fictional_universe, questions) {
     ) +
     scale_fill_viridis_c(option = "D") +
     theme_bw() +
-    ggtitle(paste("Characteristics of the '", fictional_universe, "' characters")) + # paste together the title, so it always shows the correct fictional universe
+    ggtitle(paste(
+      "Characteristics of the '",
+      fictional_universe,
+      "' characters"
+    )) + # paste together the title, so it always shows the correct fictional universe
     xlab("Rating") +
     ylab("")
 

@@ -55,12 +55,13 @@ You can select multiple columns like this: `column_1:column_10`.
 
 ```{r}
 psych_stats <- psych_stats %>%
-  pivot_longer(cols = messy_neat:innocent_jaded, 
-               names_to = "question", 
-               values_to = "rating")
+  pivot_longer(
+    cols = messy_neat:innocent_jaded,
+    names_to = "question",
+    values_to = "rating"
+  )
 
 head(psych_stats)
-
 ```
 
 Now we have multiple rows for every character, but all question ratings are nicely aligned in one column.
@@ -75,10 +76,11 @@ Try to reshape the data into long format again.
 
 ```{r}
 psych_stats %>%
-  pivot_wider(id_cols = char_id, 
-               names_from = "question", 
-               values_from = "rating")
-
+  pivot_wider(
+    id_cols = char_id,
+    names_from = "question",
+    values_from = "rating"
+  )
 ```
 
 This is how we got it! But scratch that, it was just for the sake of the exercise. We want to use `psych_stats` in the long format from now on.

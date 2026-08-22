@@ -74,7 +74,8 @@ Use the argument `by` in `merge()` to select the columns `id` and `gender` on wh
 ## Solution
 
 ```{r}
-vb <- merge(vb_l,
+vb <- merge(
+  vb_l,
   vb_w,
   by = c("id", "gender")
 )
@@ -204,7 +205,8 @@ for (i in c("M", "W")) {
   vb_gender <- vb %>% filter(gender == i)
 
   ## Do the t-test and save the result
-  result_list[[i]] <- t.test(vb_gender$winning_height,
+  result_list[[i]] <- t.test(
+    vb_gender$winning_height,
     vb_gender$losing_height,
     paired = TRUE
   )
@@ -224,7 +226,11 @@ result_list <- lapply(c("M", "W"), function(x) {
   vb_gender <- vb %>% filter(gender == x)
 
   ## Calculate the t-test. Note how we don't need an empty list to save the results in, lapply() does that for us.
-  t_test_result <- t.test(vb_gender$winning_height, vb_gender$losing_height, paired = TRUE)
+  t_test_result <- t.test(
+    vb_gender$winning_height,
+    vb_gender$losing_height,
+    paired = TRUE
+  )
 
   ## Explictly return the result:
   return(t_test_result)
@@ -270,7 +276,11 @@ for (i in c("M", "W")) {
   vb_gender <- vb %>% filter(gender == i)
 
   ## Paired t-test
-  result_list[[i]] <- t.test(vb_gender$winning_height, vb_gender$losing_height, paired = TRUE)
+  result_list[[i]] <- t.test(
+    vb_gender$winning_height,
+    vb_gender$losing_height,
+    paired = TRUE
+  )
 
   ## Our Cohen's d function
   d <- cohens_d(
@@ -338,7 +348,8 @@ vb_long <- vb_long %>%
 
 
 ## Build the coordinate system
-ggplot(vb_long,
+ggplot(
+  vb_long,
   mapping = aes(
     x = group,
     y = mean_height,
@@ -358,7 +369,9 @@ ggplot(vb_long,
   ## New theme:
   theme_bw() +
   ## Labels:
-  ggtitle("Height differences between winning and losing teams in professional volleyball") +
+  ggtitle(
+    "Height differences between winning and losing teams in professional volleyball"
+  ) +
   ylab("Height in inch") +
   xlab("Group")
 ```

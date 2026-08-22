@@ -84,7 +84,6 @@ Now the stuff we looked at in [logical operators](../basics/basics.qmd#compariso
 
 ```{r output.lines = 10}
 athletes[athletes$Team == "Germany", ]
-
 ```
 
 ::: {.callout-note collapse="true"}
@@ -103,7 +102,6 @@ If we want to extract multiple nationalities at once, we need the `%in%` operato
 
 ```{r, output.lines = 10}
 athletes[athletes$Team %in% c("Kenya", "Norway"), ]
-
 ```
 
 By the way, if we want to save our extracted data frame, we can assign it a new name (otherwise it will only get printed into the console, but we can't go on working with it):
@@ -123,7 +121,9 @@ head(athletes_2)
 Or at all judo athletes weighting over 100 or under 50 kg:
 
 ```{r}
-athletes_3 <- athletes[(athletes$Sport == "Judo") & (athletes$Weight > 100 | athletes$Weight < 50), ]
+athletes_3 <- athletes[
+  (athletes$Sport == "Judo") & (athletes$Weight > 100 | athletes$Weight < 50),
+]
 head(athletes_3)
 ```
 

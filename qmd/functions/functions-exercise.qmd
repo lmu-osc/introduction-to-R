@@ -12,9 +12,9 @@ These exercises are optional.
 Take a look at the following function:
 
 ```{r}
-fun_1 <- function(x, y){ 
- res <- round(x/y^2, digits = 2)
- print(paste0("This returns:", res))
+fun_1 <- function(x, y) {
+  res <- round(x / y^2, digits = 2)
+  print(paste0("This returns:", res))
 }
 ```
 
@@ -57,12 +57,11 @@ Assign a more informative name and more informative argument names. Use `return(
 ## Solution
 
 ```{r}
-calc_bmi <- function(kg, meter){ 
- 
-  bmi <- round(kg/meter^2, digits = 2)
- 
+calc_bmi <- function(kg, meter) {
+  bmi <- round(kg / meter^2, digits = 2)
+
   print(paste0("Your BMI is: ", bmi))
- 
+
   return(bmi)
 }
 

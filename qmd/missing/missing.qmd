@@ -57,7 +57,11 @@ We seem to have `r sum(is.na(athletes$Weight))` missings in this column.
 There are multiple different ways to deal with missings. For our comparison problem, we can add the new condition that all rows that get selected shouldn't have an `NA` in the `Weight` column:
 
 ```{r, output.lines = 4}
-athletes[(athletes$Sport == "Judo") & (athletes$Weight > 100 | athletes$Weight < 50) & !is.na(athletes$Weight), ]
+athletes[
+  (athletes$Sport == "Judo") &
+    (athletes$Weight > 100 | athletes$Weight < 50) &
+    !is.na(athletes$Weight),
+]
 ```
 
 ::: {.callout-note collapse="true"}

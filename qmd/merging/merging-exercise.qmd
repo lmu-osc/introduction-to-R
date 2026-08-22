@@ -22,9 +22,11 @@ psych_stats <- read.csv(
 
 ## Reshape into long format:
 psych_stats <- psych_stats %>%
-  pivot_longer(cols = messy_neat:innocent_jaded, 
-               names_to = "question", 
-               values_to = "rating")
+  pivot_longer(
+    cols = messy_neat:innocent_jaded,
+    names_to = "question",
+    values_to = "rating"
+  )
 
 ## Take a look at the data sets
 str(characters)
@@ -60,7 +62,7 @@ It seems like both data frames have a column containing an ID for the character.
 characters_stats <- merge(
   x = characters,
   y = psych_stats,
-  by.x = "id", 
+  by.x = "id",
   by.y = "char_id"
 )
 

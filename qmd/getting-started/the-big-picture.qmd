@@ -81,9 +81,7 @@ babynames_n <- read.csv("./raw-data/babynames-n.csv")
 Now we can [merge](../merging/merging.qmd) it with our other data set by the `ID` column:
 
 ```{r}
-babynames_merged <- merge(babynames, 
-                          babynames_n, 
-                          by = "ID")
+babynames_merged <- merge(babynames, babynames_n, by = "ID")
 
 head(babynames_merged)
 ```
@@ -172,13 +170,14 @@ We start with the function [`ggplot()`](https://lmu-osc.github.io/introduction-t
 ```{r}
 #| fig-height: 8
 #| fig-width: 11
-#| 
+#|
 p <- ggplot(
   data = babynames_F_max,
   aes(
     x = year,
-    y = percentage)
+    y = percentage
   )
+)
 p
 ```
 
@@ -201,7 +200,6 @@ We can also define different colors for different groups. For example, if we wan
 p <- p +
   geom_col(aes(fill = name))
 p
-
 ```
 
 If we wanted all bars to have the same color, we would have specified the `fill` argument **outside** of the `aes()` function, because in that case, it wouldn't have to change in dependence of our data. We could also have defined our `fill` argument in the `aes()` function we have defined in `ggplot()`. In that case, it would have influenced all `geom_()` functions. Because we defined it in `geom_col()`, it only influences this `geom_col()` call.
@@ -228,7 +226,6 @@ Finally, to style the plot a bit, let's add a predefined theme and a color palet
 p +
   theme_bw() + # Theme
   scale_fill_brewer(palette = "Spectral") # Color palette
-
 ```
 :::
 

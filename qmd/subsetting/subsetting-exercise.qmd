@@ -63,7 +63,6 @@ You need to extract the column from the data frame with `$` before you can compa
 ## Solution
 ```{r}
 characters[characters$uni_name == "Friends", ]
-
 ```
 :::
 
@@ -98,7 +97,9 @@ You need to define a logical vector which contains `TRUE` values for all "Game o
 ## Solution
 
 ```{r}
-characters[characters$uni_name == "Game of Thrones" & characters$notability > 90, ]
+characters[
+  characters$uni_name == "Game of Thrones" & characters$notability > 90,
+]
 ```
 That's only Tyrion Lannister.
 

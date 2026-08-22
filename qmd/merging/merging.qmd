@@ -25,7 +25,9 @@ athletes <- readRDS(file = here::here("raw-data", "athletes.rds"))
 In the end, we want to plot the number of gold medals the countries have won on a world map. To do that, we need a data set containing coordinates of the different countries. Luckily, `ggplot2` (part of the `tidyverse`) provides a fitting data set. Let's [download](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data) it and load it into R:
 
 ```{r}
-world_coordinates <- readRDS(file = here::here("raw-data", "world-coordinates.rds"))
+world_coordinates <- readRDS(
+  file = here::here("raw-data", "world-coordinates.rds")
+)
 ```
 
 ## Before merging
@@ -37,7 +39,7 @@ Right now, we have multiple rows for each country in both data sets. This will n
 medal_counts <- athletes %>%
   filter(Medal == "Gold") %>%
   group_by(Region) %>%
-  count(Medal) 
+  count(Medal)
 
 medal_counts
 ```
@@ -66,7 +68,6 @@ medal_countries <- merge(
 )
 
 head(medal_countries)
-
 ```
 
 Note that we also used the `all.x` and `all.y` arguments. In this example, we want to take all rows from the second data set, but only those from the first data set, that have a match in the second data set. This is necessary, because we want to plot all countries later on, but only those we have coordinates for, because they won't show up on the map otherwise.

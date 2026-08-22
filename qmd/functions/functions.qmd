@@ -15,7 +15,9 @@ This chapter is optional.
 
 ```{r, message = FALSE}
 library(tidyverse)
-world_coordinates <- readRDS(file = here::here("raw-data", "world-coordinates.rds"))
+world_coordinates <- readRDS(
+  file = here::here("raw-data", "world-coordinates.rds")
+)
 athletes <- readRDS(file = here::here("raw-data", "athletes.rds"))
 ```
 :::
@@ -26,19 +28,18 @@ Suppose we want to know the number of gold medals a specific athlete has won, al
 
 ::: tidy
 ```{r}
-
 medal_counts_athlete <- athletes %>%
   # Extract all rows containing gold medal winners:
   filter(Medal %in% c("Gold")) %>%
   # Group them by name:
   group_by(Name) %>%
   # Count the number of medals for each name:
-  count(Medal) 
+  count(Medal)
 
 head(medal_counts_athlete)
 
 # Extract all rows of Usain Bolt
-medals_bolt <- medal_counts_athlete %>% 
+medals_bolt <- medal_counts_athlete %>%
   filter(Name == "Usain St. Leo Bolt")
 
 head(medals_bolt)
@@ -51,16 +52,18 @@ stats_bolt <- athletes %>%
 
 head(stats_bolt)
 
-# Print a statement using the data we just have extracted: 
+# Print a statement using the data we just have extracted:
 print(
-  paste("Usain St. Leo Bolt participated in Olympic games in the year(s)",
-        paste0(unique(stats_bolt$Year), collapse = ", "), 
-        "and won", 
-        medals_bolt$n, 
-        "Goldmedal/s in total. The athletes sport was:", 
-        unique(stats_bolt$Sport), 
-        ".")
+  paste(
+    "Usain St. Leo Bolt participated in Olympic games in the year(s)",
+    paste0(unique(stats_bolt$Year), collapse = ", "),
+    "and won",
+    medals_bolt$n,
+    "Goldmedal/s in total. The athletes sport was:",
+    unique(stats_bolt$Sport),
+    "."
   )
+)
 ```
 :::
 
@@ -106,7 +109,6 @@ count_goldmedals <- function(athlete_name) {
 
 count_goldmedals(athlete_name = "Usain St. Leo Bolt")
 count_goldmedals(athlete_name = "Simone Arianne Biles")
-
 ```
 :::
 
@@ -132,7 +134,7 @@ function_name <- function(argument_1, argument_2, ...){
 One minimal example with three arguments would be to sum three numbers:
 
 ```{r}
-sum_num <- function(x, y, z = 0){
+sum_num <- function(x, y, z = 0) {
   result <- x + y + z
   return(result)
 }
@@ -144,7 +146,6 @@ sum_num(y = 2, z = 4, x = 1)
 
 ## We don't have to specify z, because the function can use a default:
 sum_num(x = 3, y = 1)
-
 ```
 
 ::: callout-tip
