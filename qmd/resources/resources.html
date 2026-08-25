@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -36,31 +71,34 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../qmd/final_exercise/final_exercise.html" rel="prev">
-<link href="../../assets/LMU-OSC_favicon.jpg" rel="icon" type="image/jpeg">
+<link href="../../qmd/final-exercise/final-exercise.html" rel="prev">
+<link href="../../site_libs/quarto-contrib/quarto-project/lmu-osc/tutorial-template/_extensions/lmu-osc/osc-brand/lmu-osc-favicon.jpg" rel="icon" type="image/jpeg">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3c3f1368ed8db972a012dae01a8e5220.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-97e28f47ad423cfcb72627c3f906fd98.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3c3f1368ed8db972a012dae01a8e5220.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-19d92411d4ef8a7bbc559e6e9e01cf25.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-188b87d2eecf63d90488fc07321c5074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-eb085aa7c0f1d8411752f2c1fdfaa824.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-188b87d2eecf63d90488fc07321c5074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -75,6 +113,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 <!-- Matomo -->
 <script>
 if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
@@ -94,44 +133,195 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <!-- End Matomo Code -->
 
 
-<link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Additional Resources – Introduction to R">
-<meta property="og:description" content="">
-<meta property="og:site_name" content="Introduction to R">
+<link rel="stylesheet" href="../../site_libs/quarto-contrib/quarto-project/lmu-osc/tutorial-template/assets/bootstrap-grid.min.css">
+<link rel="stylesheet" href="../../footer/footer-style.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../site_libs/quarto-contrib/quarto-project/lmu-osc/tutorial-template/_extensions/lmu-osc/osc-brand/lmu-osc-favicon.jpg" alt="LMU Open Science Center open book icon" class="navbar-logo light-content">
+    <img src="../../site_libs/quarto-contrib/quarto-project/lmu-osc/tutorial-template/_extensions/lmu-osc/osc-brand/lmu-osc-favicon.jpg" alt="LMU Open Science Center open book icon" class="navbar-logo dark-content">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Introduction to R</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link active" href="../../index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../../qmd/setup/setup.html" aria-current="page"> 
-<span class="menu-text">Setup</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../qmd/getting_started/the_big_picture.html"> 
-<span class="menu-text">The Big Picture</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../qmd/final_exercise/final_exercise.html"> 
-<span class="menu-text">Final Exercise</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -141,7 +331,29 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools tools-wide">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/lmu-osc/introduction-to-R">
+            Source Code
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/lmu-osc/introduction-to-R/issues">
+            Report a Bug
+            </a>
+          </li>
+      </ul>
+    </div>
+    <a href="https://www.osc.lmu.de/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-heart"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -150,7 +362,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/resources/resources.html">6) Additional Resources</a></li><li class="breadcrumb-item"><a href="../../qmd/resources/resources.html">Additional Resources</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/resources/resources.html">Additional Resources</a></li><li class="breadcrumb-item"><a href="../../qmd/resources/resources.html">Additional Resources</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -163,6 +375,12 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../site_libs/quarto-contrib/quarto-project/lmu-osc/tutorial-template/_extensions/lmu-osc/osc-brand/lmu-osc-logo.svg" alt="LMU Open Science Center logo" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../site_libs/quarto-contrib/quarto-project/lmu-osc/tutorial-template/_extensions/lmu-osc/osc-brand/lmu-osc-logo-dark.svg" alt="LMU Open Science Center logo" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -170,10 +388,16 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">0) Before the workshop</span></a>
+ <span class="menu-text">Before the workshop</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -190,7 +414,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">1) Getting Started</span></a>
+ <span class="menu-text">Getting Started</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -213,7 +437,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/workflow/workflow_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/workflow/workflow-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workflow: Exercises</span></a>
   </div>
 </li>
@@ -230,13 +454,13 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/getting_started/the_big_picture.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/getting-started/the-big-picture.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The Big Picture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/getting_started/data_sets.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/getting-started/data-sets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data sets</span></a>
   </div>
 </li>
@@ -247,7 +471,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">2) Basics</span></a>
+ <span class="menu-text">Basics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -276,7 +500,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/basics/basics_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/basics/basics-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic Operations: Exercises</span></a>
   </div>
 </li>
@@ -293,13 +517,13 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/data_structures/data_structures.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/data-structures/data-structures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Structures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/data_structures/data_structures_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/data-structures/data-structures-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Structures: Exercises</span></a>
   </div>
 </li>
@@ -322,7 +546,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/packages/packages_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/packages/packages-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Packages: Exercises</span></a>
   </div>
 </li>
@@ -339,13 +563,13 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/load_data/load_data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/load-data/load-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Loading data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/load_data/load_data_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/load-data/load-data-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Loading data: Exercises</span></a>
   </div>
 </li>
@@ -356,7 +580,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
- <span class="menu-text">3) Data manipulation and transformation</span></a>
+ <span class="menu-text">Data manipulation and transformation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -379,7 +603,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/peeking/peeking_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/peeking/peeking-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting an Overview: Exercises</span></a>
   </div>
 </li>
@@ -402,7 +626,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/subsetting/subsetting_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/subsetting/subsetting-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Subsetting data: Exercises</span></a>
   </div>
 </li>
@@ -425,7 +649,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/missing/missing_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/missing/missing-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Missing values: Exercises</span></a>
   </div>
 </li>
@@ -448,7 +672,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/format/format_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/format/format-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reshaping: Exercise</span></a>
   </div>
 </li>
@@ -471,7 +695,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/merging/merging_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/merging/merging-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Merging: Exercise</span></a>
   </div>
 </li>
@@ -494,7 +718,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/functions/functions_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/functions/functions-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions: Exercises</span></a>
   </div>
 </li>
@@ -517,7 +741,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/loops/loops_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/loops/loops-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Loops: Exercises</span></a>
   </div>
 </li>
@@ -528,7 +752,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="true">
- <span class="menu-text">4) Visualization</span></a>
+ <span class="menu-text">Visualization</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -542,7 +766,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/plotting/plotting_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/plotting/plotting-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Plotting: Exercises</span></a>
   </div>
 </li>
@@ -551,7 +775,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="true">
- <span class="menu-text">5) Final Exercise</span></a>
+ <span class="menu-text">Final Exercise</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -559,7 +783,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/final_exercise/final_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/final-exercise/final-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Final Exercise</span></a>
   </div>
 </li>
@@ -568,7 +792,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="true">
- <span class="menu-text">6) Additional Resources</span></a>
+ <span class="menu-text">Additional Resources</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -616,11 +840,8 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p><img src="../../assets/LMU-OSC_logo.jpg" class="img-fluid" width="175"></p>
-</div></div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
    
   <ul>
   <li><a href="#cheat-sheets" id="toc-cheat-sheets" class="nav-link active" data-scroll-target="#cheat-sheets">Cheat Sheets</a>
@@ -631,14 +852,15 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
   <li><a href="#books" id="toc-books" class="nav-link" data-scroll-target="#books">Books</a></li>
   <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/lmu-osc/introduction-to-R/edit/main/qmd/resources/resources.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/lmu-osc/introduction-to-R/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/lmu-osc/introduction-to-R/edit/main/qmd/resources/resources.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/lmu-osc/introduction-to-R/blob/main/qmd/resources/resources.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/lmu-osc/introduction-to-R/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/resources/resources.html">6) Additional Resources</a></li><li class="breadcrumb-item"><a href="../../qmd/resources/resources.html">Additional Resources</a></li></ol></nav>
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../qmd/resources/resources.html">Additional Resources</a></li><li class="breadcrumb-item"><a href="../../qmd/resources/resources.html">Additional Resources</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Additional Resources</h1>
+<div class="quarto-title-block"><div><h1 class="title">Additional Resources</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -656,34 +878,49 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 
 
 <p>Here you can find a collection of resources that might help you with this tutorial, or might motivate you to do some further reading.</p>
-<section id="cheat-sheets" class="level1">
-<h1>Cheat Sheets</h1>
+<section id="cheat-sheets" class="level2">
+<h2 class="anchored" data-anchor-id="cheat-sheets">Cheat Sheets</h2>
 <p>Cheat Sheets organize the most important commands in an clear way. You can use the recommendations already during this workshop, or even create your own.</p>
-<section id="base-r" class="level2">
-<h2 class="anchored" data-anchor-id="base-r"><code>Base R</code></h2>
+<section id="base-r" class="level3">
+<h3 class="anchored" data-anchor-id="base-r"><code>Base R</code></h3>
 <p>You can find a collection of the most important <code>Base R</code> commands <a href="https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf">here</a>.</p>
 </section>
-<section id="tidyverse" class="level2">
-<h2 class="anchored" data-anchor-id="tidyverse"><code>tidyverse</code></h2>
+<section id="tidyverse" class="level3">
+<h3 class="anchored" data-anchor-id="tidyverse"><code>tidyverse</code></h3>
 <p>A collection of <code>tidyverse</code> commands for <a href="https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf">data wrangling</a>.</p>
 <p>And for <a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf">ggplot2</a>.</p>
 </section>
 </section>
-<section id="books" class="level1">
-<h1>Books</h1>
+<section id="books" class="level2">
+<h2 class="anchored" data-anchor-id="books">Books</h2>
 <p>If you want to do some further reading I highly recommend these books: <a href="https://r4ds.hadley.nz/">R for Data Science</a> is a great way to get started with working in R, but will also go into more depths in the later chapters, so it is not just for beginners.</p>
 <p><a href="https://adv-r.hadley.nz/">Advanced R</a> is definitely not for beginners, but helps R users and programmers coming from other languages to understand R and improve their programming skills in R.</p>
 </section>
-<section id="data-visualization" class="level1">
-<h1>Data Visualization</h1>
+<section id="data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization">Data Visualization</h2>
 <p>Finally, the amazing <a href="https://r-graph-gallery.com/">R Graph Gallery</a> which helps to get inspiration for own plots. And it provides the corresponding code to get you started instantly.</p>
 
 
+<!-- -->
+
 </section>
 
-</main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -753,6 +990,57 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       });
       clipboardModal.on('success', onCopySuccess);
     }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
         var filterRegex = new RegExp("https:\/\/lmu-osc\.github\.io\/introduction-to-R\/");
@@ -769,6 +1057,13 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -1084,16 +1379,146 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../qmd/final_exercise/final_exercise.html" class="pagination-link" aria-label="Final Exercise">
+      <a href="../../qmd/final-exercise/final-exercise.html" class="pagination-link" aria-label="Final Exercise">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Final Exercise</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Additional Resources"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Here you can find a collection of resources that might help you with this tutorial, or might motivate you to do some further reading.</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Cheat Sheets</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Cheat Sheets organize the most important commands in an clear way. You can use the recommendations already during this workshop, or even create your own.</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">### `Base R`</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>You can find a collection of the most important <span class="in">`Base R`</span> commands <span class="co">[</span><span class="ot">here</span><span class="co">](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)</span>.</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">### `tidyverse`</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>A collection of <span class="in">`tidyverse`</span> commands for <span class="co">[</span><span class="ot">data wrangling</span><span class="co">](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)</span>.  </span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>And for <span class="co">[</span><span class="ot">ggplot2</span><span class="co">](https://rstudio.github.io/cheatsheets/data-visualization.pdf)</span>.</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Books</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>If you want to do some further reading I highly recommend these books:</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">R for Data Science</span><span class="co">](https://r4ds.hadley.nz/)</span> is a great way to get started with working in R, but will also go into more depths in the later chapters, so it is not just for beginners.</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Advanced R</span><span class="co">](https://adv-r.hadley.nz/)</span> is definitely not for beginners, but helps R users and programmers coming from other languages to understand R and improve their programming skills in R. </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Visualization</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>Finally, the amazing <span class="co">[</span><span class="ot">R Graph Gallery</span><span class="co">](https://r-graph-gallery.com/)</span> which helps to get inspiration for own plots. And it provides the corresponding code to get you started instantly. </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Nicklas Hafiz. Published by LMU Open Science Center. Licensed under CC BY-SA 4.0.</p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/lmu-osc/introduction-to-R/edit/main/qmd/resources/resources.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/lmu-osc/introduction-to-R/blob/main/qmd/resources/resources.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/lmu-osc/introduction-to-R/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<footer class="osc-footer-card text-white py-5">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-12 col-md-6 col-lg-3 ">
+        <h4 class="fw-bold fs-5 fs-lg-4 text-white">
+          Ludwig-Maximilians-Universität<br>
+          LMU Open Science Center
+        </h4>
+        <p class="mb-0 mt-1 fw-normal fs-5">
+          Leopoldstr. 13<br>
+          80802 München
+        </p>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <h4 class="fw-semibold fs-5 text-white">Contact</h4>
+        <ul class="list-unstyled mt-2 mb-0">
+          <li>
+            <a href="mailto:felix.schoenbrodt@psy.lmu.de" class="text-white text-decoration-underline">
+              <i class="bi bi-envelope me-1"></i>
+              Prof. Dr. Felix Schönbrodt (Managing Director)
+            </a>
+          </li>
+          <li>
+            <a href="mailto:malika.ihle@lmu.de" class="text-white text-decoration-underline">
+              <i class="bi bi-envelope me-1"></i>
+              Dr. Malika Ihle (Coordinator) 
+            </a>
+          </li>
+          <li>
+            <a href="mailto:osc@lmu.de" class="text-white text-decoration-underline">
+              <i class="bi bi-envelope me-1"></i>
+              OSC team
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <h4 class="fw-semibold fs-5 text-white">Join Us</h4>
+        <ul class="list-unstyled mt-2 mb-0">
+          <li>
+            <a href="https://lists.lrz.de/mailman/listinfo/lmu-osc" target="_blank" class="text-white text-decoration-underline" aria-label="Subscribe to our announcement list (opens in new window)">
+              Subscribe to our announcement list
+            </a>
+          </li>
+          <li>
+            <a href="https://www.osc.lmu.de/about/join-us.html" target="_blank" class="text-white text-decoration-underline" aria-label="Become a member (opens in new window)">
+              Become a member
+            </a>
+          </li>
+          <li>
+            <a href="https://matrix.to/#/#lmu-open-science-center:matrix.lmu.de" target="_blank" class="text-white text-decoration-underline" aria-label="Chat with us on Matrix (opens in new window)">
+              Chat with us on Matrix
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 d-flex align-items-start gap-3 osc-footer-socials">
+        <a href="https://github.com/lmu-osc" target="_blank" class="text-white fs-3" aria-label="LMU Open Science Center on GitHub (opens in new window)">
+          <i class="bi bi-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/lmu-open-science-center/" target="_blank" class="text-white fs-3" aria-label="LMU Open Science Center on LinkedIn (opens in new window)">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="https://bsky.app/profile/lmu-osc.bsky.social" target="_blank" class="text-white fs-3" aria-label="LMU Open Science Center on Bluesky (opens in new window)">
+          <i class="bi bi-bluesky"></i>
+        </a>
+        <a href="https://scicomm.xyz/@lmu_osc" target="_blank" class="text-white fs-3" aria-label="LMU Open Science Center on Mastodon (opens in new window)">
+          <i class="bi bi-mastodon"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <hr class="my-4 border-light">
+
+    <div class="d-flex flex-wrap gap-3 small">
+      <a href="../../footer/imprint.html" class="text-white text-decoration-underline">Imprint</a>
+      <span aria-hidden="true">|</span>
+      <a href="../../footer/privacy.html" class="text-white text-decoration-underline">Privacy Policy</a>
+      <span aria-hidden="true">|</span>
+      <a href="../../footer/accessibilty.html" class="text-white text-decoration-underline">Accessibility</a>
+    </div>
+
+  </div>
+</footer>
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/lmu-osc/introduction-to-R/edit/main/qmd/resources/resources.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/lmu-osc/introduction-to-R/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>basics – Introduction to R</title>
+<title>Basic Operations – Introduction to R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -72,31 +72,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../qmd/basics/tidyverse.html" rel="next">
-<link href="../../qmd/getting_started/data_sets.html" rel="prev">
-<link href="../../assets/LMU-OSC_favicon.jpg" rel="icon" type="image/jpeg">
+<link href="../../qmd/getting-started/data-sets.html" rel="prev">
+<link href="../../site_libs/quarto-contrib/quarto-project/lmu-osc/tutorial-template/_extensions/lmu-osc/osc-brand/lmu-osc-favicon.jpg" rel="icon" type="image/jpeg">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3c3f1368ed8db972a012dae01a8e5220.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-97e28f47ad423cfcb72627c3f906fd98.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-3c3f1368ed8db972a012dae01a8e5220.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-19d92411d4ef8a7bbc559e6e9e01cf25.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-188b87d2eecf63d90488fc07321c5074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-eb085aa7c0f1d8411752f2c1fdfaa824.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-188b87d2eecf63d90488fc07321c5074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
     "s"
   ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -111,6 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 <!-- Matomo -->
 <script>
 if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
@@ -130,44 +134,195 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <!-- End Matomo Code -->
 
 
-<link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Introduction to R">
-<meta property="og:description" content="">
-<meta property="og:site_name" content="Introduction to R">
+<link rel="stylesheet" href="../../site_libs/quarto-contrib/quarto-project/lmu-osc/tutorial-template/assets/bootstrap-grid.min.css">
+<link rel="stylesheet" href="../../footer/footer-style.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light">
+<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../site_libs/quarto-contrib/quarto-project/lmu-osc/tutorial-template/_extensions/lmu-osc/osc-brand/lmu-osc-favicon.jpg" alt="LMU Open Science Center open book icon" class="navbar-logo light-content">
+    <img src="../../site_libs/quarto-contrib/quarto-project/lmu-osc/tutorial-template/_extensions/lmu-osc/osc-brand/lmu-osc-favicon.jpg" alt="LMU Open Science Center open book icon" class="navbar-logo dark-content">
+    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Introduction to R</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link active" href="../../index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../../qmd/setup/setup.html" aria-current="page"> 
-<span class="menu-text">Setup</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../qmd/getting_started/the_big_picture.html"> 
-<span class="menu-text">The Big Picture</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../qmd/final_exercise/final_exercise.html"> 
-<span class="menu-text">Final Exercise</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -177,7 +332,29 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools tools-wide">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-github"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/lmu-osc/introduction-to-R">
+            Source Code
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="https://github.com/lmu-osc/introduction-to-R/issues">
+            Report a Bug
+            </a>
+          </li>
+      </ul>
+    </div>
+    <a href="https://www.osc.lmu.de/" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-house-heart"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -186,7 +363,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">2) Basics</li><li class="breadcrumb-item"><a href="../../qmd/basics/basics.html">Basics</a></li><li class="breadcrumb-item"><a href="../../qmd/basics/basics.html">Basic Operations</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Basics</li><li class="breadcrumb-item"><a href="../../qmd/basics/basics.html">Basics</a></li><li class="breadcrumb-item"><a href="../../qmd/basics/basics.html">Basic Operations</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -199,6 +376,12 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../site_libs/quarto-contrib/quarto-project/lmu-osc/tutorial-template/_extensions/lmu-osc/osc-brand/lmu-osc-logo.svg" alt="LMU Open Science Center logo" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../site_libs/quarto-contrib/quarto-project/lmu-osc/tutorial-template/_extensions/lmu-osc/osc-brand/lmu-osc-logo-dark.svg" alt="LMU Open Science Center logo" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -206,10 +389,16 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">0) Before the workshop</span></a>
+ <span class="menu-text">Before the workshop</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -226,7 +415,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">1) Getting Started</span></a>
+ <span class="menu-text">Getting Started</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -249,7 +438,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/workflow/workflow_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/workflow/workflow-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workflow: Exercises</span></a>
   </div>
 </li>
@@ -266,13 +455,13 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/getting_started/the_big_picture.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/getting-started/the-big-picture.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The Big Picture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/getting_started/data_sets.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/getting-started/data-sets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data sets</span></a>
   </div>
 </li>
@@ -283,7 +472,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">2) Basics</span></a>
+ <span class="menu-text">Basics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -312,7 +501,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/basics/basics_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/basics/basics-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic Operations: Exercises</span></a>
   </div>
 </li>
@@ -329,13 +518,13 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/data_structures/data_structures.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/data-structures/data-structures.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Structures</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/data_structures/data_structures_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/data-structures/data-structures-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Structures: Exercises</span></a>
   </div>
 </li>
@@ -358,7 +547,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/packages/packages_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/packages/packages-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Packages: Exercises</span></a>
   </div>
 </li>
@@ -375,13 +564,13 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/load_data/load_data.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/load-data/load-data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Loading data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/load_data/load_data_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/load-data/load-data-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Loading data: Exercises</span></a>
   </div>
 </li>
@@ -392,7 +581,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true">
- <span class="menu-text">3) Data manipulation and transformation</span></a>
+ <span class="menu-text">Data manipulation and transformation</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -415,7 +604,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/peeking/peeking_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/peeking/peeking-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting an Overview: Exercises</span></a>
   </div>
 </li>
@@ -438,7 +627,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/subsetting/subsetting_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/subsetting/subsetting-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Subsetting data: Exercises</span></a>
   </div>
 </li>
@@ -461,7 +650,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/missing/missing_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/missing/missing-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Missing values: Exercises</span></a>
   </div>
 </li>
@@ -484,7 +673,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/format/format_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/format/format-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reshaping: Exercise</span></a>
   </div>
 </li>
@@ -507,7 +696,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/merging/merging_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/merging/merging-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Merging: Exercise</span></a>
   </div>
 </li>
@@ -530,7 +719,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/functions/functions_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/functions/functions-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions: Exercises</span></a>
   </div>
 </li>
@@ -553,7 +742,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/loops/loops_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/loops/loops-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Loops: Exercises</span></a>
   </div>
 </li>
@@ -564,7 +753,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="true">
- <span class="menu-text">4) Visualization</span></a>
+ <span class="menu-text">Visualization</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -578,7 +767,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/plotting/plotting_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/plotting/plotting-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Plotting: Exercises</span></a>
   </div>
 </li>
@@ -587,7 +776,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="true">
- <span class="menu-text">5) Final Exercise</span></a>
+ <span class="menu-text">Final Exercise</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -595,7 +784,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../qmd/final_exercise/final_exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../../qmd/final-exercise/final-exercise.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Final Exercise</span></a>
   </div>
 </li>
@@ -604,7 +793,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="true">
- <span class="menu-text">6) Additional Resources</span></a>
+ <span class="menu-text">Additional Resources</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -652,16 +841,11 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
-<p><img src="../../assets/LMU-OSC_logo.jpg" class="img-fluid" width="175"></p>
-</div></div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#basic-operations" id="toc-basic-operations" class="nav-link active" data-scroll-target="#basic-operations">Basic Operations</a>
-  <ul class="collapse">
-  <li><a href="#basic-mathematical-operations" id="toc-basic-mathematical-operations" class="nav-link" data-scroll-target="#basic-mathematical-operations">Basic Mathematical Operations</a></li>
+  <li><a href="#basic-mathematical-operations" id="toc-basic-mathematical-operations" class="nav-link active" data-scroll-target="#basic-mathematical-operations">Basic Mathematical Operations</a></li>
   <li><a href="#assignment-operator" id="toc-assignment-operator" class="nav-link" data-scroll-target="#assignment-operator">Assignment Operator</a></li>
   <li><a href="#combination-of-elements" id="toc-combination-of-elements" class="nav-link" data-scroll-target="#combination-of-elements">Combination of Elements</a></li>
   <li><a href="#comparisons-and-logical-operators" id="toc-comparisons-and-logical-operators" class="nav-link" data-scroll-target="#comparisons-and-logical-operators">Comparisons and Logical Operators</a></li>
@@ -670,25 +854,39 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
   <li><a href="#or-and-and" id="toc-or-and-and" class="nav-link" data-scroll-target="#or-and-and"><code>|</code> (“or”) and <code>&amp;</code> (“and”)</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
   <li><a href="#help" id="toc-help" class="nav-link" data-scroll-target="#help">HELP!</a></li>
-  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/lmu-osc/introduction-to-R/edit/main/qmd/basics/basics.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/lmu-osc/introduction-to-R/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/lmu-osc/introduction-to-R/edit/main/qmd/basics/basics.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/lmu-osc/introduction-to-R/blob/main/qmd/basics/basics.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/lmu-osc/introduction-to-R/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">2) Basics</li><li class="breadcrumb-item"><a href="../../qmd/basics/basics.html">Basics</a></li><li class="breadcrumb-item"><a href="../../qmd/basics/basics.html">Basic Operations</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Basics</li><li class="breadcrumb-item"><a href="../../qmd/basics/basics.html">Basics</a></li><li class="breadcrumb-item"><a href="../../qmd/basics/basics.html">Basic Operations</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Basic Operations</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="basic-operations" class="level1">
-<h1>Basic Operations</h1>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
 <p>Let’s take a quick look at the most important basic operations in R. You can also use a <a href="https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf">cheat sheet</a> to keep an overview during the course.</p>
 <section id="basic-mathematical-operations" class="level2">
 <h2 class="anchored" data-anchor-id="basic-mathematical-operations">Basic Mathematical Operations</h2>
 <p>We can use R as a calculator:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">-</span> <span class="dv">3</span><span class="sc">/</span><span class="fu">log</span>(<span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">-</span> <span class="dv">3</span> <span class="sc">/</span> <span class="fu">log</span>(<span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="assignment-operator" class="level2">
@@ -715,7 +913,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>new_element <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>In this case, this new element is a <a href="https://nickhaf.github.io/r_tutorial/qmd/data_structures/data_structures.html#vector">vector</a>, which is a one dimensional collection of values. The <code>c()</code> stands for combine, or concatenate, and is the basic function for building a vector out of single elements.</p>
+<p>In this case, this new element is a <a href="https://lmu-osc.github.io/introduction-to-R/qmd/data-structures/data-structures.html#vector">vector</a>, which is a one dimensional collection of values. The <code>c()</code> stands for combine, or concatenate, and is the basic function for building a vector out of single elements.</p>
 </section>
 <section id="comparisons-and-logical-operators" class="level2">
 <h2 class="anchored" data-anchor-id="comparisons-and-logical-operators">Comparisons and Logical Operators</h2>
@@ -774,7 +972,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </table>
 </div>
 </div>
-<p>Mainly we will use these logical operations to check which elements in a <a href="data_structures.qmd#vector">vector</a> satisfy some requirements:</p>
+<p>Mainly we will use these logical operations to check which elements in a <a href="../../qmd/data-structures/data-structures.html#vector">vector</a> satisfy some requirements:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build a vector of numbers ranging from 1 to 10</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>vec_num <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
@@ -791,7 +989,8 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <h2 class="anchored" data-anchor-id="in">%in%</h2>
 <p>The <code>%in%</code> operator is used to check for each element of its first argument if it is part of the second argument:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"Monica"</span>, <span class="st">"Rachel"</span>, <span class="st">"Barny"</span>) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Monica"</span>, <span class="st">"Rachel"</span>, <span class="st">"Ross"</span>, <span class="st">"Joey"</span>, <span class="st">"Phoebe"</span>, <span class="st">"Chandler"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"Monica"</span>, <span class="st">"Rachel"</span>, <span class="st">"Barny"</span>) <span class="sc">%in%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"Monica"</span>, <span class="st">"Rachel"</span>, <span class="st">"Ross"</span>, <span class="st">"Joey"</span>, <span class="st">"Phoebe"</span>, <span class="st">"Chandler"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  TRUE  TRUE FALSE</code></pre>
 </div>
@@ -878,12 +1077,26 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <p>will open the documentation for the function with the description of its usage, details about the arguments … Take a look and become acquainted with the structure of the function documentation, it is an important tool!</p>
 
 
-</section>
+<!-- -->
+
 </section>
 
-</main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -953,6 +1166,57 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
       });
       clipboardModal.on('success', onCopySuccess);
     }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const cellDetails = window.document.querySelectorAll(".cell details.code-fold");
+        for (let i=0; i<cellDetails.length; i++) {
+          const details = cellDetails[i];
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell div.sourceCode.cell-code");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
         var filterRegex = new RegExp("https:\/\/lmu-osc\.github\.io\/introduction-to-R\/");
@@ -969,6 +1233,13 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -1284,7 +1555,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../qmd/getting_started/data_sets.html" class="pagination-link" aria-label="Data sets">
+      <a href="../../qmd/getting-started/data-sets.html" class="pagination-link" aria-label="Data sets">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data sets</span>
       </a>          
   </div>
@@ -1293,10 +1564,264 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
         <span class="nav-page-text">Tidyverse</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Basic Operations"</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>Let's take a quick look at the most important basic operations in R. You can also use a <span class="co">[</span><span class="ot">cheat sheet</span><span class="co">](https://iqss.github.io/dss-workshops/R/Rintro/base-r-cheat-sheet.pdf)</span> to keep an overview during the course.</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Basic Mathematical Operations</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>We can use R as a calculator:</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = FALSE}</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span> <span class="sc">+</span> <span class="dv">2</span>) <span class="sc">*</span> <span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">-</span> <span class="dv">3</span> <span class="sc">/</span> <span class="fu">log</span>(<span class="dv">8</span>)</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Assignment Operator</span></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>We can create objects in R by using the assignment operator <span class="in">`&lt;-`</span>, which assigns a value to an object:</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Assign the result of 1 + 1 to the object 'result':</span></span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>result</span>
+<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Assign the result of the comparison to the object 'log_result':</span></span>
+<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>log_result <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">&gt;</span> <span class="dv">1</span></span>
+<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a>log_result</span>
+<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## Combination of Elements</span></span>
+<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a>We can combine multiple elements to build a new one:</span>
+<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a>new_element <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">15</span>)</span>
+<span id="cb38-40"><a href="#cb38-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-41"><a href="#cb38-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-42"><a href="#cb38-42" aria-hidden="true" tabindex="-1"></a>In this case, this new element is a <span class="co">[</span><span class="ot">vector</span><span class="co">](https://lmu-osc.github.io/introduction-to-R/qmd/data-structures/data-structures.html#vector)</span>, which is a one dimensional collection of values. The <span class="in">`c()`</span> stands for combine, or concatenate, and is the basic function for building a vector out of single elements.</span>
+<span id="cb38-43"><a href="#cb38-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-44"><a href="#cb38-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## Comparisons and Logical Operators</span></span>
+<span id="cb38-45"><a href="#cb38-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-46"><a href="#cb38-46" aria-hidden="true" tabindex="-1"></a>The boolean variables in R are <span class="in">`TRUE`</span> and <span class="in">`FALSE`</span>. Comparison operators return either <span class="in">`TRUE`</span> or <span class="in">`FALSE`</span>:</span>
+<span id="cb38-47"><a href="#cb38-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-50"><a href="#cb38-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-51"><a href="#cb38-51" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">&lt;</span> <span class="dv">2</span></span>
+<span id="cb38-52"><a href="#cb38-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-53"><a href="#cb38-53" aria-hidden="true" tabindex="-1"></a><span class="co"># But:</span></span>
+<span id="cb38-54"><a href="#cb38-54" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">&lt;</span> <span class="dv">1</span></span>
+<span id="cb38-55"><a href="#cb38-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-56"><a href="#cb38-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-57"><a href="#cb38-57" aria-hidden="true" tabindex="-1"></a>These are the comparison operators you will typically use:</span>
+<span id="cb38-58"><a href="#cb38-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-59"><a href="#cb38-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
+<span id="cb38-60"><a href="#cb38-60" aria-hidden="true" tabindex="-1"></a>dat_structs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb38-61"><a href="#cb38-61" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Operator"</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"&lt;"</span>, <span class="st">"&gt;"</span>, <span class="st">"=="</span>, <span class="st">"!="</span>, <span class="st">"&lt;="</span>, <span class="st">"&gt;="</span>, <span class="st">"%in%"</span>),</span>
+<span id="cb38-62"><a href="#cb38-62" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Description"</span> <span class="ot">=</span> <span class="fu">c</span>(</span>
+<span id="cb38-63"><a href="#cb38-63" aria-hidden="true" tabindex="-1"></a>    <span class="st">"less than"</span>,</span>
+<span id="cb38-64"><a href="#cb38-64" aria-hidden="true" tabindex="-1"></a>    <span class="st">"greater than"</span>,</span>
+<span id="cb38-65"><a href="#cb38-65" aria-hidden="true" tabindex="-1"></a>    <span class="st">"equal to"</span>,</span>
+<span id="cb38-66"><a href="#cb38-66" aria-hidden="true" tabindex="-1"></a>    <span class="st">"not equal to"</span>,</span>
+<span id="cb38-67"><a href="#cb38-67" aria-hidden="true" tabindex="-1"></a>    <span class="st">"less or equal"</span>,</span>
+<span id="cb38-68"><a href="#cb38-68" aria-hidden="true" tabindex="-1"></a>    <span class="st">"greater or equal"</span>,</span>
+<span id="cb38-69"><a href="#cb38-69" aria-hidden="true" tabindex="-1"></a>    <span class="st">"part of"</span></span>
+<span id="cb38-70"><a href="#cb38-70" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb38-71"><a href="#cb38-71" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb38-72"><a href="#cb38-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-73"><a href="#cb38-73" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(dat_structs, <span class="st">"pipe"</span>, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Operator"</span>, <span class="st">"Description"</span>))</span>
+<span id="cb38-74"><a href="#cb38-74" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-75"><a href="#cb38-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-76"><a href="#cb38-76" aria-hidden="true" tabindex="-1"></a>Mainly we will use these logical operations to check which elements in a <span class="co">[</span><span class="ot">vector</span><span class="co">](../data-structures/data-structures.qmd#vector)</span> satisfy some requirements:</span>
+<span id="cb38-77"><a href="#cb38-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-80"><a href="#cb38-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-81"><a href="#cb38-81" aria-hidden="true" tabindex="-1"></a><span class="co"># Build a vector of numbers ranging from 1 to 10</span></span>
+<span id="cb38-82"><a href="#cb38-82" aria-hidden="true" tabindex="-1"></a>vec_num <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb38-83"><a href="#cb38-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-84"><a href="#cb38-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Check which of these numbers are smaller than 5</span></span>
+<span id="cb38-85"><a href="#cb38-85" aria-hidden="true" tabindex="-1"></a>vec_num <span class="sc">&lt;</span> <span class="dv">5</span></span>
+<span id="cb38-86"><a href="#cb38-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-87"><a href="#cb38-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-88"><a href="#cb38-88" aria-hidden="true" tabindex="-1"></a>This will become important later on, when we want to subset vectors and data frames to extract only those values that satisfy some requirements we've defined.</span>
+<span id="cb38-89"><a href="#cb38-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-90"><a href="#cb38-90" aria-hidden="true" tabindex="-1"></a><span class="fu">## %in%</span></span>
+<span id="cb38-91"><a href="#cb38-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-92"><a href="#cb38-92" aria-hidden="true" tabindex="-1"></a>The <span class="in">`%in%`</span> operator is used to check for each element of its first argument if it is part of the second argument:</span>
+<span id="cb38-93"><a href="#cb38-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-96"><a href="#cb38-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-97"><a href="#cb38-97" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"Monica"</span>, <span class="st">"Rachel"</span>, <span class="st">"Barny"</span>) <span class="sc">%in%</span></span>
+<span id="cb38-98"><a href="#cb38-98" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"Monica"</span>, <span class="st">"Rachel"</span>, <span class="st">"Ross"</span>, <span class="st">"Joey"</span>, <span class="st">"Phoebe"</span>, <span class="st">"Chandler"</span>)</span>
+<span id="cb38-99"><a href="#cb38-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-100"><a href="#cb38-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-101"><a href="#cb38-101" aria-hidden="true" tabindex="-1"></a><span class="fu">## !</span></span>
+<span id="cb38-102"><a href="#cb38-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-103"><a href="#cb38-103" aria-hidden="true" tabindex="-1"></a>We can invert boolean values by using <span class="in">`!`</span>:</span>
+<span id="cb38-104"><a href="#cb38-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-107"><a href="#cb38-107" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-108"><a href="#cb38-108" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="cn">TRUE</span></span>
+<span id="cb38-109"><a href="#cb38-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-110"><a href="#cb38-110" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(<span class="dv">1</span> <span class="sc">&gt;</span> <span class="dv">100</span>)</span>
+<span id="cb38-111"><a href="#cb38-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-112"><a href="#cb38-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-113"><a href="#cb38-113" aria-hidden="true" tabindex="-1"></a><span class="fu">## `|` ("or") and `&amp;` ("and")</span></span>
+<span id="cb38-114"><a href="#cb38-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-115"><a href="#cb38-115" aria-hidden="true" tabindex="-1"></a>We can also combine multiple logical operations by using <span class="in">`|`</span> ("or") and/or <span class="in">`&amp;`</span> ("and"):</span>
+<span id="cb38-116"><a href="#cb38-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-119"><a href="#cb38-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-120"><a href="#cb38-120" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">&amp;</span> <span class="cn">FALSE</span></span>
+<span id="cb38-121"><a href="#cb38-121" aria-hidden="true" tabindex="-1"></a><span class="cn">TRUE</span> <span class="sc">|</span> <span class="cn">FALSE</span></span>
+<span id="cb38-122"><a href="#cb38-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-123"><a href="#cb38-123" aria-hidden="true" tabindex="-1"></a>(<span class="dv">10</span> <span class="sc">&lt;</span> <span class="dv">20</span> <span class="sc">|</span> <span class="st">"a"</span> <span class="sc">==</span> <span class="st">"b"</span>)</span>
+<span id="cb38-124"><a href="#cb38-124" aria-hidden="true" tabindex="-1"></a>(<span class="dv">10</span> <span class="sc">&lt;</span> <span class="dv">20</span> <span class="sc">&amp;</span> <span class="st">"a"</span> <span class="sc">==</span> <span class="st">"b"</span>)</span>
+<span id="cb38-125"><a href="#cb38-125" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(<span class="dv">10</span> <span class="sc">&lt;</span> <span class="dv">20</span> <span class="sc">&amp;</span> <span class="st">"a"</span> <span class="sc">==</span> <span class="st">"b"</span>)</span>
+<span id="cb38-126"><a href="#cb38-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-127"><a href="#cb38-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-128"><a href="#cb38-128" aria-hidden="true" tabindex="-1"></a><span class="fu">## Functions</span></span>
+<span id="cb38-129"><a href="#cb38-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-130"><a href="#cb38-130" aria-hidden="true" tabindex="-1"></a>Everything that **does** something in R is a <span class="co">[</span><span class="ot">function</span><span class="co">](../functions/functions.qmd)</span>. A function call has the form: <span class="in">`functionname(argument1 = value, argument2 = value, ...)`</span>. One basic example is the function that can calculate the square root:</span>
+<span id="cb38-131"><a href="#cb38-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-134"><a href="#cb38-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-135"><a href="#cb38-135" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">4</span>)</span>
+<span id="cb38-136"><a href="#cb38-136" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-137"><a href="#cb38-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-138"><a href="#cb38-138" aria-hidden="true" tabindex="-1"></a>We can also assign the name of the function argument to our value. This is clearer, as we don't rely on the order of the function arguments:</span>
+<span id="cb38-139"><a href="#cb38-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-142"><a href="#cb38-142" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-143"><a href="#cb38-143" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">4</span>, <span class="dv">10</span>)</span>
+<span id="cb38-144"><a href="#cb38-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-145"><a href="#cb38-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-146"><a href="#cb38-146" aria-hidden="true" tabindex="-1"></a>will rep <span class="in">`4`</span> <span class="in">`10`</span> times. If we swap the arguments, the <span class="in">`10`</span> will be repeated <span class="in">`4`</span> times:</span>
+<span id="cb38-147"><a href="#cb38-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-150"><a href="#cb38-150" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-151"><a href="#cb38-151" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">10</span>, <span class="dv">4</span>)</span>
+<span id="cb38-152"><a href="#cb38-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-153"><a href="#cb38-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-154"><a href="#cb38-154" aria-hidden="true" tabindex="-1"></a>But if we specify which value belongs to which function argument, the order doesn't matter:</span>
+<span id="cb38-155"><a href="#cb38-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-158"><a href="#cb38-158" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-159"><a href="#cb38-159" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="at">times =</span> <span class="dv">10</span>, <span class="at">x =</span> <span class="dv">4</span>)</span>
+<span id="cb38-160"><a href="#cb38-160" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-161"><a href="#cb38-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-162"><a href="#cb38-162" aria-hidden="true" tabindex="-1"></a>How do we know which arguments a function has? By using the documentation:</span>
+<span id="cb38-163"><a href="#cb38-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-164"><a href="#cb38-164" aria-hidden="true" tabindex="-1"></a><span class="fu">## HELP!</span></span>
+<span id="cb38-165"><a href="#cb38-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-166"><a href="#cb38-166" aria-hidden="true" tabindex="-1"></a>One of the most important functions in R is the help-function <span class="in">`?`</span>:</span>
+<span id="cb38-167"><a href="#cb38-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-170"><a href="#cb38-170" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb38-171"><a href="#cb38-171" aria-hidden="true" tabindex="-1"></a>?rep</span>
+<span id="cb38-172"><a href="#cb38-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb38-173"><a href="#cb38-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-174"><a href="#cb38-174" aria-hidden="true" tabindex="-1"></a>will open the documentation for the function with the description of its usage, details about the arguments ... Take a look and become acquainted with the structure of the function documentation, it is an important tool!</span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Nicklas Hafiz. Published by LMU Open Science Center. Licensed under CC BY-SA 4.0.</p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/lmu-osc/introduction-to-R/edit/main/qmd/basics/basics.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/lmu-osc/introduction-to-R/blob/main/qmd/basics/basics.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li><li><a href="https://github.com/lmu-osc/introduction-to-R/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<footer class="osc-footer-card text-white py-5">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-12 col-md-6 col-lg-3 ">
+        <h4 class="fw-bold fs-5 fs-lg-4 text-white">
+          Ludwig-Maximilians-Universität<br>
+          LMU Open Science Center
+        </h4>
+        <p class="mb-0 mt-1 fw-normal fs-5">
+          Leopoldstr. 13<br>
+          80802 München
+        </p>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <h4 class="fw-semibold fs-5 text-white">Contact</h4>
+        <ul class="list-unstyled mt-2 mb-0">
+          <li>
+            <a href="mailto:felix.schoenbrodt@psy.lmu.de" class="text-white text-decoration-underline">
+              <i class="bi bi-envelope me-1"></i>
+              Prof. Dr. Felix Schönbrodt (Managing Director)
+            </a>
+          </li>
+          <li>
+            <a href="mailto:malika.ihle@lmu.de" class="text-white text-decoration-underline">
+              <i class="bi bi-envelope me-1"></i>
+              Dr. Malika Ihle (Coordinator) 
+            </a>
+          </li>
+          <li>
+            <a href="mailto:osc@lmu.de" class="text-white text-decoration-underline">
+              <i class="bi bi-envelope me-1"></i>
+              OSC team
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3">
+        <h4 class="fw-semibold fs-5 text-white">Join Us</h4>
+        <ul class="list-unstyled mt-2 mb-0">
+          <li>
+            <a href="https://lists.lrz.de/mailman/listinfo/lmu-osc" target="_blank" class="text-white text-decoration-underline" aria-label="Subscribe to our announcement list (opens in new window)">
+              Subscribe to our announcement list
+            </a>
+          </li>
+          <li>
+            <a href="https://www.osc.lmu.de/about/join-us.html" target="_blank" class="text-white text-decoration-underline" aria-label="Become a member (opens in new window)">
+              Become a member
+            </a>
+          </li>
+          <li>
+            <a href="https://matrix.to/#/#lmu-open-science-center:matrix.lmu.de" target="_blank" class="text-white text-decoration-underline" aria-label="Chat with us on Matrix (opens in new window)">
+              Chat with us on Matrix
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-3 d-flex align-items-start gap-3 osc-footer-socials">
+        <a href="https://github.com/lmu-osc" target="_blank" class="text-white fs-3" aria-label="LMU Open Science Center on GitHub (opens in new window)">
+          <i class="bi bi-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/lmu-open-science-center/" target="_blank" class="text-white fs-3" aria-label="LMU Open Science Center on LinkedIn (opens in new window)">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="https://bsky.app/profile/lmu-osc.bsky.social" target="_blank" class="text-white fs-3" aria-label="LMU Open Science Center on Bluesky (opens in new window)">
+          <i class="bi bi-bluesky"></i>
+        </a>
+        <a href="https://scicomm.xyz/@lmu_osc" target="_blank" class="text-white fs-3" aria-label="LMU Open Science Center on Mastodon (opens in new window)">
+          <i class="bi bi-mastodon"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <hr class="my-4 border-light">
+
+    <div class="d-flex flex-wrap gap-3 small">
+      <a href="../../footer/imprint.html" class="text-white text-decoration-underline">Imprint</a>
+      <span aria-hidden="true">|</span>
+      <a href="../../footer/privacy.html" class="text-white text-decoration-underline">Privacy Policy</a>
+      <span aria-hidden="true">|</span>
+      <a href="../../footer/accessibilty.html" class="text-white text-decoration-underline">Accessibility</a>
+    </div>
+
+  </div>
+</footer>
 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/lmu-osc/introduction-to-R/edit/main/qmd/basics/basics.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/lmu-osc/introduction-to-R/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
