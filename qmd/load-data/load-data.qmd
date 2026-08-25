@@ -1,0 +1,85 @@
+---
+title: "Loading data"
+aliases: [../load_data/load_data.html]
+---
+
+::: {.callout-caution icon="false" collapse="true"}
+## Previous code
+
+```{r message=FALSE}
+# install.packages("tidyverse")
+# install.packages("here")
+
+library(tidyverse)
+library(here)
+```
+:::
+
+## Data types {#data-types}
+
+There are many different data types that can be loaded into R. Depending on the type, different commands are used. Sometimes, we will have to use additional packages to get access to that function, mainly `readxl`, `writexl` and `haven`.
+
+```{r, results = 'asis', echo = FALSE}
+formats_dat <- data.frame(
+  "Data type" = c(
+    "R objects (.Rdata, .rda)",
+    "single R object (.rds)",
+    "text-files (.txt)",
+    ".csv-files (.csv)",
+    "Excel-files (.xlsx)",
+    "SPSS-files (.sav)",
+    "SAS-files (.sas)",
+    "Stata-files (.stata)"
+  ),
+  Import = c(
+    "````load()````",
+    "````readRDS()````",
+    "````read.table()````",
+    "````read.csv()````",
+    "````readxl::read_excel()````",
+    "````haven::read_sav()````",
+    "````haven::read_sas()````",
+    "````haven::read_dta()````"
+  ),
+  Export = c(
+    "````save()````",
+    "````saveRDS()````",
+    "````write.table()````",
+    "````write.csv()````",
+    "````writexl::write_xlsx()````",
+    "````haven::write_sav()````",
+    "````haven::write_sas()````",
+    "````haven::write_dta()````"
+  )
+)
+
+knitr::kable(formats_dat, "pipe")
+```
+
+## Absolute paths vs. relative paths
+
+I can head to a specific file by using the full path (**absolute path**): `"C:\Users\hafiznij\Documents\GitHub\r_tutorial\raw-data\winners.rda"`. This approach has some disadvantages: it will only work on **my** notebook. If I want to continue my project on another device, I will have to change the path. The same goes for other people who want to work with my project. So, to keep these paths more reproducable, we should always use **relative paths**: `".\raw-data\winners.rda"`. This will always work independently of the device I am working on, as long as I am in the correct **working directory**.
+
+The working directory is the path R is currently working in. I can obtain it by typing:
+
+```{r}
+getwd()
+```
+
+Luckily, we have already created a RStudio project, which sets the working directory automatically, so we don't really have to deal with that.
+
+Now take a look at the working directory and the relative path I used for loading the `winners.rda`. Notice something? Correct, both paths combined equal the **absolute path** to the file. So by splitting it up, we obtain a more reproducible path, that works independently of where the current working directory is.
+
+::: callout-tip
+## The `here` package
+
+Another great way to deal with the path confusion is to use the `here` package. It can build the paths relative to the directory where your R Studio project is saved in. For example, `".\raw-data\winners.rda"` becomes `here::here("raw-data", "winners.rda")`. This is not incredibly important right now, especially if you have all your files in the same folder. But it can become very valuable with increasing project complexity and file structure, so look into it if you want to get a head start! I also I have to use it sometimes during the tutorial because of the way I have organized my project, so don't be confused! It is just another way to build file paths. Look [here](https://here.r-lib.org/) (:D) if you want to learn more about the package.
+:::
+
+## Example
+
+Let's load our Olympic athletes data set into R. By looking at it's ending, we can see it is as `.rds` file, so it is R-specific, and can only be loaded into R. By taking a quick look into our [table](#Data-types) we can see we have to use the `readRDS()` function for loading `.rds` files.
+
+```{r}
+athletes <- readRDS(file = here::here("raw-data", "athletes.rds"))
+```

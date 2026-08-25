@@ -1,0 +1,73 @@
+---
+title: "Merging: Exercise"
+aliases: [merging_exercise.html]
+---
+
+::: {.callout-caution icon="false" collapse="true"}
+## Previous code
+
+```{r, message = FALSE}
+# install.packages("tidyverse")
+# install.packages("here")
+
+library(tidyverse)
+library(here)
+
+## Load the data
+characters <- readRDS(file = here::here("raw-data", "characters.rds"))
+psych_stats <- read.csv(
+  file = here::here("raw-data", "psych-stats.csv"),
+  sep = ";"
+)
+
+## Reshape into long format:
+psych_stats <- psych_stats %>%
+  pivot_longer(
+    cols = messy_neat:innocent_jaded,
+    names_to = "question",
+    values_to = "rating"
+  )
+
+## Take a look at the data sets
+str(characters)
+str(psych_stats)
+```
+:::
+
+Now we have gotten to know our `characters` data set a bit more. However, the personality ratings are not included yet. For that, we need to combine it with the `psych_stats` data set.
+
+## Exercise 1
+
+Merge the `characters` data frame and the `psych_stats` data frame on a common column.
+
+::: {.callout-tip collapse="true"}
+## Hint
+
+Identify the common columns. Are they named the same in both data frames? Look at the documentation of `?merge` to see, how you can merge data frames that don't have identically named columns.
+:::
+
+::: {.callout-caution collapse="true"}
+## Solution
+
+First, let's take a look at both data sets again:
+
+```{r}
+str(characters)
+str(psych_stats)
+```
+
+It seems like both data frames have a column containing an ID for the character. We can use that column for merging:
+
+```{r}
+characters_stats <- merge(
+  x = characters,
+  y = psych_stats,
+  by.x = "id",
+  by.y = "char_id"
+)
+
+str(characters_stats)
+```
+
+Worked like a charm!
+:::
