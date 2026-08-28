@@ -31,7 +31,7 @@ library(tidyverse)
 c(45:100) %>%
   mean(na.rm = TRUE) %>%
   seq(from = 1, to = ., by = 0.1) %>%
-  sum
+  sum()
 ```
 :::
 

@@ -21,7 +21,7 @@ Go to `File` - `New Project` - `Existing Directory` and select the path of the f
 ::: {.callout-caution collapse="true"}
 ## Solution
 
-Go to `File` - `New File` - `R Script`. Save it into your folder.
+Go to `File` - `New File` - `R Script`. Save it into your folder by going to `File` - `Save` and selecting your folder. 
 :::
 
 ::: callout-tip

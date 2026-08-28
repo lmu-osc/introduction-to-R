@@ -27,7 +27,7 @@ Because subsetting data is such a basic skill, it will come up multiple times du
 
 ## Exercise 1
 
-Correct the following code, so only the first 10 rows and the last three columns are extracted:
+Correct the following code, so only the first 10 rows and columns 4 to 6 are extracted:
 
 ```{r correct_subsetting, eval=FALSE}
 characters[4:6, 10]
