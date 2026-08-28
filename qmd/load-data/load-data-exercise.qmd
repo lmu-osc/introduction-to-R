@@ -24,12 +24,12 @@ characters <- readRDS(file = here::here("raw-data", "characters.rds"))
 ```
 :::
 
-## Exercies 2
+## Exercise 2
 
 ::: {.callout-note collapse="true" icon="false"}
 ## Advanced exercise
 
-1.  Download the [`psych_stats`](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data) data set  (in case you haven't already).
+1.  Download the [`psych-stats`](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data) data set (in case you haven't already).
 2.  Load it into R and assign the name `psych_stats`. Did that work as expected? If not, why not?
 
 ::: {.callout-tip collapse="true"}
