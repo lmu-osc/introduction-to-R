@@ -9,7 +9,7 @@ aliases: [../final_exercise/final_exercise.html]
 
 This exercise revisits most topics presented in the workshop (but will also go beyond it slightly in some cases to provide additional input).
 
-If you are a R beginner and followed the workshop, you can do this last exercise **in the end** to test your knowledge. It will be a bit harder than the other workshop exercises to challenge you one last time and encourage you to think about concepts you might want to revisit, so don't worry if some exercises feel a bit harder, we haven't talked about everything yet.  
+If you are a R beginner and followed the workshop, you can do this last exercise **at the end** to test your knowledge. It will be a bit harder than the other workshop exercises to challenge you one last time and encourage you to think about concepts you might want to revisit, so don't worry if some exercises feel a bit harder, we haven't talked about everything yet.  
 
 If you already have some R experience, you can do this exercise before the rest of the workshop and use it to identify weak points to follow up on.  
 
@@ -25,14 +25,14 @@ For this exercise we want to focus on a simple questions: Do height differences 
 :::
 
 ::: callout-tip
-Throughout this script I will use a mixture of [`tidyverse`](../basics/tidyverse.qmd) and `Base R` code. Fell free to use the syntax you are comfortable with.
+Throughout this script I will use a mixture of [`tidyverse`](../basics/tidyverse.qmd) and `Base R` code. Feel free to use the syntax you are comfortable with.
 :::
 
 ## Exercise 1
 
 ### 1) Loading Data
 
-[Download](https://lmu-osc.github.io/introduction-to-R/qmd/workflow/workflow-exercise.html#exercise-2-download-data) the data sets [`vb_w` and `vb_l`](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data) and [load the data](../load-data/load-data.qmd) into R. `vb_w` contains the stats of the winning team, `vb_l` the stats of the losing team.
+[Download](https://lmu-osc.github.io/introduction-to-R/qmd/workflow/workflow-exercise.html#exercise-2-download-data) the data sets [`vb-w` and `vb-l`](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data) and [load the data](../load-data/load-data.qmd) into R. `vb-w` contains the stats of the winning team, `vb-l` the stats of the losing team.
 
 ::: {.callout-tip collapse="true"}
 ## Hints
