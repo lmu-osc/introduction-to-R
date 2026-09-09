@@ -90,7 +90,7 @@ Use `seq()` and `rep()`. You can also build consecutive sequences using `:`.
 ## Solution
 
 ```{r build_vec-solution}
-vec_1 <- c(1:5, seq(from = 5, to = 5.5, by = 0.1), rep(x = 2, times = 8))
+vec_1 <- c(1:4, seq(from = 5, to = 5.5, by = 0.1), rep(x = 2, times = 8))
 vec_1
 ```
 :::

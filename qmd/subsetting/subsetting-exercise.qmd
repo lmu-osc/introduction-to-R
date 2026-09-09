@@ -43,7 +43,7 @@ We have to target the rows we want to extract **before** the `,`, the columns af
 ## Solution
 
 ```{r}
-characters[1:10, 4:6]
+characters[1:10, 5:7]
 ```
 :::
 
