@@ -917,7 +917,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <p>Because subsetting data is such a basic skill, it will come up multiple times during this workshop. Here are some first exercises to get you started.</p>
 <section id="exercise-1" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
-<p>Correct the following code, so only the first 10 rows and the last three columns are extracted:</p>
+<p>Correct the following code, so only the first 10 rows and columns 4 to 6 are extracted:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>characters[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -950,30 +950,30 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>characters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>characters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>   uni_name notability
-1   Friends       79.7
-2   Friends       76.7
-3   Friends       74.4
-4   Friends       74.3
-5   Friends       72.6
-6   Friends       51.6
-7  Euphoria       86.5
-8  Euphoria       84.2
-9  Euphoria       82.6
-10 Euphoria       65.6
-                                                        link
-1   https://openpsychometrics.org/tests/characters/stats/F/2
-2   https://openpsychometrics.org/tests/characters/stats/F/1
-3   https://openpsychometrics.org/tests/characters/stats/F/5
-4   https://openpsychometrics.org/tests/characters/stats/F/4
-5   https://openpsychometrics.org/tests/characters/stats/F/3
-6   https://openpsychometrics.org/tests/characters/stats/F/6
-7  https://openpsychometrics.org/tests/characters/stats/EU/1
-8  https://openpsychometrics.org/tests/characters/stats/EU/2
-9  https://openpsychometrics.org/tests/characters/stats/EU/6
-10 https://openpsychometrics.org/tests/characters/stats/EU/3</code></pre>
+<pre><code>   notability                                                      link
+1        79.7  https://openpsychometrics.org/tests/characters/stats/F/2
+2        76.7  https://openpsychometrics.org/tests/characters/stats/F/1
+3        74.4  https://openpsychometrics.org/tests/characters/stats/F/5
+4        74.3  https://openpsychometrics.org/tests/characters/stats/F/4
+5        72.6  https://openpsychometrics.org/tests/characters/stats/F/3
+6        51.6  https://openpsychometrics.org/tests/characters/stats/F/6
+7        86.5 https://openpsychometrics.org/tests/characters/stats/EU/1
+8        84.2 https://openpsychometrics.org/tests/characters/stats/EU/2
+9        82.6 https://openpsychometrics.org/tests/characters/stats/EU/6
+10       65.6 https://openpsychometrics.org/tests/characters/stats/EU/3
+                                                                    image_link
+1   https://openpsychometrics.org/tests/characters/test-resources/pics/F/2.jpg
+2   https://openpsychometrics.org/tests/characters/test-resources/pics/F/1.jpg
+3   https://openpsychometrics.org/tests/characters/test-resources/pics/F/5.jpg
+4   https://openpsychometrics.org/tests/characters/test-resources/pics/F/4.jpg
+5   https://openpsychometrics.org/tests/characters/test-resources/pics/F/3.jpg
+6   https://openpsychometrics.org/tests/characters/test-resources/pics/F/6.jpg
+7  https://openpsychometrics.org/tests/characters/test-resources/pics/EU/1.jpg
+8  https://openpsychometrics.org/tests/characters/test-resources/pics/EU/2.jpg
+9  https://openpsychometrics.org/tests/characters/test-resources/pics/EU/6.jpg
+10 https://openpsychometrics.org/tests/characters/test-resources/pics/EU/3.jpg</code></pre>
 </div>
 </div>
 </div>
@@ -1734,7 +1734,7 @@ Tip
 <span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 1</span></span>
 <span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>Correct the following code, so only the first 10 rows and the last three columns are extracted:</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>Correct the following code, so only the first 10 rows and columns 4 to 6 are extracted:</span>
 <span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r correct_subsetting, eval=FALSE}</span></span>
 <span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>characters[<span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">10</span>]</span>
@@ -1750,7 +1750,7 @@ Tip
 <span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## Solution</span></span>
 <span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>characters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">6</span>]</span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>characters[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">5</span><span class="sc">:</span><span class="dv">7</span>]</span>
 <span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a></span>

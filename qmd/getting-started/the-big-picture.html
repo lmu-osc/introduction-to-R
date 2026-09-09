@@ -927,7 +927,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </section>
 <section id="load-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-data">Load Data</h2>
-<p>Data is <a href="../../qmd/load-data/load-data.html">loaded into R</a> so you can work with it. For this chapter, we are going to use the data set <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md"><code>babynames</code></a>, which we can find on the <a href="https://github.com/rfordatascience/tidytuesday"><code>tidytuesday</code></a> site. I have already tweaked the data set a bit, so download it from <a href="https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data">here</a> to follow along (in case you haven’t already in the <a href="https://lmu-osc.github.io/introduction-to-R/qmd/workflow/workflow-exercise.html#exercise-2-download-data">previous exercise</a>.</p>
+<p>Data is <a href="../../qmd/load-data/load-data.html">loaded into R</a> so you can work with it. For this chapter, we are going to use the data set <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md"><code>babynames</code></a>, which we can find on the <a href="https://github.com/rfordatascience/tidytuesday"><code>tidytuesday</code></a> site. I have already tweaked the data set a bit, so download it from <a href="https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data">here</a> to follow along (in case you haven’t already in the <a href="https://lmu-osc.github.io/introduction-to-R/qmd/workflow/workflow-exercise.html#exercise-2-download-data">previous exercise</a>).</p>
 <p>So, after downloading it and saving it in the folder <code>raw-data</code> within my project directory, I can load the data set into R with:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>babynames <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./raw-data/babynames.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -965,7 +965,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </section>
 <section id="merging" class="level2">
 <h2 class="anchored" data-anchor-id="merging">Merging</h2>
-<p>Sadly the data is not complete. If we had the number of people born with a specific name for every year, we could find out which name was the most common each year (which is our goal, as you might remember). However, the number of people is missing from our data (ok, i split it up for illustrative purposes). So let’s <a href="https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data">download</a> <code>babynames-n.csv</code> (in case you haven’t already) and <a href="../../qmd/load-data/load-data.html">load it into R</a>:</p>
+<p>Sadly, the data is not complete. If we had the number of people born with a specific name for every year, we could find out which name was the most common each year (which is our goal, as you might remember). However, the number of people is missing from our data (ok, I split it up for illustrative purposes). So let’s <a href="https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data">download</a> <code>babynames-n.csv</code> (in case you haven’t already) and <a href="../../qmd/load-data/load-data.html">load it into R</a>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>babynames_n <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./raw-data/babynames-n.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1012,7 +1012,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sex <span class="sc">==</span> <span class="st">"F"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
-<p>Wondering what the <code>%&gt;%</code> means? That’s a <a href="https://lmu-osc.github.io/introduction-to-R/qmd/basics/tidyverse.html#the-pipe-operator">pipe operator</a>, which is used, mainly in the <a href="../../qmd/basics/tidyverse.html"><code>tidyverse</code></a>, to connect multiple function calls. This can make code a lot more readable. Here we start with the <code>babynames_merged</code> data set and then perform an operation on it, in this case filtering specific values.</p>
+<p>Wondering what the <code>%&gt;%</code> means? That’s a <a href="https://lmu-osc.github.io/introduction-to-R/qmd/basics/tidyverse.html#the-pipe-operator">pipe operator</a>, which is used mainly in the <a href="../../qmd/basics/tidyverse.html"><code>tidyverse</code></a>, to connect multiple function calls. This can make code a lot more readable. Here we start with the <code>babynames_merged</code> data set and then perform an operation on it, in this case filtering specific values.</p>
 </section>
 <section id="adding-a-new-column" class="level2">
 <h2 class="anchored" data-anchor-id="adding-a-new-column">Adding a new column</h2>
@@ -1037,7 +1037,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <div class="tidy">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>babynames_F <span class="ot">&lt;-</span> babynames_F <span class="sc">%&gt;%</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, name, percentage) <span class="co"># We take the percentage instead of the prop here, because i find it a little bit more intuitive to plot.</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, name, percentage) <span class="co"># We take the percentage instead of the prop here, because I find it a little bit more intuitive to plot.</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(babynames_F)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  year     name percentage
@@ -1053,7 +1053,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </section>
 <section id="some-additional-summary-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="some-additional-summary-statistics">Some additional summary statistics</h2>
-<p>Now, the next part can show you how easy it can be to deal with data in R. It’s <code>tidyverse</code> specific syntax, so don’t worry about it to much for now.</p>
+<p>Now, the next part can show you how easy it can be to deal with data in R. It’s <code>tidyverse</code> specific syntax, so don’t worry about it too much for now.</p>
 <p>First, let’s group our data according to year:</p>
 <div class="tidy">
 <div class="cell">
@@ -1167,7 +1167,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>In this tutorial we have learned that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. If you already have some R experience, you can now move on to the <a href="../../qmd/final-exercise/final-exercise.html">Final Exercise</a> to identify topics your want to work on. If you are a R beginner, I would suggest you follow the course, as outlined on the left.</p>
+<p>In this tutorial we have learned that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. If you already have some R experience, you can now move on to the <a href="../../qmd/final-exercise/final-exercise.html">Final Exercise</a> to identify topics your want to work on. If you are a R beginner, I would suggest you follow the course as outlined on the left.</p>
 
 
 <!-- -->
@@ -1694,7 +1694,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a><span class="fu">## Load Data</span></span>
 <span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a>Data is <span class="co">[</span><span class="ot">loaded into R</span><span class="co">](../load-data/load-data.qmd)</span> so you can work with it. For this chapter, we are going to use the data set <span class="co">[</span><span class="ot">`babynames`</span><span class="co">](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md)</span>, which we can find on the <span class="co">[</span><span class="ot">`tidytuesday`</span><span class="co">](https://github.com/rfordatascience/tidytuesday)</span> site. I have already tweaked the data set a bit, so download it from <span class="co">[</span><span class="ot">here</span><span class="co">](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data)</span> to follow along (in case you haven't already in the <span class="co">[</span><span class="ot">previous exercise</span><span class="co">](https://lmu-osc.github.io/introduction-to-R/qmd/workflow/workflow-exercise.html#exercise-2-download-data)</span>. </span>
+<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a>Data is <span class="co">[</span><span class="ot">loaded into R</span><span class="co">](../load-data/load-data.qmd)</span> so you can work with it. For this chapter, we are going to use the data set <span class="co">[</span><span class="ot">`babynames`</span><span class="co">](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-03-22/readme.md)</span>, which we can find on the <span class="co">[</span><span class="ot">`tidytuesday`</span><span class="co">](https://github.com/rfordatascience/tidytuesday)</span> site. I have already tweaked the data set a bit, so download it from <span class="co">[</span><span class="ot">here</span><span class="co">](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data)</span> to follow along (in case you haven't already in the <span class="co">[</span><span class="ot">previous exercise</span><span class="co">](https://lmu-osc.github.io/introduction-to-R/qmd/workflow/workflow-exercise.html#exercise-2-download-data)</span>). </span>
 <span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a>So, after downloading it and saving it in the folder <span class="in">`raw-data`</span> within my project directory, I can load the data set into R with:</span>
 <span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a></span>
@@ -1728,7 +1728,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <span id="cb28-74"><a href="#cb28-74" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-75"><a href="#cb28-75" aria-hidden="true" tabindex="-1"></a><span class="fu">## Merging</span></span>
 <span id="cb28-76"><a href="#cb28-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-77"><a href="#cb28-77" aria-hidden="true" tabindex="-1"></a>Sadly the data is not complete. If we had the number of people born with a specific name for every year, we could find out which name was the most common each year (which is our goal, as you might remember). However, the number of people is missing from our data (ok, i split it up for illustrative purposes). So let's <span class="co">[</span><span class="ot">download</span><span class="co">](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data)</span> <span class="in">`babynames-n.csv`</span> (in case you haven't already) and <span class="co">[</span><span class="ot">load it into R</span><span class="co">](../load-data/load-data.qmd)</span>:</span>
+<span id="cb28-77"><a href="#cb28-77" aria-hidden="true" tabindex="-1"></a>Sadly, the data is not complete. If we had the number of people born with a specific name for every year, we could find out which name was the most common each year (which is our goal, as you might remember). However, the number of people is missing from our data (ok, I split it up for illustrative purposes). So let's <span class="co">[</span><span class="ot">download</span><span class="co">](https://github.com/lmu-osc/introduction-to-R/tree/main/raw-data)</span> <span class="in">`babynames-n.csv`</span> (in case you haven't already) and <span class="co">[</span><span class="ot">load it into R</span><span class="co">](../load-data/load-data.qmd)</span>:</span>
 <span id="cb28-78"><a href="#cb28-78" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-79"><a href="#cb28-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo = FALSE}</span></span>
 <span id="cb28-80"><a href="#cb28-80" aria-hidden="true" tabindex="-1"></a>babynames_n <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"raw-data"</span>, <span class="st">"babynames-n.csv"</span>))</span>
@@ -1768,7 +1768,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <span id="cb28-120"><a href="#cb28-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb28-121"><a href="#cb28-121" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb28-122"><a href="#cb28-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-123"><a href="#cb28-123" aria-hidden="true" tabindex="-1"></a>Wondering what the <span class="in">`%&gt;%`</span> means? That's a <span class="co">[</span><span class="ot">pipe operator</span><span class="co">](https://lmu-osc.github.io/introduction-to-R/qmd/basics/tidyverse.html#the-pipe-operator)</span>, which is used, mainly in the <span class="co">[</span><span class="ot">`tidyverse`</span><span class="co">](../basics/tidyverse.qmd)</span>, to connect multiple function calls. This can make code a lot more readable. Here we start with the <span class="in">`babynames_merged`</span> data set and then perform an operation on it, in this case filtering specific values.</span>
+<span id="cb28-123"><a href="#cb28-123" aria-hidden="true" tabindex="-1"></a>Wondering what the <span class="in">`%&gt;%`</span> means? That's a <span class="co">[</span><span class="ot">pipe operator</span><span class="co">](https://lmu-osc.github.io/introduction-to-R/qmd/basics/tidyverse.html#the-pipe-operator)</span>, which is used mainly in the <span class="co">[</span><span class="ot">`tidyverse`</span><span class="co">](../basics/tidyverse.qmd)</span>, to connect multiple function calls. This can make code a lot more readable. Here we start with the <span class="in">`babynames_merged`</span> data set and then perform an operation on it, in this case filtering specific values.</span>
 <span id="cb28-124"><a href="#cb28-124" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-125"><a href="#cb28-125" aria-hidden="true" tabindex="-1"></a><span class="fu">## Adding a new column</span></span>
 <span id="cb28-126"><a href="#cb28-126" aria-hidden="true" tabindex="-1"></a></span>
@@ -1786,14 +1786,14 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <span id="cb28-140"><a href="#cb28-140" aria-hidden="true" tabindex="-1"></a>::: tidy</span>
 <span id="cb28-143"><a href="#cb28-143" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb28-144"><a href="#cb28-144" aria-hidden="true" tabindex="-1"></a>babynames_F <span class="ot">&lt;-</span> babynames_F <span class="sc">%&gt;%</span></span>
-<span id="cb28-145"><a href="#cb28-145" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, name, percentage) <span class="co"># We take the percentage instead of the prop here, because i find it a little bit more intuitive to plot.</span></span>
+<span id="cb28-145"><a href="#cb28-145" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, name, percentage) <span class="co"># We take the percentage instead of the prop here, because I find it a little bit more intuitive to plot.</span></span>
 <span id="cb28-146"><a href="#cb28-146" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(babynames_F)</span>
 <span id="cb28-147"><a href="#cb28-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb28-148"><a href="#cb28-148" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb28-149"><a href="#cb28-149" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-150"><a href="#cb28-150" aria-hidden="true" tabindex="-1"></a><span class="fu">## Some additional summary statistics</span></span>
 <span id="cb28-151"><a href="#cb28-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-152"><a href="#cb28-152" aria-hidden="true" tabindex="-1"></a>Now, the next part can show you how easy it can be to deal with data in R. It's <span class="in">`tidyverse`</span> specific syntax, so don't worry about it to much for now.</span>
+<span id="cb28-152"><a href="#cb28-152" aria-hidden="true" tabindex="-1"></a>Now, the next part can show you how easy it can be to deal with data in R. It's <span class="in">`tidyverse`</span> specific syntax, so don't worry about it too much for now.</span>
 <span id="cb28-153"><a href="#cb28-153" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-154"><a href="#cb28-154" aria-hidden="true" tabindex="-1"></a>First, let's group our data according to year:</span>
 <span id="cb28-155"><a href="#cb28-155" aria-hidden="true" tabindex="-1"></a></span>
@@ -1893,7 +1893,7 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <span id="cb28-263"><a href="#cb28-263" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-264"><a href="#cb28-264" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conclusion</span></span>
 <span id="cb28-265"><a href="#cb28-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-266"><a href="#cb28-266" aria-hidden="true" tabindex="-1"></a>In this tutorial we have learned that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. If you already have some R experience, you can now move on to the <span class="co">[</span><span class="ot">Final Exercise</span><span class="co">](../final-exercise/final-exercise.qmd)</span> to identify topics your want to work on. If you are a R beginner, I would suggest you follow the course, as outlined on the left.</span>
+<span id="cb28-266"><a href="#cb28-266" aria-hidden="true" tabindex="-1"></a>In this tutorial we have learned that R is a flexible tool for editing and plotting data. Of course, we barely scratched the surface. Therefore, we want to dive a bit deeper into each step. If you already have some R experience, you can now move on to the <span class="co">[</span><span class="ot">Final Exercise</span><span class="co">](../final-exercise/final-exercise.qmd)</span> to identify topics your want to work on. If you are a R beginner, I would suggest you follow the course as outlined on the left.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
