@@ -39,6 +39,5 @@ Much nicer to read, right?
 
 Some notes on this syntax:
 
-1.  If we don't have any additional arguments we want to put into the function, we can just write the function name without any brackets, like we do at the end with `sum`.
-2.  The pipe operator will give the result of the last function as input into the next function. That's why we don't have to specify the vector within the `mean()` function.
-3.  If we want to clearly state which of the function arguments should receive the input, we can write a `.`, which can be read as *output of the previous function call*. That's what we do in the `seq()` function. It calculates a sequence from `1` to the mean of `c(45:100)`.
+1.  The pipe operator will give the result of the last function as input into the next function. That's why we don't have to specify the vector within the `mean()` function.
+2.  If we want to clearly state which of the function arguments should receive the input, we can write a `.`, which can be read as *output of the previous function call*. That's what we do in the `seq()` function. It calculates a sequence from `1` to the mean of `c(45:100)`.
