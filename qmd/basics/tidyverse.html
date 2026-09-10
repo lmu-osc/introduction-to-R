@@ -906,7 +906,6 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <p>Much nicer to read, right?</p>
 <p>Some notes on this syntax:</p>
 <ol type="1">
-<li>If we don’t have any additional arguments we want to put into the function, we can just write the function name without any brackets, like we do at the end with <code>sum</code>.</li>
 <li>The pipe operator will give the result of the last function as input into the next function. That’s why we don’t have to specify the vector within the <code>mean()</code> function.</li>
 <li>If we want to clearly state which of the function arguments should receive the input, we can write a <code>.</code>, which can be read as <em>output of the previous function call</em>. That’s what we do in the <code>seq()</code> function. It calculates a sequence from <code>1</code> to the mean of <code>c(45:100)</code>.</li>
 </ol>
@@ -1441,9 +1440,8 @@ if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
 <span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>Some notes on this syntax:</span>
 <span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>If we don't have any additional arguments we want to put into the function, we can just write the function name without any brackets, like we do at the end with <span class="in">`sum`</span>.</span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>The pipe operator will give the result of the last function as input into the next function. That's why we don't have to specify the vector within the <span class="in">`mean()`</span> function.</span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>If we want to clearly state which of the function arguments should receive the input, we can write a <span class="in">`.`</span>, which can be read as *output of the previous function call*. That's what we do in the <span class="in">`seq()`</span> function. It calculates a sequence from <span class="in">`1`</span> to the mean of <span class="in">`c(45:100)`</span>.</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>The pipe operator will give the result of the last function as input into the next function. That's why we don't have to specify the vector within the <span class="in">`mean()`</span> function.</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>If we want to clearly state which of the function arguments should receive the input, we can write a <span class="in">`.`</span>, which can be read as *output of the previous function call*. That's what we do in the <span class="in">`seq()`</span> function. It calculates a sequence from <span class="in">`1`</span> to the mean of <span class="in">`c(45:100)`</span>.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
