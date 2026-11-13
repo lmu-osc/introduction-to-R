@@ -6,8 +6,11 @@ authors:
     orcid: "https://orcid.org/0000-0001-9035-4483"
     affiliation: "Institut für Qualitätsentwicklung im Bildungswesen (IQB)"
 title: "Introduction to R"
+type: software
 version: 1.0.0
-doi: "DOI_HERE_AFTER_GENERATED"
+# Uncomment and fill in after a DOI has been minted (e.g. via Zenodo).
+# Format: 10.5281/zenodo.XXXXXXX  (not the https://doi.org/ resolver URL)
+# doi: "10.5281/zenodo.XXXXXXX"
 date-released: 2023-09-10
 repository-code: "https://github.com/lmu-osc/introduction-to-R"
 url: "https://lmu-osc.github.io/introduction-to-R/"
