@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24191225.svg)](https://doi.org/10.5281/zenodo.24191225)
+
 # Introduction to R
 
 This workshop teaches the basics of the R programming language: data manipulation, transformation, visualization, and more. It was initially created for the [LMU OSC summer school 2023](https://lmu-osc.github.io/OSC-Open-Research-Summer-School-2023/), and can also be used for self studying.

@@ -6,8 +6,8 @@ citation:
   title: "Introduction to R"
   container-title: "LMU Open Science Center"
   url: https://lmu-osc.github.io/introduction-to-R
-  doi: "DOI HERE"
-  version: 1.0.0
+  doi: "10.5281/zenodo.24191225"
+  version: 1.0.1
 author:
   - name: Nicklas Hafiz
     affiliation:
